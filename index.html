@@ -382,6 +382,80 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
+        /* Campus Carousel */
+        .campus-carousel {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 40px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .carousel-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .carousel-description {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--primary-orange);
+            transform: scale(1.2);
+        }
+
         /* Footer */
         .footer {
             background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
@@ -603,11 +677,7 @@
                         <h3>Innovation</h3>
                         <p>We embrace new ideas, technologies, and teaching methods to enhance learning experiences and prepare students for the modern world.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">🌍</div>
-                        <h3>Inclusivity</h3>
-                        <p>We celebrate diversity and create an environment where every student feels valued, supported, and empowered to achieve their potential.</p>
-                    </div>
+                   
                 </div>
             </div>
         </section>
@@ -621,27 +691,27 @@
                 </div>
                 <div class="updates-grid">
                     <div class="update-card">
-                        <div class="update-image">📅</div>
+                        <div class="update-image" style="background-image: url('./img/culture.jpg'); background-size: cover; background-position: center;"></div>
                         <div class="update-content">
-                            <div class="update-date">March 15, 2024</div>
+                            <div class="update-date">September 26, 2025</div>
+                            <h3>International Culture Day</h3>
+                            <p>We successfully celebrated the rich diversity of our traditions, food, music, and art. The event featured vibrant cultural performances, exhibitions, and activities that highlighted unity in diversity and community spirit.</p>
+                        </div>
+                    </div>
+                    <div class="update-card">
+                        <div class="update-image" style="background-image: url('./img/enrollment.jpeg'); background-size: cover; background-position: center;"></div>
+                        <div class="update-content">
+                            <div class="update-date">September 15, 2025</div>
                             <h3>New Academic Year Registration</h3>
-                            <p>Registration for the 2024 academic year is now open. Students can apply online or visit our campus for assistance with the enrollment process.</p>
+                            <p>Registration for the 2026 academic year is now open. Students can apply online <a href="https://lsuczm.com/application/">HERE</a> or visit our campus for assistance with the enrollment process.</p>
                         </div>
                     </div>
                     <div class="update-card">
-                        <div class="update-image">🏆</div>
+                        <div class="update-image" style="background-image: url('./img/students_solar tech.jpeg'); background-size: cover; background-position: center;"></div>
                         <div class="update-content">
-                            <div class="update-date">March 10, 2024</div>
-                            <h3>Excellence in Engineering Awards</h3>
-                            <p>Our engineering students won three awards at the national technical skills competition, showcasing the quality of education at LSUC.</p>
-                        </div>
-                    </div>
-                    <div class="update-card">
-                        <div class="update-image">💼</div>
-                        <div class="update-content">
-                            <div class="update-date">March 5, 2024</div>
-                            <h3>Career Fair 2024</h3>
-                            <p>Join us for our annual career fair featuring over 50 employers. Connect with potential employers and explore exciting career opportunities.</p>
+                            <div class="update-date">March 10, 2025</div>
+                            <h3>Excellence in Solar Technology</h3>
+                            <p>Our engineering students in Solar Technology, showcased their quality of education at LSUC.</p>
                         </div>
                     </div>
                 </div>
@@ -655,6 +725,27 @@
                     <h2>Our Campus</h2>
                     <p>Explore our modern facilities designed to provide the best learning environment for our students</p>
                 </div>
+                
+                <!-- Campus Image Carousel -->
+                <div class="campus-carousel">
+                    <div class="carousel-image active" style="background-image: url('./img/school3.jpeg');"></div>
+                    <div class="carousel-image" style="background-image: url('./img/school1.jpeg');"></div>
+                    <div class="carousel-image" style="background-image: url('./img/school4.jpeg');"></div>
+                    <div class="carousel-image" style="background-image: url('./img/school2.jpeg');"></div>
+                    
+                    <div class="carousel-overlay">
+                        <div class="carousel-title">Campus Facilities</div>
+                        <div class="carousel-description">State-of-the-art infrastructure supporting academic excellence</div>
+                    </div>
+                    
+                    <div class="carousel-indicators">
+                        <div class="indicator active"></div>
+                        <div class="indicator"></div>
+                        <div class="indicator"></div>
+                        <div class="indicator"></div>
+                    </div>
+                </div>
+                
                 <div class="gallery-grid">
                     <div class="gallery-item">🏛️<br>Main Building</div>
                     <div class="gallery-item">🔬<br>Science Labs</div>
@@ -1348,9 +1439,9 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Contact Information</h3>
-                    <p>📍 Plot 123, Independence Avenue<br>Lusaka, Zambia</p>
+                    <p>📍 Foxdale, Conner of Zambezi and Mutumbi Road<br>Lusaka, Zambia</p>
                     <p>📞 +260-211-123456</p>
-                    <p>✉️ info@lusakasouthcollege.edu.zm</p>
+                    <p>✉️ admissions@lsuczm.com</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -1501,6 +1592,57 @@
 
         // Initialize animations
         animateOnScroll();
+
+        // Campus Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-image');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        
+        // Shuffled order for interesting transitions (school3, school1, school4, school2)
+        const slideOrder = [0, 1, 2, 3]; // This matches our HTML order which is already shuffled
+        
+        function showSlide(index) {
+            // Remove active class from all slides and indicators
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Add active class to current slide and indicator
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        // Auto-advance carousel every 3 seconds
+        let carouselInterval = setInterval(nextSlide, 3000);
+        
+        // Add click handlers for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+                
+                // Reset the interval when user manually changes slide
+                clearInterval(carouselInterval);
+                carouselInterval = setInterval(nextSlide, 3000);
+            });
+        });
+        
+        // Pause carousel on hover
+        const carousel = document.querySelector('.campus-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(carouselInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                carouselInterval = setInterval(nextSlide, 3000);
+            });
+        }
     </script>
 
     <style>

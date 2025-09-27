@@ -1070,22 +1070,22 @@
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-icon">👨‍💼</div>
-                        <h3>Principal</h3>
+                        <h3>Dr. Zimba F, Principal</h3>
                         <p>Leading the college with over 20 years of experience in educational administration and a commitment to student success and institutional growth.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">👩‍🏫</div>
-                        <h3>Academic Dean</h3>
+                        <h3>Ms Muleya C, Academic Dean</h3>
                         <p>Overseeing academic programs and ensuring the highest standards of teaching and learning across all schools and departments.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">👨‍💰</div>
-                        <h3>Finance Director</h3>
+                        <h3>Ms Kababa J, Finance Director</h3>
                         <p>Managing the college's financial resources and ensuring sustainable operations while maintaining affordability for students.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">👩‍💻</div>
-                        <h3>Registrar</h3>
+                        <h3>Ms, Musonda L, Registrar</h3>
                         <p>Handling student records, enrollment, and graduation processes with attention to detail and student service excellence.</p>
                     </div>
                 </div>
@@ -1681,6 +1681,425 @@
         </section>
     </div>
 
+    <!-- Undergraduate Application Page -->
+    <div id="undergraduate-application" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>Undergraduate Application</h1>
+                <p>Apply for undergraduate programs at Lusaka South College</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Undergraduate Application
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="container">
+                <div class="form-info">
+                    <h4>Application Requirements</h4>
+                    <ul>
+                        <li>Completed Grade 12 Certificate or equivalent</li>
+                        <li>Official transcripts from previous institutions</li>
+                        <li>Copy of National Registration Card/Passport</li>
+                        <li>Two passport-size photographs</li>
+                        <li>Application fee payment confirmation</li>
+                    </ul>
+                </div>
+                
+                <form class="application-form">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ug-firstname">First Name *</label>
+                                <input type="text" id="ug-firstname" name="firstname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ug-lastname">Last Name *</label>
+                                <input type="text" id="ug-lastname" name="lastname" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ug-email">Email Address *</label>
+                                <input type="email" id="ug-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ug-phone">Phone Number *</label>
+                                <input type="tel" id="ug-phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ug-nrc">National Registration Card/Passport *</label>
+                                <input type="text" id="ug-nrc" name="nrc" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ug-dob">Date of Birth *</label>
+                                <input type="date" id="ug-dob" name="dateofbirth" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ug-address">Physical Address *</label>
+                            <textarea id="ug-address" name="address" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Academic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ug-program">Preferred Program *</label>
+                                <select id="ug-program" name="program" required>
+                                    <option value="">Select Program</option>
+                                    <option value="business-admin">Business Administration</option>
+                                    <option value="computer-science">Computer Science</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="education">Education</option>
+                                    <option value="health-sciences">Health Sciences</option>
+                                    <option value="agriculture">Agriculture</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ug-intake">Preferred Intake *</label>
+                                <select id="ug-intake" name="intake" required>
+                                    <option value="">Select Intake</option>
+                                    <option value="january-2026">January</option>
+                                    <option value="may-2026">April</option>
+                                    <option value="september-2026">July</option>
+                                    <option value="september-2026">October</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ug-school">Previous School/Institution *</label>
+                                <input type="text" id="ug-school" name="previousschool" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ug-grade">Grade 12 Points/Results *</label>
+                                <input type="text" id="ug-grade" name="grade12results" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Emergency Contact</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ug-guardian-name">Guardian/Parent Name *</label>
+                                <input type="text" id="ug-guardian-name" name="guardianname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ug-guardian-phone">Guardian/Parent Phone *</label>
+                                <input type="tel" id="ug-guardian-phone" name="guardianphone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ug-guardian-relationship">Relationship *</label>
+                            <select id="ug-guardian-relationship" name="relationship" required>
+                                <option value="">Select Relationship</option>
+                                <option value="parent">Parent</option>
+                                <option value="guardian">Guardian</option>
+                                <option value="spouse">Spouse</option>
+                                <option value="sibling">Sibling</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Short Courses Application Page -->
+    <div id="short-courses-application" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>Short Courses Application</h1>
+                <p>Enroll in professional development and skill enhancement courses</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Short Courses Application
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="container">
+                <div class="form-info">
+                    <h4>Available Short Courses</h4>
+                    <ul>
+                        <li>Digital Marketing & Social Media</li>
+                        <li>Project Management Certification</li>
+                        <li>Computer Applications (Microsoft Office)</li>
+                        <li>Financial Management & Accounting</li>
+                        <li>Leadership & Management Skills</li>
+                        <li>Web Development & Design</li>
+                    </ul>
+                </div>
+                
+                <form class="application-form">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sc-firstname">First Name *</label>
+                                <input type="text" id="sc-firstname" name="firstname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sc-lastname">Last Name *</label>
+                                <input type="text" id="sc-lastname" name="lastname" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sc-email">Email Address *</label>
+                                <input type="email" id="sc-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sc-phone">Phone Number *</label>
+                                <input type="tel" id="sc-phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sc-occupation">Current Occupation</label>
+                            <input type="text" id="sc-occupation" name="occupation">
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Course Selection</h3>
+                        <div class="form-group">
+                            <label for="sc-course">Select Course *</label>
+                            <select id="sc-course" name="course" required>
+                                <option value="">Choose Course</option>
+                                <option value="digital-marketing">Digital Marketing & Social Media</option>
+                                <option value="project-management">Project Management Certification</option>
+                                <option value="computer-applications">Computer Applications (Microsoft Office)</option>
+                                <option value="financial-management">Financial Management & Accounting</option>
+                                <option value="leadership">Leadership & Management Skills</option>
+                                <option value="web-development">Web Development & Design</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sc-start-date">Inake *</label>
+                                <select id="sc-start-date" name="startdate" required>
+                                    <option value="">Select Intake</option>
+                                    <option value="november-2025">January</option>
+                                    <option value="january-2026">April</option>
+                                    <option value="march-2026">July</option>
+                                    <option value="may-2026">October</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sc-schedule">Mode of Study *</label>
+                                <select id="sc-schedule" name="schedule" required>
+                                    <option value="">Select mode of Study</option>
+                                    <option value="weekdays">Physical (Full time)</option>
+                                    <option value="online">Online (Distance)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sc-experience">Relevant Experience/Background</label>
+                            <textarea id="sc-experience" name="experience" rows="3" placeholder="Please describe any relevant experience or background related to your chosen course"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sc-goals">Learning Goals</label>
+                            <textarea id="sc-goals" name="goals" rows="3" placeholder="What do you hope to achieve from this course?"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enroll Now</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Corporate Training Application Page -->
+    <div id="corporate-training-application" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>Corporate Training Application</h1>
+                <p>Professional training solutions for your organization</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Corporate Training Application
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="container">
+                <div class="form-info">
+                    <h4>Corporate Training Services Available For 2025</h4>
+                    <ul>
+                        <li>Leadership Development Programs</li>
+                        <li>Team Building & Communication</li>
+                        <li>Technical Skills Training</li>
+                        <li>Customer Service Excellence</li>
+                        <li>Health & Safety Training</li>
+                        <li>Customized Training Solutions</li>
+                    </ul>
+                </div>
+                
+                <form class="application-form">
+                    <div class="form-section">
+                        <h3>Organization Information</h3>
+                        <div class="form-group">
+                            <label for="ct-company">Company/Organization Name *</label>
+                            <input type="text" id="ct-company" name="company" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ct-industry">Industry *</label>
+                                <select id="ct-industry" name="industry" required>
+                                    <option value="">Select Industry</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="education">Education</option>
+                                    <option value="finance">Finance & Banking</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="government">Government</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ct-size">Company Size *</label>
+                                <select id="ct-size" name="companysize" required>
+                                    <option value="">Select Size</option>
+                                    <option value="1-10">1-10 employees</option>
+                                    <option value="11-50">11-50 employees</option>
+                                    <option value="51-200">51-200 employees</option>
+                                    <option value="201-500">201-500 employees</option>
+                                    <option value="500+">500+ employees</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ct-address">Company Address *</label>
+                            <textarea id="ct-address" name="address" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Contact Person Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ct-contact-name">Contact Person Name *</label>
+                                <input type="text" id="ct-contact-name" name="contactname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ct-position">Position/Title *</label>
+                                <input type="text" id="ct-position" name="position" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ct-email">Email Address *</label>
+                                <input type="email" id="ct-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ct-phone">Phone Number *</label>
+                                <input type="tel" id="ct-phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Training Requirements</h3>
+                        <div class="form-group">
+                            <label for="ct-training-type">Training Type *</label>
+                            <select id="ct-training-type" name="trainingtype" required>
+                                <option value="">Select Training Type</option>
+                                <option value="leadership">Leadership Development Programs</option>
+                                <option value="team-building">Team Building & Communication</option>
+                                <option value="technical">Technical Skills Training</option>
+                                <option value="customer-service">Customer Service Excellence</option>
+                                <option value="health-safety">Health & Safety Training</option>
+                                <option value="custom">Customized Training Solutions</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ct-participants">Number of Participants *</label>
+                                <input type="number" id="ct-participants" name="participants" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ct-duration">Preferred Duration *</label>
+                                <select id="ct-duration" name="duration" required>
+                                    <option value="">Select Duration</option>
+                                    <option value="half-day">Half Day (4 hours)</option>
+                                    <option value="full-day">Full Day (8 hours)</option>
+                                    <option value="2-days">2 Days</option>
+                                    <option value="1-week">1 Week</option>
+                                    <option value="custom">Custom Duration</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ct-location">Training Location *</label>
+                                <select id="ct-location" name="location" required>
+                                    <option value="">Select Location</option>
+                                    <option value="on-site">On-site (Your premises)</option>
+                                    <option value="lsuc-campus">LSUC Campus</option>
+                                    <option value="online">Online Training</option>
+                                    <option value="hybrid">Hybrid (Online + On-site)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ct-budget">Budget Range</label>
+                                <select id="ct-budget" name="budget">
+                                    <option value="">Select Budget Range</option>
+                                    <option value="under-5000">Under K5,000</option>
+                                    <option value="5000-15000">K5,000 - K15,000</option>
+                                    <option value="15000-30000">K15,000 - K30,000</option>
+                                    <option value="over-30000">Over K30,000</option>
+                                    <option value="discuss">To be discussed</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ct-specific-needs">Specific Training Needs/Objectives *</label>
+                            <textarea id="ct-specific-needs" name="specificneeds" rows="4" required placeholder="Please describe your specific training objectives, challenges you want to address, and desired outcomes"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ct-timeline">Preferred Timeline</label>
+                            <textarea id="ct-timeline" name="timeline" rows="2" placeholder="When would you like to conduct this training?"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Request Training Proposal</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1876,6 +2295,42 @@
 
         // Initialize animations
         animateOnScroll();
+
+        // Form submission handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle all application form submissions
+            const forms = document.querySelectorAll('.application-form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const formType = this.closest('.page-content').id;
+                    
+                    // Show loading state
+                    const submitBtn = this.querySelector('.submit-btn');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Submitting...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission (replace with actual API call)
+                    setTimeout(() => {
+                        alert('Application submitted successfully! We will contact you within 2 business days.');
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Restore button
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Optional: Redirect to home or confirmation page
+                        showPage('home');
+                    }, 2000);
+                });
+            });
+        });
 
         // Campus Carousel Functionality
         let currentSlide = 0;

@@ -60,15 +60,20 @@
         .logo {
             width: 50px;
             height: 50px;
-            background: var(--primary-orange);
+            margin-right: 15px;
             border-radius: 50%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            margin-right: 15px;
+            border: 2px solid var(--primary-orange);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .logo-text {
@@ -827,7 +832,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-section">
-                <div class="logo">LSC</div>
+                <div class="logo">
+                    <img src="./img/lsuc_logo.jpeg" alt="Lusaka South College Logo">
+                </div>
                 <div class="logo-text">
                     <h2>Lusaka South College</h2>
                     <p>Dream, Explore, Acquire</p>

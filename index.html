@@ -796,12 +796,28 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(46, 139, 87, 0.3);
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto 0;
+            display: block;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             background: var(--dark-green);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .submit-btn:disabled:hover {
+            background: #ccc;
+            transform: none;
         }
 
         .form-info {
@@ -824,6 +840,94 @@
 
         .form-info ul li {
             margin-bottom: 5px;
+        }
+        
+        /* Form validation and feedback styles */
+        .field-error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-color: #d32f2f;
+            background-color: #ffebee;
+        }
+        
+        .form-group input.success,
+        .form-group select.success,
+        .form-group textarea.success {
+            border-color: #4caf50;
+            background-color: #f1f8e9;
+        }
+        
+        .form-success,
+        .form-error {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            max-width: 90%;
+            width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .form-success,
+            .form-error {
+                max-width: 95%;
+                width: auto;
+                margin: 0 10px;
+            }
+        }
+        
+        /* Loading state for submit button */
+        .submit-btn.loading::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            margin-left: 10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Form responsive improvements */
+        @media (max-width: 768px) {
+            .application-form {
+                padding: 20px;
+                margin: 0 10px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 15px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .submit-btn {
+                padding: 18px 30px;
+                font-size: 1.2rem;
+                max-width: none;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -2306,39 +2410,365 @@
 
         // Form submission handlers
         document.addEventListener('DOMContentLoaded', function() {
+            // Add real-time validation to form fields
+            const formFields = document.querySelectorAll('.application-form input, .application-form select, .application-form textarea');
+            formFields.forEach(field => {
+                field.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                
+                field.addEventListener('input', function() {
+                    if (this.classList.contains('error')) {
+                        validateField(this);
+                    }
+                });
+            });
+            
             // Handle all application form submissions
             const forms = document.querySelectorAll('.application-form');
             forms.forEach(form => {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Get form data
+                    // Validate form before submission
+                    if (!validateForm(this)) {
+                        return;
+                    }
+                    
+                    // Get form data and determine form type
                     const formData = new FormData(this);
-                    const formType = this.closest('.page-content').id;
+                    const pageId = this.closest('.page-content').id;
+                    let formType = '';
+                    
+                    switch(pageId) {
+                        case 'undergraduate-application':
+                            formType = 'undergraduate';
+                            break;
+                        case 'short-courses-application':
+                            formType = 'short-courses';
+                            break;
+                        case 'corporate-training-application':
+                            formType = 'corporate-training';
+                            break;
+                        default:
+                            formType = 'general';
+                    }
+                    
+                    // Convert FormData to JSON object
+                    const formObject = {};
+                    formData.forEach((value, key) => {
+                        formObject[key] = value;
+                    });
+                    formObject.formType = formType;
                     
                     // Show loading state
                     const submitBtn = this.querySelector('.submit-btn');
                     const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Submitting...';
                     submitBtn.disabled = true;
+                    submitBtn.classList.add('loading');
                     
-                    // Simulate form submission (replace with actual API call)
-                    setTimeout(() => {
-                        alert('Application submitted successfully! We will contact you within 2 business days.');
+                    // Remove any previous error messages
+                    clearErrorMessages(this);
+                    
+                    // Submit form via AJAX
+                    fetch('submit_application.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formObject)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            showSuccessMessage(
+                                'Application submitted successfully!', 
+                                `Your application ID is: <strong>${data.applicationId}</strong><br><br>We will contact you within 2 business days at ${formObject.email}.`
+                            );
+                            
+                            // Reset form
+                            this.reset();
+                            clearAllFieldErrors(this);
+                            
+                            // Redirect to home after delay
+                            setTimeout(() => {
+                                showPage('home');
+                            }, 4000);
+                        } else {
+                            showErrorMessage('Submission failed: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         
-                        // Reset form
-                        this.reset();
-                        
+                        // Try fallback email simulation for testing
+                        if (error.message.includes('404') || error.message.includes('Failed to fetch')) {
+                            console.log('PHP server not available, using fallback simulation...');
+                            handleFallbackSubmission(formObject, this);
+                        } else {
+                            let errorMessage = 'Network error. Please check your connection and try again.';
+                            
+                            if (error.message.includes('500')) {
+                                errorMessage = 'Server error. Please try again in a few moments or contact admissions@lsuczm.com';
+                            }
+                            
+                            showErrorMessage(errorMessage);
+                        }
+                    })
+                    .finally(() => {
                         // Restore button
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
-                        
-                        // Optional: Redirect to home or confirmation page
-                        showPage('home');
-                    }, 2000);
+                        submitBtn.classList.remove('loading');
+                    });
                 });
             });
         });
+        
+        // Individual field validation
+        function validateField(field) {
+            const value = field.value.trim();
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Check if required field is empty
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+                errorMessage = 'This field is required';
+            } else if (value) {
+                // Additional specific validations for non-empty fields
+                if (field.type === 'email' && !isValidEmail(value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address';
+                } else if (field.type === 'tel' && !isValidPhone(value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid phone number (e.g., +260-xxx-xxx-xxx)';
+                } else if (field.type === 'number' && (isNaN(value) || parseInt(value) < 1)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid positive number';
+                }
+            }
+            
+            if (isValid) {
+                clearFieldError(field);
+                field.classList.remove('error');
+                field.classList.add('success');
+            } else {
+                showFieldError(field, errorMessage);
+                field.classList.remove('success');
+                field.classList.add('error');
+            }
+            
+            return isValid;
+        }
+        
+        // Form validation function
+        function validateForm(form) {
+            const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            // Scroll to first error if validation fails
+            if (!isValid) {
+                const firstError = form.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstError.focus();
+                }
+            }
+            
+            return isValid;
+        }
+        
+        // Helper functions for validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function isValidPhone(phone) {
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // Error and success message functions
+        function showFieldError(field, message) {
+            clearFieldError(field);
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'field-error';
+            errorDiv.textContent = message;
+            
+            field.parentNode.appendChild(errorDiv);
+        }
+        
+        function clearFieldError(field) {
+            const existingError = field.parentNode.querySelector('.field-error');
+            if (existingError) {
+                existingError.remove();
+            }
+        }
+        
+        function clearAllFieldErrors(form) {
+            const errors = form.querySelectorAll('.field-error');
+            errors.forEach(error => error.remove());
+            
+            const fields = form.querySelectorAll('.error, .success');
+            fields.forEach(field => {
+                field.classList.remove('error', 'success');
+            });
+        }
+        
+        function clearErrorMessages(form) {
+            const errors = document.querySelectorAll('.form-error, .form-success');
+            errors.forEach(error => error.remove());
+        }
+        
+        function showErrorMessage(message) {
+            // Remove any existing messages first
+            clearErrorMessages();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error';
+            errorDiv.innerHTML = `
+                <div style="background: #ffebee; border: 1px solid #f44336; color: #c62828; padding: 20px; border-radius: 8px; margin: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <span style="font-size: 24px; margin-right: 10px;">⚠️</span>
+                        <strong style="font-size: 1.1rem;">Submission Error</strong>
+                    </div>
+                    <p style="margin: 0; line-height: 1.5;">${message}</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: transparent; border: none; color: #c62828; float: right; font-size: 20px; cursor: pointer; margin-top: 10px;">×</button>
+                </div>
+            `;
+            
+            document.body.appendChild(errorDiv);
+            
+            // Remove after 10 seconds
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.remove();
+                }
+            }, 10000);
+        }
+        
+        function showSuccessMessage(title, message) {
+            // Remove any existing messages first
+            clearErrorMessages();
+            
+            const successDiv = document.createElement('div');
+            successDiv.className = 'form-success';
+            successDiv.innerHTML = `
+                <div style="background: #e8f5e8; border: 1px solid #4caf50; color: #2e7d32; padding: 25px; border-radius: 8px; margin: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">✅</div>
+                    <h3 style="margin: 0 0 15px 0; color: #2e7d32; font-size: 1.3rem;">${title}</h3>
+                    <p style="margin: 0; line-height: 1.6;">${message}</p>
+                    <p style="margin: 15px 0 0 0; font-size: 0.9rem; opacity: 0.8;">Redirecting to home page...</p>
+                </div>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            // Remove after 8 seconds
+            setTimeout(() => {
+                if (successDiv.parentNode) {
+                    successDiv.remove();
+                }
+            }, 8000);
+        }
+        
+        // Fallback submission for testing when PHP server is not available
+        function handleFallbackSubmission(formObject, form) {
+            // Simulate email submission for testing purposes
+            const applicationId = 'LSUC-' + formObject.formType.toUpperCase().replace('-', '') + '-2025-' + 
+                                  Math.random().toString().substr(2, 6);
+            
+            // Generate email content preview
+            const emailContent = generateEmailPreview(formObject, applicationId);
+            
+            // Log for testing
+            console.log('=== SIMULATED EMAIL TO admissions@lsuczm.com ===');
+            console.log('Subject:', emailContent.subject);
+            console.log('Content:', emailContent.body);
+            console.log('=== END SIMULATION ===');
+            
+            // Show success message with simulation note
+            showSuccessMessage(
+                'Application Simulated Successfully! 📝', 
+                `<strong>Testing Mode:</strong> Your application would be sent to admissions@lsuczm.com<br><br>
+                Application ID: <strong>${applicationId}</strong><br><br>
+                Email Subject: "${emailContent.subject}"<br><br>
+                Check the browser console for the full email content that would be sent.<br><br>
+                <em>Note: To enable real email sending, ensure XAMPP/PHP server is running.</em>`
+            );
+            
+            // Reset form
+            form.reset();
+            clearAllFieldErrors(form);
+            
+            // Redirect to home after delay
+            setTimeout(() => {
+                showPage('home');
+            }, 6000);
+        }
+        
+        // Generate email preview for testing
+        function generateEmailPreview(data, applicationId) {
+            let subject, body;
+            
+            switch (data.formType) {
+                case 'undergraduate':
+                    subject = `New Undergraduate Application - ${data.firstname} ${data.lastname}`;
+                    body = `Application ID: ${applicationId}
+
+Personal Info:
+Name: ${data.firstname} ${data.lastname}
+Email: ${data.email}
+Phone: ${data.phone}
+
+Program: ${data.program}
+Intake: ${data.intake}`;
+                    break;
+                case 'short-courses':
+                    subject = `New Short Course Application - ${data.firstname} ${data.lastname}`;
+                    body = `Application ID: ${applicationId}
+
+Applicant: ${data.firstname} ${data.lastname}
+Email: ${data.email}
+Phone: ${data.phone}
+
+Course: ${data.course}
+Start Date: ${data.startdate}`;
+                    break;
+                case 'corporate-training':
+                    subject = `New Corporate Training Request - ${data.company}`;
+                    body = `Request ID: ${applicationId}
+
+Company: ${data.company}
+Contact: ${data.contactname}
+Email: ${data.email}
+Phone: ${data.phone}
+
+Training: ${data.trainingtype}
+Participants: ${data.participants}`;
+                    break;
+                default:
+                    subject = `New Application - ${data.firstname} ${data.lastname}`;
+                    body = `Application ID: ${applicationId}\n\nForm Data: ${JSON.stringify(data, null, 2)}`;
+            }
+            
+            return { subject, body };
+        }
 
         // Campus Carousel Functionality
         let currentSlide = 0;

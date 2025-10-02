@@ -399,22 +399,138 @@
 
         .gallery-item {
             height: 200px;
-            background: linear-gradient(135deg, var(--light-green), var(--primary-orange));
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-overlay h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Image Preview Modal */
+        .image-preview-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .image-preview-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .image-preview-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-preview-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .image-preview-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .close-preview {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-preview:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         /* Campus Carousel */
@@ -659,7 +775,19 @@
 
             .gallery-item {
                 height: 120px;
-                font-size: 14px;
+            }
+            
+            .gallery-overlay h4 {
+                font-size: 0.9rem;
+            }
+            
+            .image-preview-content {
+                max-width: 95%;
+                max-height: 85%;
+            }
+            
+            .image-preview-title {
+                font-size: 1.2rem;
             }
         }
 
@@ -1106,14 +1234,54 @@
                 </div>
                 
                 <div class="gallery-grid">
-                    <div class="gallery-item">🏛️<br>Main Building</div>
-                    <div class="gallery-item">🔬<br>Science Labs</div>
-                    <div class="gallery-item">💻<br>Computer Labs</div>
-                    <div class="gallery-item">📚<br>Library</div>
-                    <div class="gallery-item">🏃‍♂️<br>Sports Complex</div>
-                    <div class="gallery-item">🍽️<br>Cafeteria</div>
-                    <div class="gallery-item">🎭<br>Auditorium</div>
-                    <div class="gallery-item">🌳<br>Campus Grounds</div>
+                    <div class="gallery-item" data-image="img/school2.jpeg" onclick="openImagePreview(this)">
+                        <img src="img/school2.jpeg" alt="Main Building">
+                        <div class="gallery-overlay">
+                            <h4>🏛️ Main Building</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/scienc_lab.jpg" onclick="openImagePreview(this)">
+                        <img src="img/scienc_lab.jpg" alt="Science Labs">
+                        <div class="gallery-overlay">
+                            <h4>🔬 Science Labs</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/computer_lab.jpg" onclick="openImagePreview(this)">
+                        <img src="img/computer_lab.jpg" alt="Computer Labs">
+                        <div class="gallery-overlay">
+                            <h4>💻 Computer Labs</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/library.jpg" onclick="openImagePreview(this)">
+                        <img src="img/library.jpg" alt="Library">
+                        <div class="gallery-overlay">
+                            <h4>📚 Library</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/sports_complex.jpg" onclick="openImagePreview(this)">
+                        <img src="img/sports_complex.jpg" alt="Sports Complex">
+                        <div class="gallery-overlay">
+                            <h4>🏃‍♂️ Sports Complex</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/cafteria.jpg" onclick="openImagePreview(this)">
+                        <img src="img/cafteria.jpg" alt="Cafeteria">
+                        <div class="gallery-overlay">
+                            <h4>🍽️ Cafeteria</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/auditorium.jpg" onclick="openImagePreview(this)">
+                        <img src="img/auditorium.jpg" alt="Auditorium">
+                        <div class="gallery-overlay">
+                            <h4>🎭 Auditorium</h4>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-image="img/campus_grounds.jpg" onclick="openImagePreview(this)">
+                        <img src="img/campus_grounds.jpg" alt="Campus Grounds">
+                        <div class="gallery-overlay">
+                            <h4>🌳 Campus Grounds</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2259,6 +2427,17 @@
         </div>
     </footer>
 
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" class="image-preview-modal" onclick="closeImagePreview(event)">
+        <div class="image-preview-content">
+            <div class="image-preview-header">
+                <div class="image-preview-title" id="previewTitle">Campus Facility</div>
+                <button class="close-preview" onclick="closeImagePreview()">&times;</button>
+            </div>
+            <img id="previewImage" src="" alt="Campus Preview">
+        </div>
+    </div>
+
     <script>
         function showPage(pageId) {
             // Hide all pages
@@ -2355,6 +2534,42 @@
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 closeMobileMenu();
+            }
+        });
+
+        // Gallery item click handler for image preview
+        function openImagePreview(element) {
+            const imageSrc = element.getAttribute('data-image');
+            const titleElement = element.querySelector('.gallery-overlay h4');
+            const title = titleElement ? titleElement.textContent : 'Campus Facility';
+            
+            // Set modal content
+            document.getElementById('previewImage').src = imageSrc;
+            document.getElementById('previewTitle').textContent = title;
+            
+            // Show modal
+            const modal = document.getElementById('imagePreviewModal');
+            modal.style.display = 'flex';
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImagePreview(event) {
+            // Close only if clicking outside the image or on close button
+            if (!event || event.target.id === 'imagePreviewModal' || event.target.classList.contains('close-preview')) {
+                const modal = document.getElementById('imagePreviewModal');
+                modal.style.display = 'none';
+                
+                // Restore body scroll
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImagePreview();
             }
         });
 

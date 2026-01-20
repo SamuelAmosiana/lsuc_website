@@ -268,3 +268,98 @@ Email Body:
     
     
 ================================================================================
+
+============================================================
+FAILED EMAIL - 2025-12-26 04:46:55
+To: admissions@lsuczm.com
+From: katlosehularo676@gmail.com
+Subject: New Undergraduate Application - Katlo Sehularo
+Error: SMTP credentials not configured
+Body:
+You have received a new application:
+
+Name: Katlo Sehularo
+Email: katlosehularo676@gmail.com
+Application Type: Undergraduate Application
+
+Message:
+Application Type: Undergraduate Application
+
+Firstname: Katlo
+Lastname: Sehularo
+Phone: +2671587357
+Nrc: 069013114
+Dateofbirth: 2004-01-25
+Address: P O Box 2209 Serowe, Botswana
+Program: health-sciences
+Intake: january-2026
+Grade12results: [object File]
+Previousschool: [object File]
+Guardianname: Reginah Sehularo 
+Guardianphone: +26778626365
+Relationship: parent
+
+
+============================================================
+
+============================================================
+FAILED EMAIL - 2026-01-06 09:28:19
+To: admissions@lsuczm.com
+From: juniorenerst01@gmail.com
+Subject: New Undergraduate Application - ENERST BANDA
+Error: SMTP credentials not configured
+Body:
+You have received a new application:
+
+Name: ENERST BANDA
+Email: juniorenerst01@gmail.com
+Application Type: Undergraduate Application
+
+Message:
+Application Type: Undergraduate Application
+
+Firstname: ENERST
+Lastname: BANDA
+Phone: 0970397477
+Nrc: 82895410/1
+Dateofbirth: 2004-11-20
+Address: Kabanana Site And Service
+Program: engineering
+Intake: may-2026
+Grade12results: [object File]
+Previousschool: [object File]
+Guardianname: Enest Banda 
+Guardianphone: 0977472169
+Relationship: parent
+
+
+============================================================
+
+============================================================
+FAILED EMAIL - 2026-01-06 19:25:43
+To: admissions@lsuczm.com
+From: eliasmtonga56@gmail.com
+Subject: New Short Course Application - Elias  Mtonga 
+Error: SMTP credentials not configured
+Body:
+You have received a new application:
+
+Name: Elias  Mtonga 
+Email: eliasmtonga56@gmail.com
+Application Type: Short Course Application
+
+Message:
+Application Type: Short Course Application
+
+Firstname: Elias 
+Lastname: Mtonga 
+Phone: 0978711682
+Occupation: 
+Course: project-management
+Startdate: november-2025
+Schedule: online
+Experience: 
+Goals: 
+
+
+============================================================

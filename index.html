@@ -336,6 +336,29 @@
             line-height: 1.8;
         }
 
+        /* Staff Images */
+        .staff-image-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-orange);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .staff-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .staff-image {
+            transform: scale(1.05);
+        }
+
         /* Latest Updates */
         .updates-grid {
             display: grid;
@@ -1523,35 +1546,47 @@
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">👨‍💼</div>
+                        <div class="staff-image-container">
+                            <img src="./img/staff/Principal.jpg" alt="Dr. Zimba F, Principal" class="staff-image">
+                        </div>
                         <h3>Dr. Zimba F, Principal</h3>
                         <p>Leading the college with over 20 years of experience in educational administration and a commitment to student success and institutional growth.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👩‍🏫</div>
+                        <div class="staff-image-container">
+                            <img src="./img/staff/Academic-Dean.jpg" alt="Ms Muleya C, Academic Dean" class="staff-image">
+                        </div>
                         <h3>Ms Muleya C, Academic Dean</h3>
                         <p>Overseeing academic programs and ensuring the highest standards of teaching and learning across all schools and departments.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👨‍💰</div>
+                        <div class="staff-image-container">
+                            <img src="./img/staff/Finance-Director.jpg" alt="Ms Kababa J, Finance Director" class="staff-image">
+                        </div>
                         <h3>Ms Kababa J, Finance Director</h3>
                         <p>Managing the college's financial resources and ensuring sustainable operations while maintaining affordability for students.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👩‍💻</div>
-                        <h3>Ms, Musonda L, Registrar</h3>
+                        <div class="staff-image-container">
+                            <img src="./img/staff/Registrar.jpg" alt="Ms Musonda L, Registrar" class="staff-image">
+                        </div>
+                        <h3>Ms Musonda L, Registrar</h3>
                         <p>Handling student records, enrollment, and graduation processes with attention to detail and student service excellence.</p>
                     </div>
                     <!-- Systems Administrator -->
                    <div class="card">
-                         <div class="card-icon">💻</div>
+                         <div class="staff-image-container">
+                             <img src="./img/staff/Systems-Administrator.jpg" alt="Mr. Sianamate S, Systems Administrator" class="staff-image">
+                         </div>
                          <h3>Mr. Sianamate S – Systems Administrator</h3>
                          <p>Responsible for managing institutional systems, maintaining website operations, and ensuring smooth ICT functionality across departments.</p>
                   </div>
 
                 <!-- Enrollments Officer -->
                     <div class="card">
-                        <div class="card-icon">🧾</div>
+                        <div class="staff-image-container">
+                            <img src="./img/staff/Enrollments-Officer.jpg" alt="Mr. Banda N, Enrollments Officer" class="staff-image">
+                        </div>
                         <h3>Mr. Banda N – Enrollments Officer</h3>
                         <p>Facilitates student admissions, assists with application processes, and supports outreach initiatives to enhance enrollment growth.</p>
                     </div>

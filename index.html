@@ -1300,6 +1300,7 @@
                         <a href="https://lsuclms.com/applications/undergraduate_application" class="dropdown-link" onclick="showPage('undergraduate-application'); closeMobileMenu()">Diploma & Certificate</a>
                         <a href="https://lsuclms.com/applications/short_courses_application" class="dropdown-link" onclick="showPage('short-courses-application'); closeMobileMenu()">Short Courses</a>
                         <a href="extra-curricular.html" class="dropdown-link" target="_blank">Extra Curricular Registration</a>
+                        <a href="#payment-instructions" class="dropdown-link" onclick="showPage('payment-instructions'); closeMobileMenu()">Payment Instructions</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -1485,6 +1486,55 @@
         </section>
     </div>
 
+    <!-- Payment Instructions Page -->
+    <div id="payment-instructions" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>Payment Instructions</h1>
+                <p>Secure and convenient ways to pay your fees at Lusaka South College</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Payment Instructions
+            </div>
+        </div>
+        <section class="content-section" style="background: var(--gray-100);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>How to Make Payments</h2>
+                    <p>Please use the official bank and mobile money details below. Keep your proof of payment safe.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">🏦</div>
+                        <h3>Bank Transfer</h3>
+                        <p><strong>Account Name:</strong> Lusaka South College<br>
+                        <strong>Account No:</strong> 5947236500193<br>
+                        <strong>Bank:</strong> ZANACO<br>
+                        <strong>Branch Code:</strong> 086<br>
+                        <strong>Sort Code:</strong> 010086<br>
+                        <strong>Swift Code:</strong> ZNCOZMLU</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h3>Mobile Money</h3>
+                        <p><strong>USSD:</strong><br>
+                        Dial <strong>*767*1*11001301*Amount#</strong><br><br>
+                        <strong>Alternative:</strong><br>
+                        You may also send your phone number with your full names and the amount paid to the admissions office for confirmation.</p>
+                    </div>
+                    <div class="card" style="border-left: 4px solid var(--primary-orange);">
+                        <div class="card-icon">⚠️</div>
+                        <h3>Important Notice</h3>
+                        <p><strong>Note:</strong> We do <strong>not</strong> accept cash payments at campus.<br>
+                        Always pay using the official details above and keep your proof of payment for verification.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- About Pages -->
     <div id="lsuc-overview" class="page-content">
         <div class="page-header">
@@ -1614,28 +1664,28 @@
                 <div class="cards-grid">
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/Mr. Bwalya-Engineering_Faculty.jpg" alt="Mr. Bwalya, Engineering Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_bwalya_engineering.jpg" alt="Mr. Bwalya, Engineering Faculty HOD" class="staff-image">
                         </div>
                         <h3><center>Mr. Bwalya.<br>Head of Engineering Faculty</center></h3>
                         <p>Expert engineer and technician with industry experience providing practical, hands-on education in various engineering disciplines.</p>
                     </div>
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/Mr. Machila-Business_Faculty - Copy.jpg" alt="Mr. Machila, Business Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_machila_business.jpg" alt="Mr. Machila, Business Faculty HOD" class="staff-image">
                         </div>
                         <h3><center>Mr. Machila<br>Head of Business Faculty</center></h3>
                         <p>Business professional and academic with real-world experience in management, finance, marketing, and entrepreneurship.</p>
                     </div>
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/Mr. Sianamate S-IT Faculty.jpg" alt="Mr. Sianamate S, IT Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_sianamate_it.jpg" alt="Mr. Sianamate S, IT Faculty HOD" class="staff-image">
                         </div>
                         <h3><center>Mr. Sianamate S.<br>Head of IT Faculty</center></h3>
                         <p>Technology expert keeping pace with rapid digital transformation, teaching cutting-edge skills in programming, networking, and cybersecurity.</p>
                     </div>
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/Mr. Chido C-Health Sciences Faculty.jpg" alt="Mr. Chido C, Health Sciences Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_chido_health_sciences.jpg" alt="Mr. Chido C, Health Sciences Faculty HOD" class="staff-image">
                         </div>
                         <h3><center>Mrs. Chirwa C.<br>Head of Health Sciences Faculty</center></h3>
                         <p>Healthcare professional providing comprehensive training in medical technology, nursing, and allied health programs.</p>
@@ -2240,9 +2290,9 @@
                     
                     <div class="card">
                         <div class="card-icon">📚</div>
-                        <h3>Student Handbook</h3>
-                        <p>Guidelines and regulations for students</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/student-handbook.pdf', 'Student Handbook')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <h3>Time Table</h3>
+                        <p>A planning tool that shows the scheduled times of lectures, tutorials, and other classes</p>
+                        <button class="cta-button" onclick="openPDFViewer('docs/time-table.pdf', 'Student Class Time Table')" style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
                 </div>
             </div>

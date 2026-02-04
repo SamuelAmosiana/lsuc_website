@@ -9,7 +9,7 @@ The payment system integrates with Zambian mobile money providers (MTN Mobile Mo
 ## Components
 
 ### Frontend
-- **HTML Button**: Added to the Mobile Money section under #payment-instructions
+- **HTML Button**: Added inside the Mobile Money card under #payment-instructions, labeled "Make Payment"
 - **JavaScript Handler**: Located at `js/payment-handler.js`
   - Modal interface for collecting payment details
   - Real-time feedback to users

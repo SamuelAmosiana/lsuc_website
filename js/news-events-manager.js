@@ -181,7 +181,7 @@ function getUpcomingEvents(limit = 6) {
     const today = new Date().toISOString().split('T')[0];
     
     return events.filter(event => 
-        (event.category === 'Upcoming Event' || event.category === 'Latest News') && 
+        event.category === 'Upcoming Event' && 
         event.date >= today
     )
     .sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -194,8 +194,7 @@ function getPastEvents(page = 1, limit = 12) {
     const today = new Date().toISOString().split('T')[0];
     
     const pastEvents = events.filter(event => 
-        (event.category === 'Past Event' || event.date < today) && 
-        event.category !== 'Job Vacancy'
+        event.category === 'Past Event'
     ).sort((a, b) => new Date(b.date) - new Date(a.date));
     
     const startIndex = (page - 1) * limit;

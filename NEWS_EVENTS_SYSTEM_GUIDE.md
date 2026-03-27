@@ -1,8 +1,9 @@
+
 # LSUC News & Events Management System - Implementation Guide
 
 ## ✅ IMPLEMENTATION COMPLETE
 
-The dynamic news/events management system has been successfully implemented for the Lusaka South College website. All features requested have been integrated seamlessly with your existing website structure.
+The dynamic news/events management system has been successfully implemented for the Lusaka South University College website. All features requested have been integrated seamlessly with your existing website structure.
 
 ---
 

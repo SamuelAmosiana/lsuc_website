@@ -1,6 +1,6 @@
 # LSUC Payment System API
 
-This directory contains the backend implementation for the mobile money payment system integrated into the Lusaka South College website.
+This directory contains the backend implementation for the mobile money payment system integrated into the Lusaka South University College website.
 
 ## Files
 

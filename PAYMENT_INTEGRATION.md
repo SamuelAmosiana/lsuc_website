@@ -1,6 +1,6 @@
 # LSUC Website Payment Integration
 
-This document provides a comprehensive overview of the mobile money payment system integrated into the Lusaka South College website.
+This document provides a comprehensive overview of the mobile money payment system integrated into the Lusaka South University College website.
 
 ## Overview
 

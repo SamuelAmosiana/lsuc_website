@@ -310,7 +310,7 @@ function generateCorporateTrainingEmail($data, $applicationId) {
 
 function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
     try {
-        $subject = "Application Confirmation - Lusaka South College";
+        $subject = "Application Confirmation - Lusaka South University College";
         
         $body = "
         <html>
@@ -325,12 +325,12 @@ function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
         <body>
             <div class='header'>
                 <h2>Application Received</h2>
-                <p>Lusaka South College</p>
+                <p>Lusaka South University College</p>
             </div>
             <div class='content'>
                 <p>Dear " . htmlspecialchars($firstname) . ",</p>
                 
-                <p>Thank you for your application to Lusaka South College. We have successfully received your " . 
+                <p>Thank you for your application to Lusaka South University College. We have successfully received your " .
                 str_replace('-', ' ', $formType) . " application.</p>
                 
                 <p><strong>Application ID:</strong> $applicationId</p>
@@ -344,14 +344,14 @@ function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
                     <li>Phone: +260-211-292-299</li>
                 </ul>
                 
-                <p>We appreciate your interest in Lusaka South College.</p>
+                <p>We appreciate your interest in Lusaka South University College.</p>
                 
                 <p>Best regards,<br>
                 Admissions Office<br>
-                Lusaka South College</p>
+                Lusaka South University College</p>
             </div>
             <div class='footer'>
-                <p>&copy; 2025 Lusaka South College. All rights reserved.</p>
+                <p>&copy; 2025 Lusaka South University College. All rights reserved.</p>
                 <p>Dream, Explore, Acquire</p>
             </div>
         </body>

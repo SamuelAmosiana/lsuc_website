@@ -34,7 +34,7 @@ function simulateEmailSubmission(formData, formType) {
             
             // Log the email content for verification
             console.log('=== SIMULATED EMAIL CONTENT ===');
-            console.log('To: admissions@lsuczm.com');
+            console.log('To: admissions@lsc.edu.zm');
             console.log('Subject:', emailContent.subject);
             console.log('Body:', emailContent.body);
             console.log('=== END EMAIL CONTENT ===');

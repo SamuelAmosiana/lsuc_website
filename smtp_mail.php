@@ -1,6 +1,6 @@
 <?php
 // SMTP Email sender using simple PHP mail with proper headers
-function sendSMTPEmail($to, $subject, $body, $from = 'admissions@lsuczm.com', $fromName = 'LSUC Admissions') {
+function sendSMTPEmail($to, $subject, $body, $from = 'admissions@lsc.edu.zm', $fromName = 'LSUC Admissions') {
     // Set proper headers for email
     $headers = array();
     $headers[] = "MIME-Version: 1.0";
@@ -26,7 +26,7 @@ function sendSMTPEmail($to, $subject, $body, $from = 'admissions@lsuczm.com', $f
 }
 
 // Alternative SMTP function using sockets (for when mail() doesn't work)
-function sendSocketEmail($to, $subject, $body, $from = 'admissions@lsuczm.com') {
+function sendSocketEmail($to, $subject, $body, $from = 'admissions@lsc.edu.zm') {
     // This is a basic SMTP implementation
     // For production use, consider using PHPMailer or SwiftMailer
     
@@ -104,7 +104,7 @@ function sendGmailSMTP($to, $subject, $body, $gmail_user, $gmail_pass, $from_nam
         // Recipients
         $mail->setFrom($gmail_user, $from_name);
         $mail->addAddress($to);
-        $mail->addReplyTo('admissions@lsuczm.com', 'LSUC Admissions');
+        $mail->addReplyTo('admissions@lsc.edu.zm', 'LSUC Admissions');
         
         // Content
         $mail->isHTML(true);

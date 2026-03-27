@@ -43,7 +43,7 @@ try {
     }
     
     // Your actual email address
-    $admissionsEmail = 'admissions@lsuczm.com';
+    $admissionsEmail = 'admissions@lsc.edu.zm';
     
     // Generate application ID
     $applicationId = 'LSUC-' . strtoupper($formType) . '-' . date('Y') . '-' . sprintf('%06d', rand(1, 999999));
@@ -169,7 +169,7 @@ try {
         
         echo json_encode([
             'success' => true,
-            'message' => 'Email sent successfully to admissions@lsuczm.com!',
+            'message' => 'Email sent successfully to admissions@lsc.edu.zm!',
             'applicationId' => $applicationId,
             'method' => $method,
             'timestamp' => date('Y-m-d H:i:s'),

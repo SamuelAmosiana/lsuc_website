@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars($_POST['message']);
     $application_type = isset($_POST['application_type']) ? htmlspecialchars($_POST['application_type']) : 'General Application';
 
-    $to      = "admissions@lsuczm.com"; // ✅ Your target email
+    $to      = "admissions@lsc.edu.zm"; // ✅ Your target email
     $subject = "New $application_type - $name";
     $body    = "You have received a new application:\n\n".
                "Name: $name\n".
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                "Message:\n$message\n";
 
     // 📝 STEP 1: Try basic PHP mail() first
-    $headers = "From: no-reply@lsuczm.com\r\n"; 
+    $headers = "From: no-reply@lsc.edu.zm\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
@@ -51,9 +51,9 @@ function sendWithSMTP($to, $subject, $body, $reply_to, $from_name) {
     // cPanel/WHM: mail.yourdomain.com, port 587, TLS
     
     $smtp_config = [
-        'host' => 'mail.lsuczm.com',           // ❗ CHANGE THIS to your mail server
+        'host' => 'mail.lsc.edu.zm',           // ❗ CHANGE THIS to your mail server
         'port' => 587,                         // Common: 587 (TLS), 465 (SSL), 25 (unsecured)
-        'username' => 'admissions@lsuczm.com', // ❗ CHANGE THIS to your email
+        'username' => 'admissions@lsc.edu.zm', // ❗ CHANGE THIS to your email
         'password' => 'YOUR_EMAIL_PASSWORD',   // ❗ CHANGE THIS to your email password
         'encryption' => 'tls',                 // 'tls', 'ssl', or '' for none
         'timeout' => 30
@@ -216,18 +216,18 @@ function logFailedEmail($to, $subject, $body, $from_email, $error) {
      Host: smtpout.secureserver.net (or mail.yourdomain.com)
      Port: 587
      Encryption: TLS
-     Username: admissions@lsuczm.com
+     Username: admissions@lsc.edu.zm
      Password: Your email password
    
    • cPanel/WHM Hosting:
      Host: mail.yourdomain.com
      Port: 587
      Encryption: TLS
-     Username: admissions@lsuczm.com
+     Username: admissions@lsc.edu.zm
      Password: Your email password
 
 2. 🔄 Update the $smtp_config array above (around line 47-54):
-   - Replace 'mail.lsuczm.com' with your SMTP host
+   - Replace 'mail.lsc.edu.zm' with your SMTP host
    - Replace 'YOUR_EMAIL_PASSWORD' with your actual password
    - Adjust port and encryption if needed
 

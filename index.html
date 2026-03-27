@@ -2070,8 +2070,8 @@
                 <li class="nav-item">
                     <a href="#apply-now" class="nav-link" onclick="toggleDropdown(this)">Apply Now</a>
                     <div class="dropdown">
-                        <a href="https://lsc.edu.zm/applications/undergraduate_application" class="dropdown-link" onclick="showPage('undergraduate-application'); closeMobileMenu()">Degree, Diploma & Certificate</a>
-                        <a href="https://lsc.edu.zm/applications/short_courses_application" class="dropdown-link" onclick="showPage('short-courses-application'); closeMobileMenu()">Short Courses</a>
+                        <a href="https://srms.lsc.edu.zm/applications/undergraduate_application" class="dropdown-link" onclick="showPage('undergraduate-application'); closeMobileMenu()">Degree, Diploma & Certificate</a>
+                        <a href="https://srms.lsc.edu.zm/applications/short_courses_application" class="dropdown-link" onclick="showPage('short-courses-application'); closeMobileMenu()">Short Courses</a>
                         <a href="extra-curricular.html" class="dropdown-link" target="_blank">Extra Curricular Registration</a>
                         <a href="#payment-instructions" class="dropdown-link" onclick="showPage('payment-instructions'); closeMobileMenu()">Payment Instructions</a>
                     </div>
@@ -2795,7 +2795,7 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="https://moodle.lsuclms.com/login/index.php" class="cta-button" style="font-size: 1.2rem; padding: 20px 50px;">Access eLearning Platform</a>
+                    <a href="https://elearning.lsc.edu.zm/login/index.php" class="cta-button" style="font-size: 1.2rem; padding: 20px 50px;">Access eLearning Platform</a>
                 </div>
             </div>
         </section>
@@ -2976,7 +2976,7 @@
                         <div class="card-icon">🎓</div>
                         <h3>Admissions Office</h3>
                         <p><strong>Phone:</strong> +260-211-123457<br>
-                        <strong>Email:</strong> admissions@lsuczm.com</p>
+                        <strong>Email:</strong> admissions@lsc.edu.zm</p>
                         <p><strong>Office Hours:</strong><br>
                         Monday - Friday: 8:00 AM - 5:00 PM<br>
                         Saturday: 8:00 AM - 1:00 PM</p>
@@ -2985,7 +2985,7 @@
                         <div class="card-icon">💰</div>
                         <h3>Finance Department</h3>
                         <p><strong>Phone:</strong> +260-211-173-458<br>
-                        <strong>Email:</strong> finance@lsuczm.com</p>
+                        <strong>Email:</strong> finance@lsc.edu.zm</p>
                         <p><strong>For:</strong> Fee payments, financial aid, scholarships, payment plans</p>
                     </div>
                     <div class="card">
@@ -2999,7 +2999,7 @@
                         <div class="card-icon">💼</div>
                         <h3>Career Services</h3>
                         <p><strong>Phone:</strong> +260-211-123460<br>
-                        <strong>Email:</strong> registrer@lsuczm.com</p>
+                        <strong>Email:</strong> registrer@lsc.edu.zm</p>
                         <p><strong>For:</strong> Job placement, internships, career guidance</p>
                     </div>
                     <div class="card">
@@ -3765,7 +3765,7 @@
                     <p>📞 +260-211-292-299</p>
                     <p>📞 +260 770359518</p>
 
-                    <p>✉️ admissions@lsuczm.com</p>
+                    <p>✉️ admissions@lsc.edu.zm</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -4153,14 +4153,14 @@
                         if (error.message.includes('400')) {
                             errorMessage = 'Please check all required fields and try again.';
                         } else if (error.message.includes('403')) {
-                            errorMessage = 'Form submission blocked. Please contact us directly at admissions@lsuczm.com';
+                            errorMessage = 'Form submission blocked. Please contact us directly at admissions@lsc.edu.zm';
                         } else if (error.message.includes('429')) {
                             errorMessage = 'Too many submissions. Please wait a moment and try again.';
                         } else if (error.message.includes('Failed to fetch')) {
                             errorMessage = 'Network connection issue. Please check your internet and try again.';
                         }
                         
-                        showErrorMessage(errorMessage + '<br><br>Alternative: Email us directly at <strong>admissions@lsuczm.com</strong>');
+                        showErrorMessage(errorMessage + '<br><br>Alternative: Email us directly at <strong>admissions@lsc.edu.zm</strong>');
                     })
                     .finally(() => {
                         // Restore button
@@ -4378,7 +4378,7 @@
             const emailContent = generateEmailPreview(formObject, applicationId);
             
             // Log for testing
-            console.log('=== SIMULATED EMAIL TO admissions@lsuczm.com ===');
+            console.log('=== SIMULATED EMAIL TO admissions@lsc.edu.zm ===');
             console.log('Subject:', emailContent.subject);
             console.log('Content:', emailContent.body);
             console.log('=== END SIMULATION ===');
@@ -4386,7 +4386,7 @@
             // Show success message with simulation note
             showSuccessMessage(
                 'Application Simulated Successfully! 📝', 
-                `<strong>Testing Mode:</strong> Your application would be sent to admissions@lsuczm.com<br><br>
+                `<strong>Testing Mode:</strong> Your application would be sent to admissions@lsc.edu.zm<br><br>
                 Application ID: <strong>${applicationId}</strong><br><br>
                 Email Subject: "${emailContent.subject}"<br><br>
                 Check the browser console for the full email content that would be sent.<br><br>

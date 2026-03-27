@@ -49,7 +49,7 @@ try {
     }
     
     // Institution email
-    $admissionsEmail = 'admissions@lsuczm.com';
+    $admissionsEmail = 'admissions@lsc.edu.zm';
     
     // Generate application ID
     $applicationId = 'LSUC-' . strtoupper($formType) . '-' . date('Y') . '-' . sprintf('%06d', rand(1, 999999));
@@ -340,7 +340,7 @@ function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
                 
                 <p>If you have any questions, please don't hesitate to contact us:</p>
                 <ul>
-                    <li>Email: admissions@lsuczm.com</li>
+                    <li>Email: admissions@lsc.edu.zm</li>
                     <li>Phone: +260-211-292-299</li>
                 </ul>
                 
@@ -358,8 +358,8 @@ function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
         </html>";
         
         $headers = [
-            'From: admissions@lsuczm.com',
-            'Reply-To: admissions@lsuczm.com',
+            'From: admissions@lsc.edu.zm',
+            'Reply-To: admissions@lsc.edu.zm',
             'X-Mailer: PHP/' . phpversion(),
             'MIME-Version: 1.0',
             'Content-Type: text/html; charset=UTF-8'

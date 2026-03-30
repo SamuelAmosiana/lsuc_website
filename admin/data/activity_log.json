@@ -5,5 +5,28 @@
         "action": "Login successful",
         "status": "success",
         "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-03-30 10:58:30",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-03-30 10:59:48",
+        "username": "admin",
+        "action": "Added new FAQ",
+        "details": "FAQ ID: faq_1774861188_7b037e4d",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-03-30 11:14:19",
+        "username": "admin",
+        "action": "Updated FAQ",
+        "details": "FAQ ID: faq_1774861188_7b037e4d",
+        "status": "success",
+        "ip_address": "::1"
     }
 ]

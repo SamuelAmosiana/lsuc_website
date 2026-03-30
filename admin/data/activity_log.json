@@ -28,5 +28,12 @@
         "details": "FAQ ID: faq_1774861188_7b037e4d",
         "status": "success",
         "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-03-30 12:41:25",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
     }
 ]

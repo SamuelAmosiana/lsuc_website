@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,7 @@
         .navbar {
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
@@ -68,7 +69,7 @@
             justify-content: center;
             border: 2px solid var(--primary-orange);
         }
-        
+
         .logo img {
             width: 100%;
             height: 100%;
@@ -120,7 +121,7 @@
             left: 0;
             background: white;
             min-width: 250px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
@@ -209,7 +210,7 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero .motto {
@@ -217,13 +218,13 @@
             color: var(--light-orange);
             font-style: italic;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 40px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button {
@@ -301,14 +302,14 @@
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             border-color: var(--primary-orange);
         }
 
@@ -405,7 +406,7 @@
             overflow: hidden;
             margin: 0 auto 20px;
             border: 3px solid var(--primary-orange);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .staff-image {
@@ -432,13 +433,13 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
         .update-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .update-image {
@@ -492,50 +493,50 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .gallery-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
             padding: 20px;
             transform: translateY(10px);
             opacity: 0;
             transition: all 0.3s ease;
         }
-        
+
         .gallery-overlay h4 {
             margin: 0;
             font-size: 1.1rem;
             font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-        
+
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* Image Preview Modal */
         .image-preview-modal {
             position: fixed;
@@ -550,7 +551,7 @@
             z-index: 10000;
             animation: fadeIn 0.3s ease;
         }
-        
+
         .image-preview-content {
             position: relative;
             max-width: 90%;
@@ -558,37 +559,37 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             animation: zoomIn 0.3s ease;
         }
-        
+
         .image-preview-content img {
             width: 100%;
             height: auto;
             display: block;
         }
-        
+
         .image-preview-header {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
             color: white;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .image-preview-title {
             font-size: 1.5rem;
             font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         .close-preview {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
             width: 40px;
@@ -601,18 +602,23 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .close-preview:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             transform: scale(1.1);
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
-        
+
+
         /* PDF Viewer Modal */
         .pdf-viewer-modal {
             position: fixed;
@@ -627,7 +633,7 @@
             z-index: 10001;
             animation: fadeIn 0.3s ease;
         }
-        
+
         .pdf-viewer-content {
             position: relative;
             width: 98%;
@@ -637,13 +643,13 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             animation: zoomIn 0.3s ease;
             display: flex;
             flex-direction: column;
             margin: auto;
         }
-        
+
         .pdf-viewer-header {
             background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
             color: white;
@@ -654,23 +660,23 @@
             flex-shrink: 0;
             border-bottom: 3px solid var(--primary-orange);
         }
-        
+
         .pdf-viewer-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin: 0;
         }
-        
+
         .pdf-viewer-controls {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        
+
         .pdf-control-btn {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 10px 18px;
             border-radius: 8px;
             cursor: pointer;
@@ -680,18 +686,18 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
-        
+
         .pdf-control-btn:hover {
-            background: rgba(255,255,255,0.35);
-            border-color: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        
+
         .close-pdf-viewer {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
             width: 40px;
@@ -704,12 +710,12 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .close-pdf-viewer:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             transform: scale(1.1);
         }
-        
+
         .pdf-viewer-frame {
             flex: 1;
             border: none;
@@ -718,7 +724,7 @@
             background: #f8f9fa;
             min-height: 500px;
         }
-        
+
         .pdf-loading {
             display: flex;
             align-items: center;
@@ -727,7 +733,7 @@
             font-size: 1.2rem;
             color: var(--gray-600);
         }
-        
+
         .pdf-error {
             display: flex;
             flex-direction: column;
@@ -737,17 +743,17 @@
             padding: 40px;
             text-align: center;
         }
-        
+
         .pdf-error h3 {
             color: var(--primary-green);
             margin-bottom: 15px;
         }
-        
+
         .pdf-error p {
             color: var(--gray-600);
             margin-bottom: 20px;
         }
-        
+
         @media (max-width: 768px) {
             .pdf-viewer-content {
                 width: 95%;
@@ -755,13 +761,13 @@
                 max-height: 90vh;
                 margin: 2vh auto;
             }
-            
+
             .pdf-viewer-header {
                 padding: 15px;
                 flex-wrap: nowrap;
                 gap: 10px;
             }
-            
+
             .pdf-viewer-title {
                 font-size: 1.1rem;
                 flex: 1;
@@ -770,18 +776,18 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
-            
+
             .pdf-viewer-controls {
                 gap: 8px;
                 flex-shrink: 0;
             }
-            
+
             .pdf-control-btn {
                 padding: 8px 12px;
                 font-size: 0.85rem;
                 min-width: auto;
             }
-            
+
             .close-pdf-viewer {
                 width: 35px;
                 height: 35px;
@@ -797,7 +803,7 @@
             border-radius: 20px;
             overflow: hidden;
             margin: 40px 0;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
         .carousel-image {
@@ -822,7 +828,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             color: white;
             padding: 30px;
             text-align: center;
@@ -832,12 +838,12 @@
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .carousel-description {
             font-size: 1.1rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .carousel-indicators {
@@ -853,7 +859,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -883,7 +889,8 @@
             font-size: 1.3rem;
         }
 
-        .footer-section p, .footer-section li {
+        .footer-section p,
+        .footer-section li {
             line-height: 1.8;
             margin-bottom: 10px;
         }
@@ -905,7 +912,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* Current Page Indicator */
@@ -938,7 +945,7 @@
                 margin-left: 0;
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                 max-height: calc(100vh - 80px);
                 overflow-y: auto;
             }
@@ -953,7 +960,7 @@
 
             .nav-link {
                 padding: 15px 20px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 transform: none;
             }
 
@@ -985,11 +992,11 @@
             .dropdown-link {
                 color: white;
                 padding: 12px 40px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .dropdown-link:hover {
-                background-color: rgba(255,255,255,0.1);
+                background-color: rgba(255, 255, 255, 0.1);
                 color: white;
                 padding-left: 50px;
             }
@@ -1032,16 +1039,16 @@
             .gallery-item {
                 height: 120px;
             }
-            
+
             .gallery-overlay h4 {
                 font-size: 0.9rem;
             }
-            
+
             .image-preview-content {
                 max-width: 95%;
                 max-height: 85%;
             }
-            
+
             .image-preview-title {
                 font-size: 1.2rem;
             }
@@ -1107,7 +1114,7 @@
             background: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .form-section {
@@ -1191,14 +1198,14 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
         }
-        
+
         .submit-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-        
+
         .submit-btn:disabled:hover {
             background: #ccc;
             transform: none;
@@ -1225,7 +1232,7 @@
         .form-info ul li {
             margin-bottom: 5px;
         }
-        
+
         /* Form validation and feedback styles */
         .field-error {
             color: #d32f2f;
@@ -1233,21 +1240,21 @@
             margin-top: 5px;
             display: block;
         }
-        
+
         .form-group input.error,
         .form-group select.error,
         .form-group textarea.error {
             border-color: #d32f2f;
             background-color: #ffebee;
         }
-        
+
         .form-group input.success,
         .form-group select.success,
         .form-group textarea.success {
             border-color: #4caf50;
             background-color: #f1f8e9;
         }
-        
+
         .form-success,
         .form-error {
             position: fixed;
@@ -1257,10 +1264,11 @@
             z-index: 10000;
             max-width: 90%;
             width: 500px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         @media (max-width: 768px) {
+
             .form-success,
             .form-error {
                 max-width: 95%;
@@ -1268,7 +1276,7 @@
                 margin: 0 10px;
             }
         }
-        
+
         /* Loading state for submit button */
         .submit-btn.loading::after {
             content: '';
@@ -1281,31 +1289,37 @@
             display: inline-block;
             animation: spin 1s linear infinite;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         /* Form responsive improvements */
         @media (max-width: 768px) {
             .application-form {
                 padding: 20px;
                 margin: 0 10px;
             }
-            
+
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
+
             .form-group input,
             .form-group select,
             .form-group textarea {
                 padding: 15px;
-                font-size: 16px; /* Prevents zoom on iOS */
+                font-size: 16px;
+                /* Prevents zoom on iOS */
             }
-            
+
             .submit-btn {
                 padding: 18px 30px;
                 font-size: 1.2rem;
@@ -1336,7 +1350,8 @@
 
         .section-title.sticky-header {
             position: sticky;
-            top: 80px; /* Below navbar */
+            top: 80px;
+            /* Below navbar */
             z-index: 100;
             background: linear-gradient(to bottom, var(--gray-100) 0%, rgba(248, 249, 250, 0.95) 100%);
             padding: 15px 20px;
@@ -1379,10 +1394,13 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.5;
                 transform: scale(1.2);
@@ -2053,6 +2071,7 @@
 
         /* Print Styles */
         @media print {
+
             .navbar,
             .footer,
             .detail-actions,
@@ -2081,6 +2100,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -2088,6 +2108,7 @@
         }
     </style>
 </head>
+
 <body class="home">
     <!-- Navigation -->
     <nav class="navbar">
@@ -2101,14 +2122,14 @@
                     <p>Dream, Explore, Acquire</p>
                 </div>
             </div>
-            
+
             <!-- Mobile Menu Toggle Button -->
             <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            
+
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link" onclick="showPage('home'); closeMobileMenu()">Home</a>
@@ -2116,10 +2137,14 @@
                 <li class="nav-item">
                     <a href="#about" class="nav-link" onclick="toggleDropdown(this)">About</a>
                     <div class="dropdown">
-                        <a href="#lsuc-overview" class="dropdown-link" onclick="showPage('lsuc-overview'); closeMobileMenu()">Lusaka South University College</a>
-                        <a href="#our-team" class="dropdown-link" onclick="showPage('our-team'); closeMobileMenu()">Our Team</a>
-                        <a href="#partnerships" class="dropdown-link" onclick="showPage('partnerships'); closeMobileMenu()">Partnerships</a>
-                        <a href="#accreditation" class="dropdown-link" onclick="showPage('accreditation'); closeMobileMenu()">Accreditation</a>
+                        <a href="#lsuc-overview" class="dropdown-link"
+                            onclick="showPage('lsuc-overview'); closeMobileMenu()">Lusaka South University College</a>
+                        <a href="#our-team" class="dropdown-link" onclick="showPage('our-team'); closeMobileMenu()">Our
+                            Team</a>
+                        <a href="#partnerships" class="dropdown-link"
+                            onclick="showPage('partnerships'); closeMobileMenu()">Partnerships</a>
+                        <a href="#accreditation" class="dropdown-link"
+                            onclick="showPage('accreditation'); closeMobileMenu()">Accreditation</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -2131,19 +2156,30 @@
                 <li class="nav-item">
                     <a href="#apply-now" class="nav-link" onclick="toggleDropdown(this)">Apply Now</a>
                     <div class="dropdown">
-                        <a href="https://srms.lsc.edu.zm/applications/undergraduate_application.php" class="dropdown-link" onclick="showPage('undergraduate-application'); closeMobileMenu()">Degree, Diploma & Certificate</a>
-                        <a href="https://srms.lsc.edu.zm/applications/short_courses_application.php" class="dropdown-link" onclick="showPage('short-courses-application'); closeMobileMenu()">Short Courses</a>
-                        <a href="extra-curricular.html" class="dropdown-link" target="_blank">Extra Curricular Registration</a>
-                        <a href="#payment-instructions" class="dropdown-link" onclick="showPage('payment-instructions'); closeMobileMenu()">Payment Instructions</a>
+                        <a href="https://srms.lsc.edu.zm/applications/undergraduate_application.php"
+                            class="dropdown-link"
+                            onclick="showPage('undergraduate-application'); closeMobileMenu()">Degree, Diploma &
+                            Certificate</a>
+                        <a href="https://srms.lsc.edu.zm/applications/short_courses_application.php"
+                            class="dropdown-link"
+                            onclick="showPage('short-courses-application'); closeMobileMenu()">Short Courses</a>
+                        <a href="extra-curricular.html" class="dropdown-link" target="_blank">Extra Curricular
+                            Registration</a>
+                        <a href="#payment-instructions" class="dropdown-link"
+                            onclick="showPage('payment-instructions'); closeMobileMenu()">Payment Instructions</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a href="#online-services" class="nav-link" onclick="toggleDropdown(this)">Online Services</a>
                     <div class="dropdown">
-                        <a href="#portal" class="dropdown-link" onclick="showPage('portal'); closeMobileMenu()">Portal - MIS</a>
-                        <a href="#elearning" class="dropdown-link" onclick="showPage('elearning'); closeMobileMenu()">eLearning</a>
-                        <a href="#research" class="dropdown-link" onclick="showPage('research'); closeMobileMenu()">Research Repository</a>
-                        <a href="index.html#elibrary" class="dropdown-link" onclick="showPage('elibrary'); closeMobileMenu()">E-Library</a>
+                        <a href="#portal" class="dropdown-link" onclick="showPage('portal'); closeMobileMenu()">Portal -
+                            MIS</a>
+                        <a href="#elearning" class="dropdown-link"
+                            onclick="showPage('elearning'); closeMobileMenu()">eLearning</a>
+                        <a href="#research" class="dropdown-link"
+                            onclick="showPage('research'); closeMobileMenu()">Research Repository</a>
+                        <a href="index.html#elibrary" class="dropdown-link"
+                            onclick="showPage('elibrary'); closeMobileMenu()">E-Library</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -2153,7 +2189,8 @@
                     <a href="#contact" class="nav-link" onclick="showPage('contact'); closeMobileMenu()">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#downloads" class="nav-link" onclick="showPage('downloads'); closeMobileMenu()">Downloads</a>
+                    <a href="#downloads" class="nav-link"
+                        onclick="showPage('downloads'); closeMobileMenu()">Downloads</a>
                 </li>
                 <li class="nav-item">
                     <a href="#gallery" class="nav-link" onclick="showPage('gallery'); closeMobileMenu()">Gallery</a>
@@ -2169,7 +2206,8 @@
             <div class="hero-content">
                 <h1>Welcome to Lusaka South University College</h1>
                 <p class="motto">"Dream, Explore, Acquire"</p>
-                <p>Empowering minds, shaping futures, and building tomorrow's leaders through excellence in education and innovative learning experiences.</p>
+                <p>Empowering minds, shaping futures, and building tomorrow's leaders through excellence in education
+                    and innovative learning experiences.</p>
                 <a href="#about" class="cta-button" onclick="showPage('lsuc-overview')">Discover More</a>
             </div>
         </section>
@@ -2185,19 +2223,22 @@
                     <div class="card">
                         <div class="card-icon">🎯</div>
                         <h3>Excellence</h3>
-                        <p>We strive for the highest standards in everything we do, from teaching to student support services, ensuring quality education that prepares students for success.</p>
+                        <p>We strive for the highest standards in everything we do, from teaching to student support
+                            services, ensuring quality education that prepares students for success.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🤝</div>
                         <h3>Integrity</h3>
-                        <p>We conduct ourselves with honesty, transparency, and ethical behavior, fostering trust and respect within our college community.</p>
+                        <p>We conduct ourselves with honesty, transparency, and ethical behavior, fostering trust and
+                            respect within our college community.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💡</div>
                         <h3>Innovation</h3>
-                        <p>We embrace new ideas, technologies, and teaching methods to enhance learning experiences and prepare students for the modern world.</p>
+                        <p>We embrace new ideas, technologies, and teaching methods to enhance learning experiences and
+                            prepare students for the modern world.</p>
                     </div>
-                   
+
                 </div>
             </div>
         </section>
@@ -2207,7 +2248,8 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Latest Updates</h2>
-                    <p>Stay informed about the latest news, events, and developments at Lusaka South University College</p>
+                    <p>Stay informed about the latest news, events, and developments at Lusaka South University College
+                    </p>
                 </div>
                 <div class="updates-grid" id="home-latest-updates">
                     <!-- Dynamically loaded content with Read More buttons -->
@@ -2223,21 +2265,23 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Our Campus</h2>
-                    <p>Explore our modern facilities designed to provide the best learning environment for our students</p>
+                    <p>Explore our modern facilities designed to provide the best learning environment for our students
+                    </p>
                 </div>
-                
+
                 <!-- Campus Image Carousel -->
                 <div class="campus-carousel">
                     <div class="carousel-image active" style="background-image: url('./img/school3.jpeg');"></div>
                     <div class="carousel-image" style="background-image: url('./img/school1.jpeg');"></div>
                     <div class="carousel-image" style="background-image: url('./img/school4.jpeg');"></div>
                     <div class="carousel-image" style="background-image: url('./img/school2.jpeg');"></div>
-                    
+
                     <div class="carousel-overlay">
                         <div class="carousel-title">Campus Facilities</div>
-                        <div class="carousel-description">State-of-the-art infrastructure supporting academic excellence</div>
+                        <div class="carousel-description">State-of-the-art infrastructure supporting academic excellence
+                        </div>
                     </div>
-                    
+
                     <div class="carousel-indicators">
                         <div class="indicator active"></div>
                         <div class="indicator"></div>
@@ -2245,7 +2289,7 @@
                         <div class="indicator"></div>
                     </div>
                 </div>
-                
+
                 <div class="gallery-grid">
                     <div class="gallery-item" data-image="img/school2.jpeg" onclick="openImagePreview(this)">
                         <img src="img/school2.jpeg" alt="Main Building">
@@ -2310,7 +2354,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Payment Instructions
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Payment
+                Instructions
             </div>
         </div>
         <section class="content-section" style="background: var(--gray-100);">
@@ -2324,19 +2369,22 @@
                         <div class="card-icon">🏦</div>
                         <h3>Bank Transfer</h3>
                         <p><strong>Account Name:</strong> Lusaka South University College<br>
-                        <strong>Account No:</strong> 5947236500193<br>
-                        <strong>Bank:</strong> ZANACO<br>
-                        <strong>Branch Code:</strong> 086<br>
-                        <strong>Sort Code:</strong> 010086<br>
-                        <strong>Swift Code:</strong> ZNCOZMLU</p>
+                            <strong>Account No:</strong> 5947236500193<br>
+                            <strong>Bank:</strong> ZANACO<br>
+                            <strong>Branch Code:</strong> 086<br>
+                            <strong>Sort Code:</strong> 010086<br>
+                            <strong>Swift Code:</strong> ZNCOZMLU
+                        </p>
                     </div>
                     <div class="card">
                         <div class="card-icon">📱</div>
                         <h3>Mobile Money</h3>
                         <p><strong>USSD:</strong><br>
-                        Dial <strong>*767*1*11001301*Amount#</strong><br><br>
-                        <strong>Alternative:</strong><br>
-                        You may also send your phone number with your full names and the amount paid to the admissions office for confirmation.</p>
+                            Dial <strong>*767*1*11001301*Amount#</strong><br><br>
+                            <strong>Alternative:</strong><br>
+                            You may also send your phone number with your full names and the amount paid to the
+                            admissions office for confirmation.
+                        </p>
                         <div class="payment-button-container" style="margin-top: 20px; text-align: center;">
                             <button class="pay-or-make-payment-btn" style="
                                 background-color: #007bff;
@@ -2349,8 +2397,8 @@
                                 font-weight: bold;
                                 transition: background-color 0.3s;
                                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                            " onmouseover="this.style.backgroundColor='#0056b3'" 
-                               onmouseout="this.style.backgroundColor='#007bff'">
+                            " onmouseover="this.style.backgroundColor='#0056b3'"
+                                onmouseout="this.style.backgroundColor='#007bff'">
                                 Make Payment
                             </button>
                         </div>
@@ -2359,7 +2407,8 @@
                         <div class="card-icon">⚠️</div>
                         <h3>Important Notice</h3>
                         <p><strong>Note:</strong> We do <strong>not</strong> accept cash payments at campus.<br>
-                        Always pay using the official details above and keep your proof of payment for verification.</p>
+                            Always pay using the official details above and keep your proof of payment for verification.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -2376,7 +2425,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#about">About</a> > Lusaka South University College
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#about">About</a> > Lusaka South
+                University College
             </div>
         </div>
         <section class="content-section">
@@ -2385,22 +2435,30 @@
                     <div class="card">
                         <div class="card-icon">📖</div>
                         <h3>Our History</h3>
-                        <p>Established in 2023, Lusaka South University College has grown from a small technical institution to a comprehensive college offering diverse programs. We have graduated over 100 students who are making significant contributions to Zambia's development.</p>
+                        <p>Established in 2023, Lusaka South University College has grown from a small technical
+                            institution to a comprehensive college offering diverse programs. We have graduated over 100
+                            students who are making significant contributions to Zambia's development.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🎯</div>
                         <h3>Our Mission</h3>
-                        <p>To provide quality, accessible, and relevant education that equips students with practical skills, critical thinking abilities, and ethical values needed for personal growth and national development.</p>
+                        <p>To provide quality, accessible, and relevant education that equips students with practical
+                            skills, critical thinking abilities, and ethical values needed for personal growth and
+                            national development.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">👁️</div>
                         <h3>Our Vision</h3>
-                        <p>To be the leading institution of higher learning in Southern Africa, recognized for excellence in education, research, and community service that transforms lives and contributes to sustainable development.</p>
+                        <p>To be the leading institution of higher learning in Southern Africa, recognized for
+                            excellence in education, research, and community service that transforms lives and
+                            contributes to sustainable development.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🏗️</div>
                         <h3>Campus Structure</h3>
-                        <p>Our modern campus features state-of-the-art classrooms, well-equipped laboratories, a comprehensive library, sports facilities, and comfortable student accommodation, all designed to create an optimal learning environment.</p>
+                        <p>Our modern campus features state-of-the-art classrooms, well-equipped laboratories, a
+                            comprehensive library, sports facilities, and comfortable student accommodation, all
+                            designed to create an optimal learning environment.</p>
                     </div>
                 </div>
             </div>
@@ -2427,7 +2485,7 @@
                 </div>
                 <div class="cards-grid">
                     <!-- Principal -->
-<!--
+                    <!--
                     <div class="card">
                         <div class="staff-image-container">
                             <img src="./img/staff/Principal.jpg" alt="Dr. Zimba F, Principal" class="staff-image">
@@ -2435,59 +2493,82 @@
                         <h3>Dr. Zimba F, Principal</h3>
                         <p>Leading the college with over 20 years of experience in educational administration and a commitment to student success and institutional growth.</p>
                     </div>
---->        
+--->
                     <!-- Vice Principal -->
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/staff/Vice-Principal.jpg" alt="Mr. Mbuzi D, Vice-Principal" class="staff-image">
+                            <img src="./img/staff/Vice-Principal.jpg" alt="Mr. Mbuzi D, Vice-Principal"
+                                class="staff-image">
                         </div>
-                        <h3><center>Mr. Mbuzi D. <br> Vice-Principal</center></h3>
-                        <p>Leading the college with over 10 years of experience in educational administration and a commitment to student success and institutional growth.</p>
+                        <h3>
+                            <center>Mr. Mbuzi D. <br> Vice-Principal</center>
+                        </h3>
+                        <p>Leading the college with over 10 years of experience in educational administration and a
+                            commitment to student success and institutional growth.</p>
                     </div>
                     <!-- Registrar -->
                     <div class="card">
                         <div class="staff-image-container">
                             <img src="./img/staff/Registrar.jpg" alt="Ms Musonda L, Registrar" class="staff-image">
                         </div>
-                        <h3><center>Ms Musonda L.<br> Registrar - Administration</center></h3>
-                        <p>Handling student records, enrollment, and graduation processes with attention to detail and student service excellence.</p>
+                        <h3>
+                            <center>Ms Musonda L.<br> Registrar - Administration</center>
+                        </h3>
+                        <p>Handling student records, enrollment, and graduation processes with attention to detail and
+                            student service excellence.</p>
                     </div>
                     <!-- Academics Dean -->
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/staff/Academic-Dean.jpg" alt="Ms Muleya C, Academic Dean" class="staff-image">
+                            <img src="./img/staff/Academic-Dean.jpg" alt="Ms Muleya C, Academic Dean"
+                                class="staff-image">
                         </div>
-                        <h3><center>Ms Muleya C. <br> Academic Dean</center></h3>
-                        <p>Overseeing academic programs and ensuring the highest standards of teaching and learning across all schools and departments.</p>
+                        <h3>
+                            <center>Ms Muleya C. <br> Academic Dean</center>
+                        </h3>
+                        <p>Overseeing academic programs and ensuring the highest standards of teaching and learning
+                            across all schools and departments.</p>
                     </div>
-                     <!-- Enrollments Officer -->
+                    <!-- Enrollments Officer -->
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/staff/Enrollments-Officer.jpg" alt="Ms Kababa J, Finance Director" class="staff-image">
+                            <img src="./img/staff/Enrollments-Officer.jpg" alt="Ms Kababa J, Finance Director"
+                                class="staff-image">
                         </div>
-                        <h3><center>Ms Kababa J <br> Enrollments Officer</center></h3>
-                        <p>Facilitates student admissions, assists with application processes, and supports outreach initiatives to enhance enrollment growth.</p>
+                        <h3>
+                            <center>Ms Kababa J <br> Enrollments Officer</center>
+                        </h3>
+                        <p>Facilitates student admissions, assists with application processes, and supports outreach
+                            initiatives to enhance enrollment growth.</p>
                     </div>
                     <!-- Systems Administrator -->
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/staff/Systems-Administrator.jpg" alt="Mr. Sianamate S, Systems Administrator" class="staff-image">
+                            <img src="./img/staff/Systems-Administrator.jpg"
+                                alt="Mr. Sianamate S, Systems Administrator" class="staff-image">
                         </div>
-                        <h3><center>Mr. Sianamate S. <br> Systems Administrator</center></h3>
-                        <p>Responsible for managing institutional systems, maintaining website operations, and ensuring smooth ICT functionality across departments.</p>
+                        <h3>
+                            <center>Mr. Sianamate S. <br> Systems Administrator</center>
+                        </h3>
+                        <p>Responsible for managing institutional systems, maintaining website operations, and ensuring
+                            smooth ICT functionality across departments.</p>
                     </div>
-                               
+
                     <!-- Front Desk Officer -->
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/staff/front-desk-officer.jpg" alt="Ms Winnie C, Front Desk Officer" class="staff-image">
+                            <img src="./img/staff/front-desk-officer.jpg" alt="Ms Winnie C, Front Desk Officer"
+                                class="staff-image">
                         </div>
-                        <h3><center>Ms Winnie C. <br> Front Desk Officer</center></h3>
-                        <p>Providing excellent customer service, managing visitor inquiries, and coordinating administrative support for students and staff.</p>
+                        <h3>
+                            <center>Ms Winnie C. <br> Front Desk Officer</center>
+                        </h3>
+                        <p>Providing excellent customer service, managing visitor inquiries, and coordinating
+                            administrative support for students and staff.</p>
                     </div>
                 </div>
 
-                
+
                 <div class="section-title" style="margin-top: 60px;">
                     <h2>Academic Staff</h2>
                     <p>Qualified instructors committed to student success</p>
@@ -2495,31 +2576,47 @@
                 <div class="cards-grid">
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/mr_bwalya_engineering.jpg" alt="Mr. Bwalya, Engineering Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_bwalya_engineering.jpg" alt="Mr. Bwalya, Engineering Faculty HOD"
+                                class="staff-image">
                         </div>
-                        <h3><center>Mr. Bwalya.<br>Head of Engineering Faculty</center></h3>
-                        <p>Expert engineer and technician with industry experience providing practical, hands-on education in various engineering disciplines.</p>
+                        <h3>
+                            <center>Mr. Bwalya.<br>Head of Engineering Faculty</center>
+                        </h3>
+                        <p>Expert engineer and technician with industry experience providing practical, hands-on
+                            education in various engineering disciplines.</p>
                     </div>
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/mr_machila_business.jpg" alt="Mr. Machila, Business Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_machila_business.jpg" alt="Mr. Machila, Business Faculty HOD"
+                                class="staff-image">
                         </div>
-                        <h3><center>Mr. Machila<br>Head of Business Faculty</center></h3>
-                        <p>Business professional and academic with real-world experience in management, finance, marketing, and entrepreneurship.</p>
+                        <h3>
+                            <center>Mr. Machila<br>Head of Business Faculty</center>
+                        </h3>
+                        <p>Business professional and academic with real-world experience in management, finance,
+                            marketing, and entrepreneurship.</p>
                     </div>
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/mr_sianamate_it.jpg" alt="Mr. Sianamate S, IT Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_sianamate_it.jpg" alt="Mr. Sianamate S, IT Faculty HOD"
+                                class="staff-image">
                         </div>
-                        <h3><center>Mr. Sianamate S.<br>Head of IT Faculty</center></h3>
-                        <p>Technology expert keeping pace with rapid digital transformation, teaching cutting-edge skills in programming, networking, and cybersecurity.</p>
+                        <h3>
+                            <center>Mr. Sianamate S.<br>Head of IT Faculty</center>
+                        </h3>
+                        <p>Technology expert keeping pace with rapid digital transformation, teaching cutting-edge
+                            skills in programming, networking, and cybersecurity.</p>
                     </div>
                     <div class="card">
                         <div class="staff-image-container">
-                            <img src="./img/HOD/mr_chido_health_sciences.jpg" alt="Mr. Chido C, Health Sciences Faculty HOD" class="staff-image">
+                            <img src="./img/HOD/mr_chido_health_sciences.jpg"
+                                alt="Mr. Chido C, Health Sciences Faculty HOD" class="staff-image">
                         </div>
-                        <h3><center>Mrs. Chirwa C.<br>Head of Health Sciences Faculty</center></h3>
-                        <p>Healthcare professional providing comprehensive training in medical technology, nursing, and allied health programs.</p>
+                        <h3>
+                            <center>Mrs. Chirwa C.<br>Head of Health Sciences Faculty</center>
+                        </h3>
+                        <p>Healthcare professional providing comprehensive training in medical technology, nursing, and
+                            allied health programs.</p>
                     </div>
                 </div>
             </div>
@@ -2547,22 +2644,26 @@
                     <div class="card">
                         <div class="card-icon">🏭</div>
                         <h3>Industry Partners</h3>
-                        <p>We collaborate with leading companies to provide internships, practical training, and job placement opportunities for our graduates.</p>
+                        <p>We collaborate with leading companies to provide internships, practical training, and job
+                            placement opportunities for our graduates.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🌍</div>
                         <h3>International Universities</h3>
-                        <p>Academic partnerships with universities worldwide provide exchange programs and advanced degree pathways for our students.</p>
+                        <p>Academic partnerships with universities worldwide provide exchange programs and advanced
+                            degree pathways for our students.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🏛️</div>
                         <h3>Government Agencies</h3>
-                        <p>Working with various government departments to align our programs with national development priorities and workforce needs.</p>
+                        <p>Working with various government departments to align our programs with national development
+                            priorities and workforce needs.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🤝</div>
                         <h3>NGOs & Development Partners</h3>
-                        <p>Collaborating with non-governmental organizations to provide scholarships, community outreach programs, and sustainable development initiatives.</p>
+                        <p>Collaborating with non-governmental organizations to provide scholarships, community outreach
+                            programs, and sustainable development initiatives.</p>
                     </div>
                 </div>
             </div>
@@ -2588,17 +2689,20 @@
                     <div class="card">
                         <div class="card-icon">🏅</div>
                         <h3>Ministry of Education</h3>
-                        <p>Fully accredited by the Ministry of Higher Education, Republic of Zambia, ensuring our programs meet national educational standards.</p>
+                        <p>Fully accredited by the Ministry of Higher Education, Republic of Zambia, ensuring our
+                            programs meet national educational standards.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">⭐</div>
                         <h3>Professional Bodies</h3>
-                        <p>Our programs are recognized by relevant professional bodies including the Technical Education, Vocational Entrepreneurship Training Authority (TEVETA).</p>
+                        <p>Our programs are recognized by relevant professional bodies including the Technical
+                            Education, Vocational Entrepreneurship Training Authority (TEVETA).</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🌐</div>
                         <h3>International Recognition</h3>
-                        <p>Selected programs have international accreditation, allowing for credit transfer and recognition in SADC countries and beyond.</p>
+                        <p>Selected programs have international accreditation, allowing for credit transfer and
+                            recognition in SADC countries and beyond.</p>
                     </div>
                 </div>
             </div>
@@ -2617,7 +2721,7 @@
                 <a href="#home" onclick="showPage('home')">Home</a> > News
             </div>
         </div>
-        
+
         <!-- Filter and Search Controls -->
         <section class="content-section">
             <div class="container">
@@ -2636,7 +2740,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Latest News Section -->
                 <div class="section-title sticky-header">
                     <h2>Latest News</h2>
@@ -2644,7 +2748,7 @@
                 <div class="updates-grid" id="latest-news-container">
                     <!-- Dynamically loaded content -->
                 </div>
-                
+
                 <!-- Upcoming Events Section -->
                 <div class="section-title sticky-header" style="margin-top: 60px;">
                     <h2>Upcoming Events</h2>
@@ -2652,7 +2756,7 @@
                 <div class="cards-grid" id="upcoming-events-container">
                     <!-- Dynamically loaded content with countdown timers -->
                 </div>
-                
+
                 <!-- Past Events Section -->
                 <div class="section-title sticky-header" style="margin-top: 60px;">
                     <h2>Past Events</h2>
@@ -2676,8 +2780,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > 
-                <a href="#news" onclick="showPage('news')">News</a> > 
+                <a href="#home" onclick="showPage('home')">Home</a> >
+                <a href="#news" onclick="showPage('news')">News</a> >
                 <span id="detail-category">Category</span>
             </div>
         </div>
@@ -2687,13 +2791,16 @@
                     <div class="detail-main-content">
                         <img id="detail-image" class="detail-hero-image" src="" alt="Event Image">
                         <div class="detail-meta">
-                            <span class="detail-date-display"><strong>Date:</strong> <span id="detail-date"></span></span> | 
-                            <span class="detail-author-display"><strong>Author:</strong> <span id="detail-author"></span></span>
+                            <span class="detail-date-display"><strong>Date:</strong> <span
+                                    id="detail-date"></span></span> |
+                            <span class="detail-author-display"><strong>Author:</strong> <span
+                                    id="detail-author"></span></span>
                         </div>
                         <div id="detail-description" class="detail-full-description"></div>
-                        
+
                         <div class="detail-actions">
-                            <button onclick="window.print()" class="print-btn"><i class="fas fa-print"></i> Print</button>
+                            <button onclick="window.print()" class="print-btn"><i class="fas fa-print"></i>
+                                Print</button>
                             <button onclick="shareEvent()" class="share-btn"><i class="fas fa-share"></i> Share</button>
                             <a href="#news" onclick="showPage('news')" class="back-btn">← Back to News</a>
                         </div>
@@ -2726,62 +2833,64 @@
                         <div class="card-icon">⚙️</div>
                         <h3>School of Engineering</h3>
                         <p><strong>Programs Offered:</strong><br>
-                        • Certificate in Electrical Engineering (1 Year Six Months)<br>
-                        • Certificate in Solar Technology (6 Months)<br>
-                        • Certificate Civil Engineering & Construction (6 Months)<br>
-                        • Certificate in Automotive Engineering (1 Year Six Months)<br>
-                        • Certificate in Occupational Safety Health and Environment (6 Months)</p>
+                            • Certificate in Electrical Engineering (1 Year Six Months)<br>
+                            • Certificate in Solar Technology (6 Months)<br>
+                            • Certificate Civil Engineering & Construction (6 Months)<br>
+                            • Certificate in Automotive Engineering (1 Year Six Months)<br>
+                            • Certificate in Occupational Safety Health and Environment (6 Months)</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💼</div>
                         <h3>School of Business </h3>
                         <p><strong>Programs Offered:</strong><br>
-                        • Diploma in Business Administration (3 years)<br>
-                        • Diploma in Procurement (3 years)<br>
-                        • Diploma in Human Resource Management (3 years)<br>
-                        • Diploma in Accountancy  (3 years)<br>
-                        • Certificate in Secretarial and Office Management (1 Year 6 months)</p>
+                            • Diploma in Business Administration (3 years)<br>
+                            • Diploma in Procurement (3 years)<br>
+                            • Diploma in Human Resource Management (3 years)<br>
+                            • Diploma in Accountancy (3 years)<br>
+                            • Certificate in Secretarial and Office Management (1 Year 6 months)</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💻</div>
                         <h3>School of Information Technology</h3>
                         <p><strong>Programs Offered:</strong><br>
-                        • Diploma in Computer Studies (3 years)<br>
-                        • Certificate in Computer Studies (3 months)<br>
+                            • Diploma in Computer Studies (3 years)<br>
+                            • Certificate in Computer Studies (3 months)<br>
                         </p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🏥</div>
                         <h3>School of Health Care Management</h3>
                         <p><strong>Programs Offered:</strong><br>
-                        • Certificate in Nursing and Health Care Assistant (3 Months)<br>
-                        • Certificate Psychosocial Counselling (3 Months)<br>
-                        • Certificate in Pharmacy Technology (2 years)<br>
-                        • Diploma in Environmental Health (3 years)<br>
-                        • First Aid & CPR Training (Short courses)</p>
+                            • Certificate in Nursing and Health Care Assistant (3 Months)<br>
+                            • Certificate Psychosocial Counselling (3 Months)<br>
+                            • Certificate in Pharmacy Technology (2 years)<br>
+                            • Diploma in Environmental Health (3 years)<br>
+                            • First Aid & CPR Training (Short courses)</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🎓</div>
                         <h3>School of Education and Social Sciences </h3>
                         <p><strong>Programs Offered:</strong><br>
-                        • Diploma in Primary Teaching (3 years)<br>
-                        • Diploma in Law (3 years)<br>
-                        • Certificate in Early Childhood Education (1 years)<br>
+                            • Diploma in Primary Teaching (3 years)<br>
+                            • Diploma in Law (3 years)<br>
+                            • Certificate in Early Childhood Education (1 years)<br>
                         </p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🔧</div>
                         <h3>School of Agriculture and Hospitality</h3>
                         <p><strong>Programs Offered:</strong><br>
-                        • Diploma in General Agriculture (3 years)<br>
-                        • Certificate in General Agriculture (1 Year 6 months)<br>
-                        • Certificate in Food Production (1 Year)<br>
+                            • Diploma in General Agriculture (3 years)<br>
+                            • Certificate in General Agriculture (1 Year 6 months)<br>
+                            • Certificate in Food Production (1 Year)<br>
                         </p>
                     </div>
                 </div>
-                
+
                 <div style="text-align: center; margin-top: 40px; width: 100%;">
-                    <a href="#" onclick="openPDFViewer('img/2026 PROGRAMMES.pdf', '2026 Programmes Information')" class="cta-button" style="font-size: 1.2rem; padding: 20px 50px; display: inline-block;">More Information</a>
+                    <a href="#" onclick="openPDFViewer('img/2026 PROGRAMMES.pdf', '2026 Programmes Information')"
+                        class="cta-button" style="font-size: 1.2rem; padding: 20px 50px; display: inline-block;">More
+                        Information</a>
                 </div>
             </div>
         </section>
@@ -2796,7 +2905,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> > Portal
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> >
+                Portal
             </div>
         </div>
         <section class="content-section">
@@ -2805,19 +2915,24 @@
                     <div class="card">
                         <div class="card-icon">👨‍🎓</div>
                         <h3>Student Portal</h3>
-                        <p>Access your academic records, course schedules, examination results, fee statements, and communicate with faculty through our secure student portal.</p>
-                        <a href="https://srms.lsc.edu.zm/auth/student_login.php" class="cta-button" style="margin-top: 20px;">Login to Student Portal</a>
+                        <p>Access your academic records, course schedules, examination results, fee statements, and
+                            communicate with faculty through our secure student portal.</p>
+                        <a href="https://srms.lsc.edu.zm/auth/student_login.php" class="cta-button"
+                            style="margin-top: 20px;">Login to Student Portal</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">👨‍🏫</div>
                         <h3>Staff Portal</h3>
-                        <p>Faculty and staff can access grade books, attendance records, course materials, payroll information, and administrative tools through the staff portal.</p>
-                        <a href="https://srms.lsc.edu.zm/auth/login.php" class="cta-button" style="margin-top: 20px;">Login to Staff Portal</a>
+                        <p>Faculty and staff can access grade books, attendance records, course materials, payroll
+                            information, and administrative tools through the staff portal.</p>
+                        <a href="https://srms.lsc.edu.zm/auth/login.php" class="cta-button"
+                            style="margin-top: 20px;">Login to Staff Portal</a>
                     </div>
                     <div class="card">
                         <div class="card-icon">ℹ️</div>
                         <h3>System Features</h3>
-                        <p>Our MIS Portal enhances efficiency and coordination, supporting academic and administrative operations with secure, user-friendly access for students and staff.</p>
+                        <p>Our MIS Portal enhances efficiency and coordination, supporting academic and administrative
+                            operations with secure, user-friendly access for students and staff.</p>
                     </div>
                 </div>
             </div>
@@ -2833,7 +2948,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> > eLearning
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> >
+                eLearning
             </div>
         </div>
         <section class="content-section">
@@ -2842,21 +2958,25 @@
                     <div class="card">
                         <div class="card-icon">📚</div>
                         <h3>Course Materials</h3>
-                        <p>Access lecture notes, assignments, multimedia resources, and supplementary materials for all your enrolled courses through our eLearning platform.</p>
+                        <p>Access lecture notes, assignments, multimedia resources, and supplementary materials for all
+                            your enrolled courses through our eLearning platform.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💬</div>
                         <h3>Interactive Learning</h3>
-                        <p>Participate in discussion forums, group projects, and virtual classrooms. Collaborate with classmates and interact with instructors online.</p>
+                        <p>Participate in discussion forums, group projects, and virtual classrooms. Collaborate with
+                            classmates and interact with instructors online.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">📝</div>
                         <h3>Assessments & Quizzes</h3>
-                        <p>Complete online quizzes, submit assignments digitally, and receive instant feedback on your progress and performance.</p>
+                        <p>Complete online quizzes, submit assignments digitally, and receive instant feedback on your
+                            progress and performance.</p>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="https://elearning.lsc.edu.zm/login/index.php" class="cta-button" style="font-size: 1.2rem; padding: 20px 50px;">Access eLearning Platform</a>
+                    <a href="https://elearning.lsc.edu.zm/login/index.php" class="cta-button"
+                        style="font-size: 1.2rem; padding: 20px 50px;">Access eLearning Platform</a>
                 </div>
             </div>
         </section>
@@ -2871,7 +2991,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> > Research
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> >
+                Research
             </div>
         </div>
         <section class="content-section">
@@ -2880,21 +3001,25 @@
                     <div class="card">
                         <div class="card-icon">📄</div>
                         <h3>Student Research</h3>
-                        <p>Browse and search through final year projects, dissertations, and research papers submitted by LSUC students across all disciplines.</p>
+                        <p>Browse and search through final year projects, dissertations, and research papers submitted
+                            by LSUC students across all disciplines.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">👨‍🔬</div>
                         <h3>Faculty Publications</h3>
-                        <p>Access research publications, conference papers, and scholarly articles authored by our faculty members and researchers.</p>
+                        <p>Access research publications, conference papers, and scholarly articles authored by our
+                            faculty members and researchers.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🔍</div>
                         <h3>Advanced Search</h3>
-                        <p>Use our sophisticated search tools to find specific research materials by author, subject, date, or keyword across our entire digital collection.</p>
+                        <p>Use our sophisticated search tools to find specific research materials by author, subject,
+                            date, or keyword across our entire digital collection.</p>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="https://demo.dspace.org/home" class="cta-button" style="font-size: 1.2rem; padding: 20px 50px;">Browse Repository</a>
+                    <a href="https://demo.dspace.org/home" class="cta-button"
+                        style="font-size: 1.2rem; padding: 20px 50px;">Browse Repository</a>
                 </div>
             </div>
         </section>
@@ -2909,7 +3034,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> > E-Library
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#online-services">Online Services</a> >
+                E-Library
             </div>
         </div>
         <section class="content-section">
@@ -2918,39 +3044,52 @@
                     <div class="card">
                         <div class="card-icon">📖</div>
                         <h3>Digital Books & Textbooks</h3>
-                        <p>Access thousands of e-books covering all academic disciplines, including textbooks, reference materials, and professional publications from our partner platforms.</p>
+                        <p>Access thousands of e-books covering all academic disciplines, including textbooks, reference
+                            materials, and professional publications from our partner platforms.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">📰</div>
                         <h3>Academic Journals & Research</h3>
-                        <p>Browse academic journals, research articles, and periodicals from leading publishers and scholarly databases worldwide through our curated collection.</p>
+                        <p>Browse academic journals, research articles, and periodicals from leading publishers and
+                            scholarly databases worldwide through our curated collection.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">⚖️</div>
                         <h3>Legal & Professional Resources</h3>
-                        <p>Specialized legal databases, professional development materials, and industry-specific resources for comprehensive learning.</p>
+                        <p>Specialized legal databases, professional development materials, and industry-specific
+                            resources for comprehensive learning.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🌍</div>
                         <h3>Global Development Resources</h3>
-                        <p>Access World Bank publications, development research, economic data, and policy analysis from international organizations.</p>
+                        <p>Access World Bank publications, development research, economic data, and policy analysis from
+                            international organizations.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🔍</div>
                         <h3>Academic Search Engines</h3>
-                        <p>Powerful search tools to discover scholarly materials, textbooks, and research publications across multiple disciplines.</p>
+                        <p>Powerful search tools to discover scholarly materials, textbooks, and research publications
+                            across multiple disciplines.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">📱</div>
                         <h3>Digital Reading Platforms</h3>
-                        <p>Interactive e-book readers, audiobook collections, and enhanced digital learning experiences for modern education.</p>
+                        <p>Interactive e-book readers, audiobook collections, and enhanced digital learning experiences
+                            for modern education.</p>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 50px; padding: 40px; background: linear-gradient(135deg, var(--primary-orange), var(--light-orange)); border-radius: 20px; color: white;">
-                    <h3 style="color: white; margin-bottom: 20px; font-size: 1.8rem;">Ready to Access Our E-Resources?</h3>
-                    <p style="color: #fff8e1; margin-bottom: 30px; font-size: 1.1rem;">Visit our comprehensive E-Resources Portal to access all digital library resources in one place.</p>
-                    <a href="e-resources.html" class="cta-button" style="font-size: 1.3rem; padding: 20px 50px; background: var(--primary-green); margin-right: 20px;">Access E-Resources Portal</a>
-                    <a href="e-resources.html" class="cta-button" style="font-size: 1.1rem; padding: 15px 30px; background: var(--dark-green);">View All Resources</a>
+                <div
+                    style="text-align: center; margin-top: 50px; padding: 40px; background: linear-gradient(135deg, var(--primary-orange), var(--light-orange)); border-radius: 20px; color: white;">
+                    <h3 style="color: white; margin-bottom: 20px; font-size: 1.8rem;">Ready to Access Our E-Resources?
+                    </h3>
+                    <p style="color: #fff8e1; margin-bottom: 30px; font-size: 1.1rem;">Visit our comprehensive
+                        E-Resources Portal to access all digital library resources in one place.</p>
+                    <a href="e-resources.html" class="cta-button"
+                        style="font-size: 1.3rem; padding: 20px 50px; background: var(--primary-green); margin-right: 20px;">Access
+                        E-Resources Portal</a>
+                    <a href="e-resources.html" class="cta-button"
+                        style="font-size: 1.1rem; padding: 15px 30px; background: var(--dark-green);">View All
+                        Resources</a>
                 </div>
             </div>
         </section>
@@ -2973,35 +3112,46 @@
                 <div class="cards-grid">
                     <div class="card">
                         <h3>How do I apply for admission?</h3>
-                        <p>Applications can be submitted online through our website or in person at the admissions office. Required documents include academic certificates, national ID, and passport photos. Application deadlines vary by program.</p>
+                        <p>Applications can be submitted online through our website or in person at the admissions
+                            office. Required documents include academic certificates, national ID, and passport photos.
+                            Application deadlines vary by program.</p>
                     </div>
                     <div class="card">
                         <h3>What are the admission requirements?</h3>
-                        <p>Requirements vary by program. Generally, diploma programs require Grade 12 certificate, while certificate programs may accept Grade 10 or 11. Specific grade requirements are listed for each program.</p>
+                        <p>Requirements vary by program. Generally, diploma programs require Grade 12 certificate, while
+                            certificate programs may accept Grade 10 or 11. Specific grade requirements are listed for
+                            each program.</p>
                     </div>
                     <div class="card">
                         <h3>Are scholarships available?</h3>
-                        <p>Yes, we offer merit-based scholarships, need-based financial aid, and partnerships with various organizations providing sponsorship opportunities for eligible students.</p>
+                        <p>Yes, we offer merit-based scholarships, need-based financial aid, and partnerships with
+                            various organizations providing sponsorship opportunities for eligible students.</p>
                     </div>
                     <div class="card">
                         <h3>Is accommodation available?</h3>
-                        <p>We have on-campus hostels for both male and female students. Private accommodation options are also available nearby. Hostel applications should be submitted early due to limited spaces.</p>
+                        <p>We have on-campus hostels for both male and female students. Private accommodation options
+                            are also available nearby. Hostel applications should be submitted early due to limited
+                            spaces.</p>
                     </div>
                     <div class="card">
                         <h3>What is the academic calendar?</h3>
-                        <p>The academic year runs from February to November with two semesters. There are mid-semester breaks and a longer holiday in December and January.</p>
+                        <p>The academic year runs from February to November with two semesters. There are mid-semester
+                            breaks and a longer holiday in December and January.</p>
                     </div>
                     <div class="card">
                         <h3>How can I check my results?</h3>
-                        <p>Results are available through the student portal. You'll receive login credentials upon enrollment. Results are also posted on notice boards in the academic buildings.</p>
+                        <p>Results are available through the student portal. You'll receive login credentials upon
+                            enrollment. Results are also posted on notice boards in the academic buildings.</p>
                     </div>
                     <div class="card">
                         <h3>What career services do you offer?</h3>
-                        <p>Our career services include job placement assistance, career counseling, resume writing workshops, interview preparation, and maintaining connections with industry partners.</p>
+                        <p>Our career services include job placement assistance, career counseling, resume writing
+                            workshops, interview preparation, and maintaining connections with industry partners.</p>
                     </div>
                     <div class="card">
                         <h3>How do I pay school fees?</h3>
-                        <p>Fees can be paid at the finance office using cash, bank deposits, mobile money, or bank transfers. Payment plans are available for students who need to pay in installments.</p>
+                        <p>Fees can be paid at the finance office using cash, bank deposits, mobile money, or bank
+                            transfers. Payment plans are available for students who need to pay in installments.</p>
                     </div>
                 </div>
             </div>
@@ -3027,47 +3177,58 @@
                         <div class="card-icon">🏢</div>
                         <h3>Main Office</h3>
                         <p><strong>Address:</strong><br>
-                        Lusaka South University College<br>
-                        Foxdale, Conner of Zabezi & Mutumbi Road<br>
-                        Lusaka, Zambia</p>
+                            Lusaka South University College<br>
+                            Foxdale, Conner of Zabezi & Mutumbi Road<br>
+                            Lusaka, Zambia</p>
                         <p><strong>Phone:</strong> +260-211-123456<br>
-                        <strong>Email:</strong> info@lusakasouthcollege.edu.zm</p>
+                            <strong>Email:</strong> info@lusakasouthcollege.edu.zm
+                        </p>
                     </div>
                     <div class="card">
                         <div class="card-icon">🎓</div>
                         <h3>Admissions Office</h3>
-                        <p><strong>Phone:</strong> +260-211-123457/+26 0770359518/+260 97 8936644/+260 774110922/+260 97 1494567<br>
-                        <strong>Email:</strong> admissions@lsc.edu.zm</p>
+                        <p><strong>Phone:</strong> +260-211-123457<br>
+                            <strong>Email:</strong> admissions@lsc.edu.zm
+                        </p>
+                        <p><strong>To talk to Enrolments, Call:</strong><br>
+                            📞 <a href="tel:+260770359518">+260 770 359518</a><br>
+                            📞 <a href="tel:+260978936644">+260 97 8936644</a><br>
+                            📞 <a href="tel:+260774110922">+260 774 110922</a><br>
+                            📞 <a href="tel:+260971494567">+260 97 1494567</a></p>
                         <p><strong>Office Hours:</strong><br>
-                        Monday - Friday: 8:00 AM - 5:00 PM<br>
-                        Saturday: 8:00 AM - 1:00 PM</p>
+                            Monday - Friday: 8:00 AM - 5:00 PM<br>
+                            Saturday: 8:00 AM - 1:00 PM</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💰</div>
                         <h3>Finance Department</h3>
                         <p><strong>Phone:</strong> +260-211-173-458<br>
-                        <strong>Email:</strong> finance@lsc.edu.zm</p>
+                            <strong>Email:</strong> finance@lsc.edu.zm
+                        </p>
                         <p><strong>For:</strong> Fee payments, financial aid, scholarships, payment plans</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">👥</div>
                         <h3>Student Services</h3>
                         <p><strong>Phone:</strong> +260-211-123459<br>
-                        <strong>Email:</strong> lusakasouthuniversitycollege@gmail.com</p>
+                            <strong>Email:</strong> lusakasouthuniversitycollege@gmail.com
+                        </p>
                         <p><strong>For:</strong> Student support, counseling, accommodation, activities</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">💼</div>
                         <h3>Career Services</h3>
                         <p><strong>Phone:</strong> +260-211-123460<br>
-                        <strong>Email:</strong> registrer@lsc.edu.zm</p>
+                            <strong>Email:</strong> registrer@lsc.edu.zm
+                        </p>
                         <p><strong>For:</strong> Job placement, internships, career guidance</p>
                     </div>
                     <div class="card">
                         <div class="card-icon">📞</div>
                         <h3>Customer Care</h3>
                         <p><strong>Phone:</strong> +260-211-123461<br>
-                        <strong>Email:</strong> lusakasouthuniversitycollege@gmail.com</p>
+                            <strong>Email:</strong> lusakasouthuniversitycollege@gmail.com
+                        </p>
                         <p><strong>For:</strong> General inquiries, complaints, suggestions</p>
                     </div>
                 </div>
@@ -3088,7 +3249,7 @@
                 <a href="#home" onclick="showPage('home')">Home</a> > Admin
             </div>
         </div>
-        
+
         <!-- Login Panel -->
         <section class="content-section" id="admin-login-section">
             <div class="container">
@@ -3097,15 +3258,17 @@
                         <h3>Admin Authentication Required</h3>
                         <p>Please enter the password to access the management panel</p>
                         <div class="form-group">
-                            <input type="password" id="admin-password-input" placeholder="Enter admin password" class="form-control" />
+                            <input type="password" id="admin-password-input" placeholder="Enter admin password"
+                                class="form-control" />
                         </div>
                         <button onclick="handleAdminLogin()" class="submit-btn">Login</button>
-                        <p id="login-error" class="error-message" style="display:none; color: red; margin-top: 10px;">Incorrect password!</p>
+                        <p id="login-error" class="error-message" style="display:none; color: red; margin-top: 10px;">
+                            Incorrect password!</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Dashboard (shown after login) -->
         <section class="content-section" id="admin-dashboard-section" style="display:none;">
             <div class="container">
@@ -3113,7 +3276,7 @@
                     <button onclick="showAddEventModal()" class="add-event-btn">+ Add New Event</button>
                     <button onclick="handleAdminLogout()" class="logout-btn">Logout</button>
                 </div>
-                
+
                 <div class="admin-stats">
                     <div class="stat-card">
                         <h4>Total Events</h4>
@@ -3132,7 +3295,7 @@
                         <p id="stat-past-events">0</p>
                     </div>
                 </div>
-                
+
                 <h2>All Events</h2>
                 <div class="admin-table-container">
                     <table class="admin-events-table">
@@ -3165,12 +3328,12 @@
             <div class="modal-body">
                 <form id="event-form" onsubmit="handleEventFormSubmit(event)">
                     <input type="hidden" id="event-id" />
-                    
+
                     <div class="form-group">
                         <label for="event-title">Title *</label>
                         <input type="text" id="event-title" required class="form-control" placeholder="Event title" />
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="event-date">Date *</label>
@@ -3186,44 +3349,51 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-author">Author</label>
-                        <input type="text" id="event-author" class="form-control" placeholder="e.g., Admin, Communications" value="Admin" />
+                        <input type="text" id="event-author" class="form-control"
+                            placeholder="e.g., Admin, Communications" value="Admin" />
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-image-upload">Upload Image from Computer</label>
-                        <input type="file" id="event-image-upload" accept="image/*" class="form-control" onchange="previewImage()" />
+                        <input type="file" id="event-image-upload" accept="image/*" class="form-control"
+                            onchange="previewImage()" />
                         <small style="margin-top: 10px;">Supported formats: JPG, PNG, GIF, WebP. Max size: 2MB</small>
-                        
+
                         <!-- Image Preview -->
                         <div id="image-preview-container" style="display: none; margin-top: 15px;">
-                            <img id="image-preview" src="" alt="Preview" style="max-width: 100%; max-height: 200px; border-radius: 10px; border: 2px solid var(--primary-green);" />
-                            <button type="button" onclick="removeImage()" class="cancel-btn" style="margin-top: 10px; font-size: 0.85rem;">Remove Image</button>
+                            <img id="image-preview" src="" alt="Preview"
+                                style="max-width: 100%; max-height: 200px; border-radius: 10px; border: 2px solid var(--primary-green);" />
+                            <button type="button" onclick="removeImage()" class="cancel-btn"
+                                style="margin-top: 10px; font-size: 0.85rem;">Remove Image</button>
                         </div>
-                        
+
                         <!-- Hidden field to store base64 data -->
                         <input type="hidden" id="event-image-base64" />
                     </div>
-                    
+
                     <div class="form-group">
                         <label>
                             <input type="checkbox" id="event-featured" /> Featured Event (show on homepage)
                         </label>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-short-desc">Short Description *</label>
-                        <textarea id="event-short-desc" required class="form-control" rows="3" placeholder="2-3 sentence summary for cards"></textarea>
+                        <textarea id="event-short-desc" required class="form-control" rows="3"
+                            placeholder="2-3 sentence summary for cards"></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-full-desc">Full Description *</label>
-                        <textarea id="event-full-desc" required class="form-control" rows="10" placeholder="Complete event details (HTML supported)"></textarea>
-                        <small>You can use basic HTML tags like &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, etc.</small>
+                        <textarea id="event-full-desc" required class="form-control" rows="10"
+                            placeholder="Complete event details (HTML supported)"></textarea>
+                        <small>You can use basic HTML tags like &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;,
+                            etc.</small>
                     </div>
-                    
+
                     <div class="modal-footer">
                         <button type="button" onclick="closeEventModal()" class="cancel-btn">Cancel</button>
                         <button type="submit" class="submit-btn">Save Event</button>
@@ -3270,76 +3440,96 @@
                     <h2>Institutional Documents</h2>
                     <p>Download important resources and materials from Lusaka South University College</p>
                 </div>
-                
+
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-icon">📋</div>
                         <h3>CPD & Short Courses</h3>
-                        <p>Download information about our Continuing Professional Development and Short Course offerings</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/cpd-short-courses.pdf', 'CPD & Short Courses Brochure')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <p>Download information about our Continuing Professional Development and Short Course offerings
+                        </p>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/cpd-short-courses.pdf', 'CPD & Short Courses Brochure')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">📅</div>
                         <h3>Academic Calendar</h3>
                         <p>Access our academic calendar with important dates and events</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/academic-calendar.pdf', 'Academic Calendar')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/academic-calendar.pdf', 'Academic Calendar')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">📜</div>
                         <h3>Application Form</h3>
                         <p>Download Application Form for Physical Admission</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/application-form.pdf', 'Application Form')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/application-form.pdf', 'Application Form')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
                 </div>
-                
+
                 <div class="section-title" style="margin-top: 60px;">
                     <h2>Additional Resources</h2>
                     <p>More documents and resources for students and staff</p>
                 </div>
-                
+
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-icon">📝</div>
                         <h3>Course Exemption Form</h3>
-                        <p>Application form for students seeking exemption from certain courses based on prior learning or qualifications</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/exemption_form.pdf', 'Course Exemption Application Form')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <p>Application form for students seeking exemption from certain courses based on prior learning
+                            or qualifications</p>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/exemption_form.pdf', 'Course Exemption Application Form')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">🔐</div>
                         <h3>Student Portal Access Guide</h3>
                         <p>Step-by-step instructions for accessing your student portal and viewing academic results</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/Student-Portal-Access-Guide.pdf', 'Student Portal Access Guide')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/Student-Portal-Access-Guide.pdf', 'Student Portal Access Guide')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">🎓</div>
                         <h3>Program Catalog</h3>
                         <p>Detailed information about all our academic programs</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/program-catalog.pdf', 'Program Catalog')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/program-catalog.pdf', 'Program Catalog')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">💰</div>
                         <h3>CDF Bursary Application Form</h3>
                         <p>Skills Development Bureau Bursary Application Form</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/cdf_bussary.pdf', 'CDF Bursary Form')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <button class="cta-button" onclick="openPDFViewer('docs/cdf_bussary.pdf', 'CDF Bursary Form')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">📰</div>
                         <h3>Press Release - Official Establishment</h3>
-                        <p>Read about our official establishment as a premier hub for industry-aligned higher education and skills training</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/press_release.pdf', 'Press Release - LSUC Official Establishment')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <p>Read about our official establishment as a premier hub for industry-aligned higher education
+                            and skills training</p>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/press_release.pdf', 'Press Release - LSUC Official Establishment')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-icon">📚</div>
                         <h3>Time Table</h3>
                         <p>A planning tool that shows the scheduled times of lectures, tutorials, and other classes</p>
-                        <button class="cta-button" onclick="openPDFViewer('docs/time-table.pdf', 'Student Class Time Table')" style="margin-top: 15px; width: auto;">Download Document</button>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/time-table.pdf', 'Student Class Time Table')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
                 </div>
             </div>
@@ -3373,7 +3563,7 @@
                     <div class="gallery-item">🏃‍♂️<br>Sports Field</div>
                     <div class="gallery-item">🍽️<br>Student Cafeteria</div>
                 </div>
-                
+
                 <div class="section-title" style="margin-top: 60px;">
                     <h2>Student Life & Events</h2>
                 </div>
@@ -3387,7 +3577,7 @@
                     <div class="gallery-item">🎤<br>Welcome Orientation</div>
                     <div class="gallery-item">🤝<br>Industry Partnership</div>
                 </div>
-                
+
                 <div class="section-title" style="margin-top: 60px;">
                     <h2>Academic Programs</h2>
                 </div>
@@ -3413,7 +3603,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Undergraduate Application
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Undergraduate
+                Application
             </div>
         </div>
         <section class="content-section">
@@ -3428,7 +3619,7 @@
                         <li>Application fee payment confirmation</li>
                     </ul>
                 </div>
-                
+
                 <form class="application-form">
                     <div class="form-section">
                         <h3>Personal Information</h3>
@@ -3442,7 +3633,7 @@
                                 <input type="text" id="ug-lastname" name="lastname" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ug-email">Email Address *</label>
@@ -3453,7 +3644,7 @@
                                 <input type="tel" id="ug-phone" name="phone" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ug-nrc">National Registration Card/Passport *</label>
@@ -3464,13 +3655,13 @@
                                 <input type="date" id="ug-dob" name="dateofbirth" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ug-address">Physical Address *</label>
                             <textarea id="ug-address" name="address" rows="3" required></textarea>
                         </div>
                     </div>
-                    
+
                     <div class="form-section">
                         <h3>Academic Information</h3>
                         <div class="form-row">
@@ -3482,7 +3673,8 @@
                                     <option value="computer-science">Diploma in Computer Studies</option>
                                     <option value="engineering">Certificate in Electrical Engineering</option>
                                     <option value="education">Diploma in Primary Teaching</option>
-                                    <option value="health-sciences">Certificate in Nursing and Health Care Assistant</option>
+                                    <option value="health-sciences">Certificate in Nursing and Health Care Assistant
+                                    </option>
                                     <option value="agriculture">Diploma in General Agriculture </option>
                                 </select>
                             </div>
@@ -3498,20 +3690,20 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <div class="form-group">
-                                <label for="ug-grade">Copy of Results *</label>
-                                <input type="file" id="ug-grade" name="grade12results" required>
-                            </div>
+                                    <label for="ug-grade">Copy of Results *</label>
+                                    <input type="file" id="ug-grade" name="grade12results" required>
+                                </div>
                                 <label for="ug-school">Supporting Documents(Proof of Payment) *</label>
                                 <input type="file" id="ug-school" name="previousschool" required>
                             </div>
-                            
+
                         </div>
                     </div>
-                    
+
                     <div class="form-section">
                         <h3>Emergency Contact</h3>
                         <div class="form-row">
@@ -3524,7 +3716,7 @@
                                 <input type="tel" id="ug-guardian-phone" name="guardianphone" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ug-guardian-relationship">Relationship *</label>
                             <select id="ug-guardian-relationship" name="relationship" required>
@@ -3537,7 +3729,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="submit-btn">Submit Application</button>
                 </form>
             </div>
@@ -3554,7 +3746,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Short Courses Application
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Short Courses
+                Application
             </div>
         </div>
         <section class="content-section">
@@ -3570,7 +3763,7 @@
                         <li>Web Development & Design</li>
                     </ul>
                 </div>
-                
+
                 <form class="application-form">
                     <div class="form-section">
                         <h3>Personal Information</h3>
@@ -3584,7 +3777,7 @@
                                 <input type="text" id="sc-lastname" name="lastname" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="sc-email">Email Address *</label>
@@ -3595,13 +3788,13 @@
                                 <input type="tel" id="sc-phone" name="phone" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="sc-occupation">Current Occupation</label>
                             <input type="text" id="sc-occupation" name="occupation">
                         </div>
                     </div>
-                    
+
                     <div class="form-section">
                         <h3>Course Selection</h3>
                         <div class="form-group">
@@ -3616,7 +3809,7 @@
                                 <option value="web-development">Web Development & Design</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="sc-start-date">Inake *</label>
@@ -3637,18 +3830,20 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="sc-experience">Relevant Experience/Background</label>
-                            <textarea id="sc-experience" name="experience" rows="3" placeholder="Please describe any relevant experience or background related to your chosen course"></textarea>
+                            <textarea id="sc-experience" name="experience" rows="3"
+                                placeholder="Please describe any relevant experience or background related to your chosen course"></textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="sc-goals">Learning Goals</label>
-                            <textarea id="sc-goals" name="goals" rows="3" placeholder="What do you hope to achieve from this course?"></textarea>
+                            <textarea id="sc-goals" name="goals" rows="3"
+                                placeholder="What do you hope to achieve from this course?"></textarea>
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="submit-btn">Enroll Now</button>
                 </form>
             </div>
@@ -3665,7 +3860,8 @@
         </div>
         <div class="breadcrumb">
             <div class="container">
-                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Corporate Training Application
+                <a href="#home" onclick="showPage('home')">Home</a> > <a href="#apply-now">Apply Now</a> > Corporate
+                Training Application
             </div>
         </div>
         <section class="content-section">
@@ -3681,7 +3877,7 @@
                         <li>Customized Training Solutions</li>
                     </ul>
                 </div>
-                
+
                 <form class="application-form">
                     <div class="form-section">
                         <h3>Organization Information</h3>
@@ -3689,7 +3885,7 @@
                             <label for="ct-company">Company/Organization Name *</label>
                             <input type="text" id="ct-company" name="company" required>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ct-industry">Industry *</label>
@@ -3717,13 +3913,13 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ct-address">Company Address *</label>
                             <textarea id="ct-address" name="address" rows="3" required></textarea>
                         </div>
                     </div>
-                    
+
                     <div class="form-section">
                         <h3>Contact Person Details</h3>
                         <div class="form-row">
@@ -3736,7 +3932,7 @@
                                 <input type="text" id="ct-position" name="position" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ct-email">Email Address *</label>
@@ -3748,7 +3944,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-section">
                         <h3>Training Requirements</h3>
                         <div class="form-group">
@@ -3763,7 +3959,7 @@
                                 <option value="custom">Customized Training Solutions</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ct-participants">Number of Participants *</label>
@@ -3781,7 +3977,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="ct-location">Training Location *</label>
@@ -3805,18 +4001,20 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ct-specific-needs">Specific Training Needs/Objectives *</label>
-                            <textarea id="ct-specific-needs" name="specificneeds" rows="4" required placeholder="Please describe your specific training objectives, challenges you want to address, and desired outcomes"></textarea>
+                            <textarea id="ct-specific-needs" name="specificneeds" rows="4" required
+                                placeholder="Please describe your specific training objectives, challenges you want to address, and desired outcomes"></textarea>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ct-timeline">Preferred Timeline</label>
-                            <textarea id="ct-timeline" name="timeline" rows="2" placeholder="When would you like to conduct this training?"></textarea>
+                            <textarea id="ct-timeline" name="timeline" rows="2"
+                                placeholder="When would you like to conduct this training?"></textarea>
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="submit-btn">Request Training Proposal</button>
                 </form>
             </div>
@@ -3860,10 +4058,12 @@
                     <h3>Follow Us</h3>
                     <p>Stay connected with LSUC on social media for the latest updates and news.</p>
                     <div style="margin-top: 20px;">
-                        <a href="https://www.facebook.com/profile.php?id=61564462900141" style="margin-right: 15px; font-size: 24px;">📘</a>
+                        <a href="https://www.facebook.com/profile.php?id=61564462900141"
+                            style="margin-right: 15px; font-size: 24px;">📘</a>
                         <a href="#" style="margin-right: 15px; font-size: 24px;">📷</a>
                         <a href="#" style="margin-right: 15px; font-size: 24px;">🐦</a>
-                        <a href="https://www.linkedin.com/company/lsuc/posts/?feedView=all" style="font-size: 24px;">💼</a>
+                        <a href="https://www.linkedin.com/company/lsuc/posts/?feedView=all"
+                            style="font-size: 24px;">💼</a>
                     </div>
                 </div>
             </div>
@@ -3921,33 +4121,33 @@
             pages.forEach(page => {
                 page.classList.remove('active');
             });
-            
+
             // Show selected page
             const selectedPage = document.getElementById(pageId);
             if (selectedPage) {
                 selectedPage.classList.add('active');
-                
+
                 // Add loading animation
                 selectedPage.classList.add('loading');
                 setTimeout(() => {
                     selectedPage.classList.add('loaded');
                 }, 100);
-                
+
                 // Remove loading class after animation
                 setTimeout(() => {
                     selectedPage.classList.remove('loading', 'loaded');
                 }, 600);
             }
-            
+
             // Scroll to top
             window.scrollTo(0, 0);
-            
+
             // Update URL hash
             window.location.hash = pageId;
         }
 
         // Handle initial page load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById(hash)) {
                 showPage(hash);
@@ -3955,13 +4155,13 @@
         });
 
         // Handle browser back/forward buttons
-        window.addEventListener('popstate', function() {
+        window.addEventListener('popstate', function () {
             const hash = window.location.hash.substring(1) || 'home';
             showPage(hash);
         });
 
         // Smooth scrolling for anchor links within pages
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 const targetId = e.target.getAttribute('href').substring(1);
@@ -3975,7 +4175,7 @@
         function toggleMobileMenu() {
             const navMenu = document.querySelector('.nav-menu');
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            
+
             navMenu.classList.toggle('mobile-open');
             mobileToggle.classList.toggle('active');
         }
@@ -3983,7 +4183,7 @@
         function closeMobileMenu() {
             const navMenu = document.querySelector('.nav-menu');
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            
+
             navMenu.classList.remove('mobile-open');
             mobileToggle.classList.remove('active');
         }
@@ -3996,18 +4196,18 @@
         }
 
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const navMenu = document.querySelector('.nav-menu');
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
             const navbar = document.querySelector('.navbar');
-            
+
             if (!navbar.contains(e.target) && navMenu.classList.contains('mobile-open')) {
                 closeMobileMenu();
             }
         });
 
         // Close mobile menu on resize to desktop
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth > 768) {
                 closeMobileMenu();
             }
@@ -4018,32 +4218,32 @@
             const imageSrc = element.getAttribute('data-image');
             const titleElement = element.querySelector('.gallery-overlay h4');
             const title = titleElement ? titleElement.textContent : 'Campus Facility';
-            
+
             // Set modal content
             document.getElementById('previewImage').src = imageSrc;
             document.getElementById('previewTitle').textContent = title;
-            
+
             // Show modal
             const modal = document.getElementById('imagePreviewModal');
             modal.style.display = 'flex';
-            
+
             // Prevent body scroll
             document.body.style.overflow = 'hidden';
         }
-        
+
         function closeImagePreview(event) {
             // Close only if clicking outside the image or on close button
             if (!event || event.target.id === 'imagePreviewModal' || event.target.classList.contains('close-preview')) {
                 const modal = document.getElementById('imagePreviewModal');
                 modal.style.display = 'none';
-                
+
                 // Restore body scroll
                 document.body.style.overflow = 'auto';
             }
         }
-        
+
         // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeImagePreview();
                 closePDFViewer();
@@ -4052,7 +4252,7 @@
 
         // Gallery item click handler for future lightbox functionality
         document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 // Future: Open lightbox with larger image
                 console.log('Gallery item clicked:', this.textContent);
             });
@@ -4077,7 +4277,7 @@
         }
 
         // Auto-refresh for dynamic content
-        setInterval(function() {
+        setInterval(function () {
             // Future: Auto-refresh news and updates
             loadLatestNews();
         }, 300000); // Refresh every 5 minutes
@@ -4088,7 +4288,7 @@
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('animate-in');
                 }
@@ -4101,38 +4301,38 @@
         animateOnScroll();
 
         // Form submission handlers with Formspree integration
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Add real-time validation to form fields
             const formFields = document.querySelectorAll('.application-form input, .application-form select, .application-form textarea');
             formFields.forEach(field => {
-                field.addEventListener('blur', function() {
+                field.addEventListener('blur', function () {
                     validateField(this);
                 });
-                
-                field.addEventListener('input', function() {
+
+                field.addEventListener('input', function () {
                     if (this.classList.contains('error')) {
                         validateField(this);
                     }
                 });
             });
-            
+
             // Handle all application form submissions
             const forms = document.querySelectorAll('.application-form');
             forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    
+
                     // Validate form before submission
                     if (!validateForm(this)) {
                         return;
                     }
-                    
+
                     // Get form data and determine form type
                     const formData = new FormData(this);
                     const pageId = this.closest('.page-content').id;
                     let formType = '';
-                    
-                    switch(pageId) {
+
+                    switch (pageId) {
                         case 'undergraduate-application':
                             formType = 'Undergraduate Application';
                             break;
@@ -4145,17 +4345,17 @@
                         default:
                             formType = 'General Application';
                     }
-                    
+
                     // Add form type and additional info to FormData
-                    const applicantName = formData.get('firstname') && formData.get('lastname') 
+                    const applicantName = formData.get('firstname') && formData.get('lastname')
                         ? `${formData.get('firstname')} ${formData.get('lastname')}`
                         : (formData.get('contactname') || formData.get('name') || 'Unknown');
-                    
+
                     formData.append('application_type', formType);
                     formData.append('submission_date', new Date().toLocaleString());
                     formData.append('application_id', 'LSUC-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase());
                     formData.append('name', applicantName);
-                    
+
                     // Create message field for PHP contact.php
                     let messageContent = `Application Type: ${formType}\n\n`;
                     for (let [key, value] of formData.entries()) {
@@ -4164,88 +4364,88 @@
                         }
                     }
                     formData.append('message', messageContent);
-                    
+
                     // Show loading state
                     const submitBtn = this.querySelector('.submit-btn');
                     const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Submitting...';
                     submitBtn.disabled = true;
                     submitBtn.classList.add('loading');
-                    
+
                     // Remove any previous error messages
                     clearErrorMessages(this);
-                    
+
                     // Submit form to PHP backend
                     fetch('contact.php', {
                         method: 'POST',
                         body: formData
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        // PHP backend success response
-                        const applicationId = formData.get('application_id');
-                        
-                        if (data.includes('✅ Success!')) {
-                            showSuccessMessage(
-                                '🎉 Application Submitted Successfully!', 
-                                `Your ${formType.toLowerCase()} has been sent to our admissions team.<br><br>
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            // PHP backend success response
+                            const applicationId = formData.get('application_id');
+
+                            if (data.includes('✅ Success!')) {
+                                showSuccessMessage(
+                                    '🎉 Application Submitted Successfully!',
+                                    `Your ${formType.toLowerCase()} has been sent to our admissions team.<br><br>
                                 <strong>Application ID:</strong> ${applicationId}<br>
                                 <strong>Your Email:</strong> ${formData.get('email')}<br><br>
                                 ✅ You will receive an email confirmation shortly<br>
                                 📞 Our team will contact you within 2-3 business days<br><br>
                                 <em>Thank you for choosing Lusaka South University College!</em>`
-                            );
-                        } else {
-                            throw new Error('Server responded with an error');
-                        }
-                        
-                        // Reset form
-                        this.reset();
-                        clearAllFieldErrors(this);
-                        
-                        // Redirect to home after delay
-                        setTimeout(() => {
-                            showPage('home');
-                        }, 6000);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        
-                        let errorMessage = 'There was an issue submitting your application. Please try again.';
-                        
-                        if (error.message.includes('400')) {
-                            errorMessage = 'Please check all required fields and try again.';
-                        } else if (error.message.includes('403')) {
-                            errorMessage = 'Form submission blocked. Please contact us directly at admissions@lsc.edu.zm';
-                        } else if (error.message.includes('429')) {
-                            errorMessage = 'Too many submissions. Please wait a moment and try again.';
-                        } else if (error.message.includes('Failed to fetch')) {
-                            errorMessage = 'Network connection issue. Please check your internet and try again.';
-                        }
-                        
-                        showErrorMessage(errorMessage + '<br><br>Alternative: Email us directly at <strong>admissions@lsc.edu.zm</strong>');
-                    })
-                    .finally(() => {
-                        // Restore button
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                        submitBtn.classList.remove('loading');
-                    });
+                                );
+                            } else {
+                                throw new Error('Server responded with an error');
+                            }
+
+                            // Reset form
+                            this.reset();
+                            clearAllFieldErrors(this);
+
+                            // Redirect to home after delay
+                            setTimeout(() => {
+                                showPage('home');
+                            }, 6000);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+
+                            let errorMessage = 'There was an issue submitting your application. Please try again.';
+
+                            if (error.message.includes('400')) {
+                                errorMessage = 'Please check all required fields and try again.';
+                            } else if (error.message.includes('403')) {
+                                errorMessage = 'Form submission blocked. Please contact us directly at admissions@lsc.edu.zm';
+                            } else if (error.message.includes('429')) {
+                                errorMessage = 'Too many submissions. Please wait a moment and try again.';
+                            } else if (error.message.includes('Failed to fetch')) {
+                                errorMessage = 'Network connection issue. Please check your internet and try again.';
+                            }
+
+                            showErrorMessage(errorMessage + '<br><br>Alternative: Email us directly at <strong>admissions@lsc.edu.zm</strong>');
+                        })
+                        .finally(() => {
+                            // Restore button
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('loading');
+                        });
                 });
             });
         });
-        
+
         // Individual field validation
         function validateField(field) {
             const value = field.value.trim();
             let isValid = true;
             let errorMessage = '';
-            
+
             // Check if required field is empty
             if (field.hasAttribute('required') && !value) {
                 isValid = false;
@@ -4263,7 +4463,7 @@
                     errorMessage = 'Please enter a valid positive number';
                 }
             }
-            
+
             if (isValid) {
                 clearFieldError(field);
                 field.classList.remove('error');
@@ -4273,21 +4473,21 @@
                 field.classList.remove('success');
                 field.classList.add('error');
             }
-            
+
             return isValid;
         }
-        
+
         // Form validation function
         function validateForm(form) {
             const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
             let isValid = true;
-            
+
             requiredFields.forEach(field => {
                 if (!validateField(field)) {
                     isValid = false;
                 }
             });
-            
+
             // Scroll to first error if validation fails
             if (!isValid) {
                 const firstError = form.querySelector('.error');
@@ -4296,58 +4496,58 @@
                     firstError.focus();
                 }
             }
-            
+
             return isValid;
         }
-        
+
         // Helper functions for validation
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
-        
+
         function isValidPhone(phone) {
             const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
             return phoneRegex.test(phone);
         }
-        
+
         // Error and success message functions
         function showFieldError(field, message) {
             clearFieldError(field);
-            
+
             const errorDiv = document.createElement('div');
             errorDiv.className = 'field-error';
             errorDiv.textContent = message;
-            
+
             field.parentNode.appendChild(errorDiv);
         }
-        
+
         function clearFieldError(field) {
             const existingError = field.parentNode.querySelector('.field-error');
             if (existingError) {
                 existingError.remove();
             }
         }
-        
+
         function clearAllFieldErrors(form) {
             const errors = form.querySelectorAll('.field-error');
             errors.forEach(error => error.remove());
-            
+
             const fields = form.querySelectorAll('.error, .success');
             fields.forEach(field => {
                 field.classList.remove('error', 'success');
             });
         }
-        
+
         function clearErrorMessages(form) {
             const errors = document.querySelectorAll('.form-error, .form-success');
             errors.forEach(error => error.remove());
         }
-        
+
         function showErrorMessage(message) {
             // Remove any existing messages first
             clearErrorMessages();
-            
+
             const errorDiv = document.createElement('div');
             errorDiv.className = 'form-error';
             errorDiv.innerHTML = `
@@ -4365,9 +4565,9 @@
                     </div>
                 </div>
             `;
-            
+
             document.body.appendChild(errorDiv);
-            
+
             // Add shake animation
             const style = document.createElement('style');
             style.textContent = `
@@ -4382,7 +4582,7 @@
                 }
             `;
             document.head.appendChild(style);
-            
+
             // Remove after 15 seconds
             setTimeout(() => {
                 if (errorDiv.parentNode) {
@@ -4390,11 +4590,11 @@
                 }
             }, 15000);
         }
-        
+
         function showSuccessMessage(title, message) {
             // Remove any existing messages first
             clearErrorMessages();
-            
+
             const successDiv = document.createElement('div');
             successDiv.className = 'form-success';
             successDiv.innerHTML = `
@@ -4411,9 +4611,9 @@
                     <p style="margin: 20px 0 0 0; font-size: 0.95rem; opacity: 0.8; font-style: italic;">Redirecting to home page in a few seconds...</p>
                 </div>
             `;
-            
+
             document.body.appendChild(successDiv);
-            
+
             // Add bounce animation
             const style = document.createElement('style');
             style.textContent = `
@@ -4427,7 +4627,7 @@
                 }
             `;
             document.head.appendChild(style);
-            
+
             // Remove after 12 seconds (longer to read the message)
             setTimeout(() => {
                 if (successDiv.parentNode) {
@@ -4435,46 +4635,46 @@
                 }
             }, 12000);
         }
-        
+
         // Fallback submission for testing when PHP server is not available
         function handleFallbackSubmission(formObject, form) {
             // Simulate email submission for testing purposes
-            const applicationId = 'LSUC-' + formObject.formType.toUpperCase().replace('-', '') + '-2025-' + 
-                                  Math.random().toString().substr(2, 6);
-            
+            const applicationId = 'LSUC-' + formObject.formType.toUpperCase().replace('-', '') + '-2025-' +
+                Math.random().toString().substr(2, 6);
+
             // Generate email content preview
             const emailContent = generateEmailPreview(formObject, applicationId);
-            
+
             // Log for testing
             console.log('=== SIMULATED EMAIL TO admissions@lsc.edu.zm ===');
             console.log('Subject:', emailContent.subject);
             console.log('Content:', emailContent.body);
             console.log('=== END SIMULATION ===');
-            
+
             // Show success message with simulation note
             showSuccessMessage(
-                'Application Simulated Successfully! 📝', 
+                'Application Simulated Successfully! 📝',
                 `<strong>Testing Mode:</strong> Your application would be sent to admissions@lsc.edu.zm<br><br>
                 Application ID: <strong>${applicationId}</strong><br><br>
                 Email Subject: "${emailContent.subject}"<br><br>
                 Check the browser console for the full email content that would be sent.<br><br>
                 <em>Note: To enable real email sending, ensure XAMPP/PHP server is running.</em>`
             );
-            
+
             // Reset form
             form.reset();
             clearAllFieldErrors(form);
-            
+
             // Redirect to home after delay
             setTimeout(() => {
                 showPage('home');
             }, 6000);
         }
-        
+
         // Generate email preview for testing
         function generateEmailPreview(data, applicationId) {
             let subject, body;
-            
+
             switch (data.formType) {
                 case 'undergraduate':
                     subject = `New Undergraduate Application - ${data.firstname} ${data.lastname}`;
@@ -4515,7 +4715,7 @@ Participants: ${data.participants}`;
                     subject = `New Application - ${data.firstname} ${data.lastname}`;
                     body = `Application ID: ${applicationId}\n\nForm Data: ${JSON.stringify(data, null, 2)}`;
             }
-            
+
             return { subject, body };
         }
 
@@ -4524,94 +4724,94 @@ Participants: ${data.participants}`;
         const slides = document.querySelectorAll('.carousel-image');
         const indicators = document.querySelectorAll('.indicator');
         const totalSlides = slides.length;
-        
+
         // Shuffled order for interesting transitions (school3, school1, school4, school2)
         const slideOrder = [0, 1, 2, 3]; // This matches our HTML order which is already shuffled
-        
+
         function showSlide(index) {
             // Remove active class from all slides and indicators
             slides.forEach(slide => slide.classList.remove('active'));
             indicators.forEach(indicator => indicator.classList.remove('active'));
-            
+
             // Add active class to current slide and indicator
             slides[index].classList.add('active');
             indicators[index].classList.add('active');
         }
-        
+
         function nextSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             showSlide(currentSlide);
         }
-        
+
         // Auto-advance carousel every 3 seconds
         let carouselInterval = setInterval(nextSlide, 3000);
-        
+
         // Add click handlers for indicators
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 currentSlide = index;
                 showSlide(currentSlide);
-                
+
                 // Reset the interval when user manually changes slide
                 clearInterval(carouselInterval);
                 carouselInterval = setInterval(nextSlide, 3000);
             });
         });
-        
+
         // Pause carousel on hover
         const carousel = document.querySelector('.campus-carousel');
         if (carousel) {
             carousel.addEventListener('mouseenter', () => {
                 clearInterval(carouselInterval);
             });
-            
+
             carousel.addEventListener('mouseleave', () => {
                 carouselInterval = setInterval(nextSlide, 3000);
             });
         }
-        
+
         // PDF Viewer Functions
         let currentPDFUrl = '';
         let currentPDFTitle = '';
-        
+
         function openPDFViewer(pdfUrl, title = 'Document Viewer') {
             currentPDFUrl = pdfUrl;
             currentPDFTitle = title;
-            
+
             const modal = document.getElementById('pdfViewerModal');
             const titleElement = document.getElementById('pdfViewerTitle');
             const loadingElement = document.getElementById('pdfLoading');
             const errorElement = document.getElementById('pdfError');
             const frameElement = document.getElementById('pdfViewerFrame');
-            
+
             // Set title
             titleElement.textContent = title;
-            
+
             // Reset visibility
             loadingElement.style.display = 'flex';
             errorElement.style.display = 'none';
             frameElement.style.display = 'none';
-            
+
             // Show modal
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            
+
             // Load PDF in iframe
             setTimeout(() => {
                 try {
                     frameElement.src = pdfUrl;
-                    
+
                     // Handle iframe load events
-                    frameElement.onload = function() {
+                    frameElement.onload = function () {
                         loadingElement.style.display = 'none';
                         frameElement.style.display = 'block';
                     };
-                    
-                    frameElement.onerror = function() {
+
+                    frameElement.onerror = function () {
                         loadingElement.style.display = 'none';
                         errorElement.style.display = 'flex';
                     };
-                    
+
                     // Fallback timeout if neither event fires
                     setTimeout(() => {
                         if (loadingElement.style.display !== 'none') {
@@ -4619,7 +4819,7 @@ Participants: ${data.participants}`;
                             frameElement.style.display = 'block';
                         }
                     }, 3000);
-                    
+
                 } catch (error) {
                     console.error('Error loading PDF:', error);
                     loadingElement.style.display = 'none';
@@ -4627,21 +4827,21 @@ Participants: ${data.participants}`;
                 }
             }, 500);
         }
-        
+
         function closePDFViewer(event) {
             // Close only if clicking outside the content or on close button
             if (!event || event.target.id === 'pdfViewerModal' || event.target.classList.contains('close-pdf-viewer')) {
                 const modal = document.getElementById('pdfViewerModal');
                 const frameElement = document.getElementById('pdfViewerFrame');
-                
+
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
-                
+
                 // Clear iframe source to stop loading
                 frameElement.src = '';
             }
         }
-        
+
         function downloadPDF() {
             if (currentPDFUrl) {
                 const link = document.createElement('a');
@@ -4652,15 +4852,15 @@ Participants: ${data.participants}`;
                 document.body.removeChild(link);
             }
         }
-        
+
         function openPDFNewTab() {
             if (currentPDFUrl) {
                 window.open(currentPDFUrl, '_blank');
             }
         }
-        
+
         // Enhanced keyboard support for PDF viewer
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             const pdfModal = document.getElementById('pdfViewerModal');
             if (pdfModal.style.display === 'flex') {
                 if (event.key === 'Escape') {
@@ -4683,6 +4883,7 @@ Participants: ${data.participants}`;
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -4699,7 +4900,7 @@ Participants: ${data.participants}`;
                 flex-direction: column;
                 padding: 10px 20px;
             }
-            
+
             .nav-menu {
                 width: 100%;
                 margin-left: 0;
@@ -4709,12 +4910,12 @@ Participants: ${data.participants}`;
                 border-radius: 10px;
                 overflow: hidden;
             }
-            
+
             .nav-link {
                 padding: 15px 20px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
-            
+
             .dropdown {
                 position: static;
                 opacity: 1;
@@ -4724,22 +4925,22 @@ Participants: ${data.participants}`;
                 background: var(--primary-green);
                 margin-left: 20px;
             }
-            
+
             .hero-content {
                 margin: 20px;
                 padding: 30px 20px;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
-            
+
             .gallery-item {
                 height: 120px;
                 font-size: 14px;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -4750,19 +4951,19 @@ Participants: ${data.participants}`;
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .cards-grid {
                 gap: 20px;
             }
-            
+
             .section {
                 padding: 40px 0;
             }
-            
+
             .hero h1 {
                 font-size: 2rem;
             }
-            
+
             .hero .motto {
                 font-size: 1.2rem;
             }
@@ -4770,20 +4971,23 @@ Participants: ${data.participants}`;
 
         /* Print styles */
         @media print {
-            .navbar, .footer {
+
+            .navbar,
+            .footer {
                 display: none;
             }
-            
+
             .page-content {
                 margin-top: 0;
             }
-            
+
             .hero {
                 height: auto;
                 padding: 40px 0;
             }
-            
-            .card, .update-card {
+
+            .card,
+            .update-card {
                 break-inside: avoid;
             }
         }
@@ -4795,7 +4999,7 @@ Participants: ${data.participants}`;
                 --primary-green: #006600;
                 --gray-800: #000000;
             }
-            
+
             .card {
                 border: 2px solid var(--gray-800);
             }
@@ -4815,41 +5019,41 @@ Participants: ${data.participants}`;
             /* Future: Add dark mode styles */
         }
     </style>
-</head>
-<script>
+    </head>
+    <script>
         function showPage(pageId) {
             // Hide all pages
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => {
                 page.classList.remove('active');
             });
-            
+
             // Show selected page
             const selectedPage = document.getElementById(pageId);
             if (selectedPage) {
                 selectedPage.classList.add('active');
-                
+
                 // Add loading animation
                 selectedPage.classList.add('loading');
                 setTimeout(() => {
                     selectedPage.classList.add('loaded');
                 }, 100);
-                
+
                 // Remove loading class after animation
                 setTimeout(() => {
                     selectedPage.classList.remove('loading', 'loaded');
                 }, 600);
             }
-            
+
             // Scroll to top
             window.scrollTo(0, 0);
-            
+
             // Update URL hash
             window.location.hash = pageId;
         }
 
         // Handle initial page load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const hash = window.location.hash.substring(1);
             if (hash && document.getElementById(hash)) {
                 showPage(hash);
@@ -4857,13 +5061,13 @@ Participants: ${data.participants}`;
         });
 
         // Handle browser back/forward buttons
-        window.addEventListener('popstate', function() {
+        window.addEventListener('popstate', function () {
             const hash = window.location.hash.substring(1) || 'home';
             showPage(hash);
         });
 
         // Smooth scrolling for anchor links within pages
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 const targetId = e.target.getAttribute('href').substring(1);
@@ -4881,7 +5085,7 @@ Participants: ${data.participants}`;
 
         // Gallery item click handler for future lightbox functionality
         document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 // Future: Open lightbox with larger image
                 console.log('Gallery item clicked:', this.textContent);
             });
@@ -4906,7 +5110,7 @@ Participants: ${data.participants}`;
         }
 
         // Auto-refresh for dynamic content
-        setInterval(function() {
+        setInterval(function () {
             // Future: Auto-refresh news and updates
             loadLatestNews();
         }, 300000); // Refresh every 5 minutes
@@ -4917,7 +5121,7 @@ Participants: ${data.participants}`;
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('animate-in');
                 }
@@ -5102,25 +5306,25 @@ Participants: ${data.participants}`;
             }
 
             /* Responsive adjustments */
-            @media (max-width: 768px) {
-                #festive-message {
-                    top: 70px;
-                    right: 10px;
-                    font-size: 14px;
-                    padding: 8px 15px;
-                }
+        @media(max - width: 768px) {
+            #festive - message {
+                top: 70px;
+                right: 10px;
+                font - size: 14px;
+                padding: 8px 15px;
             }
+        }
 
-            /* Reduce motion for accessibility */
-            @media (prefers-reduced-motion: reduce) {
-                .glitter-particle {
-                    animation: none !important;
-                    display: none;
-                }
-                #festive-message {
-                    animation: none !important;
-                }
+        /* Reduce motion for accessibility */
+        @media(prefers - reduced - motion: reduce) {
+                .glitter - particle {
+                animation: none!important;
+                display: none;
             }
+            #festive - message {
+                animation: none!important;
+            }
+        }
         `;
         document.head.appendChild(glitterStyles);*/
 
@@ -5140,15 +5344,15 @@ Participants: ${data.participants}`;
             const snowContainer = document.createElement('div');
             snowContainer.id = 'snow-container';
             snowContainer.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: 9998;
-                overflow: hidden;
-            `;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100 %;
+        height: 100 %;
+        pointer - events: none;
+        z - index: 9998;
+        overflow: hidden;
+        `;
             document.body.insertBefore(snowContainer, document.body.firstChild);
 
             // Festive color palette for particles
@@ -5185,24 +5389,24 @@ Participants: ${data.participants}`;
                 const sway = Math.random() * 30 - 15; // -15 to 15px horizontal sway
                 
                 snowflake.style.cssText = `
-                    position: absolute;
-                    top: -20px;
-                    left: ${startX}px;
-                    width: ${size}px;
-                    height: ${size}px;
-                    border-radius: 50%;
-                    opacity: ${opacity};
-                    animation: 
-                        snowFall ${duration}s linear ${delay}s infinite,
-                        colorShiftSnow ${duration * 0.7}s ease-in-out ${delay}s infinite;
-                    filter: blur(${blur}px);
-                    box-shadow: 0 0 ${size * 1.5}px currentColor;
-                `;
+        position: absolute;
+        top: -20px;
+        left: ${ startX } px;
+        width: ${ size } px;
+        height: ${ size } px;
+        border - radius: 50 %;
+        opacity: ${ opacity };
+        animation: 
+                        snowFall ${ duration }s linear ${ delay }s infinite,
+            colorShiftSnow ${ duration * 0.7 }s ease -in -out ${ delay }s infinite;
+        filter: blur(${ blur }px);
+        box - shadow: 0 0 ${ size * 1.5 }px currentColor;
+        `;
                 
-                snowflake.style.setProperty('--sway', `${sway}px`);
+                snowflake.style.setProperty('--sway', `${ sway } px`);
                 snowflake.style.setProperty('--color-start', colorPair.start);
                 snowflake.style.setProperty('--color-end', colorPair.end);
-                snowflake.style.background = `radial-gradient(circle, ${colorPair.start} 0%, ${colorPair.start} 50%, transparent 100%)`;
+                snowflake.style.background = `radial - gradient(circle, ${ colorPair.start } 0 %, ${ colorPair.start } 50 %, transparent 100 %)`;
                 
                 return snowflake;
             }
@@ -5223,25 +5427,25 @@ Participants: ${data.participants}`;
                 const colorPair = snowColors[Math.floor(Math.random() * snowColors.length)];
                 
                 streak.style.cssText = `
-                    position: absolute;
-                    top: -${length}px;
-                    left: ${startX}px;
-                    width: ${width}px;
-                    height: ${length}px;
-                    border-radius: 50%;
-                    animation: 
-                        streakFall ${duration}s linear ${delay}s infinite,
-                        colorShiftStreak ${duration * 0.8}s ease-in-out ${delay}s infinite;
-                    filter: blur(0.5px);
-                `;
+        position: absolute;
+        top: -${ length } px;
+        left: ${ startX } px;
+        width: ${ width } px;
+        height: ${ length } px;
+        border - radius: 50 %;
+        animation: 
+                        streakFall ${ duration }s linear ${ delay }s infinite,
+            colorShiftStreak ${ duration * 0.8 }s ease -in -out ${ delay }s infinite;
+        filter: blur(0.5px);
+        `;
                 
                 streak.style.setProperty('--streak-color-start', colorPair.start);
                 streak.style.setProperty('--streak-color-mid', colorPair.end);
                 streak.style.setProperty('--streak-opacity', opacity);
-                streak.style.background = `linear-gradient(to bottom, 
-                    transparent 0%, 
-                    ${colorPair.start} 50%, 
-                    transparent 100%)`;
+                streak.style.background = `linear - gradient(to bottom,
+            transparent 0 %,
+            ${ colorPair.start } 50 %,
+            transparent 100 %)`;
                 
                 return streak;
             }
@@ -5294,124 +5498,124 @@ Participants: ${data.participants}`;
         // Add CSS animations for snowfall with color transitions
         const snowStyles = document.createElement('style');
         snowStyles.textContent = `
-            @keyframes snowFall {
-                0% {
-                    transform: translateY(-20px) translateX(0);
+        @keyframes snowFall {
+            0 % {
+                transform: translateY(-20px) translateX(0);
                     opacity: 0;
+            }
+            10 % {
+                opacity: 1;
+            }
+            90 % {
+                opacity: 1;
+            }
+            100 % {
+                transform: translateY(100vh) translateX(var(--sway));
+            opacity: 0;
+        }
+            }
+
+        @keyframes colorShiftSnow {
+            0 % {
+                background: radial - gradient(circle, var(--color - start) 0 %, var(--color - start) 50 %, transparent 100 %);
+            color: var(--color - start);
+        }
+        25 % {
+            background: radial - gradient(circle, var(--color - end) 0 %, var(--color - end) 50 %, transparent 100 %);
+        color: var(--color - end);
                 }
-                10% {
-                    opacity: 1;
+        50 % {
+            background: radial - gradient(circle, var(--color - start) 0 %, var(--color - start) 50 %, transparent 100 %);
+        color: var(--color - start);
                 }
-                90% {
-                    opacity: 1;
+        75 % {
+            background: radial - gradient(circle, var(--color - end) 0 %, var(--color - end) 50 %, transparent 100 %);
+        color: var(--color - end);
                 }
-                100% {
-                    transform: translateY(100vh) translateX(var(--sway));
-                    opacity: 0;
+        100 % {
+            background: radial - gradient(circle, var(--color - start) 0 %, var(--color - start) 50 %, transparent 100 %);
+        color: var(--color - start);
                 }
             }
 
-            @keyframes colorShiftSnow {
-                0% {
-                    background: radial-gradient(circle, var(--color-start) 0%, var(--color-start) 50%, transparent 100%);
-                    color: var(--color-start);
-                }
-                25% {
-                    background: radial-gradient(circle, var(--color-end) 0%, var(--color-end) 50%, transparent 100%);
-                    color: var(--color-end);
-                }
-                50% {
-                    background: radial-gradient(circle, var(--color-start) 0%, var(--color-start) 50%, transparent 100%);
-                    color: var(--color-start);
-                }
-                75% {
-                    background: radial-gradient(circle, var(--color-end) 0%, var(--color-end) 50%, transparent 100%);
-                    color: var(--color-end);
-                }
-                100% {
-                    background: radial-gradient(circle, var(--color-start) 0%, var(--color-start) 50%, transparent 100%);
-                    color: var(--color-start);
-                }
+        @keyframes streakFall {
+            0 % {
+                transform: translateY(0);
+                opacity: 0;
             }
-
-            @keyframes streakFall {
-                0% {
-                    transform: translateY(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 1;
-                }
-                90% {
-                    opacity: 1;
-                }
-                100% {
-                    transform: translateY(100vh);
-                    opacity: 0;
-                }
+            10 % {
+                opacity: 1;
             }
+            90 % {
+                opacity: 1;
+            }
+            100 % {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
 
-            @keyframes colorShiftStreak {
-                0% {
-                    background: linear-gradient(to bottom, 
-                        transparent 0%, 
-                        var(--streak-color-start) 50%, 
-                        transparent 100%);
+        @keyframes colorShiftStreak {
+            0 % {
+                background: linear - gradient(to bottom,
+                    transparent 0 %, 
+                        var(--streak - color - start) 50 %,
+                transparent 100 %);
+        }
+        33 % {
+            background: linear - gradient(to bottom,
+                transparent 0 %, 
+                        var(--streak - color - mid) 50 %,
+            transparent 100 %);
                 }
-                33% {
-                    background: linear-gradient(to bottom, 
-                        transparent 0%, 
-                        var(--streak-color-mid) 50%, 
-                        transparent 100%);
+        66 % {
+            background: linear - gradient(to bottom,
+                transparent 0 %, 
+                        var(--streak - color - start) 50 %,
+            transparent 100 %);
                 }
-                66% {
-                    background: linear-gradient(to bottom, 
-                        transparent 0%, 
-                        var(--streak-color-start) 50%, 
-                        transparent 100%);
-                }
-                100% {
-                    background: linear-gradient(to bottom, 
-                        transparent 0%, 
-                        var(--streak-color-mid) 50%, 
-                        transparent 100%);
+        100 % {
+            background: linear - gradient(to bottom,
+                transparent 0 %, 
+                        var(--streak - color - mid) 50 %,
+            transparent 100 %);
                 }
             }
 
             /* Add some snowflakes that fall slower for depth */
-            .snowflake:nth-child(3n) {
-                animation-duration: 8s, 6s;
-            }
+            .snowflake: nth - child(3n) {
+            animation - duration: 8s, 6s;
+        }
 
-            .snowflake:nth-child(5n) {
-                animation-duration: 12s, 8s;
-            }
+            .snowflake: nth - child(5n) {
+            animation - duration: 12s, 8s;
+        }
 
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .snowflake, .snow-streak {
-                    animation-duration: 4s, 3s !important;
-                }
+        /* Responsive adjustments */
+        @media(max - width: 768px) {
+                .snowflake, .snow - streak {
+                animation - duration: 4s, 3s!important;
             }
+        }
 
-            /* Reduce motion for accessibility */
-            @media (prefers-reduced-motion: reduce) {
-                .snowflake, .snow-streak {
-                    animation: none !important;
-                    display: none;
-                }
+        /* Reduce motion for accessibility */
+        @media(prefers - reduced - motion: reduce) {
+                .snowflake, .snow - streak {
+                animation: none!important;
+                display: none;
             }
+        }
         `;
         document.head.appendChild(snowStyles);
 
         // Optional: Toggle snowfall effect
-            /* 
+            /*
             function toggleSnowEffect() {
             const container = document.getElementById('snow-container');
             if (container) {
                 container.style.display = container.style.display === 'none' ? 'block' : 'none';
             }
-            } 
+            }
 
         // Update keyboard shortcut to toggle both effects
         document.addEventListener('keydown', function(e) {
@@ -5427,13 +5631,13 @@ Participants: ${data.participants}`;
 
     <!-- Payment Handler Script -->
     <script src="./js/payment-handler.js"></script>
-    
+
     <!-- News & Events Manager Script -->
     <script src="./js/news-events-manager.js"></script>
-    
+
     <!-- FAQs Display Manager Script -->
     <script src="./js/faq-display.js"></script>
-    
+
     <!-- News & Events Display and Admin Functions -->
     <script>
         // ============================================
@@ -5448,16 +5652,16 @@ Participants: ${data.participants}`;
         window.addEventListener('load', function() {
             // Initialize data if needed (already auto-initialized in manager.js)
             initializeNewsAndEvents();
-            
+
             // Check route for event detail page
             handleEventDetailRoute();
-            
+
             // Setup filter buttons
             setupFilterButtons();
-            
+
             // Setup search functionality
             setupSearchFunctionality();
-            
+
             // Setup sort functionality
             setupSortFunctionality();
         });
@@ -5465,10 +5669,10 @@ Participants: ${data.participants}`;
         function initializeNewsAndEvents() {
             // Load homepage events
             loadHomePageEvents();
-            
+
             // Load news page events
             loadNewsPageEvents();
-            
+
             // Check admin auth on page load
             checkAdminAuth();
         }
@@ -5479,33 +5683,33 @@ Participants: ${data.participants}`;
         function loadHomePageEvents() {
             const container = document.getElementById('home-latest-updates');
             if (!container) return;
-            
+
             const latestNews = LSUCEventsManager.getLatestNews(6);
-            
+
             if (latestNews.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#666;">No updates available at this time.</p>';
                 return;
             }
-            
+
             container.innerHTML = latestNews.map(event => createUpdateCard(event)).join('');
         }
 
         function createUpdateCard(event) {
             const formattedDate = LSUCEventsManager.formatEventDate(event.date);
-            const imageHTML = event.image ? 
-                `<div class="update-image" style="background-image: url('${event.image}'); background-size: cover; background-position: center;"></div>` :
-                `<div class="update-image">📢</div>`;
+            const imageHTML = event.image ?
+                `< div class="update-image" style = "background-image: url('${event.image}'); background-size: cover; background-position: center;" ></div > ` :
+                `< div class="update-image" >📢</div > `;
             
             return `
-                <div class="update-card">
-                    ${imageHTML}
-                    <div class="update-content">
-                        <div class="update-date">${formattedDate}</div>
-                        <h3>${event.title}</h3>
-                        <p>${event.shortDescription}</p>
-                        <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More →</a>
-                    </div>
-                </div>
+            < div class="update-card" >
+                ${ imageHTML }
+        <div class="update-content">
+            <div class="update-date">${formattedDate}</div>
+            <h3>${event.title}</h3>
+            <p>${event.shortDescription}</p>
+            <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More →</a>
+        </div>
+                </div >
             `;
         }
 
@@ -5548,14 +5752,14 @@ Participants: ${data.participants}`;
                 const countdownHTML = createCountdownTimer(countdown);
                 
                 return `
-                    <div class="card">
+            < div class="card" >
                         <div class="card-icon">📅</div>
                         <h3>${event.title}</h3>
                         <p>${event.shortDescription}</p>
-                        ${countdownHTML}
-                        <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn" style="margin-top: 15px;">Read More →</a>
-                    </div>
-                `;
+                        ${ countdownHTML }
+        <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn" style="margin-top: 15px;">Read More →</a>
+                    </div >
+            `;
             }).join('');
         }
 
@@ -5565,7 +5769,7 @@ Participants: ${data.participants}`;
             } else if (countdown.passed) {
                 return '';
             } else {
-                return `<div class="countdown-timer">⏰ ${countdown.days} days to go</div>`;
+                return `< div class="countdown-timer" >⏰ ${ countdown.days } days to go</div > `;
             }
         }
 
@@ -5650,10 +5854,10 @@ Participants: ${data.participants}`;
             }
             
             container.innerHTML = related.map(event => `
-                <div class="related-event-card" onclick="showEventDetail('${event.id}')">
+            < div class="related-event-card" onclick = "showEventDetail('${event.id}')" >
                     <h4>${event.title}</h4>
                     <div class="related-event-date">${LSUCEventsManager.formatEventDate(event.date)}</div>
-                </div>
+                </div >
             `).join('');
         }
 
@@ -5810,7 +6014,7 @@ Participants: ${data.participants}`;
             const tbody = document.getElementById('admin-events-tbody');
             
             tbody.innerHTML = events.map(event => `
-                <tr>
+            < tr >
                     <td>${event.id}</td>
                     <td>${event.title}</td>
                     <td>${LSUCEventsManager.formatEventDate(event.date)}</td>
@@ -5820,7 +6024,7 @@ Participants: ${data.participants}`;
                         <button class="edit-btn" onclick="editEvent('${event.id}')">Edit</button>
                         <button class="delete-btn-action" onclick="promptDelete('${event.id}')">Delete</button>
                     </td>
-                </tr>
+                </tr >
             `).join('');
         }
 
@@ -5840,7 +6044,7 @@ Participants: ${data.participants}`;
 
         function handleEventFormSubmit(event) {
             event.preventDefault();
-            
+
             const eventId = document.getElementById('event-id').value;
             const eventData = {
                 title: document.getElementById('event-title').value,
@@ -5852,7 +6056,7 @@ Participants: ${data.participants}`;
                 shortDescription: document.getElementById('event-short-desc').value,
                 fullDescription: document.getElementById('event-full-desc').value
             };
-            
+
             try {
                 if (eventId) {
                     // Update existing
@@ -5863,7 +6067,7 @@ Participants: ${data.participants}`;
                     LSUCEventsManager.addEvent(eventData);
                     alert('Event created successfully!');
                 }
-                
+
                 closeEventModal();
                 loadAdminDashboard();
                 loadNewsPageEvents();
@@ -5876,7 +6080,7 @@ Participants: ${data.participants}`;
         function editEvent(eventId) {
             const event = LSUCEventsManager.getEventById(eventId);
             if (!event) return;
-            
+
             document.getElementById('modal-title').textContent = 'Edit Event';
             document.getElementById('event-id').value = event.id;
             document.getElementById('event-title').value = event.title;
@@ -5886,7 +6090,7 @@ Participants: ${data.participants}`;
             document.getElementById('event-featured').checked = event.featured || false;
             document.getElementById('event-short-desc').value = event.shortDescription;
             document.getElementById('event-full-desc').value = event.fullDescription;
-            
+
             // Handle existing image
             if (event.image) {
                 // Check if it's base64 or URL
@@ -5900,7 +6104,7 @@ Participants: ${data.participants}`;
                     document.getElementById('event-image-base64').value = event.image;
                 }
             }
-            
+
             document.getElementById('event-form-modal').style.display = 'flex';
         }
 
@@ -5916,7 +6120,7 @@ Participants: ${data.participants}`;
 
         function confirmDeleteEvent() {
             const eventId = document.getElementById('delete-event-id').value;
-            
+
             try {
                 LSUCEventsManager.deleteEvent(eventId);
                 alert('Event deleted successfully!');
@@ -5939,54 +6143,54 @@ Participants: ${data.participants}`;
         // ============================================
         // IMAGE UPLOAD FUNCTIONS
         // ============================================
-        
+
         function previewImage() {
             const fileInput = document.getElementById('event-image-upload');
             const previewContainer = document.getElementById('image-preview-container');
             const previewImage = document.getElementById('image-preview');
             const base64Field = document.getElementById('event-image-base64');
-            
+
             if (fileInput.files && fileInput.files[0]) {
                 const file = fileInput.files[0];
-                
+
                 // Check file size (max 2MB)
                 if (file.size > 2 * 1024 * 1024) {
                     alert('File size exceeds 2MB. Please choose a smaller image.');
                     fileInput.value = '';
                     return;
                 }
-                
+
                 // Check file type
                 if (!file.type.startsWith('image/')) {
                     alert('Please select a valid image file (JPG, PNG, GIF, WebP).');
                     fileInput.value = '';
                     return;
                 }
-                
+
                 const reader = new FileReader();
-                
+
                 reader.onload = function(e) {
                     const base64Data = e.target.result;
                     previewImage.src = base64Data;
                     previewContainer.style.display = 'block';
                     base64Field.value = base64Data;
                 };
-                
+
                 reader.onerror = function() {
                     alert('Error reading file. Please try again.');
                     fileInput.value = '';
                 };
-                
+
                 reader.readAsDataURL(file);
             }
         }
-        
+
         function removeImage() {
             const fileInput = document.getElementById('event-image-upload');
             const previewContainer = document.getElementById('image-preview-container');
             const previewImage = document.getElementById('image-preview');
             const base64Field = document.getElementById('event-image-base64');
-            
+
             fileInput.value = '';
             previewImage.src = '';
             previewContainer.style.display = 'none';
@@ -6012,7 +6216,7 @@ Participants: ${data.participants}`;
 
     <style>
         /* Additional animations */
-      /*  
+        /*  
       @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -6035,7 +6239,7 @@ Participants: ${data.participants}`;
                 flex-direction: column;
                 padding: 10px 20px;
             }
-            
+
             .nav-menu {
                 width: 100%;
                 margin-left: 0;
@@ -6045,12 +6249,12 @@ Participants: ${data.participants}`;
                 border-radius: 10px;
                 overflow: hidden;
             }
-            
+
             .nav-link {
                 padding: 15px 20px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
-            
+
             .dropdown {
                 position: static;
                 opacity: 1;
@@ -6060,22 +6264,22 @@ Participants: ${data.participants}`;
                 background: var(--primary-green);
                 margin-left: 20px;
             }
-            
+
             .hero-content {
                 margin: 20px;
                 padding: 30px 20px;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
-            
+
             .gallery-item {
                 height: 120px;
                 font-size: 14px;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -6086,19 +6290,19 @@ Participants: ${data.participants}`;
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .cards-grid {
                 gap: 20px;
             }
-            
+
             .section {
                 padding: 40px 0;
             }
-            
+
             .hero h1 {
                 font-size: 2rem;
             }
-            
+
             .hero .motto {
                 font-size: 1.2rem;
             }
@@ -6106,20 +6310,23 @@ Participants: ${data.participants}`;
 
         /* Print styles */
         @media print {
-            .navbar, .footer {
+
+            .navbar,
+            .footer {
                 display: none;
             }
-            
+
             .page-content {
                 margin-top: 0;
             }
-            
+
             .hero {
                 height: auto;
                 padding: 40px 0;
             }
-            
-            .card, .update-card {
+
+            .card,
+            .update-card {
                 break-inside: avoid;
             }
         }
@@ -6131,7 +6338,7 @@ Participants: ${data.participants}`;
                 --primary-green: #006600;
                 --gray-800: #000000;
             }
-            
+
             .card {
                 border: 2px solid var(--gray-800);
             }
@@ -6151,4 +6358,5 @@ Participants: ${data.participants}`;
             /* Future: Add dark mode styles */
         }
     </style>
+
 </html>

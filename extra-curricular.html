@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extra-Curricular Activities - Lusaka South University College</title>
+    <title>Extra-Curricular Activities - {{SITE_NAME}}</title>
     <style>
         * {
             margin: 0;
@@ -481,7 +481,7 @@
                     <img src="./img/school_logo.jpg" alt="Lusaka South University College Logo">
                 </div>
                 <div class="logo-text">
-                    <h3>Lusaka South University College</h3>
+                    <h3><span data-site-name></span></h3>
                     <p>Dream, Explore, Acquire</p>
                 </div>
             </div>
@@ -500,7 +500,7 @@
                 <li class="nav-item">
                     <a href="index.html#about" class="nav-link" onclick="toggleDropdown(this)">About</a>
                     <div class="dropdown">
-                        <a href="index.html#lsuc-overview" class="dropdown-link">Lusaka South University College</a>
+                        <a href="index.html#lsuc-overview" class="dropdown-link"><span data-site-name></span></a>
                         <a href="index.html#our-team" class="dropdown-link">Our Team</a>
                         <a href="index.html#partnerships" class="dropdown-link">Partnerships</a>
                         <a href="index.html#accreditation" class="dropdown-link">Accreditation</a>
@@ -653,7 +653,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Lusaka South University College. All rights reserved. | Dream, Explore, Acquire</p>
+                <p>&copy; 2025 <span data-site-name></span>. All rights reserved. | Dream, Explore, Acquire</p>
             </div>
         </div>
     </footer>
@@ -701,5 +701,6 @@
             }
         });
     </script>
+    <script src="./js/site-config.js"></script>
 </body>
 </html>

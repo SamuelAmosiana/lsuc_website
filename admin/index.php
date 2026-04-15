@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../config/site_config.php';
 
 // If already logged in, redirect to dashboard
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
@@ -75,7 +76,7 @@ function logAdminActivity($username, $action, $status = 'success') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - Lusaka South University College</title>
+    <title>Admin Login - <?php echo SITE_NAME; ?></title>
     <link rel="stylesheet" href="assets/admin_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -270,7 +271,7 @@ function logAdminActivity($username, $action, $status = 'success') {
                 <i class="fas fa-graduation-cap"></i>
             </div>
             <h1>Admin Panel</h1>
-            <p>Lusaka South University College</p>
+            <p><?php echo SITE_NAME; ?></p>
         </div>
         
         <?php if ($error): ?>

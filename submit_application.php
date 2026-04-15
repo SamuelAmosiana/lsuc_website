@@ -1,5 +1,6 @@
 <?php
 // Enhanced email submission handler with better error handling
+require_once __DIR__ . '/config/site_config.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -310,7 +311,7 @@ function generateCorporateTrainingEmail($data, $applicationId) {
 
 function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
     try {
-        $subject = "Application Confirmation - Lusaka South University College";
+        $subject = "Application Confirmation - " . SITE_NAME;
         
         $body = "
         <html>
@@ -325,12 +326,12 @@ function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
         <body>
             <div class='header'>
                 <h2>Application Received</h2>
-                <p>Lusaka South University College</p>
+                <p>" . SITE_NAME . "</p>
             </div>
             <div class='content'>
                 <p>Dear " . htmlspecialchars($firstname) . ",</p>
                 
-                <p>Thank you for your application to Lusaka South University College. We have successfully received your " .
+                <p>Thank you for your application to " . SITE_NAME . ". We have successfully received your " .
                 str_replace('-', ' ', $formType) . " application.</p>
                 
                 <p><strong>Application ID:</strong> $applicationId</p>
@@ -344,14 +345,14 @@ function sendConfirmationEmail($email, $firstname, $applicationId, $formType) {
                     <li>Phone: +260-211-292-299</li>
                 </ul>
                 
-                <p>We appreciate your interest in Lusaka South University College.</p>
+                <p>We appreciate your interest in " . SITE_NAME . ".</p>
                 
                 <p>Best regards,<br>
                 Admissions Office<br>
-                Lusaka South University College</p>
+                " . SITE_NAME . "</p>
             </div>
             <div class='footer'>
-                <p>&copy; 2025 Lusaka South University College. All rights reserved.</p>
+                <p>&copy; 2025 " . SITE_NAME . ". All rights reserved.</p>
                 <p>Dream, Explore, Acquire</p>
             </div>
         </body>

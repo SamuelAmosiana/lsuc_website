@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lusaka South University College - Dream, Explore, Acquire</title>
+    <title>{{SITE_NAME}} - Dream, Explore, Acquire</title>
     <style>
         * {
             margin: 0;
@@ -2118,7 +2118,7 @@
                     <img src="./img/school_logo.jpg" alt="Lusaka South University College Logo">
                 </div>
                 <div class="logo-text">
-                    <h3>Lusaka South University College</h3>
+                    <h3><span data-site-name></span></h3>
                     <p>Dream, Explore, Acquire</p>
                 </div>
             </div>
@@ -2138,7 +2138,7 @@
                     <a href="#about" class="nav-link" onclick="toggleDropdown(this)">About</a>
                     <div class="dropdown">
                         <a href="#lsuc-overview" class="dropdown-link"
-                            onclick="showPage('lsuc-overview'); closeMobileMenu()">Lusaka South University College</a>
+                            onclick="showPage('lsuc-overview'); closeMobileMenu()"><span data-site-name></span></a>
                         <a href="#our-team" class="dropdown-link" onclick="showPage('our-team'); closeMobileMenu()">Our
                             Team</a>
                         <a href="#partnerships" class="dropdown-link"
@@ -2204,7 +2204,7 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1>Welcome to Lusaka South University College</h1>
+                <h1>Welcome to <span data-site-name></span></h1>
                 <p class="motto">"Dream, Explore, Acquire"</p>
                 <p>Empowering minds, shaping futures, and building tomorrow's leaders through excellence in education
                     and innovative learning experiences.</p>
@@ -2419,7 +2419,7 @@
     <div id="lsuc-overview" class="page-content">
         <div class="page-header">
             <div class="container">
-                <h1>About Lusaka South University College</h1>
+                <h1>About <span data-site-name></span></h1>
                 <p>Discover our history, mission, and commitment to educational excellence</p>
             </div>
         </div>
@@ -3177,7 +3177,7 @@
                         <div class="card-icon">🏢</div>
                         <h3>Main Office</h3>
                         <p><strong>Address:</strong><br>
-                            Lusaka South University College<br>
+                            <span data-site-name></span><br>
                             Foxdale, Conner of Zabezi & Mutumbi Road<br>
                             Lusaka, Zambia</p>
                         <p><strong>Phone:</strong> +260-211-123456<br>
@@ -4068,7 +4068,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Lusaka South University College. All rights reserved. | Dream, Explore, Acquire</p>
+                <p>&copy; 2025 <span data-site-name></span>. All rights reserved. | Dream, Explore, Acquire</p>
             </div>
         </div>
     </footer>
@@ -4398,7 +4398,7 @@
                                 <strong>Your Email:</strong> ${formData.get('email')}<br><br>
                                 ✅ You will receive an email confirmation shortly<br>
                                 📞 Our team will contact you within 2-3 business days<br><br>
-                                <em>Thank you for choosing Lusaka South University College!</em>`
+                                <em>Thank you for choosing <span data-site-name></span>!</em>`
                                 );
                             } else {
                                 throw new Error('Server responded with an error');
@@ -5697,19 +5697,19 @@ Participants: ${data.participants}`;
         function createUpdateCard(event) {
             const formattedDate = LSUCEventsManager.formatEventDate(event.date);
             const imageHTML = event.image ?
-                `< div class="update-image" style = "background-image: url('${event.image}'); background-size: cover; background-position: center;" ></div > ` :
-                `< div class="update-image" >📢</div > `;
+                `<div class="update-image" style="background-image: url('${event.image}'); background-size: cover; background-position: center;"></div>` :
+                `<div class="update-image">📢</div>`;
             
             return `
-            < div class="update-card" >
-                ${ imageHTML }
+            <div class="update-card">
+                ${imageHTML}
         <div class="update-content">
             <div class="update-date">${formattedDate}</div>
             <h3>${event.title}</h3>
             <p>${event.shortDescription}</p>
             <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More →</a>
         </div>
-                </div >
+            </div>
             `;
         }
 
@@ -6359,4 +6359,6 @@ Participants: ${data.participants}`;
         }
     </style>
 
+    <!-- Site Configuration: change the name once in js/site-config.js to update everywhere -->
+    <script src="./js/site-config.js"></script>
 </html>

@@ -35,5 +35,27 @@
         "action": "Login successful",
         "status": "success",
         "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-05-15 15:14:51",
+        "username": "admin",
+        "action": "Login failed",
+        "status": "failed",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-05-15 15:14:57",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-05-15 15:22:47",
+        "username": "admin",
+        "action": "Added new event",
+        "details": "Event ID: evt_1778851367_96bc471c",
+        "status": "success",
+        "ip_address": "::1"
     }
 ]

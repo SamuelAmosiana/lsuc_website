@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extra-Curricular Activities - {{SITE_NAME}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -275,7 +276,49 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 32px;
+            font-size: 30px;
+            color: white;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .social-icon-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 17px;
+            text-decoration: none;
+            transition: background 0.25s ease, transform 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .social-icon-link:hover { transform: translateY(-3px); }
+        .social-icon-link.facebook:hover  { background: #1877f2; border-color: #1877f2; }
+        .social-icon-link.instagram:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-color: #e6683c; }
+        .social-icon-link.twitter:hover   { background: #000; border-color: #000; }
+        .social-icon-link.linkedin:hover  { background: #0a66c2; border-color: #0a66c2; }
+
+        /* Contact info icons */
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .contact-info-item i {
+            margin-top: 3px;
+            color: var(--light-orange);
+            width: 16px;
+            flex-shrink: 0;
         }
 
         .activity-card h3 {
@@ -467,7 +510,7 @@
             .activity-icon {
                 width: 70px;
                 height: 70px;
-                font-size: 28px;
+                font-size: 26px;
             }
         }
     </style>
@@ -567,35 +610,35 @@
             
             <div class="activities-grid">
                 <div class="activity-card">
-                    <div class="activity-icon">⚽</div>
+                    <div class="activity-icon"><i class="fas fa-futbol"></i></div>
                     <h3>Football</h3>
                     <p>Join our competitive football team and develop your skills in one of the world's most popular sports.</p>
                     <button class="join-btn" onclick="window.location.href='https://forms.gle/msAa2HdmSNaboUrr8'">Join Club</button>
                 </div>
                 
                 <div class="activity-card">
-                    <div class="activity-icon">🏀</div>
+                    <div class="activity-icon"><i class="fas fa-basketball"></i></div>
                     <h3>Netball</h3>
                     <p>Participate in our dynamic netball team and improve your coordination, teamwork, and strategic thinking.</p>
                     <button class="join-btn" onclick="window.location.href='https://forms.gle/msAa2HdmSNaboUrr8'">Join Club</button>
                 </div>
                 
                 <div class="activity-card">
-                    <div class="activity-icon">♟️</div>
+                    <div class="activity-icon"><i class="fas fa-chess"></i></div>
                     <h3>Chess</h3>
                     <p>Sharpen your mind and strategic thinking skills with our chess club. Suitable for beginners and experts alike.</p>
                     <button class="join-btn" onclick="window.location.href='https://forms.gle/msAa2HdmSNaboUrr8'">Join Club</button>
                 </div>
                 
                 <div class="activity-card">
-                    <div class="activity-icon">✝️</div>
+                    <div class="activity-icon"><i class="fas fa-cross"></i></div>
                     <h3>Christian Union</h3>
                     <p>Connect with fellow believers, engage in spiritual growth, and participate in community service activities.</p>
                     <button class="join-btn" onclick="window.location.href='https://forms.gle/msAa2HdmSNaboUrr8'">Join Club</button>
                 </div>
                 
                 <div class="activity-card">
-                    <div class="activity-icon">🎭</div>
+                    <div class="activity-icon"><i class="fas fa-masks-theater"></i></div>
                     <h3>Culture Club</h3>
                     <p>(Drama and Poetry) Express yourself through drama performances and poetry recitals. Develop your creative talents.</p>
                     <button class="join-btn" onclick="window.location.href='https://forms.gle/msAa2HdmSNaboUrr8'">Join Club</button>
@@ -616,9 +659,9 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Contact Information</h3>
-                    <p>📍 Foxdale, Conner of Zambezi and Mutumbi Road<br>Lusaka, Zambia</p>
-                    <p>📞 +260-211-292-299</p>
-                    <p>✉️ admissions@lsc.edu.zm</p>
+                    <p class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>Foxdale, Corner of Zambezi and Mutumbi Road<br>Lusaka, Zambia</span></p>
+                    <p class="contact-info-item"><i class="fas fa-phone"></i><span>+260-211-292-299</span></p>
+                    <p class="contact-info-item"><i class="fas fa-envelope"></i><span>admissions@lsc.edu.zm</span></p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -644,11 +687,11 @@
                 <div class="footer-section">
                     <h3>Follow Us</h3>
                     <p>Stay connected with LSUC on social media for the latest updates and news.</p>
-                    <div style="margin-top: 20px;">
-                        <a href="https://www.facebook.com/profile.php?id=61564462900141" style="margin-right: 15px; font-size: 24px;">📘</a>
-                        <a href="#" style="margin-right: 15px; font-size: 24px;">📷</a>
-                        <a href="#" style="margin-right: 15px; font-size: 24px;">🐦</a>
-                        <a href="https://www.linkedin.com/company/lsuc/posts/?feedView=all" style="font-size: 24px;">💼</a>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61564462900141" target="_blank" rel="noopener noreferrer" class="social-icon-link facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon-link instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon-link twitter" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/lsuc/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="social-icon-link linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>

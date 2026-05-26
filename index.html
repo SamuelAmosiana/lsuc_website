@@ -1055,7 +1055,22 @@
         }
 
         .footer-section a:hover {
-            color: var(--light-orange);
+            color: var(--light-green);
+        }
+
+        /* Contact info rows in footer */
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .contact-info-item i {
+            margin-top: 3px;
+            color: var(--light-green);
+            width: 16px;
+            flex-shrink: 0;
         }
 
         .footer-bottom {
@@ -2370,19 +2385,19 @@
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">🎯</div>
+                        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
                         <h3>Excellence</h3>
                         <p>We strive for the highest standards in everything we do, from teaching to student support
                             services, ensuring quality education that prepares students for success.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🤝</div>
+                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
                         <h3>Integrity</h3>
                         <p>We conduct ourselves with honesty, transparency, and ethical behavior, fostering trust and
                             respect within our college community.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💡</div>
+                        <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
                         <h3>Innovation</h3>
                         <p>We embrace new ideas, technologies, and teaching methods to enhance learning experiences and
                             prepare students for the modern world.</p>
@@ -2430,7 +2445,7 @@
                 ></video>
                 <div class="insights-overlay">
                     <div class="insights-overlay-content">
-                        <span class="insights-badge">🎬 Campus Life</span>
+                        <span class="insights-badge"><i class="fas fa-film"></i> Campus Life</span>
                         <h3>Experience LSUC</h3>
                         <p>From classrooms to the community — see what makes us unique</p>
                     </div>
@@ -2472,49 +2487,49 @@
                     <div class="gallery-item" data-image="img/school2.jpeg" onclick="openImagePreview(this)">
                         <img src="img/school2.jpeg" alt="Main Building">
                         <div class="gallery-overlay">
-                            <h4>🏛️ Main Building</h4>
+                            <h4><i class="fas fa-landmark"></i> Main Building</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/scienc_lab.jpg" onclick="openImagePreview(this)">
                         <img src="img/scienc_lab.jpg" alt="Science Labs">
                         <div class="gallery-overlay">
-                            <h4>🔬 Science Labs</h4>
+                            <h4><i class="fas fa-flask"></i> Science Labs</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/computer_lab.jpg" onclick="openImagePreview(this)">
                         <img src="img/computer_lab.jpg" alt="Computer Labs">
                         <div class="gallery-overlay">
-                            <h4>💻 Computer Labs</h4>
+                            <h4><i class="fas fa-desktop"></i> Computer Labs</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/library.jpg" onclick="openImagePreview(this)">
                         <img src="img/library.jpg" alt="Library">
                         <div class="gallery-overlay">
-                            <h4>📚 Library</h4>
+                            <h4><i class="fas fa-book"></i> Library</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/sports_complex.jpg" onclick="openImagePreview(this)">
                         <img src="img/sports_complex.jpg" alt="Sports Complex">
                         <div class="gallery-overlay">
-                            <h4>🏃‍♂️ Sports Complex</h4>
+                            <h4><i class="fas fa-running"></i> Sports Complex</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/cafteria.jpg" onclick="openImagePreview(this)">
                         <img src="img/cafteria.jpg" alt="Cafeteria">
                         <div class="gallery-overlay">
-                            <h4>🍽️ Cafeteria</h4>
+                            <h4><i class="fas fa-utensils"></i> Cafeteria</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/auditorium.jpg" onclick="openImagePreview(this)">
                         <img src="img/auditorium.jpg" alt="Auditorium">
                         <div class="gallery-overlay">
-                            <h4>🎭 Auditorium</h4>
+                            <h4><i class="fas fa-theater-masks"></i> Auditorium</h4>
                         </div>
                     </div>
                     <div class="gallery-item" data-image="img/campus_grounds.jpg" onclick="openImagePreview(this)">
                         <img src="img/campus_grounds.jpg" alt="Campus Grounds">
                         <div class="gallery-overlay">
-                            <h4>🌳 Campus Grounds</h4>
+                            <h4><i class="fas fa-tree"></i> Campus Grounds</h4>
                         </div>
                     </div>
                 </div>
@@ -2544,7 +2559,7 @@
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">🏦</div>
+                        <div class="card-icon"><i class="fas fa-university"></i></div>
                         <h3>Bank Transfer</h3>
                         <p><strong>Account Name:</strong> Lusaka South University College<br>
                             <strong>Account No:</strong> 5947236500193<br>
@@ -2555,7 +2570,7 @@
                         </p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">📱</div>
+                        <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
                         <h3>Mobile Money</h3>
                         <p><strong>USSD:</strong><br>
                             Dial <strong>*767*1*11001301*Amount#</strong><br><br>
@@ -2582,7 +2597,7 @@
                         </div>
                     </div>
                     <div class="card" style="border-left: 4px solid var(--primary-orange);">
-                        <div class="card-icon">⚠️</div>
+                        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
                         <h3>Important Notice</h3>
                         <p><strong>Note:</strong> We do <strong>not</strong> accept cash payments at campus.<br>
                             Always pay using the official details above and keep your proof of payment for verification.
@@ -2611,28 +2626,28 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">📖</div>
+                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
                         <h3>Our History</h3>
                         <p>Established in 2023, Lusaka South University College has grown from a small technical
                             institution to a comprehensive college offering diverse programs. We have graduated over 100
                             students who are making significant contributions to Zambia's development.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🎯</div>
+                        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
                         <h3>Our Mission</h3>
                         <p>To provide quality, accessible, and relevant education that equips students with practical
                             skills, critical thinking abilities, and ethical values needed for personal growth and
                             national development.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👁️</div>
+                        <div class="card-icon"><i class="fas fa-eye"></i></div>
                         <h3>Our Vision</h3>
                         <p>To be the leading institution of higher learning in Southern Africa, recognized for
                             excellence in education, research, and community service that transforms lives and
                             contributes to sustainable development.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🏗️</div>
+                        <div class="card-icon"><i class="fas fa-building"></i></div>
                         <h3>Campus Structure</h3>
                         <p>Our modern campus features state-of-the-art classrooms, well-equipped laboratories, a
                             comprehensive library, sports facilities, and comfortable student accommodation, all
@@ -2820,26 +2835,26 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">🏭</div>
+                        <div class="card-icon"><i class="fas fa-industry"></i></div>
                         <h3>Industry Partners</h3>
                         <p>We collaborate with leading companies to provide internships, practical training, and job
                             placement opportunities for our graduates.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🌍</div>
+                        <div class="card-icon"><i class="fas fa-globe"></i></div>
                         <h3>International Universities</h3>
                         <p>Academic partnerships with universities worldwide provide exchange programs and advanced
                             degree pathways for our students.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🏛️</div>
+                        <div class="card-icon"><i class="fas fa-landmark"></i></div>
                         <h3>Government Agencies</h3>
                         <p>Working with various government departments to align our programs with national development
                             priorities and workforce needs.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🤝</div>
-                        <h3>NGOs & Development Partners</h3>
+                        <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>NGOs &amp; Development Partners</h3>
                         <p>Collaborating with non-governmental organizations to provide scholarships, community outreach
                             programs, and sustainable development initiatives.</p>
                     </div>
@@ -2865,19 +2880,19 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">🏅</div>
+                        <div class="card-icon"><i class="fas fa-medal"></i></div>
                         <h3>Ministry of Education</h3>
                         <p>Fully accredited by the Ministry of Higher Education, Republic of Zambia, ensuring our
                             programs meet national educational standards.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">⭐</div>
+                        <div class="card-icon"><i class="fas fa-star"></i></div>
                         <h3>Professional Bodies</h3>
                         <p>Our programs are recognized by relevant professional bodies including the Technical
                             Education, Vocational Entrepreneurship Training Authority (TEVETA).</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🌐</div>
+                        <div class="card-icon"><i class="fas fa-globe-africa"></i></div>
                         <h3>International Recognition</h3>
                         <p>Selected programs have international accreditation, allowing for credit transfer and
                             recognition in SADC countries and beyond.</p>
@@ -3008,17 +3023,17 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">⚙️</div>
+                        <div class="card-icon"><i class="fas fa-cogs"></i></div>
                         <h3>School of Engineering</h3>
                         <p><strong>Programs Offered:</strong><br>
                             • Certificate in Electrical Engineering (1 Year Six Months)<br>
                             • Certificate in Solar Technology (6 Months)<br>
-                            • Certificate Civil Engineering & Construction (6 Months)<br>
+                            • Certificate Civil Engineering &amp; Construction (6 Months)<br>
                             • Certificate in Automotive Engineering (1 Year Six Months)<br>
                             • Certificate in Occupational Safety Health and Environment (6 Months)</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💼</div>
+                        <div class="card-icon"><i class="fas fa-briefcase"></i></div>
                         <h3>School of Business </h3>
                         <p><strong>Programs Offered:</strong><br>
                             • Diploma in Business Administration (3 years)<br>
@@ -3028,7 +3043,7 @@
                             • Certificate in Secretarial and Office Management (1 Year 6 months)</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💻</div>
+                        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
                         <h3>School of Information Technology</h3>
                         <p><strong>Programs Offered:</strong><br>
                             • Diploma in Computer Studies (3 years)<br>
@@ -3036,17 +3051,17 @@
                         </p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🏥</div>
+                        <div class="card-icon"><i class="fas fa-hospital"></i></div>
                         <h3>School of Health Care Management</h3>
                         <p><strong>Programs Offered:</strong><br>
                             • Certificate in Nursing and Health Care Assistant (3 Months)<br>
                             • Certificate Psychosocial Counselling (3 Months)<br>
                             • Certificate in Pharmacy Technology (2 years)<br>
                             • Diploma in Environmental Health (3 years)<br>
-                            • First Aid & CPR Training (Short courses)</p>
+                            • First Aid &amp; CPR Training (Short courses)</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🎓</div>
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                         <h3>School of Education and Social Sciences </h3>
                         <p><strong>Programs Offered:</strong><br>
                             • Diploma in Primary Teaching (3 years)<br>
@@ -3055,7 +3070,7 @@
                         </p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🔧</div>
+                        <div class="card-icon"><i class="fas fa-seedling"></i></div>
                         <h3>School of Agriculture and Hospitality</h3>
                         <p><strong>Programs Offered:</strong><br>
                             • Diploma in General Agriculture (3 years)<br>
@@ -3091,7 +3106,7 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">👨‍🎓</div>
+                        <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
                         <h3>Student Portal</h3>
                         <p>Access your academic records, course schedules, examination results, fee statements, and
                             communicate with faculty through our secure student portal.</p>
@@ -3099,7 +3114,7 @@
                             style="margin-top: 20px;">Login to Student Portal</a>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👨‍🏫</div>
+                        <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                         <h3>Staff Portal</h3>
                         <p>Faculty and staff can access grade books, attendance records, course materials, payroll
                             information, and administrative tools through the staff portal.</p>
@@ -3107,7 +3122,7 @@
                             style="margin-top: 20px;">Login to Staff Portal</a>
                     </div>
                     <div class="card">
-                        <div class="card-icon">ℹ️</div>
+                        <div class="card-icon"><i class="fas fa-info-circle"></i></div>
                         <h3>System Features</h3>
                         <p>Our MIS Portal enhances efficiency and coordination, supporting academic and administrative
                             operations with secure, user-friendly access for students and staff.</p>
@@ -3134,20 +3149,20 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">📚</div>
+                        <div class="card-icon"><i class="fas fa-book"></i></div>
                         <h3>Course Materials</h3>
                         <p>Access lecture notes, assignments, multimedia resources, and supplementary materials for all
                             your enrolled courses through our eLearning platform.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💬</div>
+                        <div class="card-icon"><i class="fas fa-comments"></i></div>
                         <h3>Interactive Learning</h3>
                         <p>Participate in discussion forums, group projects, and virtual classrooms. Collaborate with
                             classmates and interact with instructors online.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">📝</div>
-                        <h3>Assessments & Quizzes</h3>
+                        <div class="card-icon"><i class="fas fa-pencil-alt"></i></div>
+                        <h3>Assessments &amp; Quizzes</h3>
                         <p>Complete online quizzes, submit assignments digitally, and receive instant feedback on your
                             progress and performance.</p>
                     </div>
@@ -3177,19 +3192,19 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">📄</div>
+                        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
                         <h3>Student Research</h3>
                         <p>Browse and search through final year projects, dissertations, and research papers submitted
                             by LSUC students across all disciplines.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👨‍🔬</div>
+                        <div class="card-icon"><i class="fas fa-microscope"></i></div>
                         <h3>Faculty Publications</h3>
                         <p>Access research publications, conference papers, and scholarly articles authored by our
                             faculty members and researchers.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🔍</div>
+                        <div class="card-icon"><i class="fas fa-search"></i></div>
                         <h3>Advanced Search</h3>
                         <p>Use our sophisticated search tools to find specific research materials by author, subject,
                             date, or keyword across our entire digital collection.</p>
@@ -3220,37 +3235,37 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">📖</div>
-                        <h3>Digital Books & Textbooks</h3>
+                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
+                        <h3>Digital Books &amp; Textbooks</h3>
                         <p>Access thousands of e-books covering all academic disciplines, including textbooks, reference
                             materials, and professional publications from our partner platforms.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">📰</div>
-                        <h3>Academic Journals & Research</h3>
+                        <div class="card-icon"><i class="fas fa-newspaper"></i></div>
+                        <h3>Academic Journals &amp; Research</h3>
                         <p>Browse academic journals, research articles, and periodicals from leading publishers and
                             scholarly databases worldwide through our curated collection.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">⚖️</div>
-                        <h3>Legal & Professional Resources</h3>
+                        <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h3>Legal &amp; Professional Resources</h3>
                         <p>Specialized legal databases, professional development materials, and industry-specific
                             resources for comprehensive learning.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🌍</div>
+                        <div class="card-icon"><i class="fas fa-globe"></i></div>
                         <h3>Global Development Resources</h3>
                         <p>Access World Bank publications, development research, economic data, and policy analysis from
                             international organizations.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🔍</div>
+                        <div class="card-icon"><i class="fas fa-search"></i></div>
                         <h3>Academic Search Engines</h3>
                         <p>Powerful search tools to discover scholarly materials, textbooks, and research publications
                             across multiple disciplines.</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">📱</div>
+                        <div class="card-icon"><i class="fas fa-tablet-alt"></i></div>
                         <h3>Digital Reading Platforms</h3>
                         <p>Interactive e-book readers, audiobook collections, and enhanced digital learning experiences
                             for modern education.</p>
@@ -3352,33 +3367,33 @@
             <div class="container">
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">🏢</div>
+                        <div class="card-icon"><i class="fas fa-building"></i></div>
                         <h3>Main Office</h3>
                         <p><strong>Address:</strong><br>
                             <span data-site-name></span><br>
-                            Foxdale, Conner of Zabezi & Mutumbi Road<br>
+                            Foxdale, Conner of Zabezi &amp; Mutumbi Road<br>
                             Lusaka, Zambia</p>
                         <p><strong>Phone:</strong> +260-211-123456<br>
                             <strong>Email:</strong> info@lusakasouthcollege.edu.zm
                         </p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">🎓</div>
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                         <h3>Admissions Office</h3>
                         <p><strong>Phone:</strong> +260-211-123457<br>
                             <strong>Email:</strong> admissions@lsc.edu.zm
                         </p>
                         <p><strong>To talk to Enrolments, Call:</strong><br>
-                            📞 <a href="tel:+260770359518">+260 770 359518</a><br>
-                            📞 <a href="tel:+260978936644">+260 97 8936644</a><br>
-                            📞 <a href="tel:+260774110922">+260 774 110922</a><br>
-                            📞 <a href="tel:+260971494567">+260 97 1494567</a></p>
+                            <i class="fas fa-phone" style="color:var(--primary-orange);"></i> <a href="tel:+260770359518">+260 770 359518</a><br>
+                            <i class="fas fa-phone" style="color:var(--primary-orange);"></i> <a href="tel:+260978936644">+260 97 8936644</a><br>
+                            <i class="fas fa-phone" style="color:var(--primary-orange);"></i> <a href="tel:+260774110922">+260 774 110922</a><br>
+                            <i class="fas fa-phone" style="color:var(--primary-orange);"></i> <a href="tel:+260971494567">+260 97 1494567</a></p>
                         <p><strong>Office Hours:</strong><br>
                             Monday - Friday: 8:00 AM - 5:00 PM<br>
                             Saturday: 8:00 AM - 1:00 PM</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💰</div>
+                        <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
                         <h3>Finance Department</h3>
                         <p><strong>Phone:</strong> +260-211-173-458<br>
                             <strong>Email:</strong> finance@lsc.edu.zm
@@ -3386,7 +3401,7 @@
                         <p><strong>For:</strong> Fee payments, financial aid, scholarships, payment plans</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">👥</div>
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
                         <h3>Student Services</h3>
                         <p><strong>Phone:</strong> +260-211-123459<br>
                             <strong>Email:</strong> lusakasouthuniversitycollege@gmail.com
@@ -3394,7 +3409,7 @@
                         <p><strong>For:</strong> Student support, counseling, accommodation, activities</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">💼</div>
+                        <div class="card-icon"><i class="fas fa-briefcase"></i></div>
                         <h3>Career Services</h3>
                         <p><strong>Phone:</strong> +260-211-123460<br>
                             <strong>Email:</strong> registrer@lsc.edu.zm
@@ -3402,7 +3417,7 @@
                         <p><strong>For:</strong> Job placement, internships, career guidance</p>
                     </div>
                     <div class="card">
-                        <div class="card-icon">📞</div>
+                        <div class="card-icon"><i class="fas fa-headset"></i></div>
                         <h3>Customer Care</h3>
                         <p><strong>Phone:</strong> +260-211-123461<br>
                             <strong>Email:</strong> lusakasouthuniversitycollege@gmail.com
@@ -3621,7 +3636,7 @@
 
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">📖</div>
+                        <div class="card-icon"><i class="fas fa-book-open"></i></div>
                         <h3>Prospectus 2025</h3>
                         <p>Download the official LSUC Prospectus 2025 — your complete guide to programmes, admission requirements, fees, and campus life</p>
                         <button class="cta-button"
@@ -3629,17 +3644,17 @@
                             style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
                     <div class="card">
-                        <div class="card-icon">📋</div>
-                        <h3>CPD & Short Courses</h3>
+                        <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h3>CPD &amp; Short Courses</h3>
                         <p>Download information about our Continuing Professional Development and Short Course offerings
                         </p>
                         <button class="cta-button"
-                            onclick="openPDFViewer('docs/cpd-short-courses.pdf', 'CPD & Short Courses Brochure')"
+                            onclick="openPDFViewer('docs/cpd-short-courses.pdf', 'CPD &amp; Short Courses Brochure')"
                             style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">📅</div>
+                        <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
                         <h3>Academic Calendar</h3>
                         <p>Access the academic calendar with important dates and events for <strong>Diploma &amp; Certificate</strong> students</p>
                         <button class="cta-button"
@@ -3648,7 +3663,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">🎓</div>
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                         <h3>Degree Academic Calendar</h3>
                         <p>Access the academic calendar with important dates and events for <strong>Degree</strong> students</p>
                         <button class="cta-button"
@@ -3657,7 +3672,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">📜</div>
+                        <div class="card-icon"><i class="fas fa-scroll"></i></div>
                         <h3>Application Form</h3>
                         <p>Download Application Form for Physical Admission</p>
                         <button class="cta-button"
@@ -3673,7 +3688,7 @@
 
                 <div class="cards-grid">
                     <div class="card">
-                        <div class="card-icon">📝</div>
+                        <div class="card-icon"><i class="fas fa-edit"></i></div>
                         <h3>Course Exemption Form</h3>
                         <p>Application form for students seeking exemption from certain courses based on prior learning
                             or qualifications</p>
@@ -3683,7 +3698,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">🔐</div>
+                        <div class="card-icon"><i class="fas fa-lock"></i></div>
                         <h3>Student Portal Access Guide</h3>
                         <p>Step-by-step instructions for accessing your student portal and viewing academic results</p>
                         <button class="cta-button"
@@ -3692,7 +3707,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">🎓</div>
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                         <h3>Program Catalog</h3>
                         <p>Detailed information about all our academic programs</p>
                         <button class="cta-button"
@@ -3701,7 +3716,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">💰</div>
+                        <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
                         <h3>CDF Bursary Application Form</h3>
                         <p>Skills Development Bureau Bursary Application Form</p>
                         <button class="cta-button" onclick="openPDFViewer('docs/cdf_bussary.pdf', 'CDF Bursary Form')"
@@ -3709,7 +3724,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">📰</div>
+                        <div class="card-icon"><i class="fas fa-newspaper"></i></div>
                         <h3>Press Release - Official Establishment</h3>
                         <p>Read about our official establishment as a premier hub for industry-aligned higher education
                             and skills training</p>
@@ -3719,7 +3734,7 @@
                     </div>
 
                     <div class="card">
-                        <div class="card-icon">📚</div>
+                        <div class="card-icon"><i class="fas fa-table"></i></div>
                         <h3>Time Table</h3>
                         <p>A planning tool that shows the scheduled times of lectures, tutorials, and other classes</p>
                         <button class="cta-button"
@@ -3749,40 +3764,40 @@
                     <h2>Campus Facilities</h2>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item">🏛️<br>Administration Block</div>
-                    <div class="gallery-item">🔬<br>Chemistry Laboratory</div>
-                    <div class="gallery-item">⚙️<br>Engineering Workshop</div>
-                    <div class="gallery-item">💻<br>Computer Laboratory</div>
-                    <div class="gallery-item">📚<br>Main Library</div>
-                    <div class="gallery-item">🎭<br>Lecture Theatre</div>
-                    <div class="gallery-item">🏃‍♂️<br>Sports Field</div>
-                    <div class="gallery-item">🍽️<br>Student Cafeteria</div>
+                    <div class="gallery-item"><i class="fas fa-landmark"></i><br>Administration Block</div>
+                    <div class="gallery-item"><i class="fas fa-flask"></i><br>Chemistry Laboratory</div>
+                    <div class="gallery-item"><i class="fas fa-cogs"></i><br>Engineering Workshop</div>
+                    <div class="gallery-item"><i class="fas fa-desktop"></i><br>Computer Laboratory</div>
+                    <div class="gallery-item"><i class="fas fa-book"></i><br>Main Library</div>
+                    <div class="gallery-item"><i class="fas fa-theater-masks"></i><br>Lecture Theatre</div>
+                    <div class="gallery-item"><i class="fas fa-running"></i><br>Sports Field</div>
+                    <div class="gallery-item"><i class="fas fa-utensils"></i><br>Student Cafeteria</div>
                 </div>
 
                 <div class="section-title" style="margin-top: 60px;">
-                    <h2>Student Life & Events</h2>
+                    <h2>Student Life &amp; Events</h2>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item">🎓<br>Graduation Day 2024</div>
-                    <div class="gallery-item">🏆<br>Skills Competition</div>
-                    <div class="gallery-item">🎪<br>Cultural Festival</div>
-                    <div class="gallery-item">💼<br>Career Fair</div>
-                    <div class="gallery-item">🔬<br>Science Exhibition</div>
-                    <div class="gallery-item">⚽<br>Inter-College Sports</div>
-                    <div class="gallery-item">🎤<br>Welcome Orientation</div>
-                    <div class="gallery-item">🤝<br>Industry Partnership</div>
+                    <div class="gallery-item"><i class="fas fa-graduation-cap"></i><br>Graduation Day 2024</div>
+                    <div class="gallery-item"><i class="fas fa-trophy"></i><br>Skills Competition</div>
+                    <div class="gallery-item"><i class="fas fa-star"></i><br>Cultural Festival</div>
+                    <div class="gallery-item"><i class="fas fa-briefcase"></i><br>Career Fair</div>
+                    <div class="gallery-item"><i class="fas fa-microscope"></i><br>Science Exhibition</div>
+                    <div class="gallery-item"><i class="fas fa-futbol"></i><br>Inter-College Sports</div>
+                    <div class="gallery-item"><i class="fas fa-microphone"></i><br>Welcome Orientation</div>
+                    <div class="gallery-item"><i class="fas fa-handshake"></i><br>Industry Partnership</div>
                 </div>
 
                 <div class="section-title" style="margin-top: 60px;">
                     <h2>Academic Programs</h2>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item">⚙️<br>Engineering Projects</div>
-                    <div class="gallery-item">💼<br>Business Presentations</div>
-                    <div class="gallery-item">💻<br>IT Innovation Hub</div>
-                    <div class="gallery-item">🏥<br>Health Sciences Training</div>
-                    <div class="gallery-item">🔧<br>Technical Skills Center</div>
-                    <div class="gallery-item">📊<br>Student Research</div>
+                    <div class="gallery-item"><i class="fas fa-cogs"></i><br>Engineering Projects</div>
+                    <div class="gallery-item"><i class="fas fa-chart-bar"></i><br>Business Presentations</div>
+                    <div class="gallery-item"><i class="fas fa-laptop-code"></i><br>IT Innovation Hub</div>
+                    <div class="gallery-item"><i class="fas fa-hospital"></i><br>Health Sciences Training</div>
+                    <div class="gallery-item"><i class="fas fa-tools"></i><br>Technical Skills Center</div>
+                    <div class="gallery-item"><i class="fas fa-chart-line"></i><br>Student Research</div>
                 </div>
             </div>
         </section>
@@ -4222,11 +4237,10 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Contact Information</h3>
-                    <p>📍 Foxdale, Conner of Zambezi and Mutumbi Road<br>Lusaka, Zambia</p>
-                    <p>📞 +260-211-292-299</p>
-                    <p>📞 +260 770359518</p>
-
-                    <p>✉️ admissions@lsc.edu.zm</p>
+                    <p class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>Foxdale, Corner of Zambezi and Mutumbi Road<br>Lusaka, Zambia</span></p>
+                    <p class="contact-info-item"><i class="fas fa-phone"></i><span>+260-211-292-299</span></p>
+                    <p class="contact-info-item"><i class="fas fa-phone"></i><span>+260 770359518</span></p>
+                    <p class="contact-info-item"><i class="fas fa-envelope"></i><span>admissions@lsc.edu.zm</span></p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -4298,10 +4312,10 @@
                 <h3 class="pdf-viewer-title" id="pdfViewerTitle">Document Viewer</h3>
                 <div class="pdf-viewer-controls">
                     <button class="pdf-control-btn" onclick="downloadPDF()" title="Download PDF">
-                        📥 Download
+                        <i class="fas fa-download"></i> Download
                     </button>
                     <button class="pdf-control-btn" onclick="openPDFNewTab()" title="Open in New Tab">
-                        🔗 Open in Tab
+                        <i class="fas fa-external-link-alt"></i> Open in Tab
                     </button>
                     <button class="close-pdf-viewer" onclick="closePDFViewer()" title="Close">&times;</button>
                 </div>
@@ -5905,7 +5919,7 @@ Participants: ${data.participants}`;
             const formattedDate = LSUCEventsManager.formatEventDate(event.date);
             const imageHTML = event.image ?
                 `<div class="update-image" style="background-image: url('${event.image}'); background-size: cover; background-position: center;"></div>` :
-                `<div class="update-image">📢</div>`;
+                `<div class="update-image"><i class="fas fa-bullhorn" style="font-size:2rem;color:var(--primary-orange);"></i></div>`;
             
             return `
             <div class="update-card">
@@ -5960,7 +5974,7 @@ Participants: ${data.participants}`;
                 
                 return `
             < div class="card" >
-                        <div class="card-icon">📅</div>
+                        <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
                         <h3>${event.title}</h3>
                         <p>${event.shortDescription}</p>
                         ${ countdownHTML }

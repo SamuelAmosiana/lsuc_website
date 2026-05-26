@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{SITE_NAME}} - Dream, Explore, Acquire</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -987,6 +988,37 @@
         }
 
         /* Footer */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            font-size: 17px;
+            text-decoration: none;
+            transition: background 0.25s ease, transform 0.2s ease, color 0.25s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-icon-link:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-icon-link.facebook:hover  { background: #1877f2; border-color: #1877f2; }
+        .social-icon-link.instagram:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-color: #e6683c; }
+        .social-icon-link.twitter:hover   { background: #000; border-color: #000; }
+        .social-icon-link.linkedin:hover  { background: #0a66c2; border-color: #0a66c2; }
+
         .footer {
             background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
             color: white;
@@ -4220,13 +4252,25 @@
                 <div class="footer-section">
                     <h3>Follow Us</h3>
                     <p>Stay connected with LSUC on social media for the latest updates and news.</p>
-                    <div style="margin-top: 20px;">
+                    <div class="social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61564462900141"
-                            style="margin-right: 15px; font-size: 24px;">📘</a>
-                        <a href="#" style="margin-right: 15px; font-size: 24px;">📷</a>
-                        <a href="#" style="margin-right: 15px; font-size: 24px;">🐦</a>
+                           target="_blank" rel="noopener noreferrer"
+                           class="social-icon-link facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                           class="social-icon-link instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                           class="social-icon-link twitter" title="X (Twitter)">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
                         <a href="https://www.linkedin.com/company/lsuc/posts/?feedView=all"
-                            style="font-size: 24px;">💼</a>
+                           target="_blank" rel="noopener noreferrer"
+                           class="social-icon-link linkedin" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </div>
                 </div>
             </div>

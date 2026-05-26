@@ -6017,10 +6017,10 @@ Participants: ${data.participants}`;
             }
             
             container.innerHTML = related.map(event => `
-            < div class="related-event-card" onclick = "showEventDetail('${event.id}')" >
+            <div class="related-event-card" onclick="showEventDetail('${event.id}')">
                     <h4>${event.title}</h4>
                     <div class="related-event-date">${LSUCEventsManager.formatEventDate(event.date)}</div>
-                </div >
+                </div>
             `).join('');
         }
 

@@ -8,11 +8,22 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data';
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v2'; // bumped to v2 to force refresh with orientation event
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
 const SAMPLE_EVENTS = [
+    {
+        id: "evt_011",
+        title: "April 2026 First Year Student Orientation — A Remarkable Success",
+        date: "2026-05-13",
+        category: "Latest News",
+        shortDescription: "LSUC successfully conducted its first year student orientation for the April 2026 intake on 13th May 2026, featuring career talks from MTN, Prudential, Absa, Sancho Medical Services, and the Drug Enforcement Commission (DEC).",
+        fullDescription: "<p>On <strong>Tuesday, 13th May 2026</strong>, Lusaka South University College (LSUC) proudly hosted its <strong>First Year Student Orientation</strong> for the <strong>April 2026 Intake</strong> — an event that proved to be an extraordinary milestone for our new students.</p><p>What made this orientation truly exceptional was the rare privilege extended to our students: a series of expert-led talks by industry leaders and government institutions, giving our first-year students an invaluable head-start beyond academics.</p><div style='text-align:center; margin: 24px 0;'><img src='./img/orientation_1.jpg' alt='April 2026 Orientation — Group Photo' style='width:100%; max-width:780px; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.15);'><p style='margin-top:10px; color:#6c757d; font-size:0.9rem; font-style:italic;'>April 2026 Intake — First Year Student Orientation, 13th May 2026</p></div><h3>🏢 Guest Speakers &amp; Industry Talks</h3><ul><li><strong>MTN Zambia (HR Department) — Career Talk:</strong> The Human Resources team from MTN Zambia engaged students on career development, professional readiness, and navigating the corporate world after graduation.</li><li><strong>Prudential Life Insurance — Insurance Awareness:</strong> Representatives from Prudential delivered an insightful session on the importance of life insurance, financial protection, and planning for the future.</li><li><strong>Absa Bank Zambia — Saving &amp; Investing:</strong> Absa Bank's team educated students on smart financial habits — the importance of saving, investing early, and building a secure financial future.</li><li><strong>Dr. David Muchila, Sancho Medical Services — Health Talk:</strong> Dr. Muchila delivered a comprehensive health awareness session covering student wellness, preventive healthcare, and the importance of maintaining physical and mental health.</li><li><strong>Drug Enforcement Commission (DEC) — Drug Abuse Awareness:</strong> DEC officers sensitised students on the dangers of drug abuse, legal consequences, and how to make responsible lifestyle choices.</li></ul><div style='display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:28px 0;'><div><img src='./img/orientation_2.jpg' alt='MTN HR Career Talk' style='width:100%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.12);'><p style='margin-top:8px; color:#6c757d; font-size:0.85rem; font-style:italic; text-align:center;'>MTN HR Representative delivering the Career Talk</p></div><div><img src='./img/orientation_3.jpg' alt='Dr. David Muchila — Health Talk' style='width:100%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.12);'><p style='margin-top:8px; color:#6c757d; font-size:0.85rem; font-style:italic; text-align:center;'>Dr. David Muchila from Sancho Medical Services — Health Awareness Talk</p></div></div><h3>🎓 LSUC's Own Orientation Programme</h3><p>In addition to the guest sessions, the college itself played its part in fully preparing students for academic life. Students were oriented on:</p><ul><li>Academic expectations, rules, and regulations at LSUC</li><li>ICT services and student portal access available to them</li><li>Student support structures and available resources on campus</li></ul><h3>🌟 A Day of Opportunity</h3><p>The orientation was a testament to LSUC's commitment not just to academic excellence but to the holistic development of every student. By connecting new students with industry professionals and institutions from day one, LSUC continues to set the standard for quality higher education in Zambia.</p><p>We welcome all April 2026 first-year students to the LSUC family and wish you a fulfilling and successful academic journey!</p>",
+        image: "./img/orientation_1.jpg",
+        author: "Communications Office",
+        featured: true
+    },
     {
         id: "evt_001",
         title: "International Culture Day 2025",

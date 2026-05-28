@@ -466,12 +466,20 @@
         }
 
         /* ===== Staff Profile Page ===== */
+        #staff-profile {
+            display: none;
+            flex-direction: column;
+            min-height: calc(100vh - 80px);
+        }
+        #staff-profile.active {
+            display: flex;
+        }
         .sp-hero {
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             padding: 60px 20px 50px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            flex-shrink: 0;
         }
         .sp-hero::before {
             content: '';
@@ -479,6 +487,7 @@
             inset: 0;
             background: radial-gradient(ellipse at 60% 0%, rgba(255,100,0,0.18) 0%, transparent 65%);
             pointer-events: none;
+            overflow: hidden;
         }
         .sp-photo-wrap {
             position: relative;
@@ -565,8 +574,10 @@
         }
         .sp-body {
             max-width: 820px;
+            width: 100%;
             margin: 0 auto;
             padding: 50px 20px 60px;
+            flex: 1 1 auto;
         }
         .sp-grid {
             display: grid;
@@ -1444,6 +1455,12 @@
 
         .page-content.active {
             display: block;
+        }
+
+        /* Staff profile page must flex-column so footer stays at bottom */
+        #staff-profile.active {
+            display: flex !important;
+            flex-direction: column;
         }
 
         .page-header {
@@ -4458,6 +4475,58 @@
         </section>
     </div>
 
+    <!-- ===== Staff Profile Page (dynamic, SPA) ===== -->
+    <div id="staff-profile" class="page-content">
+        <!-- Hero -->
+        <div class="sp-hero" id="spHero">
+            <a href="#our-team" class="sp-back-btn" onclick="showPage('our-team')" id="spBackBtn">
+                <i class="fas fa-arrow-left"></i> Back to Our Team
+            </a>
+            <div class="sp-photo-wrap">
+                <div class="sp-photo-ring" id="spPhotoRing">
+                    <span id="spPhotoInner"></span>
+                </div>
+            </div>
+            <h1 class="sp-name" id="spName">Staff Member</h1>
+            <div class="sp-badge" id="spBadge">
+                <i class="fas fa-id-badge"></i>
+                <span id="spTitle">Position</span>
+            </div>
+        </div>
+
+        <!-- Body content -->
+        <div class="sp-body">
+            <div class="sp-grid">
+                <!-- Biography (full width) -->
+                <div class="sp-section full">
+                    <div class="sp-section-title">
+                        <div class="sp-icon"><i class="fas fa-user"></i></div>
+                        <h3>Biography</h3>
+                    </div>
+                    <p id="spBio"></p>
+                </div>
+
+                <!-- Responsibilities -->
+                <div class="sp-section">
+                    <div class="sp-section-title">
+                        <div class="sp-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3>Responsibilities</h3>
+                    </div>
+                    <p id="spResponsibilities"></p>
+                </div>
+
+                <!-- Expertise -->
+                <div class="sp-section">
+                    <div class="sp-section-title">
+                        <div class="sp-icon"><i class="fas fa-star"></i></div>
+                        <h3>Areas of Expertise</h3>
+                    </div>
+                    <div class="sp-tags" id="spTags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -6810,57 +6879,7 @@ Participants: ${data.participants}`;
     <!-- Site Configuration: change the name once in js/site-config.js to update everywhere -->
     <script src="./js/site-config.js"></script>
 
-    <!-- ===== Staff Profile Page (dynamic, SPA) ===== -->
-    <div id="staff-profile" class="page-content">
-        <!-- Hero -->
-        <div class="sp-hero" id="spHero">
-            <a href="#our-team" class="sp-back-btn" onclick="showPage('our-team')" id="spBackBtn">
-                <i class="fas fa-arrow-left"></i> Back to Our Team
-            </a>
-            <div class="sp-photo-wrap">
-                <div class="sp-photo-ring" id="spPhotoRing">
-                    <span id="spPhotoInner"></span>
-                </div>
-            </div>
-            <h1 class="sp-name" id="spName">Staff Member</h1>
-            <div class="sp-badge" id="spBadge">
-                <i class="fas fa-id-badge"></i>
-                <span id="spTitle">Position</span>
-            </div>
-        </div>
 
-        <!-- Body content -->
-        <div class="sp-body">
-            <div class="sp-grid">
-                <!-- Biography (full width) -->
-                <div class="sp-section full">
-                    <div class="sp-section-title">
-                        <div class="sp-icon"><i class="fas fa-user"></i></div>
-                        <h3>Biography</h3>
-                    </div>
-                    <p id="spBio"></p>
-                </div>
-
-                <!-- Responsibilities -->
-                <div class="sp-section">
-                    <div class="sp-section-title">
-                        <div class="sp-icon"><i class="fas fa-briefcase"></i></div>
-                        <h3>Responsibilities</h3>
-                    </div>
-                    <p id="spResponsibilities"></p>
-                </div>
-
-                <!-- Expertise -->
-                <div class="sp-section">
-                    <div class="sp-section-title">
-                        <div class="sp-icon"><i class="fas fa-star"></i></div>
-                        <h3>Areas of Expertise</h3>
-                    </div>
-                    <div class="sp-tags" id="spTags"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
     // ===== Staff Profile Data =====

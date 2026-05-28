@@ -422,182 +422,221 @@
             transform: scale(1.05);
         }
 
-        /* Staff About Button */
+        /* ===== Staff About Button ===== */
         .staff-about-btn {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            margin-top: 14px;
-            padding: 9px 22px;
-            background: linear-gradient(135deg, var(--primary-orange) 0%, #e65c00 100%);
+            justify-content: center;
+            gap: 7px;
+            margin-top: 16px;
+            padding: 10px 26px;
+            width: auto;
+            max-width: 100%;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #d94f00 100%);
             color: #fff;
             border: none;
-            border-radius: 25px;
-            font-size: 0.88rem;
-            font-weight: 600;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
             cursor: pointer;
-            letter-spacing: 0.4px;
-            box-shadow: 0 4px 14px rgba(230, 92, 0, 0.35);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 16px rgba(210, 79, 0, 0.38);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+            white-space: nowrap;
         }
-        .staff-about-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(230, 92, 0, 0.45);
-            background: linear-gradient(135deg, #ff7b1a 0%, #cc4500 100%);
+        .staff-about-btn:hover,
+        .staff-about-btn:focus {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 24px rgba(210, 79, 0, 0.48);
+            background: linear-gradient(135deg, #ff7b1a 0%, #b83d00 100%);
+            outline: none;
         }
-        .staff-about-btn i {
-            font-size: 0.85rem;
+        .staff-about-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+        .staff-about-btn i { font-size: 0.9rem; }
+        /* On small screens: full width button */
+        @media (max-width: 480px) {
+            .staff-about-btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
         }
 
-        /* Staff Profile Modal */
-        .staff-modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 10, 20, 0.75);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeInOverlay 0.25s ease;
-        }
-        .staff-modal-overlay.active {
-            display: flex;
-        }
-        @keyframes fadeInOverlay {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
-        .staff-modal {
-            background: #fff;
-            border-radius: 20px;
-            max-width: 620px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-            animation: slideUpModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-        }
-        @keyframes slideUpModal {
-            from { opacity: 0; transform: translateY(40px) scale(0.95); }
-            to   { opacity: 1; transform: translateY(0)   scale(1); }
-        }
-        .staff-modal-header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            padding: 40px 30px 30px;
+        /* ===== Staff Profile Page ===== */
+        .sp-hero {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 60px 20px 50px;
             text-align: center;
-            border-radius: 20px 20px 0 0;
             position: relative;
+            overflow: hidden;
         }
-        .staff-modal-close {
+        .sp-hero::before {
+            content: '';
             position: absolute;
-            top: 16px;
-            right: 16px;
-            background: rgba(255,255,255,0.15);
-            border: none;
-            color: #fff;
-            width: 36px;
-            height: 36px;
+            inset: 0;
+            background: radial-gradient(ellipse at 60% 0%, rgba(255,100,0,0.18) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .sp-photo-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        .sp-photo-ring {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
+            padding: 5px;
+            background: conic-gradient(var(--primary-orange), #ffb347, var(--primary-orange));
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.45);
         }
-        .staff-modal-close:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        .staff-modal-photo {
-            width: 140px;
-            height: 140px;
+        .sp-photo {
+            width: 168px;
+            height: 168px;
             border-radius: 50%;
             object-fit: cover;
             object-position: center top;
-            border: 5px solid var(--primary-orange);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-            margin-bottom: 18px;
+            border: 4px solid #fff;
+            display: block;
         }
-        .staff-modal-photo-placeholder {
-            width: 140px;
-            height: 140px;
+        .sp-photo-placeholder {
+            width: 168px;
+            height: 168px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-orange), #e65c00);
+            background: linear-gradient(135deg, var(--primary-orange), #d94f00);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             color: #fff;
-            margin: 0 auto 18px;
-            border: 5px solid rgba(255,255,255,0.3);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            border: 4px solid #fff;
         }
-        .staff-modal-name {
+        .sp-name {
             color: #fff;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 6px;
-        }
-        .staff-modal-title {
-            color: var(--primary-orange);
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin: 0;
-        }
-        .staff-modal-body {
-            padding: 30px;
-        }
-        .staff-modal-section {
-            margin-bottom: 22px;
-        }
-        .staff-modal-section h4 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary-orange);
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
             margin: 0 0 8px;
-            display: flex;
+            line-height: 1.2;
+        }
+        .sp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 30px;
+            padding: 7px 20px;
+            color: #ffb347;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+        .sp-back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
+            transition: background 0.2s, transform 0.2s;
+            text-decoration: none;
+            backdrop-filter: blur(4px);
         }
-        .staff-modal-section p {
-            color: #444;
-            font-size: 0.97rem;
-            line-height: 1.7;
+        .sp-back-btn:hover {
+            background: rgba(255,255,255,0.22);
+            transform: translateX(-3px);
+            color: #fff;
+        }
+        .sp-body {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 50px 20px 60px;
+        }
+        .sp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 640px) {
+            .sp-grid { grid-template-columns: 1fr; }
+            .sp-back-btn { top: 14px; left: 14px; padding: 6px 14px; font-size: 0.8rem; }
+            .sp-photo-ring { width: 140px; height: 140px; }
+            .sp-photo, .sp-photo-placeholder { width: 128px; height: 128px; font-size: 3.5rem; }
+        }
+        .sp-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            border-left: 4px solid var(--primary-orange);
+        }
+        .sp-section.full {
+            grid-column: 1 / -1;
+        }
+        .sp-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 14px;
+        }
+        .sp-section-title .sp-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), #d94f00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .sp-section-title h3 {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--primary-orange);
             margin: 0;
         }
-        .staff-modal-tags {
+        .sp-section p {
+            color: #4a4a4a;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+        .sp-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             margin-top: 4px;
         }
-        .staff-modal-tag {
-            background: #f0f4ff;
-            color: #0f3460;
-            border-radius: 20px;
-            padding: 5px 14px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            border: 1px solid #d0daf5;
-        }
-        .staff-modal-divider {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 20px 0;
-        }
-        @media (max-width: 480px) {
-            .staff-modal-header { padding: 30px 20px 22px; }
-            .staff-modal-body  { padding: 20px; }
-            .staff-modal-name  { font-size: 1.25rem; }
-            .staff-modal-photo, .staff-modal-photo-placeholder { width: 110px; height: 110px; }
+        .sp-tag {
+            background: linear-gradient(135deg, #fff5ee, #ffe8d6);
+            color: #8b3000;
+            border-radius: 25px;
+            padding: 6px 16px;
+            font-size: 0.83rem;
+            font-weight: 700;
+            border: 1px solid #f4c4a0;
+            letter-spacing: 0.3px;
         }
 
         /* Insights Video Section */
@@ -6771,31 +6810,53 @@ Participants: ${data.participants}`;
     <!-- Site Configuration: change the name once in js/site-config.js to update everywhere -->
     <script src="./js/site-config.js"></script>
 
-    <!-- ===== Staff Profile Modal ===== -->
-    <div id="staffProfileModal" class="staff-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="staffModalName" onclick="handleStaffModalOverlayClick(event)">
-        <div class="staff-modal">
-            <div class="staff-modal-header">
-                <button class="staff-modal-close" onclick="closeStaffProfile()" aria-label="Close profile">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div id="staffModalPhotoWrap"></div>
-                <h2 class="staff-modal-name" id="staffModalName"></h2>
-                <p class="staff-modal-title" id="staffModalTitle"></p>
+    <!-- ===== Staff Profile Page (dynamic, SPA) ===== -->
+    <div id="staff-profile" class="page-content">
+        <!-- Hero -->
+        <div class="sp-hero" id="spHero">
+            <a href="#our-team" class="sp-back-btn" onclick="showPage('our-team')" id="spBackBtn">
+                <i class="fas fa-arrow-left"></i> Back to Our Team
+            </a>
+            <div class="sp-photo-wrap">
+                <div class="sp-photo-ring" id="spPhotoRing">
+                    <span id="spPhotoInner"></span>
+                </div>
             </div>
-            <div class="staff-modal-body">
-                <div class="staff-modal-section">
-                    <h4><i class="fas fa-user"></i> Biography</h4>
-                    <p id="staffModalBio"></p>
+            <h1 class="sp-name" id="spName">Staff Member</h1>
+            <div class="sp-badge" id="spBadge">
+                <i class="fas fa-id-badge"></i>
+                <span id="spTitle">Position</span>
+            </div>
+        </div>
+
+        <!-- Body content -->
+        <div class="sp-body">
+            <div class="sp-grid">
+                <!-- Biography (full width) -->
+                <div class="sp-section full">
+                    <div class="sp-section-title">
+                        <div class="sp-icon"><i class="fas fa-user"></i></div>
+                        <h3>Biography</h3>
+                    </div>
+                    <p id="spBio"></p>
                 </div>
-                <hr class="staff-modal-divider">
-                <div class="staff-modal-section">
-                    <h4><i class="fas fa-briefcase"></i> Responsibilities</h4>
-                    <p id="staffModalResponsibilities"></p>
+
+                <!-- Responsibilities -->
+                <div class="sp-section">
+                    <div class="sp-section-title">
+                        <div class="sp-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3>Responsibilities</h3>
+                    </div>
+                    <p id="spResponsibilities"></p>
                 </div>
-                <hr class="staff-modal-divider">
-                <div class="staff-modal-section">
-                    <h4><i class="fas fa-star"></i> Expertise</h4>
-                    <div class="staff-modal-tags" id="staffModalTags"></div>
+
+                <!-- Expertise -->
+                <div class="sp-section">
+                    <div class="sp-section-title">
+                        <div class="sp-icon"><i class="fas fa-star"></i></div>
+                        <h3>Areas of Expertise</h3>
+                    </div>
+                    <div class="sp-tags" id="spTags"></div>
                 </div>
             </div>
         </div>
@@ -6808,125 +6869,114 @@ Participants: ${data.participants}`;
             name: 'Mr. Mbuzi D.',
             title: 'Vice-Principal',
             photo: './img/staff/Vice-Principal.jpg',
-            bio: 'Mr. Mbuzi D. serves as the Vice-Principal of Lusaka South University College, bringing over 10 years of distinguished experience in educational administration. His visionary leadership and dedication to academic excellence have been instrumental in shaping the college into a thriving center of learning. He works closely with all departments to foster collaboration and ensure institutional goals are met.',
-            responsibilities: 'Assists the Principal in the overall administration of the college, oversees student welfare, coordinates between academic and administrative departments, and ensures compliance with educational policies and standards.',
+            bio: 'Mr. Mbuzi D. serves as the Vice-Principal of Lusaka South University College, bringing over 10 years of distinguished experience in educational administration. His visionary leadership and dedication to academic excellence have been instrumental in shaping the college into a thriving centre of learning. He works closely with all departments to foster collaboration, resolve challenges and ensure that every institutional goal is met with the highest standard of professionalism.',
+            responsibilities: 'Assists the Principal in the overall administration of the college, oversees student welfare, coordinates between academic and administrative departments, represents the institution at official functions, and ensures compliance with all educational policies and regulatory standards.',
             expertise: ['Educational Leadership', 'Policy Development', 'Student Welfare', 'Institutional Governance', 'Strategic Planning']
         },
         'musonda': {
             name: 'Ms. Musonda L.',
             title: 'Registrar – Administration',
             photo: './img/staff/Registrar.jpg',
-            bio: 'Ms. Musonda L. is the Registrar of Lusaka South University College, responsible for the integrity and management of all student academic records. With a meticulous eye for detail and a deep commitment to student service excellence, she ensures that every administrative process — from enrollment to graduation — runs seamlessly and transparently.',
-            responsibilities: 'Manages student records and academic transcripts, oversees enrollment and graduation processes, maintains institutional registers, liaises with external examination bodies, and handles official correspondence.',
+            bio: 'Ms. Musonda L. is the Registrar of Lusaka South University College, responsible for the integrity and management of all student academic records. With a meticulous eye for detail and a deep commitment to student service excellence, she ensures that every administrative process — from enrollment to graduation — runs seamlessly, accurately, and transparently for the benefit of every student.',
+            responsibilities: 'Manages student records and academic transcripts, oversees enrollment and graduation processes, maintains institutional registers, liaises with external examination bodies, processes official correspondence, and ensures accuracy and security of all academic data.',
             expertise: ['Records Management', 'Student Enrollment', 'Academic Administration', 'Data Integrity', 'Examination Coordination']
         },
         'muleya': {
             name: 'Ms. Muleya C.',
             title: 'Academic Dean',
             photo: './img/staff/Academic-Dean.jpg',
-            bio: 'Ms. Muleya C. is the Academic Dean at Lusaka South University College, providing academic leadership across all schools and faculties. She is passionate about maintaining the highest standards of teaching and learning, and is dedicated to curriculum development, faculty mentorship, and ensuring students receive a world-class education that prepares them for the workforce and beyond.',
-            responsibilities: 'Oversees all academic programs and curricula, ensures quality assurance in teaching and learning, manages faculty performance and development, coordinates academic calendars and timetables, and liaises with accreditation bodies.',
+            bio: 'Ms. Muleya C. is the Academic Dean at Lusaka South University College, providing academic leadership across all schools and faculties. She is passionate about maintaining the highest standards of teaching and learning, and is dedicated to curriculum development, faculty mentorship, and ensuring every student receives a world-class education that genuinely prepares them for the workforce and for life beyond the classroom.',
+            responsibilities: 'Oversees all academic programs and curricula across all faculties, ensures quality assurance in teaching and learning, manages faculty performance and professional development, coordinates academic calendars and timetables, and liaises with accreditation and examination bodies.',
             expertise: ['Curriculum Development', 'Academic Quality Assurance', 'Faculty Development', 'Program Accreditation', 'Educational Research']
         },
         'kababa': {
             name: 'Ms. Kababa J.',
             title: 'Enrollments Officer',
             photo: './img/staff/Enrollments-Officer.jpg',
-            bio: 'Ms. Kababa J. is the Enrollments Officer at Lusaka South University College, playing a pivotal role in welcoming new students into the LSUC community. She is dedicated to making the admissions process smooth, transparent, and accessible, and is known for her warm approach in guiding prospective students through every step of their application journey.',
-            responsibilities: 'Manages the student admissions and enrollment process, guides prospective students through applications, coordinates outreach and recruitment initiatives, maintains enrollment data, and liaises with schools and communities to promote LSUC programs.',
+            bio: 'Ms. Kababa J. is the Enrollments Officer at Lusaka South University College, playing a pivotal role in welcoming new students into the LSUC community. She is dedicated to making the admissions process smooth, transparent, and accessible to all, and is widely known for her warm, patient approach in guiding prospective students through every step of their application and enrollment journey.',
+            responsibilities: 'Manages the full student admissions and enrollment process, guides prospective students and parents through applications, coordinates outreach and school recruitment initiatives, maintains enrollment statistics and data, and liaises with schools and communities to promote LSUC programs.',
             expertise: ['Student Admissions', 'Outreach & Recruitment', 'Application Processing', 'Community Engagement', 'Data Management']
         },
         'sianamate-admin': {
             name: 'Mr. Sianamate S.',
             title: 'Systems Administrator',
             photo: './img/staff/Systems-Administrator.jpg',
-            bio: 'Mr. Sianamate S. is the Systems Administrator at Lusaka South University College, responsible for the integrity and performance of all institutional ICT systems. A technology professional with a strong background in IT infrastructure, he ensures that the college's digital platforms — from the website to the student management system — remain secure, reliable, and up to date.',
-            responsibilities: 'Manages and maintains institutional ICT systems and networks, oversees website operations, provides technical support to staff and students, ensures data security and system backups, and leads digital transformation initiatives.',
+            bio: 'Mr. Sianamate S. is the Systems Administrator at Lusaka South University College, responsible for the integrity and performance of all institutional ICT systems. A skilled technology professional with a strong background in IT infrastructure, he ensures that the college’s digital platforms — from the website to the student management system — remain secure, reliable, and continuously up to date in support of the institution’s academic and administrative operations.',
+            responsibilities: 'Manages and maintains institutional ICT systems, networks, and servers, oversees website operations and updates, provides technical support to staff and students, ensures data security and regular system backups, and leads digital transformation initiatives across the campus.',
             expertise: ['Network Administration', 'Web Development', 'Cybersecurity', 'Database Management', 'ICT Support']
         },
         'winnie': {
             name: 'Ms. Winnie C.',
             title: 'Front Desk Officer',
             photo: './img/staff/front-desk-officer.jpg',
-            bio: 'Ms. Winnie C. is the Front Desk Officer at Lusaka South University College, and is often the first point of contact for visitors, prospective students, and the public. Her warm, professional demeanor and excellent communication skills make her an invaluable ambassador for the college, ensuring every interaction reflects LSUC's commitment to service excellence.',
-            responsibilities: 'Manages the college reception area, handles visitor inquiries and walk-ins, coordinates administrative support tasks, manages incoming and outgoing communications, and assists students and staff with general queries.',
+            bio: 'Ms. Winnie C. is the Front Desk Officer at Lusaka South University College, and is typically the very first point of contact for visitors, prospective students, and the general public. Her warm, professional demeanour and outstanding communication skills make her an invaluable ambassador for the college, ensuring that every interaction — whether in person, by phone, or online — reflects LSUC’s deep commitment to service excellence and community.',
+            responsibilities: 'Manages the college reception area and front-of-house operations, handles visitor and student inquiries, coordinates administrative support tasks across departments, manages incoming and outgoing correspondence, and assists staff with general administrative queries.',
             expertise: ['Customer Service', 'Front Office Management', 'Communication', 'Administrative Support', 'Public Relations']
         },
         'bwalya': {
             name: 'Mr. Bwalya',
             title: 'Head of Engineering Faculty',
             photo: './img/HOD/mr_bwalya_engineering.jpg',
-            bio: 'Mr. Bwalya is the Head of the Engineering Faculty at Lusaka South University College. An expert engineer and seasoned educator, he brings extensive industry experience to the classroom, providing students with practical, hands-on training in various engineering disciplines. He is deeply committed to producing graduates who are job-ready and technically proficient.',
-            responsibilities: 'Leads the Engineering Faculty, develops and reviews engineering curricula, mentors and supervises engineering lecturers, ensures workshop and laboratory facilities meet industry standards, and coordinates industry partnerships for student attachments.',
+            bio: 'Mr. Bwalya is the Head of the Engineering Faculty at Lusaka South University College. An expert engineer and seasoned educator, he brings extensive industry experience directly into the classroom, providing students with practical, hands-on training across various engineering disciplines. He is deeply committed to producing graduates who are technically proficient, industry-ready, and equipped to contribute meaningfully to Zambia’s development.',
+            responsibilities: 'Leads and manages the Engineering Faculty, develops and periodically reviews engineering curricula, mentors and supervises engineering lecturers, ensures workshop and laboratory facilities meet current industry standards, and coordinates with industry partners for student attachments and practical training.',
             expertise: ['Electrical Engineering', 'Automotive Engineering', 'Civil & Construction', 'Solar Technology', 'Curriculum Design']
         },
         'machila': {
             name: 'Mr. Machila',
             title: 'Head of Business Faculty',
             photo: './img/HOD/mr_machila_business.jpg',
-            bio: 'Mr. Machila heads the School of Business at Lusaka South University College, combining real-world business expertise with academic rigor to deliver a high-quality business education. With a background spanning management, finance, and entrepreneurship, he equips students with the skills and mindset needed to thrive in today's competitive business environment.',
-            responsibilities: 'Leads all Business Faculty programs, oversees business curriculum development, mentors business lecturers, fosters relationships with industry for student internships, and ensures program content remains relevant to current market demands.',
+            bio: 'Mr. Machila heads the School of Business at Lusaka South University College, combining real-world business expertise with academic rigour to deliver a high-quality, relevant business education. With a professional background spanning management, finance, marketing, and entrepreneurship, he equips students with the practical skills, analytical mindset, and entrepreneurial thinking needed to thrive in today’s fast-changing business environment.',
+            responsibilities: 'Leads and oversees all Business Faculty programs and operations, drives business curriculum development and review, mentors and supports business lecturers, fosters industry relationships for student internships and placements, and ensures program content remains current and aligned with market demands.',
             expertise: ['Business Administration', 'Finance & Accounting', 'Human Resource Management', 'Procurement', 'Entrepreneurship']
         },
         'sianamate-it': {
             name: 'Mr. Sianamate S.',
             title: 'Head of IT Faculty',
             photo: './img/HOD/mr_sianamate_it.jpg',
-            bio: 'Mr. Sianamate S. is the Head of the School of Information Technology at Lusaka South University College. A passionate technology educator, he keeps pace with the rapid evolution of the digital landscape to ensure students are trained in the most current and in-demand ICT skills. He is committed to producing graduates who can confidently navigate the digital economy.',
-            responsibilities: 'Leads all IT Faculty programs, develops and updates ICT curricula, oversees the computer laboratory operations, mentors IT lecturers, coordinates industry linkages, and prepares students for professional ICT certifications.',
+            bio: 'Mr. Sianamate S. is the Head of the School of Information Technology at Lusaka South University College. A passionate technology educator, he continuously keeps pace with the rapid evolution of the digital landscape to ensure that students receive training in the most current, in-demand ICT skills. He is deeply committed to producing graduates who can confidently navigate and lead in the digital economy of the 21st century.',
+            responsibilities: 'Leads all IT Faculty programs and operations, develops and regularly updates ICT curricula, oversees the computer laboratory operations and equipment, mentors IT lecturers, coordinates industry linkages and partnerships, and prepares students for professional ICT certifications and career opportunities.',
             expertise: ['Programming & Software Development', 'Networking', 'Cybersecurity', 'Computer Studies', 'Digital Literacy']
         },
         'chirwa': {
             name: 'Mrs. Chirwa C.',
             title: 'Head of Health Sciences Faculty',
             photo: './img/HOD/mr_chido_health_sciences.jpg',
-            bio: 'Mrs. Chirwa C. is the Head of the School of Health Sciences at Lusaka South University College. A dedicated healthcare professional and educator, she brings a wealth of clinical and academic experience to the faculty. She is committed to training the next generation of healthcare workers who are competent, compassionate, and ready to serve communities across Zambia.',
-            responsibilities: 'Leads Health Sciences Faculty programs, oversees clinical training and placement, develops health curriculum aligned with regulatory standards, manages faculty staff, coordinates with health institutions for student practical training.',
+            bio: 'Mrs. Chirwa C. is the Head of the School of Health Sciences at Lusaka South University College. A dedicated healthcare professional and passionate educator, she brings a wealth of clinical experience and academic knowledge to the faculty. She is deeply committed to training the next generation of healthcare workers who are not only technically competent but also compassionate, ethical, and ready to serve communities across Zambia and beyond.',
+            responsibilities: 'Leads and manages all Health Sciences Faculty programs and staff, oversees clinical training and community placement of students, develops and reviews health curricula in line with regulatory standards, manages faculty operations, and coordinates with hospitals and health institutions for student practical training.',
             expertise: ['Nursing & Healthcare', 'Pharmacy Technology', 'Environmental Health', 'Psychosocial Counselling', 'First Aid & CPR']
         }
     };
 
+    // Navigate to staff profile page and populate content
     function openStaffProfile(staffId) {
         const data = staffProfiles[staffId];
         if (!data) return;
 
-        // Photo or placeholder
-        const photoWrap = document.getElementById('staffModalPhotoWrap');
-        photoWrap.innerHTML = data.photo
-            ? `<img src="${data.photo}" alt="${data.name}" class="staff-modal-photo" onerror="this.outerHTML='<div class=&quot;staff-modal-photo-placeholder&quot; style=&quot;margin:0 auto;&quot;><i class=&quot;fas fa-user&quot;></i></div>'">`
-            : `<div class="staff-modal-photo-placeholder" style="margin:0 auto;"><i class="fas fa-user"></i></div>`;
-
-        document.getElementById('staffModalName').textContent = data.name;
-        document.getElementById('staffModalTitle').textContent = data.title;
-        document.getElementById('staffModalBio').textContent = data.bio;
-        document.getElementById('staffModalResponsibilities').textContent = data.responsibilities;
-
-        // Expertise tags
-        const tagsEl = document.getElementById('staffModalTags');
-        tagsEl.innerHTML = (data.expertise || []).map(tag =>
-            `<span class="staff-modal-tag">${tag}</span>`
-        ).join('');
-
-        const modal = document.getElementById('staffProfileModal');
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeStaffProfile() {
-        const modal = document.getElementById('staffProfileModal');
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function handleStaffModalOverlayClick(e) {
-        if (e.target === document.getElementById('staffProfileModal')) {
-            closeStaffProfile();
+        // --- Photo ---
+        const photoInner = document.getElementById('spPhotoInner');
+        if (data.photo) {
+            photoInner.outerHTML = `<img src="${data.photo}" alt="${data.name}" class="sp-photo" id="spPhotoInner" `
+                + `onerror="this.outerHTML='<span id=&quot;spPhotoInner&quot; class=&quot;sp-photo-placeholder&quot;><i class=&quot;fas fa-user&quot;></i></span>'">`;
+        } else {
+            photoInner.outerHTML = `<span id="spPhotoInner" class="sp-photo-placeholder"><i class="fas fa-user"></i></span>`;
         }
-    }
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeStaffProfile();
-    });
+        // --- Text fields ---
+        document.getElementById('spName').textContent             = data.name;
+        document.getElementById('spTitle').textContent            = data.title;
+        document.getElementById('spBio').textContent              = data.bio;
+        document.getElementById('spResponsibilities').textContent = data.responsibilities;
+
+        // --- Breadcrumb on back btn ---
+        const backBtn = document.getElementById('spBackBtn');
+        backBtn.href = '#our-team';
+
+        // --- Expertise tags ---
+        document.getElementById('spTags').innerHTML =
+            (data.expertise || []).map(t => `<span class="sp-tag">${t}</span>`).join('');
+
+        // Navigate using existing SPA router
+        showPage('staff-profile');
+    }
     </script>
 </html>

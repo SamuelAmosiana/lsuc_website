@@ -422,6 +422,184 @@
             transform: scale(1.05);
         }
 
+        /* Staff About Button */
+        .staff-about-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            padding: 9px 22px;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #e65c00 100%);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 14px rgba(230, 92, 0, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .staff-about-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(230, 92, 0, 0.45);
+            background: linear-gradient(135deg, #ff7b1a 0%, #cc4500 100%);
+        }
+        .staff-about-btn i {
+            font-size: 0.85rem;
+        }
+
+        /* Staff Profile Modal */
+        .staff-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 20, 0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeInOverlay 0.25s ease;
+        }
+        .staff-modal-overlay.active {
+            display: flex;
+        }
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .staff-modal {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 620px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            animation: slideUpModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+        @keyframes slideUpModal {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0)   scale(1); }
+        }
+        .staff-modal-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 40px 30px 30px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+        .staff-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .staff-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .staff-modal-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 5px solid var(--primary-orange);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            margin-bottom: 18px;
+        }
+        .staff-modal-photo-placeholder {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), #e65c00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #fff;
+            margin: 0 auto 18px;
+            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+        .staff-modal-name {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 6px;
+        }
+        .staff-modal-title {
+            color: var(--primary-orange);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .staff-modal-body {
+            padding: 30px;
+        }
+        .staff-modal-section {
+            margin-bottom: 22px;
+        }
+        .staff-modal-section h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-orange);
+            margin: 0 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .staff-modal-section p {
+            color: #444;
+            font-size: 0.97rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .staff-modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .staff-modal-tag {
+            background: #f0f4ff;
+            color: #0f3460;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid #d0daf5;
+        }
+        .staff-modal-divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+        @media (max-width: 480px) {
+            .staff-modal-header { padding: 30px 20px 22px; }
+            .staff-modal-body  { padding: 20px; }
+            .staff-modal-name  { font-size: 1.25rem; }
+            .staff-modal-photo, .staff-modal-photo-placeholder { width: 110px; height: 110px; }
+        }
+
         /* Insights Video Section */
         .insights-section {
             padding-bottom: 0;
@@ -2688,76 +2866,82 @@
                     </div>
 --->
                     <!-- Vice Principal -->
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/staff/Vice-Principal.jpg" alt="Mr. Mbuzi D, Vice-Principal"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Mr. Mbuzi D. <br> Vice-Principal</center>
-                        </h3>
+                        <h3><center>Mr. Mbuzi D. <br> Vice-Principal</center></h3>
                         <p>Leading the college with over 10 years of experience in educational administration and a
                             commitment to student success and institutional growth.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('mbuzi')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
                     <!-- Registrar -->
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/staff/Registrar.jpg" alt="Ms Musonda L, Registrar" class="staff-image">
                         </div>
-                        <h3>
-                            <center>Ms Musonda L.<br> Registrar - Administration</center>
-                        </h3>
+                        <h3><center>Ms Musonda L.<br> Registrar - Administration</center></h3>
                         <p>Handling student records, enrollment, and graduation processes with attention to detail and
                             student service excellence.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('musonda')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
                     <!-- Academics Dean -->
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/staff/Academic-Dean.jpg" alt="Ms Muleya C, Academic Dean"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Ms Muleya C. <br> Academic Dean</center>
-                        </h3>
+                        <h3><center>Ms Muleya C. <br> Academic Dean</center></h3>
                         <p>Overseeing academic programs and ensuring the highest standards of teaching and learning
                             across all schools and departments.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('muleya')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
                     <!-- Enrollments Officer -->
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
-                            <img src="./img/staff/Enrollments-Officer.jpg" alt="Ms Kababa J, Finance Director"
+                            <img src="./img/staff/Enrollments-Officer.jpg" alt="Ms Kababa J, Enrollments Officer"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Ms Kababa J <br> Enrollments Officer</center>
-                        </h3>
+                        <h3><center>Ms Kababa J <br> Enrollments Officer</center></h3>
                         <p>Facilitates student admissions, assists with application processes, and supports outreach
                             initiatives to enhance enrollment growth.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('kababa')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
                     <!-- Systems Administrator -->
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/staff/Systems-Administrator.jpg"
                                 alt="Mr. Sianamate S, Systems Administrator" class="staff-image">
                         </div>
-                        <h3>
-                            <center>Mr. Sianamate S. <br> Systems Administrator</center>
-                        </h3>
+                        <h3><center>Mr. Sianamate S. <br> Systems Administrator</center></h3>
                         <p>Responsible for managing institutional systems, maintaining website operations, and ensuring
                             smooth ICT functionality across departments.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('sianamate-admin')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
 
                     <!-- Front Desk Officer -->
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/staff/front-desk-officer.jpg" alt="Ms Winnie C, Front Desk Officer"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Ms Winnie C. <br> Front Desk Officer</center>
-                        </h3>
+                        <h3><center>Ms Winnie C. <br> Front Desk Officer</center></h3>
                         <p>Providing excellent customer service, managing visitor inquiries, and coordinating
                             administrative support for students and staff.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('winnie')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
                 </div>
 
@@ -2767,49 +2951,53 @@
                     <p>Qualified instructors committed to student success</p>
                 </div>
                 <div class="cards-grid">
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/HOD/mr_bwalya_engineering.jpg" alt="Mr. Bwalya, Engineering Faculty HOD"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Mr. Bwalya.<br>Head of Engineering Faculty</center>
-                        </h3>
+                        <h3><center>Mr. Bwalya.<br>Head of Engineering Faculty</center></h3>
                         <p>Expert engineer and technician with industry experience providing practical, hands-on
                             education in various engineering disciplines.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('bwalya')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/HOD/mr_machila_business.jpg" alt="Mr. Machila, Business Faculty HOD"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Mr. Machila<br>Head of Business Faculty</center>
-                        </h3>
+                        <h3><center>Mr. Machila<br>Head of Business Faculty</center></h3>
                         <p>Business professional and academic with real-world experience in management, finance,
                             marketing, and entrepreneurship.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('machila')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/HOD/mr_sianamate_it.jpg" alt="Mr. Sianamate S, IT Faculty HOD"
                                 class="staff-image">
                         </div>
-                        <h3>
-                            <center>Mr. Sianamate S.<br>Head of IT Faculty</center>
-                        </h3>
+                        <h3><center>Mr. Sianamate S.<br>Head of IT Faculty</center></h3>
                         <p>Technology expert keeping pace with rapid digital transformation, teaching cutting-edge
                             skills in programming, networking, and cybersecurity.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('sianamate-it')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
-                    <div class="card">
+                    <div class="card" style="text-align:center;">
                         <div class="staff-image-container">
                             <img src="./img/HOD/mr_chido_health_sciences.jpg"
-                                alt="Mr. Chido C, Health Sciences Faculty HOD" class="staff-image">
+                                alt="Mrs. Chirwa C, Health Sciences Faculty HOD" class="staff-image">
                         </div>
-                        <h3>
-                            <center>Mrs. Chirwa C.<br>Head of Health Sciences Faculty</center>
-                        </h3>
+                        <h3><center>Mrs. Chirwa C.<br>Head of Health Sciences Faculty</center></h3>
                         <p>Healthcare professional providing comprehensive training in medical technology, nursing, and
                             allied health programs.</p>
+                        <button class="staff-about-btn" onclick="openStaffProfile('chirwa')">
+                            <i class="fas fa-user-circle"></i> About
+                        </button>
                     </div>
                 </div>
             </div>
@@ -6582,4 +6770,163 @@ Participants: ${data.participants}`;
 
     <!-- Site Configuration: change the name once in js/site-config.js to update everywhere -->
     <script src="./js/site-config.js"></script>
+
+    <!-- ===== Staff Profile Modal ===== -->
+    <div id="staffProfileModal" class="staff-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="staffModalName" onclick="handleStaffModalOverlayClick(event)">
+        <div class="staff-modal">
+            <div class="staff-modal-header">
+                <button class="staff-modal-close" onclick="closeStaffProfile()" aria-label="Close profile">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div id="staffModalPhotoWrap"></div>
+                <h2 class="staff-modal-name" id="staffModalName"></h2>
+                <p class="staff-modal-title" id="staffModalTitle"></p>
+            </div>
+            <div class="staff-modal-body">
+                <div class="staff-modal-section">
+                    <h4><i class="fas fa-user"></i> Biography</h4>
+                    <p id="staffModalBio"></p>
+                </div>
+                <hr class="staff-modal-divider">
+                <div class="staff-modal-section">
+                    <h4><i class="fas fa-briefcase"></i> Responsibilities</h4>
+                    <p id="staffModalResponsibilities"></p>
+                </div>
+                <hr class="staff-modal-divider">
+                <div class="staff-modal-section">
+                    <h4><i class="fas fa-star"></i> Expertise</h4>
+                    <div class="staff-modal-tags" id="staffModalTags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ===== Staff Profile Data =====
+    const staffProfiles = {
+        'mbuzi': {
+            name: 'Mr. Mbuzi D.',
+            title: 'Vice-Principal',
+            photo: './img/staff/Vice-Principal.jpg',
+            bio: 'Mr. Mbuzi D. serves as the Vice-Principal of Lusaka South University College, bringing over 10 years of distinguished experience in educational administration. His visionary leadership and dedication to academic excellence have been instrumental in shaping the college into a thriving center of learning. He works closely with all departments to foster collaboration and ensure institutional goals are met.',
+            responsibilities: 'Assists the Principal in the overall administration of the college, oversees student welfare, coordinates between academic and administrative departments, and ensures compliance with educational policies and standards.',
+            expertise: ['Educational Leadership', 'Policy Development', 'Student Welfare', 'Institutional Governance', 'Strategic Planning']
+        },
+        'musonda': {
+            name: 'Ms. Musonda L.',
+            title: 'Registrar – Administration',
+            photo: './img/staff/Registrar.jpg',
+            bio: 'Ms. Musonda L. is the Registrar of Lusaka South University College, responsible for the integrity and management of all student academic records. With a meticulous eye for detail and a deep commitment to student service excellence, she ensures that every administrative process — from enrollment to graduation — runs seamlessly and transparently.',
+            responsibilities: 'Manages student records and academic transcripts, oversees enrollment and graduation processes, maintains institutional registers, liaises with external examination bodies, and handles official correspondence.',
+            expertise: ['Records Management', 'Student Enrollment', 'Academic Administration', 'Data Integrity', 'Examination Coordination']
+        },
+        'muleya': {
+            name: 'Ms. Muleya C.',
+            title: 'Academic Dean',
+            photo: './img/staff/Academic-Dean.jpg',
+            bio: 'Ms. Muleya C. is the Academic Dean at Lusaka South University College, providing academic leadership across all schools and faculties. She is passionate about maintaining the highest standards of teaching and learning, and is dedicated to curriculum development, faculty mentorship, and ensuring students receive a world-class education that prepares them for the workforce and beyond.',
+            responsibilities: 'Oversees all academic programs and curricula, ensures quality assurance in teaching and learning, manages faculty performance and development, coordinates academic calendars and timetables, and liaises with accreditation bodies.',
+            expertise: ['Curriculum Development', 'Academic Quality Assurance', 'Faculty Development', 'Program Accreditation', 'Educational Research']
+        },
+        'kababa': {
+            name: 'Ms. Kababa J.',
+            title: 'Enrollments Officer',
+            photo: './img/staff/Enrollments-Officer.jpg',
+            bio: 'Ms. Kababa J. is the Enrollments Officer at Lusaka South University College, playing a pivotal role in welcoming new students into the LSUC community. She is dedicated to making the admissions process smooth, transparent, and accessible, and is known for her warm approach in guiding prospective students through every step of their application journey.',
+            responsibilities: 'Manages the student admissions and enrollment process, guides prospective students through applications, coordinates outreach and recruitment initiatives, maintains enrollment data, and liaises with schools and communities to promote LSUC programs.',
+            expertise: ['Student Admissions', 'Outreach & Recruitment', 'Application Processing', 'Community Engagement', 'Data Management']
+        },
+        'sianamate-admin': {
+            name: 'Mr. Sianamate S.',
+            title: 'Systems Administrator',
+            photo: './img/staff/Systems-Administrator.jpg',
+            bio: 'Mr. Sianamate S. is the Systems Administrator at Lusaka South University College, responsible for the integrity and performance of all institutional ICT systems. A technology professional with a strong background in IT infrastructure, he ensures that the college's digital platforms — from the website to the student management system — remain secure, reliable, and up to date.',
+            responsibilities: 'Manages and maintains institutional ICT systems and networks, oversees website operations, provides technical support to staff and students, ensures data security and system backups, and leads digital transformation initiatives.',
+            expertise: ['Network Administration', 'Web Development', 'Cybersecurity', 'Database Management', 'ICT Support']
+        },
+        'winnie': {
+            name: 'Ms. Winnie C.',
+            title: 'Front Desk Officer',
+            photo: './img/staff/front-desk-officer.jpg',
+            bio: 'Ms. Winnie C. is the Front Desk Officer at Lusaka South University College, and is often the first point of contact for visitors, prospective students, and the public. Her warm, professional demeanor and excellent communication skills make her an invaluable ambassador for the college, ensuring every interaction reflects LSUC's commitment to service excellence.',
+            responsibilities: 'Manages the college reception area, handles visitor inquiries and walk-ins, coordinates administrative support tasks, manages incoming and outgoing communications, and assists students and staff with general queries.',
+            expertise: ['Customer Service', 'Front Office Management', 'Communication', 'Administrative Support', 'Public Relations']
+        },
+        'bwalya': {
+            name: 'Mr. Bwalya',
+            title: 'Head of Engineering Faculty',
+            photo: './img/HOD/mr_bwalya_engineering.jpg',
+            bio: 'Mr. Bwalya is the Head of the Engineering Faculty at Lusaka South University College. An expert engineer and seasoned educator, he brings extensive industry experience to the classroom, providing students with practical, hands-on training in various engineering disciplines. He is deeply committed to producing graduates who are job-ready and technically proficient.',
+            responsibilities: 'Leads the Engineering Faculty, develops and reviews engineering curricula, mentors and supervises engineering lecturers, ensures workshop and laboratory facilities meet industry standards, and coordinates industry partnerships for student attachments.',
+            expertise: ['Electrical Engineering', 'Automotive Engineering', 'Civil & Construction', 'Solar Technology', 'Curriculum Design']
+        },
+        'machila': {
+            name: 'Mr. Machila',
+            title: 'Head of Business Faculty',
+            photo: './img/HOD/mr_machila_business.jpg',
+            bio: 'Mr. Machila heads the School of Business at Lusaka South University College, combining real-world business expertise with academic rigor to deliver a high-quality business education. With a background spanning management, finance, and entrepreneurship, he equips students with the skills and mindset needed to thrive in today's competitive business environment.',
+            responsibilities: 'Leads all Business Faculty programs, oversees business curriculum development, mentors business lecturers, fosters relationships with industry for student internships, and ensures program content remains relevant to current market demands.',
+            expertise: ['Business Administration', 'Finance & Accounting', 'Human Resource Management', 'Procurement', 'Entrepreneurship']
+        },
+        'sianamate-it': {
+            name: 'Mr. Sianamate S.',
+            title: 'Head of IT Faculty',
+            photo: './img/HOD/mr_sianamate_it.jpg',
+            bio: 'Mr. Sianamate S. is the Head of the School of Information Technology at Lusaka South University College. A passionate technology educator, he keeps pace with the rapid evolution of the digital landscape to ensure students are trained in the most current and in-demand ICT skills. He is committed to producing graduates who can confidently navigate the digital economy.',
+            responsibilities: 'Leads all IT Faculty programs, develops and updates ICT curricula, oversees the computer laboratory operations, mentors IT lecturers, coordinates industry linkages, and prepares students for professional ICT certifications.',
+            expertise: ['Programming & Software Development', 'Networking', 'Cybersecurity', 'Computer Studies', 'Digital Literacy']
+        },
+        'chirwa': {
+            name: 'Mrs. Chirwa C.',
+            title: 'Head of Health Sciences Faculty',
+            photo: './img/HOD/mr_chido_health_sciences.jpg',
+            bio: 'Mrs. Chirwa C. is the Head of the School of Health Sciences at Lusaka South University College. A dedicated healthcare professional and educator, she brings a wealth of clinical and academic experience to the faculty. She is committed to training the next generation of healthcare workers who are competent, compassionate, and ready to serve communities across Zambia.',
+            responsibilities: 'Leads Health Sciences Faculty programs, oversees clinical training and placement, develops health curriculum aligned with regulatory standards, manages faculty staff, coordinates with health institutions for student practical training.',
+            expertise: ['Nursing & Healthcare', 'Pharmacy Technology', 'Environmental Health', 'Psychosocial Counselling', 'First Aid & CPR']
+        }
+    };
+
+    function openStaffProfile(staffId) {
+        const data = staffProfiles[staffId];
+        if (!data) return;
+
+        // Photo or placeholder
+        const photoWrap = document.getElementById('staffModalPhotoWrap');
+        photoWrap.innerHTML = data.photo
+            ? `<img src="${data.photo}" alt="${data.name}" class="staff-modal-photo" onerror="this.outerHTML='<div class=&quot;staff-modal-photo-placeholder&quot; style=&quot;margin:0 auto;&quot;><i class=&quot;fas fa-user&quot;></i></div>'">`
+            : `<div class="staff-modal-photo-placeholder" style="margin:0 auto;"><i class="fas fa-user"></i></div>`;
+
+        document.getElementById('staffModalName').textContent = data.name;
+        document.getElementById('staffModalTitle').textContent = data.title;
+        document.getElementById('staffModalBio').textContent = data.bio;
+        document.getElementById('staffModalResponsibilities').textContent = data.responsibilities;
+
+        // Expertise tags
+        const tagsEl = document.getElementById('staffModalTags');
+        tagsEl.innerHTML = (data.expertise || []).map(tag =>
+            `<span class="staff-modal-tag">${tag}</span>`
+        ).join('');
+
+        const modal = document.getElementById('staffProfileModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeStaffProfile() {
+        const modal = document.getElementById('staffProfileModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function handleStaffModalOverlayClick(e) {
+        if (e.target === document.getElementById('staffProfileModal')) {
+            closeStaffProfile();
+        }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeStaffProfile();
+    });
+    </script>
 </html>

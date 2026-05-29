@@ -4665,8 +4665,20 @@
 
         // Handle initial page load
         window.addEventListener('load', function () {
-            const hash = window.location.hash.substring(1);
-            if (hash && document.getElementById(hash)) {
+            const hash = window.location.hash.substring(1); // e.g. "staff-mbuzi" or "our-team"
+
+            if (hash.startsWith('staff-') && hash !== 'staff-profile') {
+                // It's a direct staff profile link (QR code, business card, etc.)
+                const staffId = hash.substring(6); // strip leading "staff-"
+                if (typeof staffProfiles !== 'undefined' && staffProfiles[staffId]) {
+                    openStaffProfile(staffId);
+                } else {
+                    // staffProfiles not yet defined — wait for scripts to finish
+                    window.addEventListener('staffProfilesReady', function () {
+                        openStaffProfile(staffId);
+                    }, { once: true });
+                }
+            } else if (hash && document.getElementById(hash)) {
                 showPage(hash);
             }
         });
@@ -4674,7 +4686,14 @@
         // Handle browser back/forward buttons
         window.addEventListener('popstate', function () {
             const hash = window.location.hash.substring(1) || 'home';
-            showPage(hash);
+            if (hash.startsWith('staff-') && hash !== 'staff-profile') {
+                const staffId = hash.substring(6);
+                if (typeof staffProfiles !== 'undefined' && staffProfiles[staffId]) {
+                    openStaffProfile(staffId);
+                }
+            } else {
+                showPage(hash);
+            }
         });
 
         // Smooth scrolling for anchor links within pages
@@ -6986,16 +7005,36 @@ Participants: ${data.participants}`;
         document.getElementById('spBio').textContent              = data.bio;
         document.getElementById('spResponsibilities').textContent = data.responsibilities;
 
-        // --- Breadcrumb on back btn ---
+        // --- Back button ---
         const backBtn = document.getElementById('spBackBtn');
         backBtn.href = '#our-team';
+        backBtn.onclick = function(e) {
+            e.preventDefault();
+            showPage('our-team');
+        };
 
         // --- Expertise tags ---
         document.getElementById('spTags').innerHTML =
             (data.expertise || []).map(t => `<span class="sp-tag">${t}</span>`).join('');
 
-        // Navigate using existing SPA router
-        showPage('staff-profile');
+        // --- Navigate and set unique URL hash for this staff member ---
+        // Show the staff-profile page
+        const pages = document.querySelectorAll('.page-content');
+        pages.forEach(p => p.classList.remove('active'));
+        const profilePage = document.getElementById('staff-profile');
+        if (profilePage) {
+            profilePage.classList.add('active');
+            profilePage.classList.add('loading');
+            setTimeout(() => profilePage.classList.add('loaded'), 100);
+            setTimeout(() => profilePage.classList.remove('loading', 'loaded'), 600);
+        }
+        window.scrollTo(0, 0);
+
+        // Set the unique staff-specific URL hash
+        window.location.hash = 'staff-' + staffId;
     }
+
+    // Signal that staffProfiles is ready (for early hash-based loads)
+    window.dispatchEvent(new Event('staffProfilesReady'));
     </script>
 </html>

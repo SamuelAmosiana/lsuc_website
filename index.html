@@ -181,12 +181,8 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
-        /* Hero Section */
+        /* ===== Hero Slideshow ===== */
         .hero {
-            background: url('./img/lsuc site cover img.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -195,6 +191,87 @@
             color: white;
             margin-top: 80px;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Individual slide layers */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.4s ease-in-out;
+            will-change: opacity;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        /* Dark overlay on each slide for text legibility */
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.42);
+        }
+
+        /* Prev / Next arrow buttons */
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(255, 255, 255, 0.45);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            transition: background 0.25s, transform 0.25s, border-color 0.25s;
+        }
+        .hero-arrow:hover {
+            background: rgba(255, 140, 0, 0.72);
+            border-color: var(--primary-orange);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .hero-arrow-prev { left: 24px; }
+        .hero-arrow-next { right: 24px; }
+
+        /* Dot indicators */
+        .hero-dots {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .hero-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .hero-dot.active {
+            background: var(--primary-orange);
+            border-color: var(--primary-orange);
+            transform: scale(1.35);
+        }
+        .hero-dot:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.75);
         }
 
         .hero-content {
@@ -205,6 +282,8 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 5;
         }
 
         .hero h1 {
@@ -2600,7 +2679,24 @@
     <!-- Home Page -->
     <div id="home" class="page-content active">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" id="heroSection">
+            <!-- Slide layers -->
+            <div class="hero-slide active" style="background-image: url('./img/lsuc site cover img.jpeg');"></div>
+            <div class="hero-slide" style="background-image: url('./img/lsuc site cover img2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('./img/lsuc site cover img3.jpg');"></div>
+
+            <!-- Navigation arrows -->
+            <button class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Dot indicators -->
+            <div class="hero-dots" id="heroDots"></div>
+
+            <!-- Hero content -->
             <div class="hero-content">
                 <h1>Welcome to <span data-site-name></span></h1>
                 <p class="motto">"Dream, Explore, Acquire"</p>
@@ -7036,5 +7132,79 @@ Participants: ${data.participants}`;
 
     // Signal that staffProfiles is ready (for early hash-based loads)
     window.dispatchEvent(new Event('staffProfilesReady'));
+
+    // ===== Hero Slideshow =====
+    (function () {
+        const SLIDE_INTERVAL = 3000; // 3 seconds
+        const slides = document.querySelectorAll('#heroSection .hero-slide');
+        const dotsContainer = document.getElementById('heroDots');
+        const prevBtn = document.getElementById('heroPrev');
+        const nextBtn = document.getElementById('heroNext');
+        let current = 0;
+        let timer = null;
+
+        if (!slides.length) return;
+
+        // Build dots
+        slides.forEach(function (_, i) {
+            const dot = document.createElement('button');
+            dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+            dotsContainer.appendChild(dot);
+        });
+
+        function getDots() { return dotsContainer.querySelectorAll('.hero-dot'); }
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            getDots()[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            getDots()[current].classList.add('active');
+        }
+
+        function next() { goTo(current + 1); }
+        function prev() { goTo(current - 1); }
+
+        function startTimer() {
+            timer = setInterval(next, SLIDE_INTERVAL);
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            startTimer();
+        }
+
+        prevBtn.addEventListener('click', function () { prev(); resetTimer(); });
+        nextBtn.addEventListener('click', function () { next(); resetTimer(); });
+
+        // Pause on hover, resume on leave
+        var heroEl = document.getElementById('heroSection');
+        heroEl.addEventListener('mouseenter', function () { clearInterval(timer); });
+        heroEl.addEventListener('mouseleave', startTimer);
+
+        // Keyboard support
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft')  { prev(); resetTimer(); }
+            if (e.key === 'ArrowRight') { next(); resetTimer(); }
+        });
+
+        // Touch/swipe support
+        var touchStartX = 0;
+        heroEl.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        heroEl.addEventListener('touchend', function (e) {
+            var dx = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(dx) > 40) {
+                if (dx < 0) next(); else prev();
+                resetTimer();
+            }
+        }, { passive: true });
+
+        startTimer();
+    })();
+    // ===== End Hero Slideshow =====
     </script>
 </html>

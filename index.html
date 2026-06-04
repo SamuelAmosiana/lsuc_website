@@ -417,6 +417,108 @@
             line-height: 1.8;
         }
 
+        /* ===== Core Values Cards with Background Images ===== */
+        .value-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+            padding: 0;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        /* Background image layer */
+        .value-card-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+            z-index: 0;
+        }
+
+        /* Dark gradient overlay for legibility */
+        .value-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(30, 90, 58, 0.72) 0%,
+                rgba(0, 0, 0, 0.62) 100%
+            );
+            transition: background 0.35s ease;
+            z-index: 1;
+        }
+
+        /* Content sits above bg + overlay */
+        .value-card-content {
+            position: relative;
+            z-index: 2;
+            padding: 36px 30px 32px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Override text colours for dark-bg cards */
+        .value-card .card-icon {
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(4px);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .value-card p {
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.8;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+            flex: 1;
+        }
+
+        /* Accent bottom bar */
+        .value-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--light-orange));
+            z-index: 3;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        /* Hover effects */
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+            border-color: var(--primary-orange);
+        }
+        .value-card:hover .value-card-bg {
+            transform: scale(1.08);
+        }
+        .value-card:hover .value-card-overlay {
+            background: linear-gradient(
+                160deg,
+                rgba(30, 90, 58, 0.55) 0%,
+                rgba(0, 0, 0, 0.50) 100%
+            );
+        }
+        .value-card:hover::after {
+            transform: scaleX(1);
+        }
+
         /* FAQs Specific Styles */
         .faq-header {
             display: flex;
@@ -2714,23 +2816,41 @@
                     <p>The principles that guide our commitment to educational excellence and student success</p>
                 </div>
                 <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-                        <h3>Excellence</h3>
-                        <p>We strive for the highest standards in everything we do, from teaching to student support
-                            services, ensuring quality education that prepares students for success.</p>
+
+                    <!-- Excellence -->
+                    <div class="card value-card">
+                        <div class="value-card-bg" style="background-image: url('./img/excellence.jpg');"></div>
+                        <div class="value-card-overlay"></div>
+                        <div class="value-card-content">
+                            <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                            <h3>Excellence</h3>
+                            <p>We strive for the highest standards in everything we do, from teaching to student support
+                                services, ensuring quality education that prepares students for success.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
-                        <h3>Integrity</h3>
-                        <p>We conduct ourselves with honesty, transparency, and ethical behavior, fostering trust and
-                            respect within our college community.</p>
+
+                    <!-- Integrity -->
+                    <div class="card value-card">
+                        <div class="value-card-bg" style="background-image: url('./img/integrity.jpg');"></div>
+                        <div class="value-card-overlay"></div>
+                        <div class="value-card-content">
+                            <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                            <h3>Integrity</h3>
+                            <p>We conduct ourselves with honesty, transparency, and ethical behavior, fostering trust and
+                                respect within our college community.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-                        <h3>Innovation</h3>
-                        <p>We embrace new ideas, technologies, and teaching methods to enhance learning experiences and
-                            prepare students for the modern world.</p>
+
+                    <!-- Innovation -->
+                    <div class="card value-card">
+                        <div class="value-card-bg" style="background-image: url('./img/innovation.jpg');"></div>
+                        <div class="value-card-overlay"></div>
+                        <div class="value-card-content">
+                            <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                            <h3>Innovation</h3>
+                            <p>We embrace new ideas, technologies, and teaching methods to enhance learning experiences and
+                                prepare students for the modern world.</p>
+                        </div>
                     </div>
 
                 </div>

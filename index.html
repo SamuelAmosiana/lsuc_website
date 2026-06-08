@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="./img/school_logo.png">
     <link rel="shortcut icon" type="image/png" href="./img/school_logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -1683,6 +1684,44 @@
 
         .content-section {
             padding: 60px 0;
+        }
+
+        /* ===== School Cards – Programme List ===== */
+        .school-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .programme-list {
+            list-style: none;
+            margin: 12px 0 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .programme-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            line-height: 1.45;
+        }
+
+        .prog-icon {
+            width: 15px;
+            height: 15px;
+            color: var(--primary-orange);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .programme-list em {
+            color: var(--gray-600);
+            font-style: normal;
+            font-size: 0.82rem;
         }
 
         .breadcrumb {
@@ -3507,62 +3546,76 @@
         <section class="content-section">
             <div class="container">
                 <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-cogs"></i></div>
+
+                    <!-- School of Engineering -->
+                    <div class="card school-card">
+                        <div class="card-icon">
+                            <i data-lucide="wrench" style="width:28px;height:28px;"></i>
+                        </div>
                         <h3>School of Engineering</h3>
-                        <p><strong>Programs Offered:</strong><br>
-                            • Certificate in Electrical Engineering (1 Year Six Months)<br>
-                            • Certificate in Solar Technology (6 Months)<br>
-                            • Certificate Civil Engineering &amp; Construction (6 Months)<br>
-                            • Certificate in Automotive Engineering (1 Year Six Months)<br>
-                            • Certificate in Occupational Safety Health and Environment (6 Months)</p>
+                        <ul class="programme-list">
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Diploma in Electrical &amp; Renewable Energy <em>— 3 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Dip. Mechanical Industrial Engineering <em>— 3 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Dip. Control &amp; Instrumentation <em>— 3 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Adv. Cert Civil Engineering &amp; Construction <em>— 1.6 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Cert Metal Fabrication &amp; Welding <em>— 1 Year</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Electrical Engineering (Level 2) <em>— 6 Months</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Electrical Engineering (Level 1) <em>— 1 Year</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Automotive Engineering (Level 2) <em>— 6 Months</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Automotive Engineering (Level 1) <em>— 1 Year</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Solar Technology</span></li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-briefcase"></i></div>
-                        <h3>School of Business </h3>
-                        <p><strong>Programs Offered:</strong><br>
-                            • Diploma in Business Administration (3 years)<br>
-                            • Diploma in Procurement (3 years)<br>
-                            • Diploma in Human Resource Management (3 years)<br>
-                            • Diploma in Accountancy (3 years)<br>
-                            • Certificate in Secretarial and Office Management (1 Year 6 months)</p>
+
+                    <!-- School of Business -->
+                    <div class="card school-card">
+                        <div class="card-icon">
+                            <i data-lucide="briefcase" style="width:28px;height:28px;"></i>
+                        </div>
+                        <h3>School of Business</h3>
+                        <ul class="programme-list">
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Bachelor of Business Administration <em>— 4 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Bachelor of Procurement and Supply Chain Management <em>— 4 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Bachelor of Accounting and Finance <em>— 4 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Dip. Business Administration <em>— 3 Years</em></span></li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+
+                    <!-- School of Information Technology -->
+                    <div class="card school-card">
+                        <div class="card-icon">
+                            <i data-lucide="monitor" style="width:28px;height:28px;"></i>
+                        </div>
                         <h3>School of Information Technology</h3>
-                        <p><strong>Programs Offered:</strong><br>
-                            • Diploma in Computer Studies (3 years)<br>
-                            • Certificate in Computer Studies (3 months)<br>
-                        </p>
+                        <ul class="programme-list">
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Bachelor of Information Communication Technology <em>— 4 Years</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Computer Studies</span></li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-hospital"></i></div>
+
+                    <!-- School of Health Care Management -->
+                    <div class="card school-card">
+                        <div class="card-icon">
+                            <i data-lucide="heart-pulse" style="width:28px;height:28px;"></i>
+                        </div>
                         <h3>School of Health Care Management</h3>
-                        <p><strong>Programs Offered:</strong><br>
-                            • Certificate in Nursing and Health Care Assistant (3 Months)<br>
-                            • Certificate Psychosocial Counselling (3 Months)<br>
-                            • Certificate in Pharmacy Technology (2 years)<br>
-                            • Diploma in Environmental Health (3 years)<br>
-                            • First Aid &amp; CPR Training (Short courses)</p>
+                        <ul class="programme-list">
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Adv. Cert Occupational Health &amp; Safety <em>— 1 Year</em></span></li>
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Certificate in Psychosocial Counselling <em>— 6 Months</em></span></li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3>School of Education and Social Sciences </h3>
-                        <p><strong>Programs Offered:</strong><br>
-                            • Diploma in Primary Teaching (3 years)<br>
-                            • Diploma in Law (3 years)<br>
-                            • Certificate in Early Childhood Education (1 years)<br>
-                        </p>
+
+                    <!-- School of Law -->
+                    <div class="card school-card">
+                        <div class="card-icon">
+                            <i data-lucide="scale" style="width:28px;height:28px;"></i>
+                        </div>
+                        <h3>School of Law</h3>
+                        <ul class="programme-list">
+                            <li><i data-lucide="chevron-right" class="prog-icon"></i><span>Bachelor of Laws (LLB) <em>— 4 Years</em></span></li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-seedling"></i></div>
-                        <h3>School of Agriculture and Hospitality</h3>
-                        <p><strong>Programs Offered:</strong><br>
-                            • Diploma in General Agriculture (3 years)<br>
-                            • Certificate in General Agriculture (1 Year 6 months)<br>
-                            • Certificate in Food Production (1 Year)<br>
-                        </p>
-                    </div>
+
                 </div>
 
                 <div style="text-align: center; margin-top: 40px; width: 100%;">
@@ -7354,5 +7407,8 @@ Participants: ${data.participants}`;
         startTimer();
     })();
     // ===== End Hero Slideshow =====
+
+    // Render all Lucide icons
+    if (typeof lucide !== 'undefined') { lucide.createIcons(); }
     </script>
 </html>

@@ -8,7 +8,7 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v3'; // bumped to v3 to include referral rewards news
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v4'; // bumped to v4: fix advert.jpeg path, limit home to 3 cards
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
@@ -126,7 +126,7 @@ const SAMPLE_EVENTS = [
         fullDescription: "<p>Lusaka South University College is now accepting applications for the 2026 academic year across all schools and programs.</p><h3>Important Dates:</h3><ul><li><strong>Application Opening:</strong> September 15, 2025</li><li><strong>Early Bird Deadline:</strong> November 30, 2025</li><li><strong>Final Deadline:</strong> January 15, 2026</li><li><strong>Classes Begin:</strong> February 2, 2026</li></ul><h3>How to Apply:</h3><ol><li>Visit our online application portal at <a href='https://srms.lsc.edu.zm/applications/undergraduate_application'>srms.lsc.edu.zm</a></li><li>Complete the application form with accurate information</li><li>Submit required documents (academic transcripts, ID copy, passport photo)</li><li>Pay the application fee through the online payment system</li></ol><p>For assistance, visit our admissions office or contact us at admissions@lsc.edu.zm</p>",
         image: "./img/enrollment.jpeg",
         author: "Admissions Office",
-        featured: true
+        featured: false
     },
     {
         id: "evt_003",

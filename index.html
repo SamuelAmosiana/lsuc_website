@@ -6517,7 +6517,7 @@ Participants: ${data.participants}`;
             const container = document.getElementById('home-latest-updates');
             if (!container) return;
 
-            const latestNews = LSUCEventsManager.getLatestNews(6);
+            const latestNews = LSUCEventsManager.getLatestNews(3);
 
             if (latestNews.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#666;">No updates available at this time.</p>';

@@ -8,7 +8,7 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v4'; // bumped to v4: fix advert.jpeg path, limit home to 3 cards
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v5'; // bumped to v5: definitive fix for advert.jpeg path
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
@@ -21,7 +21,7 @@ const SAMPLE_EVENTS = [
         shortDescription: "Refer a friend to Lusaka South University College and choose your reward: a 10% discount on your tuition fees OR 50% of their application fees back in cash — plus exclusive access to campus events and extracurricular activities!",
         fullDescription: `<div style="font-family: inherit; line-height: 1.8; color: #2d3748;">
   <div style="text-align:center; margin-bottom:28px;">
-    <img src="./img/advert.jpg" alt="LSUC Referral Rewards Programme" style="width:100%; max-width:820px; border-radius:14px; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+    <img src="./img/advert.jpeg" alt="LSUC Referral Rewards Programme" style="width:100%; max-width:820px; border-radius:14px; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
   </div>
 
   <p style="font-size:1.1rem; font-weight:600; color:#1a202c; margin-bottom:16px;">At Lusaka South University College, we believe education is better when shared. Refer a friend to join our community and choose the reward that suits you best:</p>
@@ -91,7 +91,7 @@ const SAMPLE_EVENTS = [
     ${['LSUC','LusakaSouthUniversity','ReferAFriend','ZambiaEducation','HigherLearning','StudentRewards'].map(tag => `<span style="background:#e0f2fe; color:#0369a1; padding:4px 12px; border-radius:20px; font-size:0.85rem; font-weight:600;">#${tag}</span>`).join('')}
   </div>
 </div>`,
-        image: "./img/advert.jpg",
+        image: "./img/advert.jpeg",
         author: "Communications Office",
         featured: true
     },

@@ -58,26 +58,31 @@
         .logo-section {
             display: flex;
             align-items: center;
-            padding: 10px 0;
+            padding: 8px 0;
+            gap: 14px;
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
-            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            margin-right: 0;
+            border-radius: 10px;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid var(--primary-orange);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+            flex-shrink: 0;
+            background: #fff;
         }
 
         .logo img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
+            padding: 4px;
         }
 
         .logo-text {
@@ -85,8 +90,9 @@
         }
 
         .logo-text h2 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .logo-text p {
@@ -191,7 +197,7 @@
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 80px;
+            margin-top: 110px;
             position: relative;
             overflow: hidden;
         }
@@ -1632,8 +1638,8 @@
         /* Page-specific styles */
         .page-content {
             display: none;
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
+            margin-top: 110px;
+            min-height: calc(100vh - 110px);
         }
 
         .page-content.active {
@@ -2696,7 +2702,7 @@
         <div class="nav-container">
             <div class="logo-section">
                 <div class="logo">
-                    <img src="./img/school_logo.jpg" alt="Lusaka South University College Logo">
+                    <img src="./img/school_logo.png" alt="Lusaka South University College Logo">
                 </div>
                 <div class="logo-text">
                     <h3><span data-site-name></span></h3>

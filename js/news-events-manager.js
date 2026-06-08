@@ -8,11 +8,93 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v2'; // bumped to v2 to force refresh with orientation event
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v3'; // bumped to v3 to include referral rewards news
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
 const SAMPLE_EVENTS = [
+    {
+        id: "evt_012",
+        title: "Share the LSUC Experience & Get Rewarded!",
+        date: "2026-06-08",
+        category: "Latest News",
+        shortDescription: "Refer a friend to Lusaka South University College and choose your reward: a 10% discount on your tuition fees OR 50% of their application fees back in cash — plus exclusive access to campus events and extracurricular activities!",
+        fullDescription: `<div style="font-family: inherit; line-height: 1.8; color: #2d3748;">
+  <div style="text-align:center; margin-bottom:28px;">
+    <img src="./img/advert.jpg" alt="LSUC Referral Rewards Programme" style="width:100%; max-width:820px; border-radius:14px; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+  </div>
+
+  <p style="font-size:1.1rem; font-weight:600; color:#1a202c; margin-bottom:16px;">At Lusaka South University College, we believe education is better when shared. Refer a friend to join our community and choose the reward that suits you best:</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:24px 0;">
+    <div style="background:linear-gradient(135deg,#fff7e6,#ffe8b3); border-left:4px solid #f59e0b; border-radius:10px; padding:20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <strong style="color:#b45309; font-size:1rem;">Option A</strong>
+      </div>
+      <p style="margin:0; color:#92400e;">Get a <strong>10% DISCOUNT</strong> on your tuition fees.</p>
+    </div>
+    <div style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0); border-left:4px solid #22c55e; border-radius:10px; padding:20px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+        <strong style="color:#15803d; font-size:1rem;">Option B</strong>
+      </div>
+      <p style="margin:0; color:#166534;">Earn <strong>50% of their application fees</strong> back in cash!</p>
+    </div>
+  </div>
+
+  <div style="background:#f8fafc; border-radius:12px; padding:24px; margin:24px 0; border:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <h3 style="margin:0; color:#7c3aed; font-size:1.1rem;">But that's not all! By referring a peer, you both unlock:</h3>
+    </div>
+    <ul style="list-style:none; padding:0; margin:0;">
+      <li style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #e2e8f0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e8b57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Exclusive access to campus academic events</span>
+      </li>
+      <li style="display:flex; align-items:center; gap:10px; padding:10px 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e8b57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Priority entry to all extracurricular activities and clubs</span>
+      </li>
+    </ul>
+  </div>
+
+  <p style="font-size:1.05rem; color:#374151; margin:20px 0;">Help us grow the next generation of successful graduates — world over!</p>
+
+  <div style="background:linear-gradient(135deg,#2e8b57,#1a5c38); border-radius:12px; padding:24px; color:#fff; margin-top:28px;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.21 3.18 2 2 0 0 1 3.18 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 8 8l.49-.49a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+      <strong style="font-size:1.1rem; color:#ffd700;">Get in Touch</strong>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a7f3d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.21 3.18 2 2 0 0 1 3.18 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 8 8l.49-.49a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+        <span><strong>Call:</strong> +260 770 359518</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a7f3d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span><strong>Email:</strong> lusakasouthuniversity@gmail.com</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a7f3d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span><strong>Website:</strong> <a href="https://www.lsc.edu.zm" style="color:#ffd700; text-decoration:none;">www.lsc.edu.zm</a></span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a7f3d0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Visit us in Lusaka for more details</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:8px;">
+    ${['LSUC','LusakaSouthUniversity','ReferAFriend','ZambiaEducation','HigherLearning','StudentRewards'].map(tag => `<span style="background:#e0f2fe; color:#0369a1; padding:4px 12px; border-radius:20px; font-size:0.85rem; font-weight:600;">#${tag}</span>`).join('')}
+  </div>
+</div>`,
+        image: "./img/advert.jpg",
+        author: "Communications Office",
+        featured: true
+    },
     {
         id: "evt_011",
         title: "April 2026 First Year Student Orientation — A Remarkable Success",

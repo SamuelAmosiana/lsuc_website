@@ -1531,7 +1531,232 @@
             line-height: 1.7;
         }
 
+        /* ---- Home Scholarship Teaser ---- */
+        .home-schol-section {
+            background: linear-gradient(135deg, var(--dark-green) 0%, #0d4a28 55%, #1a2e1a 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-schol-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,140,0,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .home-schol-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,140,0,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .home-schol-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .home-schol-left .schol-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,140,0,0.18);
+            border: 1px solid rgba(255,140,0,0.4);
+            color: var(--primary-orange);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        .home-schol-left h2 {
+            color: var(--white);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .home-schol-left h2 span {
+            color: var(--primary-orange);
+        }
+
+        .home-schol-left p {
+            color: rgba(255,255,255,0.78);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 32px;
+        }
+
+        .home-schol-stats {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .home-schol-stat {
+            text-align: center;
+        }
+
+        .home-schol-stat .stat-num {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-orange);
+            line-height: 1;
+        }
+
+        .home-schol-stat .stat-lbl {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+        }
+
+        .home-schol-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 24px rgba(255,140,0,0.35);
+        }
+
+        .home-schol-btn:hover {
+            background: #fff;
+            color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(255,140,0,0.4);
+        }
+
+        .home-schol-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .home-schol-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Award highlight cards */
+        .home-schol-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .home-schol-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-top: 4px solid var(--primary-orange);
+            border-radius: 14px;
+            padding: 24px 20px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .home-schol-card:hover {
+            background: rgba(255,255,255,0.11);
+            border-color: rgba(255,140,0,0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+        }
+
+        .home-schol-card .card-pct {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-orange);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .home-schol-card h4 {
+            color: var(--white);
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .home-schol-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.78rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .home-schol-card .card-tag {
+            display: inline-block;
+            background: rgba(255,140,0,0.18);
+            color: var(--primary-orange);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        .home-schol-card.card-cdf {
+            border-top-color: var(--primary-green);
+        }
+
+        .home-schol-card.card-cdf .card-pct {
+            color: #4cdb8a;
+        }
+
+        .home-schol-card.card-cdf .card-tag {
+            background: rgba(30,130,76,0.25);
+            color: #4cdb8a;
+        }
+
+        @media (max-width: 900px) {
+            .home-schol-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .home-schol-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-schol-stats { gap: 16px; }
+        }
+
         /* School Environment Gallery */
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -3486,8 +3711,94 @@
             </div>
         </section>
 
+        <!-- School Scholarship Teaser -->
+        <section class="home-schol-section">
+            <div class="container">
+                <div class="home-schol-inner">
+
+                    <!-- Left: Text & CTA -->
+                    <div class="home-schol-left">
+                        <span class="schol-label"><i class="fas fa-award"></i> Financial Aid</span>
+                        <h2>Former Presidents of Zambia <span>Scholarship Awards</span></h2>
+                        <p>LSUC offers seven tiered scholarship awards named after Zambia's former Presidents — from 20% to 100% tuition discounts. Whether you are from a rural area, differently abled, an international student, or pursuing skills training, there is an award designed for you.</p>
+
+                        <div class="home-schol-stats">
+                            <div class="home-schol-stat">
+                                <span class="stat-num">7</span>
+                                <span class="stat-lbl">Award Types</span>
+                            </div>
+                            <div class="home-schol-stat">
+                                <span class="stat-num">350+</span>
+                                <span class="stat-lbl">Slots / Intake</span>
+                            </div>
+                            <div class="home-schol-stat">
+                                <span class="stat-num">100%</span>
+                                <span class="stat-lbl">Max Discount</span>
+                            </div>
+                            <div class="home-schol-stat">
+                                <span class="stat-num">20%</span>
+                                <span class="stat-lbl">Min Discount</span>
+                            </div>
+                        </div>
+
+                        <button class="home-schol-btn" onclick="showPage('scholarships')">
+                            Learn More &amp; Apply <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Right: Highlight Cards -->
+                    <div class="home-schol-cards">
+
+                        <div class="home-schol-card" onclick="showPage('scholarships')">
+                            <div class="card-pct">70%</div>
+                            <div class="card-tag">Rural &amp; Disabled</div>
+                            <h4>Kenneth D. Kaunda Award</h4>
+                            <p>5 Distinctions at O&rsquo; Level. For rural and differently abled applicants.</p>
+                        </div>
+
+                        <div class="home-schol-card" onclick="showPage('scholarships')">
+                            <div class="card-pct">50%</div>
+                            <div class="card-tag">All Zambians</div>
+                            <h4>Levy P. Mwanawasa Award</h4>
+                            <p>Open to all Zambian citizens with minimum 3 Merits at O&rsquo; Level.</p>
+                        </div>
+
+                        <div class="home-schol-card card-cdf" onclick="showPage('scholarships')">
+                            <div class="card-pct">100%</div>
+                            <div class="card-tag">Govt. Funded</div>
+                            <h4>Hakainde Hichilema CDF Award</h4>
+                            <p>Full scholarship for skills courses, funded by the Government of Zambia.</p>
+                        </div>
+
+                        <div class="home-schol-card" onclick="showPage('scholarships')">
+                            <div class="card-pct">60%</div>
+                            <div class="card-tag">Rural &amp; Urban</div>
+                            <h4>Frederick T. Chiluba Award</h4>
+                            <p>5 Merits at O&rsquo; Level. Rural, peri-rural, urban &amp; differently abled.</p>
+                        </div>
+
+                        <div class="home-schol-card" onclick="showPage('scholarships')">
+                            <div class="card-pct">40%</div>
+                            <div class="card-tag">Technical Only</div>
+                            <h4>Rupiah B. Banda Award</h4>
+                            <p>For technical skills programmes only, with 5 Credits or better.</p>
+                        </div>
+
+                        <div class="home-schol-card" onclick="showPage('scholarships')">
+                            <div class="card-pct">+ More</div>
+                            <div class="card-tag">View All</div>
+                            <h4>Explore All 7 Awards</h4>
+                            <p>See full eligibility details, application notes, and how to apply.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- School Environment Gallery -->
         <section class="section">
+
             <div class="container">
                 <div class="section-title">
                     <h2>Our Campus</h2>

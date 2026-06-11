@@ -1034,7 +1034,451 @@
             }
         }
 
+        /* ============================================================
+           SCHOLARSHIPS PAGE
+        ============================================================ */
+
+        /* Hero Banner */
+        .schol-banner {
+            background: linear-gradient(135deg, var(--dark-green) 0%, #0a3d22 60%, #1a1a2e 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schol-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .schol-banner-inner {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .schol-banner-icon {
+            font-size: 5rem;
+            color: var(--primary-orange);
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 16px rgba(255,140,0,0.4));
+            animation: scholIconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes scholIconFloat {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-10px); }
+        }
+
+        .schol-banner-text h2 {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 8px;
+        }
+
+        .schol-banner-text h3 {
+            color: var(--white);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .schol-banner-text p {
+            color: rgba(255,255,255,0.82);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 28px;
+        }
+
+        .schol-banner-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .schol-pdf-btn {
+            background: transparent !important;
+            border: 2px solid var(--primary-orange) !important;
+            color: var(--primary-orange) !important;
+        }
+
+        .schol-pdf-btn:hover {
+            background: var(--primary-orange) !important;
+            color: var(--white) !important;
+        }
+
+        /* ---- Awards Table ---- */
+        .schol-table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+        }
+
+        .schol-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            font-size: 0.92rem;
+        }
+
+        .schol-table thead tr {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+        }
+
+        .schol-table thead th {
+            padding: 16px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .schol-table tbody tr {
+            border-bottom: 1px solid var(--gray-200);
+            transition: background 0.2s ease;
+        }
+
+        .schol-table tbody tr:hover {
+            background: rgba(30, 130, 76, 0.05);
+        }
+
+        .schol-table tbody td {
+            padding: 15px 18px;
+            vertical-align: middle;
+            color: var(--gray-800);
+        }
+
+        .schol-cdf-row {
+            background: linear-gradient(90deg, rgba(30,130,76,0.06), transparent);
+        }
+
+        /* Award value badges */
+        .schol-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .schol-badge-gold   { background: linear-gradient(135deg,#FFD700,#FFA500); color: #7a4800; }
+        .schol-badge-silver { background: linear-gradient(135deg,#C0C0C0,#a0a0a0); color: #3a3a3a; }
+        .schol-badge-bronze { background: linear-gradient(135deg,#CD7F32,#a0632a); color: #fff; }
+        .schol-badge-blue   { background: linear-gradient(135deg,#1e90ff,#0a6ebd); color: #fff; }
+        .schol-badge-teal   { background: linear-gradient(135deg,#00b4a6,#007a74); color: #fff; }
+        .schol-badge-purple { background: linear-gradient(135deg,#9b59b6,#6c3483); color: #fff; }
+        .schol-badge-green  { background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); color: #fff; }
+
+        .schol-slots {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--gray-800);
+            border-radius: 50px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .schol-slots-na {
+            background: rgba(30,130,76,0.12);
+            color: var(--primary-green);
+        }
+
+        /* ---- Award Cards Grid ---- */
+        .schol-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .schol-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px 26px 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid transparent;
+        }
+
+        .schol-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.14);
+        }
+
+        .schol-card--full {
+            grid-column: 1 / -1;
+        }
+
+        /* Color themes for cards */
+        .schol-card--gold   { border-top-color: #FFD700; }
+        .schol-card--silver { border-top-color: #C0C0C0; }
+        .schol-card--bronze { border-top-color: #CD7F32; }
+        .schol-card--blue   { border-top-color: #1e90ff; }
+        .schol-card--teal   { border-top-color: #00b4a6; }
+        .schol-card--purple { border-top-color: #9b59b6; }
+        .schol-card--green  { border-top-color: var(--primary-green); }
+
+        .schol-card-percent {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: 900;
+            opacity: 0.08;
+            line-height: 1;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .schol-card--gold   .schol-card-percent { color: #FFD700; opacity: 0.25; }
+        .schol-card--silver .schol-card-percent { color: #999; }
+        .schol-card--bronze .schol-card-percent { color: #CD7F32; opacity: 0.25; }
+        .schol-card--blue   .schol-card-percent { color: #1e90ff; opacity: 0.18; }
+        .schol-card--teal   .schol-card-percent { color: #00b4a6; opacity: 0.18; }
+        .schol-card--purple .schol-card-percent { color: #9b59b6; opacity: 0.18; }
+        .schol-card--green  .schol-card-percent { color: var(--primary-green); opacity: 0.15; }
+
+        .schol-card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .schol-card--gold   .schol-card-icon { color: #FFD700; }
+        .schol-card--silver .schol-card-icon { color: #a0a0a0; }
+        .schol-card--bronze .schol-card-icon { color: #CD7F32; }
+        .schol-card--blue   .schol-card-icon { color: #1e90ff; }
+        .schol-card--teal   .schol-card-icon { color: #00b4a6; }
+        .schol-card--purple .schol-card-icon { color: #9b59b6; }
+        .schol-card--green  .schol-card-icon { color: var(--primary-green); }
+
+        .schol-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .schol-card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-bottom: 14px;
+        }
+
+        .schol-card--gold   .schol-card-tag { background: rgba(255,215,0,0.15); color: #8a6000; }
+        .schol-card--silver .schol-card-tag { background: rgba(160,160,160,0.15); color: #555; }
+        .schol-card--bronze .schol-card-tag { background: rgba(205,127,50,0.15); color: #7a3e10; }
+        .schol-card--blue   .schol-card-tag { background: rgba(30,144,255,0.12); color: #0a5fbd; }
+        .schol-card--teal   .schol-card-tag { background: rgba(0,180,166,0.12); color: #006a60; }
+        .schol-card--purple .schol-card-tag { background: rgba(155,89,182,0.12); color: #6c3483; }
+        .schol-card--green  .schol-card-tag { background: rgba(30,130,76,0.12); color: var(--dark-green); }
+
+        .schol-card p {
+            color: var(--gray-700);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .schol-card-footer {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 16px;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        .schol-card-footer span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ---- Application Notes ---- */
+        .schol-notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .schol-note-card {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .schol-note-num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .schol-note-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .schol-note-card p {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ---- Essence Section ---- */
+        .schol-essence-section {
+            background: var(--white);
+        }
+
+        .schol-essence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .schol-essence-card {
+            text-align: center;
+            padding: 36px 24px;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #f8fffe, #f0faf5);
+            border: 1px solid rgba(30,130,76,0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .schol-essence-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(30,130,76,0.15);
+        }
+
+        .schol-essence-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 16px rgba(30,130,76,0.35);
+        }
+
+        .schol-essence-card h3 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .schol-essence-card p {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+
+        /* ---- CTA Footer ---- */
+        .schol-cta-section {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #d4700a 100%);
+            padding: 60px 20px;
+        }
+
+        .schol-cta-inner {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .schol-cta-inner h2 {
+            color: var(--white);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .schol-cta-inner p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .schol-cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .schol-cta-btns .cta-button {
+            background: var(--white) !important;
+            color: var(--primary-orange) !important;
+            font-weight: 700;
+        }
+
+        .schol-cta-btns .cta-button:hover {
+            background: var(--dark-green) !important;
+            color: var(--white) !important;
+        }
+
+        .schol-apply-btn {
+            background: var(--dark-green) !important;
+            color: var(--white) !important;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .schol-banner-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .schol-banner-icon { font-size: 3rem; }
+            .schol-banner-text p { margin: 0 auto 24px; }
+            .schol-banner-actions { justify-content: center; }
+            .schol-card--full { grid-column: auto; }
+            .schol-cta-btns { flex-direction: column; align-items: center; }
+        }
+
         /* Latest Updates */
+
         .updates-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -2889,6 +3333,9 @@
                     <a href="#faqs" class="nav-link" onclick="showPage('faqs'); closeMobileMenu()">FAQs</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#scholarships" class="nav-link" onclick="showPage('scholarships'); closeMobileMenu()">Scholarships</a>
+                </li>
+                <li class="nav-item">
                     <a href="#contact" class="nav-link" onclick="showPage('contact'); closeMobileMenu()">Contact Us</a>
                 </li>
                 <li class="nav-item">
@@ -4355,9 +4802,332 @@
                             style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
                 </div>
+
+                <!-- Scholarships PDF Download -->
+                <div class="section-title" style="margin-top: 60px;">
+                    <h2>Scholarships</h2>
+                    <p>Financial aid and scholarship opportunities available to LSUC students</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card" style="border-top: 4px solid var(--primary-orange);">
+                        <div class="card-icon" style="color: var(--primary-orange);"><i class="fas fa-award"></i></div>
+                        <h3>Former Presidents Scholarship Summary</h3>
+                        <p>Complete guide to the Former Presidents of Zambia Scholarship Scheme — eligibility criteria, award values, application notes, and slot information for the 2026/2027 academic cycle.</p>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/scholarships.pdf', 'LSUC Scholarships Summary')"
+                            style="margin-top: 15px; width: auto;">View &amp; Download PDF</button>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
+
+    <!-- ===== SCHOLARSHIPS PAGE ===== -->
+    <div id="scholarships" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>Scholarships</h1>
+                <p>Former Presidents of Zambia Scholarship Scheme &mdash; 2026/2027 Academic Cycle</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> &gt; Scholarships
+            </div>
+        </div>
+
+        <!-- Hero Banner -->
+        <section class="schol-banner">
+            <div class="container">
+                <div class="schol-banner-inner">
+                    <div class="schol-banner-icon"><i class="fas fa-award"></i></div>
+                    <div class="schol-banner-text">
+                        <h2>Lusaka South University College (LSUC)</h2>
+                        <h3>Former Presidents of Zambia Scholarship Awards</h3>
+                        <p>LSUC is pleased to announce the eligibility criteria for the Former Presidents of Zambia Scholarship Scheme for the <strong>2026/2027 academic cycle</strong>, funded by the University and its cooperating partners.</p>
+                        <div class="schol-banner-actions">
+                            <button class="cta-button schol-explore-btn" onclick="document.getElementById('scholarship-awards').scrollIntoView({behavior:'smooth'})">
+                                <i class="fas fa-search"></i> Explore Awards
+                            </button>
+                            <button class="cta-button schol-pdf-btn" onclick="openPDFViewer('docs/scholarships.pdf', 'LSUC Scholarships Summary')">
+                                <i class="fas fa-file-pdf"></i> View &amp; Download PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Award Summary Table -->
+        <section class="content-section" id="scholarship-awards" style="background: var(--gray-100);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Scholarship Awards at a Glance</h2>
+                    <p>Seven tiered awards covering rural, urban, international, and distance learning students</p>
+                </div>
+                <div class="schol-table-wrapper">
+                    <table class="schol-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Award Name</th>
+                                <th>Award Value</th>
+                                <th>Eligibility Criteria</th>
+                                <th>Slots per Intake</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Kenneth D. Kaunda Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-gold">70%</span></td>
+                                <td>Applicants from Rural areas and Differently Abled individuals with minimum 5 Distinctions in the O&rsquo; Level School Certificate (G12)</td>
+                                <td><span class="schol-slots">50</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Frederick T. Chiluba Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-silver">60%</span></td>
+                                <td>Applicants from Rural, Peri-Rural, and Urban areas; Differently Abled individuals with minimum 5 Merits in the O&rsquo; Level School Certificate (G12)</td>
+                                <td><span class="schol-slots">50</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Levy P. Mwanawasa Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-bronze">50%</span></td>
+                                <td>Open to all Zambian Citizens with minimum 3 Merits in the O&rsquo; Level School Certificate (G12)</td>
+                                <td><span class="schol-slots">50</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Rupiah B. Banda Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-blue">40%</span></td>
+                                <td>Applicable to Technical Skills Programmes only with 5 Credits or Better</td>
+                                <td><span class="schol-slots">50</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Michael C. Sata Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-teal">30%</span></td>
+                                <td>Applicable to Distance Learning Programmes and Skills Courses only</td>
+                                <td><span class="schol-slots">50</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><strong>Edgar C. Lungu Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-purple">20%</span></td>
+                                <td>International Applicants (Non-Zambians) only</td>
+                                <td><span class="schol-slots">50</span></td>
+                            </tr>
+                            <tr class="schol-cdf-row">
+                                <td>7</td>
+                                <td><strong>Hakainde Hichilema CDF Scholarship Award</strong></td>
+                                <td><span class="schol-badge schol-badge-green">100%</span></td>
+                                <td>CDF Scholarships for Skills Courses supported by the Government. Once accepted, applicants apply at the local authority through the Councillor&rsquo;s Ward Development Committee Office in their constituency</td>
+                                <td><span class="schol-slots schol-slots-na">N/A</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Individual Award Cards -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Explore Each Award</h2>
+                    <p>Seven distinguished scholarships named after Zambia&rsquo;s former Presidents</p>
+                </div>
+                <div class="schol-cards-grid">
+
+                    <!-- KK Award -->
+                    <div class="schol-card schol-card--gold">
+                        <div class="schol-card-percent">70%</div>
+                        <div class="schol-card-icon"><i class="fas fa-star"></i></div>
+                        <h3>Kenneth D. Kaunda Award</h3>
+                        <div class="schol-card-tag">Rural &amp; Differently Abled</div>
+                        <p>Highest honor for founding father&rsquo;s vision of free education for all. Requires minimum <strong>5 Distinctions</strong> at O&rsquo; Level (G12).</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-users"></i> 50 Slots / Intake</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Rural Areas</span>
+                        </div>
+                    </div>
+
+                    <!-- Chiluba Award -->
+                    <div class="schol-card schol-card--silver">
+                        <div class="schol-card-percent">60%</div>
+                        <div class="schol-card-icon"><i class="fas fa-medal"></i></div>
+                        <h3>Frederick T. Chiluba Award</h3>
+                        <div class="schol-card-tag">Rural, Peri-Rural &amp; Urban</div>
+                        <p>Open to rural, peri-rural, and urban applicants including Differently Abled individuals. Requires minimum <strong>5 Merits</strong> at O&rsquo; Level (G12).</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-users"></i> 50 Slots / Intake</span>
+                            <span><i class="fas fa-map-marker-alt"></i> All Areas</span>
+                        </div>
+                    </div>
+
+                    <!-- Mwanawasa Award -->
+                    <div class="schol-card schol-card--bronze">
+                        <div class="schol-card-percent">50%</div>
+                        <div class="schol-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Levy P. Mwanawasa Award</h3>
+                        <div class="schol-card-tag">All Zambian Citizens</div>
+                        <p>Open to <strong>all Zambian citizens</strong>. Requires minimum <strong>3 Merits</strong> at O&rsquo; Level School Certificate (G12).</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-users"></i> 50 Slots / Intake</span>
+                            <span><i class="fas fa-flag"></i> Zambians Only</span>
+                        </div>
+                    </div>
+
+                    <!-- Rupiah Banda Award -->
+                    <div class="schol-card schol-card--blue">
+                        <div class="schol-card-percent">40%</div>
+                        <div class="schol-card-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Rupiah B. Banda Award</h3>
+                        <div class="schol-card-tag">Technical Skills Only</div>
+                        <p>Strictly for <strong>Technical Skills Programmes</strong>. Applicants must have 5 Credits or Better at O&rsquo; Level.</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-users"></i> 50 Slots / Intake</span>
+                            <span><i class="fas fa-wrench"></i> Technical Only</span>
+                        </div>
+                    </div>
+
+                    <!-- Sata Award -->
+                    <div class="schol-card schol-card--teal">
+                        <div class="schol-card-percent">30%</div>
+                        <div class="schol-card-icon"><i class="fas fa-laptop"></i></div>
+                        <h3>Michael C. Sata Award</h3>
+                        <div class="schol-card-tag">Distance Learning &amp; Skills</div>
+                        <p>For <strong>Distance Learning (ODL)</strong> and Skills Courses only. Designed to support flexible learning pathways.</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-users"></i> 50 Slots / Intake</span>
+                            <span><i class="fas fa-wifi"></i> ODL &amp; Skills</span>
+                        </div>
+                    </div>
+
+                    <!-- Lungu Award -->
+                    <div class="schol-card schol-card--purple">
+                        <div class="schol-card-percent">20%</div>
+                        <div class="schol-card-icon"><i class="fas fa-globe-africa"></i></div>
+                        <h3>Edgar C. Lungu Award</h3>
+                        <div class="schol-card-tag">International Students</div>
+                        <p>Reserved for <strong>International (Non-Zambian)</strong> applicants. Promotes regional integration and continental education access.</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-users"></i> 50 Slots / Intake</span>
+                            <span><i class="fas fa-passport"></i> Non-Zambians</span>
+                        </div>
+                    </div>
+
+                    <!-- HH CDF Award - Full Width -->
+                    <div class="schol-card schol-card--green schol-card--full">
+                        <div class="schol-card-percent">100%</div>
+                        <div class="schol-card-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h3>Hakainde Hichilema CDF Scholarship Award</h3>
+                        <div class="schol-card-tag">Government-Funded &bull; Full Scholarship</div>
+                        <p>100% Government-supported CDF Scholarship for Skills Courses. Once accepted, students obtain an acceptance letter and submit it to the local Council through the <strong>Ward Development Committee Office</strong> in their constituency. Councillors facilitate the process at the local authority level.</p>
+                        <div class="schol-card-footer">
+                            <span><i class="fas fa-landmark"></i> Govt. of Zambia</span>
+                            <span><i class="fas fa-tools"></i> Skills Courses</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Notes -->
+        <section class="content-section" style="background: var(--gray-100);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Application Notes</h2>
+                    <p>Important requirements and conditions for each scholarship award</p>
+                </div>
+                <div class="schol-notes-grid">
+                    <div class="schol-note-card">
+                        <div class="schol-note-num">1</div>
+                        <div>
+                            <h4>Supporting Documentation</h4>
+                            <p>Applicants for the <strong>Kaunda</strong> and <strong>Chiluba</strong> awards must provide proof of residence (Chief&rsquo;s / Headman / Headwoman letter or Utility bill) and a Zambia Association with Disability (ZAD) card for disability status.</p>
+                        </div>
+                    </div>
+                    <div class="schol-note-card">
+                        <div class="schol-note-num">2</div>
+                        <div>
+                            <h4>Programme Specifics</h4>
+                            <p>The <strong>Rupiah Banda</strong> award is strictly for trade and technical certificates, while the <strong>Sata</strong> award is for Open and Distance Learning (ODL) mode and Skills Awards only.</p>
+                        </div>
+                    </div>
+                    <div class="schol-note-card">
+                        <div class="schol-note-num">3</div>
+                        <div>
+                            <h4>International Students</h4>
+                            <p>The <strong>Edgar Lungu</strong> award is designed to promote regional integration and is reserved for students outside Zambia.</p>
+                        </div>
+                    </div>
+                    <div class="schol-note-card">
+                        <div class="schol-note-num">4</div>
+                        <div>
+                            <h4>Hakainde Hichilema CDF Award</h4>
+                            <p>The <strong>100% Award</strong> is for skills programmes supported by the Government of the Republic of Zambia. Students receive an acceptance letter with full fees and submit it to the Council through the Ward Development Committee Office.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Essence / Purpose Section -->
+        <section class="content-section schol-essence-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>The Essence of LSUC&rsquo;s Former Presidents Scholarship</h2>
+                    <p>Scholarship Awards are more than just fee discounts &mdash; here&rsquo;s the real purpose behind them</p>
+                </div>
+                <div class="schol-essence-grid">
+                    <div class="schol-essence-card">
+                        <div class="schol-essence-icon"><i class="fas fa-flag"></i></div>
+                        <h3>Honor Zambia&rsquo;s Legacy Through Education</h3>
+                        <p>Each scholarship ties LSUC&rsquo;s mission to the legacy of Zambia&rsquo;s former Presidents. From KK&rsquo;s &ldquo;One Zambia, One Nation&rdquo; to later presidents&rsquo; focus on economic growth, we say: <em>&ldquo;Education builds the Zambia they envisioned.&rdquo;</em> It connects students to national history and pride.</p>
+                    </div>
+                    <div class="schol-essence-card">
+                        <div class="schol-essence-icon"><i class="fas fa-door-open"></i></div>
+                        <h3>Make Quality Education Accessible</h3>
+                        <p>With discounts from <strong>20% to 70%</strong>, we remove financial barriers. A 70% KK Award can cut a K10,000 tuition to just K3,000 &mdash; the difference between a youth staying home vs. becoming a skilled graduate. It&rsquo;s practical empowerment, not just charity.</p>
+                    </div>
+                    <div class="schol-essence-card">
+                        <div class="schol-essence-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h3>Reward Merit + Need + National Service</h3>
+                        <p>The tiered percentage reflects contribution: the <strong>70% KK Award</strong> is the highest honor for the founding father&rsquo;s vision, while the <strong>20% ECL Award</strong> recognizes recent efforts to expand universities. Students choose an award that resonates with them, while LSUC supports <strong>1,200 students</strong> across both intakes.</p>
+                    </div>
+                    <div class="schol-essence-card">
+                        <div class="schol-essence-icon"><i class="fas fa-university"></i></div>
+                        <h3>Build LSUC&rsquo;s Brand as &ldquo;Zambia&rsquo;s Premium Institution&rdquo;</h3>
+                        <p>Naming awards after presidents positions LSUC as a <strong>national institution</strong>, not just another college. It signals stability, patriotism, and alignment with Zambia&rsquo;s development agenda. Parents trust it. Students feel proud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Footer -->
+        <section class="schol-cta-section">
+            <div class="container">
+                <div class="schol-cta-inner">
+                    <h2>Ready to Apply for a Scholarship?</h2>
+                    <p>Download the full scholarship summary or start your application today</p>
+                    <div class="schol-cta-btns">
+                        <button class="cta-button" onclick="openPDFViewer('docs/scholarships.pdf', 'LSUC Scholarships Summary')">
+                            <i class="fas fa-file-pdf"></i> View &amp; Download PDF
+                        </button>
+                        <a href="https://srms.lsc.edu.zm/applications/undergraduate_application.php" target="_blank" class="cta-button schol-apply-btn">
+                            <i class="fas fa-pen-alt"></i> Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- ===== END SCHOLARSHIPS PAGE ===== -->
 
     <div id="gallery" class="page-content">
         <div class="page-header">

@@ -959,6 +959,60 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
 
+        /* Sound Toggle Button */
+        .video-sound-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.35);
+            border-radius: 50px;
+            padding: 9px 18px 9px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+            user-select: none;
+        }
+
+        .video-sound-btn:hover {
+            background: rgba(255, 140, 0, 0.82);
+            border-color: var(--primary-orange);
+            transform: scale(1.05);
+        }
+
+        .video-sound-btn i {
+            font-size: 1rem;
+            width: 16px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .video-sound-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Ripple animation when unmuting */
+        @keyframes soundRipple {
+            0%   { box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6); }
+            70%  { box-shadow: 0 0 0 12px rgba(255, 140, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 140, 0, 0); }
+        }
+
+        .video-sound-btn.unmuted {
+            background: rgba(255, 140, 0, 0.75);
+            border-color: var(--primary-orange);
+            animation: soundRipple 0.6s ease;
+        }
+
         @media (max-width: 768px) {
             .insights-overlay {
                 padding: 30px 24px;
@@ -971,6 +1025,12 @@
             .insights-video-wrapper,
             .insights-video {
                 max-height: 360px;
+            }
+            .video-sound-btn {
+                top: 14px;
+                right: 14px;
+                padding: 7px 14px 7px 11px;
+                font-size: 0.75rem;
             }
         }
 
@@ -2948,6 +3008,7 @@
             </div>
             <div class="insights-video-wrapper">
                 <video
+                    id="insightsVideo"
                     class="insights-video"
                     src="vid/insight.mp4"
                     autoplay
@@ -2957,6 +3018,17 @@
                     preload="auto"
                     aria-label="LSUC campus insights video"
                 ></video>
+                <!-- Sound Toggle Button -->
+                <button
+                    id="videoSoundBtn"
+                    class="video-sound-btn"
+                    onclick="toggleVideoSound()"
+                    aria-label="Toggle video sound"
+                    title="Click to enable sound"
+                >
+                    <i class="fas fa-volume-mute" id="soundIcon"></i>
+                    <span id="soundLabel">Sound Off</span>
+                </button>
                 <div class="insights-overlay">
                     <div class="insights-overlay-content">
                         <span class="insights-badge"><i class="fas fa-film"></i> Campus Life</span>
@@ -5003,6 +5075,44 @@
                 }
             }
         });
+
+        // Video Sound Toggle
+        function toggleVideoSound() {
+            const video = document.getElementById('insightsVideo');
+            const btn   = document.getElementById('videoSoundBtn');
+            const icon  = document.getElementById('soundIcon');
+            const label = document.getElementById('soundLabel');
+
+            if (!video) return;
+
+            if (video.muted) {
+                // Unmute
+                video.muted = false;
+                video.volume = 1;
+                icon.className  = 'fas fa-volume-up';
+                label.textContent = 'Sound On';
+                btn.classList.add('unmuted');
+                btn.title = 'Click to mute';
+                // Remove animation class after it plays so it can re-trigger
+                setTimeout(() => btn.classList.remove('unmuted'), 700);
+                // Browsers may still block unmuted play — handle gracefully
+                if (video.paused) {
+                    video.play().catch(() => {
+                        video.muted = true;
+                        icon.className = 'fas fa-volume-mute';
+                        label.textContent = 'Sound Off';
+                        btn.title = 'Click to enable sound';
+                    });
+                }
+            } else {
+                // Mute
+                video.muted = true;
+                icon.className  = 'fas fa-volume-mute';
+                label.textContent = 'Sound Off';
+                btn.classList.remove('unmuted');
+                btn.title = 'Click to enable sound';
+            }
+        }
 
         // Mobile menu toggle (for mobile navigation)
         function toggleMobileMenu() {

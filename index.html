@@ -6788,48 +6788,59 @@ Participants: ${data.participants}`;
             const errorElement = document.getElementById('pdfError');
             const frameElement = document.getElementById('pdfViewerFrame');
 
-            // Set title
             titleElement.textContent = title;
-
-            // Reset visibility
             loadingElement.style.display = 'flex';
             errorElement.style.display = 'none';
             frameElement.style.display = 'none';
-
-            // Show modal
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
 
-            // Load PDF in iframe
-            setTimeout(() => {
-                try {
-                    frameElement.src = pdfUrl;
-
-                    // Handle iframe load events
-                    frameElement.onload = function () {
+            // Verify the file is actually a PDF before loading into iframe.
+            // On live servers with URL rewriting, missing files redirect to index.html.
+            fetch(pdfUrl, { method: 'HEAD' })
+                .then(function(response) {
+                    var ct = response.headers.get('Content-Type') || '';
+                    var isPDF = ct.indexOf('pdf') !== -1 || ct.indexOf('octet-stream') !== -1;
+                    if (!response.ok || !isPDF) {
+                        // Server returned HTML — open in new tab instead
                         loadingElement.style.display = 'none';
-                        frameElement.style.display = 'block';
-                    };
-
-                    frameElement.onerror = function () {
-                        loadingElement.style.display = 'none';
-                        errorElement.style.display = 'flex';
-                    };
-
-                    // Fallback timeout if neither event fires
-                    setTimeout(() => {
-                        if (loadingElement.style.display !== 'none') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        window.open(pdfUrl, '_blank');
+                        return;
+                    }
+                    // PDF confirmed — embed in iframe
+                    setTimeout(function() {
+                        try {
+                            frameElement.src = pdfUrl;
+                            frameElement.onload = function() {
+                                loadingElement.style.display = 'none';
+                                frameElement.style.display = 'block';
+                            };
+                            frameElement.onerror = function() {
+                                loadingElement.style.display = 'none';
+                                errorElement.style.display = 'flex';
+                            };
+                            setTimeout(function() {
+                                if (loadingElement.style.display !== 'none') {
+                                    loadingElement.style.display = 'none';
+                                    frameElement.style.display = 'block';
+                                }
+                            }, 3000);
+                        } catch(e) {
+                            console.error('Error loading PDF:', e);
                             loadingElement.style.display = 'none';
-                            frameElement.style.display = 'block';
+                            errorElement.style.display = 'flex';
                         }
-                    }, 3000);
-
-                } catch (error) {
-                    console.error('Error loading PDF:', error);
+                    }, 300);
+                })
+                .catch(function() {
+                    // Network/CORS error — open directly in new tab
                     loadingElement.style.display = 'none';
-                    errorElement.style.display = 'flex';
-                }
-            }, 500);
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    window.open(pdfUrl, '_blank');
+                });
         }
 
         function closePDFViewer(event) {

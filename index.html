@@ -860,15 +860,15 @@
         /* Insights Video Section */
         .insights-section {
             padding-bottom: 0;
-            background: var(--gray-800);
+            background: var(--white);
         }
 
         .insights-section .section-title h2 {
-            color: var(--white);
+            color: var(--primary-green);
         }
 
         .insights-section .section-title p {
-            color: var(--gray-200);
+            color: var(--gray-600);
         }
 
         .insights-video-wrapper {
@@ -1533,34 +1533,10 @@
 
         /* ---- Home Scholarship Teaser ---- */
         .home-schol-section {
-            background: linear-gradient(135deg, var(--dark-green) 0%, #0d4a28 55%, #1a2e1a 100%);
+            background: var(--white);
             padding: 80px 0;
             position: relative;
             overflow: hidden;
-        }
-
-        .home-schol-section::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,140,0,0.12) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .home-schol-section::after {
-            content: '';
-            position: absolute;
-            bottom: -60px;
-            left: -60px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,140,0,0.08) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .home-schol-inner {
@@ -1589,7 +1565,7 @@
         }
 
         .home-schol-left h2 {
-            color: var(--white);
+            color: var(--primary-green);
             font-size: clamp(1.6rem, 3vw, 2.4rem);
             font-weight: 900;
             line-height: 1.2;
@@ -1601,7 +1577,7 @@
         }
 
         .home-schol-left p {
-            color: rgba(255,255,255,0.78);
+            color: var(--gray-700);
             font-size: 1rem;
             line-height: 1.75;
             margin-bottom: 32px;
@@ -1629,7 +1605,7 @@
         .home-schol-stat .stat-lbl {
             display: block;
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.6);
+            color: var(--gray-600);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.06em;
@@ -1675,21 +1651,21 @@
         }
 
         .home-schol-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
             border-top: 4px solid var(--primary-orange);
             border-radius: 14px;
             padding: 24px 20px;
-            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .home-schol-card:hover {
-            background: rgba(255,255,255,0.11);
-            border-color: rgba(255,140,0,0.5);
+            background: var(--white);
+            border-color: var(--primary-orange);
             transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
         }
 
         .home-schol-card .card-pct {
@@ -1701,7 +1677,7 @@
         }
 
         .home-schol-card h4 {
-            color: var(--white);
+            color: var(--gray-900);
             font-size: 0.92rem;
             font-weight: 700;
             margin-bottom: 8px;
@@ -1709,7 +1685,7 @@
         }
 
         .home-schol-card p {
-            color: rgba(255,255,255,0.6);
+            color: var(--gray-600);
             font-size: 0.78rem;
             line-height: 1.55;
             margin: 0;

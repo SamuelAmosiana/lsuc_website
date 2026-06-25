@@ -37,9 +37,23 @@ $internal_ref = 'LSUC' . date('Ymd') . strtoupper(substr(md5(uniqid(mt_rand(), t
 
 $pdo = getDbConnection();
 if (!$pdo) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Database connection failed']);
-    exit;
+    // Try to auto-create the database and reconnect
+    $dbError = $GLOBALS['DB_LAST_ERROR'] ?? 'unknown';
+    try {
+        $pdoRoot = new PDO("mysql:host=" . DB_HOST . ";charset=utf8mb4", DB_USER, DB_PASS);
+        $pdoRoot->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdoRoot->exec("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+        $pdo = getDbConnection(); // retry
+    } catch (Exception $e2) {
+        // ignore - will fall through to error below
+    }
+    if (!$pdo) {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'error' =>
+            'Database connection failed: ' . ($GLOBALS['DB_LAST_ERROR'] ?? $dbError) .
+            ' — Please visit /api/db_setup.php on the server to set up the database.']);
+        exit;
+    }
 }
 
 // Ensure payments table has required columns

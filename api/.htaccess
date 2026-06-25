@@ -1,0 +1,25 @@
+# LSUC Payment API — Force direct PHP execution
+# This prevents the SRMS application from intercepting /api/ requests
+# when the LSUC website is hosted alongside SRMS on the same server.
+
+# Turn off any inherited RewriteRules from parent directories
+Options -Indexes
+RewriteEngine Off
+
+# Ensure PHP files are served directly by Apache/PHP, not proxied to another app
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Block direct browser access to config files
+<FilesMatch "^(db_config|swish_config)\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Allow CORS for payment API calls from the website domain
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, X-Requested-With"
+</IfModule>

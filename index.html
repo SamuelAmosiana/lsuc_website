@@ -3537,6 +3537,9 @@
                     <a href="#scholarships" class="nav-link" onclick="showPage('scholarships'); closeMobileMenu()">Scholarships</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#online-payments" class="nav-link" onclick="showPage('online-payments'); closeMobileMenu()"><i class="fas fa-bolt" style="margin-right:4px;color:#ffb347;"></i>Pay Online</a>
+                </li>
+                <li class="nav-item">
                     <a href="#contact" class="nav-link" onclick="showPage('contact'); closeMobileMenu()">Contact Us</a>
                 </li>
                 <li class="nav-item">
@@ -4216,7 +4219,7 @@
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-medal"></i></div>
                         <h3>Ministry of Education</h3>
-                        <p>Fully accredited by the Ministry of Higher Education, Republic of Zambia, ensuring our
+                        <p>Fully accredited by the Higher Education Authority (HEA), Republic of Zambia, ensuring our
                             programs meet national educational standards.</p>
                     </div>
                     <div class="card">
@@ -4698,6 +4701,179 @@
             </div>
         </section>
     </div>
+
+    <!-- ===================================================== -->
+    <!-- Online Payments Page                                  -->
+    <!-- ===================================================== -->
+    <div id="online-payments" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>Online Payments</h1>
+                <p>Secure, fast payments via Mobile Money or Bank Card &mdash; powered by Swish</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> &gt; Online Payments
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="container">
+
+                <div class="section-title" style="margin-bottom:40px;">
+                    <h2>Make a Payment</h2>
+                    <p>Choose your payment category below. All transactions are processed securely through the Netone Swish gateway using Mobile Money (USSD, Push, QR) or Bank Card.</p>
+                </div>
+
+                <div class="cards-grid">
+
+                    <!-- Application Fee -->
+                    <div class="card" id="card-application-fee">
+                        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Application Fee</h3>
+                        <p>Pay the <strong>ZMW 100</strong> application fee when submitting a new application for Degree, Diploma, Certificate, or Short Course programmes.</p>
+                        <div style="margin-top:20px;">
+                            <button id="btn-pay-application"
+                                style="background:linear-gradient(135deg,#2e8b57,#1e5a3a);color:#fff;border:none;padding:13px 22px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;box-shadow:0 4px 14px rgba(46,139,87,0.28);transition:opacity 0.2s,transform 0.18s;"
+                                onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+                                onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                                <i class="fas fa-bolt"></i> Pay Application Fee &mdash; ZMW 100
+                            </button>
+                        </div>
+                        <small style="color:#6b7280;display:block;margin-top:8px;text-align:center;">Mobile Money &bull; QR Code &bull; Bank Card</small>
+                    </div>
+
+                    <!-- Tuition / Semester Fee -->
+                    <div class="card" id="card-tuition-fee">
+                        <div class="card-icon" style="background:linear-gradient(135deg,#ff8c00,#ffb347);"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Tuition / Semester Fee</h3>
+                        <p>Pay your semester tuition, module fees, or any other outstanding academic charges. Enter the exact amount as advised by the finance office.</p>
+                        <div style="margin-top:14px;">
+                            <label style="display:block;font-size:0.78rem;font-weight:700;color:#333;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;">Amount (ZMW) *</label>
+                            <input type="number" id="tuition-amount-input" placeholder="e.g. 2500" min="1" step="0.01"
+                                style="width:100%;padding:11px 13px;border:1.5px solid #cce;border-radius:9px;font-size:0.95rem;box-sizing:border-box;margin-bottom:12px;">
+                            <button id="btn-pay-tuition"
+                                style="background:linear-gradient(135deg,#ff8c00,#e07800);color:#fff;border:none;padding:13px 22px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;box-shadow:0 4px 14px rgba(255,140,0,0.28);transition:opacity 0.2s,transform 0.18s;"
+                                onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+                                onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                                <i class="fas fa-credit-card"></i> Pay Tuition Fee
+                            </button>
+                        </div>
+                        <small style="color:#6b7280;display:block;margin-top:8px;text-align:center;">Mobile Money &bull; QR Code &bull; Bank Card</small>
+                    </div>
+
+                    <!-- Other / General Payment -->
+                    <div class="card" id="card-other-payment">
+                        <div class="card-icon" style="background:linear-gradient(135deg,#2e8b57,#ff8c00);"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h3>Other Payments</h3>
+                        <p>Resit fees, library fines, transcript requests, ID card replacement, and any other miscellaneous charges. Enter the amount and add a reference.</p>
+                        <div style="margin-top:14px;">
+                            <label style="display:block;font-size:0.78rem;font-weight:700;color:#333;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;">Amount (ZMW) *</label>
+                            <input type="number" id="other-amount-input" placeholder="e.g. 150" min="1" step="0.01"
+                                style="width:100%;padding:11px 13px;border:1.5px solid #cce;border-radius:9px;font-size:0.95rem;box-sizing:border-box;margin-bottom:8px;">
+                            <label style="display:block;font-size:0.78rem;font-weight:700;color:#333;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;">Reference / Reason</label>
+                            <input type="text" id="other-ref-input" placeholder="e.g. Resit fee &mdash; Computer Science"
+                                style="width:100%;padding:11px 13px;border:1.5px solid #cce;border-radius:9px;font-size:0.95rem;box-sizing:border-box;margin-bottom:12px;">
+                            <button id="btn-pay-other"
+                                style="background:linear-gradient(135deg,#1e5a3a,#2e8b57);color:#fff;border:none;padding:13px 22px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;box-shadow:0 4px 14px rgba(46,139,87,0.22);transition:opacity 0.2s,transform 0.18s;"
+                                onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+                                onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                                <i class="fas fa-paper-plane"></i> Make Payment
+                            </button>
+                        </div>
+                        <small style="color:#6b7280;display:block;margin-top:8px;text-align:center;">Mobile Money &bull; QR Code &bull; Bank Card</small>
+                    </div>
+
+                </div><!-- /.cards-grid -->
+
+                <!-- Info note -->
+                <div style="margin-top:50px;background:#eaf5ef;border:1px solid #aad4bd;border-radius:14px;padding:22px 26px;display:flex;gap:16px;align-items:flex-start;">
+                    <i class="fas fa-shield-alt" style="font-size:22px;color:#2e8b57;margin-top:2px;flex-shrink:0;"></i>
+                    <div>
+                        <strong style="color:#1e5a3a;display:block;margin-bottom:6px;font-size:1rem;">Secure &amp; Trusted Payments</strong>
+                        <p style="color:#2d4a36;font-size:0.875rem;line-height:1.7;margin:0;">All payments are processed via <strong>Netone Swish</strong> &mdash; Zambia's trusted mobile money gateway. Supported networks include <strong>MTN Mobile Money, Airtel Money, and Zamtel eMoney</strong>. Bank card payments are secured by <strong>CyberSource</strong>. For payment queries, contact the Finance Office on <a href="tel:+260211292292" style="color:#2e8b57;">+260 211 292292</a>.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Swish payment JS integration -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof SwishModal === 'undefined') return;
+            SwishModal.init();
+
+            // ── Helper: create payment record then open modal ──
+            function openPayment(amount, category, description, onSuccess) {
+                if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
+                    alert('Please enter a valid amount before proceeding.');
+                    return;
+                }
+                var fd = new FormData();
+                fd.append('full_name',   'Website Visitor');
+                fd.append('phone',       '');
+                fd.append('amount',      amount);
+                fd.append('category',    category);
+                fd.append('description', description);
+
+                fetch('./api/create_payment_record.php', { method: 'POST', body: fd })
+                .then(function(r){ return r.json(); })
+                .then(function(data){
+                    if (!data.success) { alert('Could not initialise payment: ' + (data.error || 'Please try again.')); return; }
+                    SwishModal.open({
+                        amount:      parseFloat(amount),
+                        internalRef: data.internal_ref,
+                        context:     category,
+                        onSuccess:   function(txnId) { if (typeof onSuccess === 'function') onSuccess(txnId); },
+                        onFailure:   function(reason) { console.warn('Payment failed:', reason); }
+                    });
+                })
+                .catch(function(err){ alert('Network error: ' + err.message); });
+            }
+
+            // ── Application Fee (ZMW 100 fixed) ──
+            var btnApp = document.getElementById('btn-pay-application');
+            if (btnApp) {
+                btnApp.addEventListener('click', function(){
+                    openPayment(100, 'Application Fee', 'LSUC Application Fee', function(txnId){
+                        btnApp.innerHTML = '<i class="fas fa-check-circle"></i> Payment Confirmed';
+                        btnApp.style.background = '#28a745';
+                        btnApp.disabled = true;
+                    });
+                });
+            }
+
+            // ── Tuition Fee ──
+            var btnTuition = document.getElementById('btn-pay-tuition');
+            if (btnTuition) {
+                btnTuition.addEventListener('click', function(){
+                    var amt = document.getElementById('tuition-amount-input').value.trim();
+                    openPayment(amt, 'Tuition Fee', 'LSUC Tuition / Semester Fee', function(txnId){
+                        btnTuition.innerHTML = '<i class="fas fa-check-circle"></i> Payment Confirmed';
+                        btnTuition.style.background = '#28a745';
+                        btnTuition.disabled = true;
+                    });
+                });
+            }
+
+            // ── Other Payment ──
+            var btnOther = document.getElementById('btn-pay-other');
+            if (btnOther) {
+                btnOther.addEventListener('click', function(){
+                    var amt = document.getElementById('other-amount-input').value.trim();
+                    var ref = document.getElementById('other-ref-input').value.trim() || 'General Payment';
+                    openPayment(amt, 'Other Payment', ref, function(txnId){
+                        btnOther.innerHTML = '<i class="fas fa-check-circle"></i> Payment Confirmed';
+                        btnOther.style.background = '#28a745';
+                        btnOther.disabled = true;
+                    });
+                });
+            }
+        });
+        </script>
+
+    </div><!-- /#online-payments -->
 
     <div id="contact" class="page-content">
         <div class="page-header">
@@ -7644,7 +7820,11 @@ Participants: ${data.participants}`;
         */
     </script>
 
-    <!-- Payment Handler Script -->
+    <!-- Swish Payment Modal CSS & JS -->
+    <link rel="stylesheet" href="./css/swish-payment-modal.css">
+    <script src="./js/swish-payment-modal.js"></script>
+
+    <!-- Legacy payment handler (kept for compatibility) -->
     <script src="./js/payment-handler.js"></script>
 
     <!-- News & Events Manager Script -->

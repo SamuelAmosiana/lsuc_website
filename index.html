@@ -4795,173 +4795,493 @@
         </section>
 
         <!-- ===================== PAYMENT MODAL ===================== -->
+        <!-- ===================== SWISH PAYMENT MODAL ===================== -->
         <div id="payment-modal-overlay"
-             style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;align-items:center;justify-content:center;padding:16px;">
+             style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:16px;">
             <div id="payment-modal-box"
-                 style="background:#fff;border-radius:18px;width:100%;max-width:520px;box-shadow:0 24px 60px rgba(0,0,0,0.22);overflow:hidden;animation:pmSlideIn 0.28s ease;">
+                 style="background:#fff;border-radius:20px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;box-shadow:0 28px 70px rgba(0,0,0,0.28);animation:pmSlideIn 0.3s ease;">
 
                 <!-- Modal Header -->
-                <div id="payment-modal-header"
-                     style="background:linear-gradient(135deg,#228B22,#155215);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;">
-                    <div>
-                        <div style="font-size:0.75rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">Payment Method</div>
-                        <div id="modal-method-title" style="font-size:1.2rem;font-weight:700;color:#fff;"></div>
+                <div id="pm-header"
+                     style="background:linear-gradient(135deg,#228B22,#155215);padding:20px 26px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1;">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <div id="pm-header-icon" style="width:40px;height:40px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;"></div>
+                        <div>
+                            <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;">Payment Method</div>
+                            <div id="pm-header-title" style="font-size:1.1rem;font-weight:700;color:#fff;"></div>
+                        </div>
                     </div>
-                    <button onclick="closePaymentModal()"
-                            style="background:rgba(255,255,255,0.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                            onmouseover="this.style.background='rgba(255,255,255,0.28)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div id="pm-step-dots" style="display:flex;gap:5px;"></div>
+                        <button onclick="closePaymentModal()"
+                                style="background:rgba(255,255,255,0.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-left:8px;"
+                                onmouseover="this.style.background='rgba(255,255,255,0.32)'" onmouseout="this.style.background='rgba(255,255,255,0.18)'">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Modal Body: Form -->
-                <div id="payment-modal-form-section" style="padding:28px 28px 10px;">
-                    <div style="margin-bottom:18px;">
-                        <label style="display:block;font-size:0.78rem;font-weight:700;color:#333;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Payment For *</label>
-                        <input type="text" id="pm-payment-for" placeholder="e.g. Tuition Fee, Application Fee, Resit Feeâ€¦"
-                               style="width:100%;padding:12px 14px;border:1.5px solid #d1d5db;border-radius:10px;font-size:0.95rem;box-sizing:border-box;transition:border-color 0.2s;"
-                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#d1d5db'">
+                <!-- STEP 1: Payment Details -->
+                <div id="pm-step-1" style="padding:26px 28px 16px;">
+                    <h3 style="margin:0 0 6px;font-size:1.05rem;color:#222;">Payment Details</h3>
+                    <p style="margin:0 0 22px;font-size:0.85rem;color:#888;">Fill in the details below to proceed.</p>
+
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Payment For *</label>
+                        <input type="text" id="pm-for" placeholder="e.g. Application Fee, Tuition Fee, Resit Fee..."
+                               style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
                     </div>
-                    <div style="margin-bottom:22px;">
-                        <label style="display:block;font-size:0.78rem;font-weight:700;color:#333;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Amount (ZMW) *</label>
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Amount (ZMW) *</label>
                         <input type="number" id="pm-amount" placeholder="e.g. 2500" min="1" step="0.01"
-                               style="width:100%;padding:12px 14px;border:1.5px solid #d1d5db;border-radius:10px;font-size:0.95rem;box-sizing:border-box;transition:border-color 0.2s;"
-                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#d1d5db'">
+                               style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
                     </div>
 
-                    <!-- Bank Transfer Details (shown only for Online Banking) -->
-                    <div id="bank-details-panel" style="display:none;background:#f4fbf4;border:1.5px solid #aad4bd;border-radius:12px;padding:18px 20px;margin-bottom:20px;">
-                        <div style="font-size:0.88rem;font-weight:700;color:#155215;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">
-                            <i class="fas fa-university" style="margin-right:6px;"></i> Bank Transfer Details
+                    <div id="pm-phone-row" style="margin-bottom:15px;">
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(26097xxxxxxx)</span></label>
+                        <input type="tel" id="pm-phone" placeholder="e.g. 260978905095" maxlength="15"
+                               style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                        <div id="pm-phone-hint" style="font-size:0.78rem;color:#888;margin-top:4px;"></div>
+                    </div>
+
+                    <!-- Bank Transfer details panel -->
+                    <div id="pm-bank-panel" style="display:none;background:#f4fbf4;border:1.5px solid #aad4bd;border-radius:12px;padding:16px 18px;margin-bottom:16px;">
+                        <div style="font-size:0.8rem;font-weight:700;color:#155215;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">
+                            <i class="fas fa-university" style="margin-right:6px;"></i> ZANACO Bank Details
                         </div>
-                        <table style="width:100%;border-collapse:collapse;font-size:0.88rem;color:#333;">
-                            <tr><td style="padding:5px 0;color:#555;width:45%;">Account Name</td><td style="padding:5px 0;font-weight:700;">Lusaka South College</td></tr>
-                            <tr><td style="padding:5px 0;color:#555;">Account No</td><td style="padding:5px 0;font-weight:700;">5947236500193</td></tr>
-                            <tr><td style="padding:5px 0;color:#555;">Bank</td><td style="padding:5px 0;font-weight:700;">ZANACO</td></tr>
-                            <tr><td style="padding:5px 0;color:#555;">Branch Code</td><td style="padding:5px 0;font-weight:700;">086</td></tr>
-                            <tr><td style="padding:5px 0;color:#555;">Sort Code</td><td style="padding:5px 0;font-weight:700;">010086</td></tr>
-                            <tr><td style="padding:5px 0;color:#555;">Swift Code</td><td style="padding:5px 0;font-weight:700;">ZNCOZMLU</td></tr>
+                        <table style="width:100%;border-collapse:collapse;font-size:0.86rem;">
+                            <tr><td style="padding:5px 0;color:#666;width:42%;">Account Name</td><td style="padding:5px 0;font-weight:700;color:#222;">Lusaka South College</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Account No</td><td style="padding:5px 0;font-weight:700;color:#222;">5947236500193</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Bank</td><td style="padding:5px 0;font-weight:700;color:#222;">ZANACO</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Branch Code</td><td style="padding:5px 0;font-weight:700;color:#222;">086</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Sort Code</td><td style="padding:5px 0;font-weight:700;color:#222;">010086</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Swift Code</td><td style="padding:5px 0;font-weight:700;color:#222;">ZNCOZMLU</td></tr>
                         </table>
-                        <p style="margin:12px 0 0;font-size:0.8rem;color:#555;line-height:1.6;"><i class="fas fa-info-circle" style="color:#228B22;margin-right:5px;"></i>After making the transfer, please email or WhatsApp your proof of payment to the Finance Office, quoting your <strong>full name and student number</strong>.</p>
+                        <p style="margin:10px 0 0;font-size:0.78rem;color:#555;line-height:1.6;"><i class="fas fa-info-circle" style="color:#228B22;margin-right:4px;"></i>After transfer, send proof of payment to Finance quoting your <strong>full name &amp; student number</strong>.</p>
                     </div>
 
-                    <div id="pm-error-msg" style="display:none;color:#c0392b;font-size:0.85rem;margin-bottom:12px;padding:8px 12px;background:#fef2f2;border-radius:8px;border:1px solid #fca5a5;"></div>
+                    <div id="pm-step1-error" style="display:none;color:#c0392b;font-size:0.83rem;margin-bottom:12px;padding:9px 13px;background:#fef2f2;border-radius:8px;border:1px solid #fca5a5;"></div>
 
-                    <button id="pm-confirm-btn" onclick="confirmPayment()"
-                            style="width:100%;padding:14px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.25);transition:opacity 0.2s,transform 0.18s;margin-bottom:10px;"
+                    <button id="pm-step1-btn" onclick="pmStep1Next()"
+                            style="width:100%;padding:14px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;border-radius:11px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.25);transition:opacity 0.2s,transform 0.15s;margin-bottom:10px;"
                             onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
                             onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
-                        <i class="fas fa-check-circle" style="margin-right:8px;"></i> Confirm Payment Details
+                        Continue <i class="fas fa-arrow-right" style="margin-left:7px;"></i>
                     </button>
                     <button onclick="closePaymentModal()"
-                            style="width:100%;padding:11px;background:transparent;color:#6b7280;border:1.5px solid #d1d5db;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;"
+                            style="width:100%;padding:11px;background:transparent;color:#6b7280;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;margin-bottom:16px;"
+                            onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">Cancel</button>
+                </div>
+
+                <!-- STEP 2: Choose Mobile Money Sub-method -->
+                <div id="pm-step-2" style="display:none;padding:26px 28px 16px;">
+                    <h3 style="margin:0 0 5px;font-size:1.05rem;color:#222;">Choose Payment Method</h3>
+                    <p style="margin:0 0 20px;font-size:0.85rem;color:#888;">How would you like to authorise this payment?</p>
+
+                    <div id="pm-s2-summary" style="background:#f8f9fa;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.88rem;color:#444;display:flex;justify-content:space-between;align-items:center;">
+                        <span id="pm-s2-for"></span>
+                        <strong id="pm-s2-amt" style="color:#228B22;font-size:1rem;"></strong>
+                    </div>
+
+                    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+                        <div class="pm-method-opt" id="pm-opt-ussd" onclick="pmSelectSubMethod('ussd')"
+                             style="border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#ff8c00,#e07800);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-hashtag" style="color:#fff;font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700;color:#222;font-size:0.95rem;">USSD Prompt</div>
+                                <div style="font-size:0.8rem;color:#888;margin-top:2px;">You will receive a USSD prompt on your phone. Enter your MPIN to authorise.</div>
+                            </div>
+                            <div class="pm-opt-check" style="margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;"></div>
+                        </div>
+
+                        <div class="pm-method-opt" id="pm-opt-push" onclick="pmSelectSubMethod('push')"
+                             style="border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#228B22,#155215);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-bell" style="color:#fff;font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700;color:#222;font-size:0.95rem;">Push Notification</div>
+                                <div style="font-size:0.8rem;color:#888;margin-top:2px;">Receive a push notification on your Swish app and tap to approve.</div>
+                            </div>
+                            <div class="pm-opt-check" style="margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;"></div>
+                        </div>
+
+                        <div class="pm-method-opt" id="pm-opt-qr" onclick="pmSelectSubMethod('qr')"
+                             style="border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#228B22,#ff8c00);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-qrcode" style="color:#fff;font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700;color:#222;font-size:0.95rem;">QR Code</div>
+                                <div style="font-size:0.8rem;color:#888;margin-top:2px;">Scan the QR code with your Swish app to pay instantly.</div>
+                            </div>
+                            <div class="pm-opt-check" style="margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;"></div>
+                        </div>
+                    </div>
+
+                    <div id="pm-step2-error" style="display:none;color:#c0392b;font-size:0.83rem;margin-bottom:12px;padding:9px 13px;background:#fef2f2;border-radius:8px;border:1px solid #fca5a5;"></div>
+
+                    <button onclick="pmStep2Pay()"
+                            style="width:100%;padding:14px;background:linear-gradient(135deg,#ff8c00,#e07800);color:#fff;border:none;border-radius:11px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(255,140,0,0.28);transition:opacity 0.2s,transform 0.15s;margin-bottom:10px;"
+                            onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+                            onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                        <i class="fas fa-bolt" style="margin-right:7px;"></i> Pay Now
+                    </button>
+                    <button onclick="pmGoStep(1)"
+                            style="width:100%;padding:11px;background:transparent;color:#6b7280;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;margin-bottom:16px;"
                             onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
-                        Cancel
+                        <i class="fas fa-arrow-left" style="margin-right:5px;"></i> Back
                     </button>
                 </div>
 
-                <!-- Modal Body: Success -->
-                <div id="payment-modal-success-section" style="display:none;padding:36px 28px;text-align:center;">
-                    <div style="width:70px;height:70px;background:#eaf5ef;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;border:2px solid #aad4bd;">
-                        <i class="fas fa-check" style="font-size:2rem;color:#228B22;"></i>
+                <!-- STEP 3: Processing / Waiting -->
+                <div id="pm-step-3" style="display:none;padding:36px 28px;text-align:center;">
+                    <!-- Spinner (USSD / Push / Card loading) -->
+                    <div id="pm-waiting-panel">
+                        <div style="width:80px;height:80px;border:4px solid #eaf5ef;border-top-color:#228B22;border-radius:50%;margin:0 auto 24px;animation:pmSpin 0.9s linear infinite;"></div>
+                        <h3 id="pm-waiting-title" style="color:#228B22;margin:0 0 10px;font-size:1.2rem;"></h3>
+                        <p id="pm-waiting-msg" style="color:#555;font-size:0.92rem;line-height:1.7;margin:0 0 16px;"></p>
+                        <div style="background:#f8f9fa;border-radius:10px;padding:10px 14px;display:inline-block;font-size:0.82rem;color:#888;">
+                            <i class="fas fa-clock" style="margin-right:5px;color:#ff8c00;"></i>
+                            Waiting for confirmation &mdash; this may take up to 3 minutes
+                        </div>
+                        <div id="pm-poll-status" style="margin-top:14px;font-size:0.8rem;color:#aaa;"></div>
                     </div>
-                    <h3 style="color:#155215;margin-bottom:8px;font-size:1.25rem;">Payment Details Received!</h3>
-                    <p id="pm-success-msg" style="color:#555;font-size:0.95rem;line-height:1.7;margin-bottom:6px;"></p>
-                    <p style="color:#888;font-size:0.82rem;margin-bottom:24px;">Please proceed with your selected payment method using the details provided. Contact the Finance Office if you need assistance.</p>
-                    <button onclick="closePaymentModal()"
-                            style="padding:12px 32px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.22);">
-                        <i class="fas fa-times" style="margin-right:6px;"></i> Close
-                    </button>
+
+                    <!-- QR Code panel -->
+                    <div id="pm-qr-panel" style="display:none;">
+                        <div style="font-size:0.85rem;color:#555;margin-bottom:12px;">Scan this QR code with your <strong>Swish app</strong> to complete the payment</div>
+                        <div style="background:#fff;border:2px solid #e0e0e0;border-radius:14px;padding:16px;display:inline-block;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+                            <img id="pm-qr-img" src="" alt="Swish QR Code" style="width:200px;height:200px;display:block;">
+                        </div>
+                        <div style="background:#f8f9fa;border-radius:10px;padding:10px 14px;font-size:0.82rem;color:#888;margin-bottom:14px;">
+                            <i class="fas fa-clock" style="margin-right:5px;color:#ff8c00;"></i>
+                            QR code expires in 3 minutes &mdash; do not close this window
+                        </div>
+                        <div id="pm-qr-poll-status" style="font-size:0.8rem;color:#aaa;"></div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Result -->
+                <div id="pm-step-4" style="display:none;padding:36px 28px;text-align:center;">
+
+                    <!-- Success -->
+                    <div id="pm-result-success" style="display:none;">
+                        <div style="width:76px;height:76px;background:linear-gradient(135deg,#eaf5ef,#d4edda);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(34,139,34,0.18);">
+                            <i class="fas fa-check" style="font-size:2.2rem;color:#228B22;"></i>
+                        </div>
+                        <h3 style="color:#155215;margin:0 0 8px;font-size:1.3rem;">Payment Successful!</h3>
+                        <p id="pm-success-detail" style="color:#444;font-size:0.92rem;line-height:1.7;margin:0 0 6px;"></p>
+                        <p style="color:#888;font-size:0.8rem;margin:0 0 26px;">A confirmation will be sent to your mobile number. Keep your reference for records.</p>
+                        <button onclick="closePaymentModal()"
+                                style="padding:13px 36px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;border-radius:11px;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.22);">
+                            <i class="fas fa-check-circle" style="margin-right:7px;"></i> Done
+                        </button>
+                    </div>
+
+                    <!-- Card Redirect -->
+                    <div id="pm-result-card" style="display:none;">
+                        <div style="width:76px;height:76px;background:linear-gradient(135deg,#eaf5ef,#d4edda);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(34,139,34,0.18);">
+                            <i class="fas fa-external-link-alt" style="font-size:2rem;color:#228B22;"></i>
+                        </div>
+                        <h3 style="color:#155215;margin:0 0 8px;font-size:1.2rem;">Redirected to Secure Checkout</h3>
+                        <p style="color:#555;font-size:0.92rem;line-height:1.7;margin:0 0 6px;">A new tab has been opened for you to complete your card payment via <strong>CyberSource</strong>.</p>
+                        <p style="color:#888;font-size:0.8rem;margin:0 0 22px;">If the tab did not open, <a id="pm-card-link" href="#" target="_blank" style="color:#228B22;font-weight:600;">click here</a> to proceed.</p>
+                        <button onclick="closePaymentModal()"
+                                style="padding:13px 36px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;border-radius:11px;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.22);">
+                            Close
+                        </button>
+                    </div>
+
+                    <!-- Failure -->
+                    <div id="pm-result-failed" style="display:none;">
+                        <div style="width:76px;height:76px;background:#fef2f2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(192,57,43,0.12);">
+                            <i class="fas fa-times" style="font-size:2.2rem;color:#c0392b;"></i>
+                        </div>
+                        <h3 style="color:#c0392b;margin:0 0 8px;font-size:1.2rem;">Payment Failed</h3>
+                        <p id="pm-failed-msg" style="color:#555;font-size:0.92rem;line-height:1.7;margin:0 0 22px;"></p>
+                        <div style="display:flex;gap:10px;justify-content:center;">
+                            <button onclick="pmRetry()"
+                                    style="padding:12px 24px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;border-radius:10px;font-size:0.9rem;font-weight:700;cursor:pointer;">
+                                <i class="fas fa-redo" style="margin-right:6px;"></i> Try Again
+                            </button>
+                            <button onclick="closePaymentModal()"
+                                    style="padding:12px 24px;background:transparent;color:#555;border:1.5px solid #ddd;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
         </div><!-- /#payment-modal-overlay -->
 
         <style>
-        @keyframes pmSlideIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.97); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes pmSlideIn { from{opacity:0;transform:translateY(32px) scale(0.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+        @keyframes pmSpin    { to { transform: rotate(360deg); } }
+        .pm-method-opt:hover  { border-color:#228B22 !important; background:#f4fbf4; }
+        .pm-method-opt.selected { border-color:#228B22 !important; background:#eaf5ef; }
+        .pm-method-opt.selected .pm-opt-check {
+            background:#228B22; border-color:#228B22 !important;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat:no-repeat;background-position:center;background-size:10px;
         }
-        #payment-modal-overlay.active { display: flex !important; }
+        #pm-step-dots .dot { width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);transition:background 0.25s; }
+        #pm-step-dots .dot.active { background:#fff; }
         </style>
 
         <script>
-        var _pmMethod = '';
+        var _pm = {
+            method:'', subMethod:'', payFor:'', amount:'', phone:'',
+            internalRef:'', transLinkId:'', pollTimer:null, pollCount:0, maxPolls:12
+        };
 
         function openPaymentModal(method) {
-            _pmMethod = method;
-            document.getElementById('modal-method-title').textContent = method;
+            _pm.method = method; _pm.subMethod = ''; _pm.internalRef = ''; _pm.transLinkId = '';
+            pmClearPoll();
+            ['pm-for','pm-amount','pm-phone'].forEach(function(id){ var e=document.getElementById(id); if(e) e.value=''; });
+            ['pm-step1-error','pm-step2-error'].forEach(function(id){ var e=document.getElementById(id); if(e) e.style.display='none'; });
 
-            // Reset form
-            document.getElementById('pm-payment-for').value = '';
-            document.getElementById('pm-amount').value = '';
-            document.getElementById('pm-error-msg').style.display = 'none';
-            document.getElementById('payment-modal-form-section').style.display = 'block';
-            document.getElementById('payment-modal-success-section').style.display = 'none';
+            var isBank   = method.indexOf('Banking') !== -1;
+            var isMobile = method === 'Mobile Money';
+            var isCard   = method === 'Card Payment';
 
-            // Show/hide bank details
-            var isBankTransfer = method.indexOf('Banking') !== -1 || method.indexOf('Bank') !== -1;
-            document.getElementById('bank-details-panel').style.display = isBankTransfer ? 'block' : 'none';
+            var grad = isCard   ? 'linear-gradient(135deg,#228B22,#155215)'  :
+                       isMobile ? 'linear-gradient(135deg,#ff8c00,#e07800)'  :
+                                  'linear-gradient(135deg,#228B22,#ff8c00)';
+            document.getElementById('pm-header').style.background = grad;
 
-            // Update header color for mobile money
-            var header = document.getElementById('payment-modal-header');
-            if (method === 'Mobile Money') {
-                header.style.background = 'linear-gradient(135deg,#ff8c00,#e07800)';
-                document.getElementById('pm-confirm-btn').style.background = 'linear-gradient(135deg,#ff8c00,#e07800)';
-            } else if (method === 'Online Banking (Bank Transfer)') {
-                header.style.background = 'linear-gradient(135deg,#228B22,#ff8c00)';
-                document.getElementById('pm-confirm-btn').style.background = 'linear-gradient(135deg,#228B22,#ff8c00)';
+            var icon = isCard ? 'fa-credit-card' : isMobile ? 'fa-mobile-alt' : 'fa-university';
+            document.getElementById('pm-header-icon').innerHTML = '<i class="fas '+icon+'"></i>';
+            document.getElementById('pm-header-title').textContent = method;
+
+            document.getElementById('pm-phone-row').style.display = isBank ? 'none' : 'block';
+            document.getElementById('pm-bank-panel').style.display = isBank ? 'block' : 'none';
+
+            var btn1 = document.getElementById('pm-step1-btn');
+            if (isBank) {
+                btn1.innerHTML = '<i class="fas fa-check-circle" style="margin-right:8px;"></i> Got It';
+                btn1.style.background = 'linear-gradient(135deg,#228B22,#ff8c00)';
+                btn1.onclick = function(){ closePaymentModal(); };
             } else {
-                header.style.background = 'linear-gradient(135deg,#228B22,#155215)';
-                document.getElementById('pm-confirm-btn').style.background = 'linear-gradient(135deg,#228B22,#155215)';
+                btn1.innerHTML = 'Continue <i class="fas fa-arrow-right" style="margin-left:7px;"></i>';
+                btn1.style.background = isCard ? 'linear-gradient(135deg,#228B22,#155215)' : 'linear-gradient(135deg,#ff8c00,#e07800)';
+                btn1.onclick = pmStep1Next;
             }
 
-            var overlay = document.getElementById('payment-modal-overlay');
-            overlay.style.display = 'flex';
+            document.getElementById('pm-phone-hint').textContent = isCard
+                ? 'Swish will send an SMS confirmation to this number.'
+                : 'The USSD prompt / push notification will be sent here.';
+
+            var totalSteps = isBank ? 1 : isMobile ? 4 : 3;
+            pmBuildDots(totalSteps);
+            pmGoStep(1);
+            document.getElementById('payment-modal-overlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closePaymentModal() {
+            pmClearPoll();
             document.getElementById('payment-modal-overlay').style.display = 'none';
             document.body.style.overflow = '';
         }
 
-        function confirmPayment() {
-            var payFor = document.getElementById('pm-payment-for').value.trim();
-            var amount = document.getElementById('pm-amount').value.trim();
-            var errEl  = document.getElementById('pm-error-msg');
-
-            if (!payFor) {
-                errEl.textContent = 'Please enter what this payment is for.';
-                errEl.style.display = 'block';
-                document.getElementById('pm-payment-for').focus();
-                return;
-            }
-            if (!amount || isNaN(amount) || parseFloat(amount) <= 0) {
-                errEl.textContent = 'Please enter a valid payment amount.';
-                errEl.style.display = 'block';
-                document.getElementById('pm-amount').focus();
-                return;
-            }
-            errEl.style.display = 'none';
-
-            var amtFormatted = 'ZMW ' + parseFloat(amount).toLocaleString('en-ZM', {minimumFractionDigits:2, maximumFractionDigits:2});
-            document.getElementById('pm-success-msg').innerHTML =
-                'You are paying <strong>' + amtFormatted + '</strong> for <strong>' + payFor + '</strong> via <strong>' + _pmMethod + '</strong>.';
-
-            document.getElementById('payment-modal-form-section').style.display = 'none';
-            document.getElementById('payment-modal-success-section').style.display = 'block';
+        function pmGoStep(n) {
+            [1,2,3,4].forEach(function(i){
+                var el = document.getElementById('pm-step-'+i);
+                if(el) el.style.display = (i===n) ? 'block' : 'none';
+            });
+            document.querySelectorAll('#pm-step-dots .dot').forEach(function(d,idx){
+                d.classList.toggle('active', idx===n-1);
+            });
+            var box = document.getElementById('payment-modal-box');
+            if(box) box.scrollTop = 0;
         }
 
-        // Close modal on overlay click
-        document.getElementById('payment-modal-overlay').addEventListener('click', function(e) {
-            if (e.target === this) closePaymentModal();
-        });
+        function pmBuildDots(total) {
+            var c = document.getElementById('pm-step-dots'); c.innerHTML = '';
+            for(var i=0; i<total; i++){
+                var d = document.createElement('div'); d.className='dot'+(i===0?' active':''); c.appendChild(d);
+            }
+        }
 
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closePaymentModal();
-        });
+        function pmStep1Next() {
+            var payFor = document.getElementById('pm-for').value.trim();
+            var amount = document.getElementById('pm-amount').value.trim();
+            var phone  = document.getElementById('pm-phone').value.trim();
+            document.getElementById('pm-step1-error').style.display = 'none';
+
+            if (!payFor)  return pmErr('pm-step1-error','Please enter what this payment is for.');
+            if (!amount || isNaN(amount) || parseFloat(amount)<=0)
+                return pmErr('pm-step1-error','Please enter a valid amount in ZMW.');
+            if (_pm.method !== 'Online Banking (Bank Transfer)' && !phone)
+                return pmErr('pm-step1-error','Please enter your mobile number (e.g. 260978905095).');
+
+            _pm.payFor = payFor; _pm.amount = amount; _pm.phone = phone;
+
+            if (_pm.method === 'Mobile Money') {
+                document.getElementById('pm-s2-for').textContent = payFor;
+                document.getElementById('pm-s2-amt').textContent = 'ZMW '+parseFloat(amount).toFixed(2);
+                pmGoStep(2);
+            } else {
+                pmInitiateCard();
+            }
+        }
+
+        function pmSelectSubMethod(sub) {
+            _pm.subMethod = sub;
+            document.querySelectorAll('.pm-method-opt').forEach(function(el){ el.classList.remove('selected'); });
+            var sel = document.getElementById('pm-opt-'+sub);
+            if(sel) sel.classList.add('selected');
+        }
+
+        function pmStep2Pay() {
+            if (!_pm.subMethod) return pmErr('pm-step2-error','Please select a payment method to continue.');
+            document.getElementById('pm-step2-error').style.display = 'none';
+            pmInitiateMobile(_pm.subMethod);
+        }
+
+        function pmCreateRecord(onSuccess) {
+            var fd = new FormData();
+            fd.append('full_name',   'Website Visitor');
+            fd.append('phone',       _pm.phone);
+            fd.append('amount',      _pm.amount);
+            fd.append('category',    _pm.payFor);
+            fd.append('description', 'LSUC '+_pm.payFor);
+            fetch('./api/create_payment_record.php',{method:'POST',body:fd})
+            .then(function(r){return r.json();})
+            .then(function(data){
+                if(!data.success) return pmShowFailed('Could not create payment record: '+(data.error||'Please try again.'));
+                _pm.internalRef = data.internal_ref;
+                onSuccess();
+            })
+            .catch(function(err){pmShowFailed('Network error: '+err.message);});
+        }
+
+        function pmInitiateMobile(sub) {
+            pmGoStep(3);
+            document.getElementById('pm-waiting-panel').style.display = 'block';
+            document.getElementById('pm-qr-panel').style.display = 'none';
+            var titles = {ussd:'USSD Prompt Sent',push:'Push Notification Sent',qr:'Generating QR Code...'};
+            var msgs   = {
+                ussd:'A USSD prompt has been sent to <strong>'+_pm.phone+'</strong>.<br>Enter your <strong>Mobile Money PIN</strong> to authorise.',
+                push:'A push notification has been sent to <strong>'+_pm.phone+'</strong>.<br>Open the Swish app notification and <strong>tap to approve</strong>.',
+                qr:  'Please wait while we generate your QR code...'
+            };
+            document.getElementById('pm-waiting-title').textContent = titles[sub];
+            document.getElementById('pm-waiting-msg').innerHTML = msgs[sub];
+            document.getElementById('pm-poll-status').textContent = '';
+
+            pmCreateRecord(function(){
+                var fd2 = new FormData();
+                fd2.append('method',       sub);
+                fd2.append('phone',        _pm.phone);
+                fd2.append('amount',       _pm.amount);
+                fd2.append('internal_ref', _pm.internalRef);
+                fd2.append('context',      _pm.payFor);
+                fetch('./api/swish_initiate.php',{method:'POST',body:fd2})
+                .then(function(r){return r.json();})
+                .then(function(res){
+                    if(!res.success) return pmShowFailed(res.error||'Payment initiation failed. Please try again.');
+                    _pm.transLinkId = res.transLinkID||'';
+                    if(sub==='qr' && res.qrImage){
+                        document.getElementById('pm-waiting-panel').style.display = 'none';
+                        document.getElementById('pm-qr-panel').style.display = 'block';
+                        document.getElementById('pm-qr-img').src = 'data:image/png;base64,'+res.qrImage;
+                    }
+                    pmStartPolling(sub==='qr'?'pm-qr-poll-status':'pm-poll-status');
+                })
+                .catch(function(err){pmShowFailed('Network error: '+err.message);});
+            });
+        }
+
+        function pmInitiateCard() {
+            pmGoStep(3);
+            document.getElementById('pm-waiting-panel').style.display = 'block';
+            document.getElementById('pm-qr-panel').style.display = 'none';
+            document.getElementById('pm-waiting-title').textContent = 'Preparing Secure Checkout...';
+            document.getElementById('pm-waiting-msg').innerHTML = 'Please wait while we generate your card payment session.';
+            document.getElementById('pm-poll-status').textContent = '';
+
+            pmCreateRecord(function(){
+                var fd2 = new FormData();
+                fd2.append('method',       'card');
+                fd2.append('phone',        _pm.phone);
+                fd2.append('amount',       _pm.amount);
+                fd2.append('internal_ref', _pm.internalRef);
+                fd2.append('context',      _pm.payFor);
+                fetch('./api/swish_initiate.php',{method:'POST',body:fd2})
+                .then(function(r){return r.json();})
+                .then(function(res){
+                    if(!res.success||!res.paymentUrl) return pmShowFailed(res.error||'Could not generate payment link. Please try again.');
+                    window.open(res.paymentUrl,'_blank');
+                    document.getElementById('pm-card-link').href = res.paymentUrl;
+                    pmGoStep(4); pmHideAllResults();
+                    document.getElementById('pm-result-card').style.display = 'block';
+                })
+                .catch(function(err){pmShowFailed('Network error: '+err.message);});
+            });
+        }
+
+        function pmStartPolling(statusElId) {
+            _pm.pollCount = 0; pmClearPoll();
+            _pm.pollTimer = setInterval(function(){
+                _pm.pollCount++;
+                var el = document.getElementById(statusElId||'pm-poll-status');
+                if(el) el.textContent = 'Checking status... (attempt '+_pm.pollCount+' of '+_pm.maxPolls+')';
+                if(_pm.pollCount > _pm.maxPolls){
+                    pmClearPoll();
+                    return pmShowFailed('Payment timed out. If you authorised the payment please contact Finance with reference: '+_pm.internalRef);
+                }
+                fetch('./api/swish_status.php?internal_ref='+encodeURIComponent(_pm.internalRef)+'&phone='+encodeURIComponent(_pm.phone))
+                .then(function(r){return r.json();})
+                .then(function(data){
+                    if(!data.success) return;
+                    if(data.payment_status==='success'){ pmClearPoll(); pmShowSuccess(); }
+                    else if(data.payment_status==='failed'){ pmClearPoll(); pmShowFailed('The payment was declined or cancelled. Please try again.'); }
+                })
+                .catch(function(){});
+            },15000);
+        }
+
+        function pmClearPoll(){ if(_pm.pollTimer){clearInterval(_pm.pollTimer);_pm.pollTimer=null;} }
+
+        function pmHideAllResults(){
+            ['pm-result-success','pm-result-card','pm-result-failed'].forEach(function(id){
+                document.getElementById(id).style.display='none';
+            });
+        }
+
+        function pmShowSuccess(){
+            pmGoStep(4); pmHideAllResults();
+            document.getElementById('pm-result-success').style.display='block';
+            document.getElementById('pm-success-detail').innerHTML =
+                'Your payment of <strong>ZMW '+parseFloat(_pm.amount).toFixed(2)+'</strong> for <strong>'+_pm.payFor+'</strong> has been confirmed.';
+        }
+
+        function pmShowFailed(msg){
+            pmGoStep(4); pmHideAllResults();
+            document.getElementById('pm-result-failed').style.display='block';
+            document.getElementById('pm-failed-msg').textContent = msg;
+        }
+
+        function pmRetry(){ pmClearPoll(); openPaymentModal(_pm.method); }
+
+        function pmErr(id,msg){
+            var el=document.getElementById(id);
+            if(!el) return;
+            el.textContent=msg; el.style.display='block';
+        }
+
+        document.getElementById('payment-modal-overlay').addEventListener('click',function(e){if(e.target===this)closePaymentModal();});
+        document.addEventListener('keydown',function(e){if(e.key==='Escape')closePaymentModal();});
+        </script>
         </script>
 
     </div><!-- /#online-payments -->

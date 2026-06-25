@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -3537,7 +3537,15 @@
                     <a href="#scholarships" class="nav-link" onclick="showPage('scholarships'); closeMobileMenu()">Scholarships</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#online-payments" class="nav-link" onclick="showPage('online-payments'); closeMobileMenu()"><i class="fas fa-bolt" style="margin-right:4px;color:#ffb347;"></i>Pay Online</a>
+                    <a href="#pay" class="nav-link" onclick="toggleDropdown(this)"><i class="fas fa-bolt" style="margin-right:4px;color:#ffb347;"></i>Pay Online</a>
+                    <div class="dropdown">
+                        <a href="#online-payments" class="dropdown-link" onclick="showPage('online-payments'); closeMobileMenu()">
+                            <i class="fas fa-credit-card" style="margin-right:7px;color:#228B22;"></i>Make a Payment
+                        </a>
+                        <a href="#donations" class="dropdown-link" onclick="showPage('donations'); closeMobileMenu()">
+                            <i class="fas fa-hand-holding-heart" style="margin-right:7px;color:#ff8c00;"></i>Donate
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link" onclick="showPage('contact'); closeMobileMenu()">Contact Us</a>
@@ -5081,6 +5089,9 @@
 
             var totalSteps = isBank ? 1 : isMobile ? 4 : 3;
             pmBuildDots(totalSteps);
+            // Reset pm-for field in case it was locked by donation flow
+            var forEl = document.getElementById('pm-for');
+            if (forEl) { forEl.readOnly=false; forEl.style.background=''; forEl.style.borderColor='#e0e0e0'; forEl.style.color=''; forEl.style.fontWeight=''; }
             pmGoStep(1);
             document.getElementById('payment-modal-overlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -5285,6 +5296,182 @@
         </script>
 
     </div><!-- /#online-payments -->
+
+    <!-- ===================== DONATIONS PAGE ===================== -->
+    <div id="donations" class="page-content">
+        <div class="page-header" style="background:linear-gradient(135deg,#228B22 0%,#ff8c00 100%);">
+            <div class="container">
+                <h1><i class="fas fa-hand-holding-heart" style="margin-right:12px;"></i>Donate to LSUC</h1>
+                <p>Your generosity transforms lives &mdash; help us build a brighter future for our students</p>
+            </div>
+        </div>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="#home" onclick="showPage('home')">Home</a> &gt;
+                <a href="#online-payments" onclick="showPage('online-payments')">Pay Online</a> &gt; Donate
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="container">
+
+                <!-- Intro banner -->
+                <div style="background:linear-gradient(135deg,#eaf5ef,#fff8ee);border:1.5px solid #aad4bd;border-radius:16px;padding:28px 32px;margin-bottom:40px;display:flex;gap:20px;align-items:flex-start;">
+                    <div style="font-size:2.4rem;line-height:1;">&#10084;&#65039;</div>
+                    <div>
+                        <h2 style="color:#228B22;margin:0 0 8px;font-size:1.4rem;">Make a Difference Today</h2>
+                        <p style="margin:0;color:#444;line-height:1.8;font-size:0.95rem;">Every donation, large or small, goes directly towards supporting vulnerable students, expanding classrooms, purchasing learning materials, and building a stronger institution. Lusaka South University College is grateful for your support.</p>
+                    </div>
+                </div>
+
+                <!-- Donation Reference Selector -->
+                <div style="margin-bottom:36px;">
+                    <h3 style="color:#228B22;margin-bottom:16px;font-size:1.1rem;"><i class="fas fa-tag" style="margin-right:8px;"></i>Choose a Donation Purpose</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;" id="donation-ref-buttons">
+                        <button class="donation-ref-btn" onclick="selectDonationRef(this,'Support for Vulnerable Students')" style="padding:10px 18px;border:2px solid #e0e0e0;border-radius:30px;background:#fff;font-size:0.88rem;font-weight:600;color:#444;cursor:pointer;transition:all 0.2s;">
+                            <i class="fas fa-user-graduate" style="margin-right:6px;color:#228B22;"></i>Vulnerable Students
+                        </button>
+                        <button class="donation-ref-btn" onclick="selectDonationRef(this,'Classroom Expansion Fund')" style="padding:10px 18px;border:2px solid #e0e0e0;border-radius:30px;background:#fff;font-size:0.88rem;font-weight:600;color:#444;cursor:pointer;transition:all 0.2s;">
+                            <i class="fas fa-school" style="margin-right:6px;color:#228B22;"></i>Classroom Expansion
+                        </button>
+                        <button class="donation-ref-btn" onclick="selectDonationRef(this,'Library & Learning Materials')" style="padding:10px 18px;border:2px solid #e0e0e0;border-radius:30px;background:#fff;font-size:0.88rem;font-weight:600;color:#444;cursor:pointer;transition:all 0.2s;">
+                            <i class="fas fa-book" style="margin-right:6px;color:#228B22;"></i>Library &amp; Materials
+                        </button>
+                        <button class="donation-ref-btn" onclick="selectDonationRef(this,'Sports &amp; Extra-Curricular')" style="padding:10px 18px;border:2px solid #e0e0e0;border-radius:30px;background:#fff;font-size:0.88rem;font-weight:600;color:#444;cursor:pointer;transition:all 0.2s;">
+                            <i class="fas fa-futbol" style="margin-right:6px;color:#ff8c00;"></i>Sports &amp; Activities
+                        </button>
+                        <button class="donation-ref-btn" onclick="selectDonationRef(this,'General Donation')" style="padding:10px 18px;border:2px solid #e0e0e0;border-radius:30px;background:#fff;font-size:0.88rem;font-weight:600;color:#444;cursor:pointer;transition:all 0.2s;">
+                            <i class="fas fa-star" style="margin-right:6px;color:#ff8c00;"></i>General Donation
+                        </button>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <span style="font-size:0.85rem;color:#888;">Or specify:</span>
+                        <input type="text" id="donation-custom-ref" placeholder="e.g. Donating for ICT Lab equipment"
+                               style="flex:1;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.88rem;outline:none;transition:border-color 0.2s;max-width:360px;"
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'"
+                               oninput="updateDonationRef(this.value)">
+                    </div>
+                    <div id="donation-ref-display" style="margin-top:10px;font-size:0.85rem;color:#555;display:none;">
+                        <i class="fas fa-check-circle" style="color:#228B22;margin-right:5px;"></i>
+                        Donating for: <strong id="donation-ref-text"></strong>
+                    </div>
+                </div>
+
+                <!-- Payment Method Cards -->
+                <h3 style="color:#228B22;margin-bottom:20px;font-size:1.1rem;"><i class="fas fa-hand-holding-usd" style="margin-right:8px;"></i>Choose How to Donate</h3>
+                <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;">
+
+                    <!-- Card Donation -->
+                    <div class="card" style="text-align:center;cursor:pointer;transition:transform 0.22s,box-shadow 0.22s;"
+                         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 32px rgba(34,139,34,0.18)'"
+                         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="card-icon" style="background:linear-gradient(135deg,#228B22,#155215);"><i class="fas fa-credit-card"></i></div>
+                        <h3>Card Payment</h3>
+                        <p style="color:#555;line-height:1.7;">Donate securely using your Visa, Mastercard or bank debit/credit card via CyberSource checkout.</p>
+                        <button onclick="openDonationModal('Card Payment')"
+                                style="margin-top:18px;background:linear-gradient(135deg,#228B22,#155215);color:#fff;border:none;padding:13px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(34,139,34,0.25);transition:opacity 0.2s;"
+                                onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-heart" style="margin-right:7px;"></i> Donate with Card
+                        </button>
+                    </div>
+
+                    <!-- Mobile Money Donation -->
+                    <div class="card" style="text-align:center;cursor:pointer;transition:transform 0.22s,box-shadow 0.22s;"
+                         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 32px rgba(255,140,0,0.18)'"
+                         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="card-icon" style="background:linear-gradient(135deg,#ff8c00,#e07800);"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Mobile Money</h3>
+                        <p style="color:#555;line-height:1.7;">Donate via MTN Mobile Money, Airtel Money or Zamtel eMoney. Fast, easy, and available 24/7.</p>
+                        <button onclick="openDonationModal('Mobile Money')"
+                                style="margin-top:18px;background:linear-gradient(135deg,#ff8c00,#e07800);color:#fff;border:none;padding:13px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(255,140,0,0.25);transition:opacity 0.2s;"
+                                onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-heart" style="margin-right:7px;"></i> Donate via Mobile Money
+                        </button>
+                    </div>
+
+                    <!-- Bank Transfer Donation -->
+                    <div class="card" style="text-align:center;cursor:pointer;transition:transform 0.22s,box-shadow 0.22s;"
+                         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 32px rgba(34,139,34,0.18)'"
+                         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow=''">
+                        <div class="card-icon" style="background:linear-gradient(135deg,#228B22,#ff8c00);"><i class="fas fa-university"></i></div>
+                        <h3>Online Banking</h3>
+                        <p style="color:#555;line-height:1.7;">Transfer directly to our ZANACO account from your internet banking or by visiting any branch.</p>
+                        <button onclick="openDonationModal('Online Banking (Bank Transfer)')"
+                                style="margin-top:18px;background:linear-gradient(135deg,#228B22,#ff8c00);color:#fff;border:none;padding:13px 28px;border-radius:10px;font-size:0.95rem;font-weight:700;cursor:pointer;width:100%;box-shadow:0 4px 14px rgba(34,139,34,0.22);transition:opacity 0.2s;"
+                                onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+                            <i class="fas fa-university" style="margin-right:7px;"></i> Bank Transfer Details
+                        </button>
+                    </div>
+
+                </div><!-- /.cards-grid -->
+
+                <!-- Thank you note -->
+                <div style="margin-top:50px;background:linear-gradient(135deg,#eaf5ef,#fff8ee);border:1.5px solid #aad4bd;border-radius:14px;padding:24px 28px;text-align:center;">
+                    <div style="font-size:2rem;margin-bottom:10px;">&#127775;</div>
+                    <strong style="color:#155215;display:block;margin-bottom:8px;font-size:1.05rem;">Thank You for Your Generosity</strong>
+                    <p style="color:#444;font-size:0.9rem;line-height:1.8;margin:0;">All donations are used transparently and directly benefit LSUC students. For donation receipts or enquiries please contact us on <a href="tel:+260211292292" style="color:#228B22;font-weight:600;">+260 211 292292</a> or email <a href="mailto:info@lsc.edu.zm" style="color:#228B22;font-weight:600;">info@lsc.edu.zm</a>.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <style>
+        .donation-ref-btn.selected {
+            border-color: #228B22 !important;
+            background: #eaf5ef !important;
+            color: #155215 !important;
+        }
+        </style>
+
+        <script>
+        var _donationRef = '';
+
+        function selectDonationRef(btn, ref) {
+            _donationRef = ref;
+            document.querySelectorAll('.donation-ref-btn').forEach(function(b){ b.classList.remove('selected'); });
+            btn.classList.add('selected');
+            document.getElementById('donation-custom-ref').value = '';
+            document.getElementById('donation-ref-text').textContent = ref;
+            document.getElementById('donation-ref-display').style.display = 'block';
+        }
+
+        function updateDonationRef(val) {
+            _donationRef = val.trim();
+            document.querySelectorAll('.donation-ref-btn').forEach(function(b){ b.classList.remove('selected'); });
+            if (_donationRef) {
+                document.getElementById('donation-ref-text').textContent = _donationRef;
+                document.getElementById('donation-ref-display').style.display = 'block';
+            } else {
+                document.getElementById('donation-ref-display').style.display = 'none';
+            }
+        }
+
+        function openDonationModal(method) {
+            if (!_donationRef) {
+                // Default if nothing chosen
+                _donationRef = 'General Donation';
+            }
+            // Pre-fill the payment modal's "Payment For" with the donation reference
+            // We open the shared modal and pre-populate
+            openPaymentModal(method);
+            // After modal opens, override the "pm-for" field
+            setTimeout(function(){
+                var forEl = document.getElementById('pm-for');
+                if (forEl) {
+                    forEl.value = 'Donation — ' + _donationRef;
+                    forEl.readOnly = true;
+                    forEl.style.background = '#f4fbf4';
+                    forEl.style.borderColor = '#aad4bd';
+                    forEl.style.color = '#155215';
+                    forEl.style.fontWeight = '600';
+                }
+                // Also update the header subtitle to say Donation
+                var titleEl = document.getElementById('pm-header-title');
+                if (titleEl) titleEl.textContent = 'Donation — ' + method;
+            }, 40);
+        }
+        </script>
+
+    </div><!-- /#donations -->
 
 
     <div id="contact" class="page-content">

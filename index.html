@@ -5415,16 +5415,258 @@
         </section>
 
         <style>
-        .donation-ref-btn.selected {
-            border-color: #228B22 !important;
-            background: #eaf5ef !important;
-            color: #155215 !important;
+        .donation-ref-btn.selected { border-color:#228B22 !important; background:#eaf5ef !important; color:#155215 !important; }
+        @keyframes dnSlideIn { from{opacity:0;transform:translateY(32px) scale(0.96)} to{opacity:1;transform:translateY(0) scale(1)} }
+        @keyframes dnSpin    { to { transform: rotate(360deg); } }
+        .dn-method-opt:hover   { border-color:#228B22 !important; background:#f4fbf4; }
+        .dn-method-opt.selected { border-color:#228B22 !important; background:#eaf5ef; }
+        .dn-method-opt.selected .dn-opt-check {
+            background:#228B22; border-color:#228B22 !important;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat:no-repeat;background-position:center;background-size:10px;
         }
+        #dn-step-dots .dn-dot { width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);transition:background 0.25s; }
+        #dn-step-dots .dn-dot.active { background:#fff; }
         </style>
 
-        <script>
-        var _donationRef = '';
+        <!-- ============ DONATIONS SWISH MODAL ============ -->
+        <div id="dn-modal-overlay"
+             style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:16px;">
+            <div id="dn-modal-box"
+                 style="background:#fff;border-radius:20px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;box-shadow:0 28px 70px rgba(0,0,0,0.28);animation:dnSlideIn 0.3s ease;">
 
+                <!-- Header -->
+                <div id="dn-header"
+                     style="background:linear-gradient(135deg,#228B22,#ff8c00);padding:20px 26px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1;">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <div id="dn-header-icon" style="width:40px;height:40px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;"></div>
+                        <div>
+                            <div style="font-size:0.7rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em;">Donation</div>
+                            <div id="dn-header-title" style="font-size:1.05rem;font-weight:700;color:#fff;"></div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div id="dn-step-dots" style="display:flex;gap:5px;"></div>
+                        <button onclick="dnClose()"
+                                style="background:rgba(255,255,255,0.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-left:8px;"
+                                onmouseover="this.style.background='rgba(255,255,255,0.32)'" onmouseout="this.style.background='rgba(255,255,255,0.18)'">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 1: Amount + Phone -->
+                <div id="dn-step-1" style="padding:26px 28px 16px;">
+
+                    <!-- Donation reference badge -->
+                    <div id="dn-ref-badge" style="background:linear-gradient(135deg,#eaf5ef,#fff8ee);border:1.5px solid #aad4bd;border-radius:10px;padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
+                        <i class="fas fa-tag" style="color:#228B22;font-size:1rem;flex-shrink:0;"></i>
+                        <div>
+                            <div style="font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:0.06em;">Donating For</div>
+                            <div id="dn-ref-badge-text" style="font-weight:700;color:#155215;font-size:0.95rem;"></div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin:0 0 6px;font-size:1.05rem;color:#222;">Enter Donation Details</h3>
+                    <p style="margin:0 0 20px;font-size:0.85rem;color:#888;">Please fill in your donation amount and phone number.</p>
+
+                    <div style="margin-bottom:15px;">
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Donation Amount (ZMW) *</label>
+                        <input type="number" id="dn-amount" placeholder="e.g. 500" min="1" step="0.01"
+                               style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                    </div>
+
+                    <!-- Phone row (hidden for bank transfer) -->
+                    <div id="dn-phone-row" style="margin-bottom:15px;">
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(26097xxxxxxx)</span></label>
+                        <input type="tel" id="dn-phone" placeholder="e.g. 260978905095" maxlength="15"
+                               style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                        <div id="dn-phone-hint" style="font-size:0.78rem;color:#888;margin-top:4px;"></div>
+                    </div>
+
+                    <!-- Bank panel (bank transfer only) -->
+                    <div id="dn-bank-panel" style="display:none;background:#f4fbf4;border:1.5px solid #aad4bd;border-radius:12px;padding:16px 18px;margin-bottom:16px;">
+                        <div style="font-size:0.8rem;font-weight:700;color:#155215;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">
+                            <i class="fas fa-university" style="margin-right:6px;"></i> ZANACO Bank Details
+                        </div>
+                        <table style="width:100%;border-collapse:collapse;font-size:0.86rem;">
+                            <tr><td style="padding:5px 0;color:#666;width:42%;">Account Name</td><td style="padding:5px 0;font-weight:700;color:#222;">Lusaka South College</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Account No</td><td style="padding:5px 0;font-weight:700;color:#222;">5947236500193</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Bank</td><td style="padding:5px 0;font-weight:700;color:#222;">ZANACO</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Branch Code</td><td style="padding:5px 0;font-weight:700;color:#222;">086</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Sort Code</td><td style="padding:5px 0;font-weight:700;color:#222;">010086</td></tr>
+                            <tr><td style="padding:5px 0;color:#666;">Swift Code</td><td style="padding:5px 0;font-weight:700;color:#222;">ZNCOZMLU</td></tr>
+                        </table>
+                        <p style="margin:10px 0 0;font-size:0.78rem;color:#555;line-height:1.6;"><i class="fas fa-info-circle" style="color:#228B22;margin-right:4px;"></i>After transfer, please send proof of payment to Finance quoting your <strong>full name</strong> and the donation reference above.</p>
+                    </div>
+
+                    <div id="dn-step1-err" style="display:none;color:#c0392b;font-size:0.83rem;margin-bottom:12px;padding:9px 13px;background:#fef2f2;border-radius:8px;border:1px solid #fca5a5;"></div>
+
+                    <button id="dn-step1-btn"
+                            style="width:100%;padding:14px;background:linear-gradient(135deg,#228B22,#ff8c00);color:#fff;border:none;border-radius:11px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.25);transition:opacity 0.2s,transform 0.15s;margin-bottom:10px;"
+                            onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+                            onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                        Continue <i class="fas fa-arrow-right" style="margin-left:7px;"></i>
+                    </button>
+                    <button onclick="dnClose()"
+                            style="width:100%;padding:11px;background:transparent;color:#6b7280;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;margin-bottom:16px;"
+                            onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">Cancel</button>
+                </div>
+
+                <!-- STEP 2: Mobile Money sub-method -->
+                <div id="dn-step-2" style="display:none;padding:26px 28px 16px;">
+                    <h3 style="margin:0 0 5px;font-size:1.05rem;color:#222;">Choose Donation Method</h3>
+                    <p style="margin:0 0 20px;font-size:0.85rem;color:#888;">How would you like to authorise this donation?</p>
+
+                    <div style="background:#f8f9fa;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.88rem;color:#444;display:flex;justify-content:space-between;align-items:center;">
+                        <span id="dn-s2-ref"></span>
+                        <strong id="dn-s2-amt" style="color:#228B22;font-size:1rem;"></strong>
+                    </div>
+
+                    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+                        <div class="dn-method-opt" id="dn-opt-ussd" onclick="dnSelectSub('ussd')"
+                             style="border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#ff8c00,#e07800);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-hashtag" style="color:#fff;font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700;color:#222;font-size:0.95rem;">USSD Prompt</div>
+                                <div style="font-size:0.8rem;color:#888;margin-top:2px;">You will receive a USSD prompt on your phone. Enter your MPIN to authorise.</div>
+                            </div>
+                            <div class="dn-opt-check" style="margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;"></div>
+                        </div>
+
+                        <div class="dn-method-opt" id="dn-opt-push" onclick="dnSelectSub('push')"
+                             style="border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#228B22,#155215);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-bell" style="color:#fff;font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700;color:#222;font-size:0.95rem;">Push Notification</div>
+                                <div style="font-size:0.8rem;color:#888;margin-top:2px;">Receive a push notification on your Swish app and tap to approve.</div>
+                            </div>
+                            <div class="dn-opt-check" style="margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;"></div>
+                        </div>
+
+                        <div class="dn-method-opt" id="dn-opt-qr" onclick="dnSelectSub('qr')"
+                             style="border:2px solid #e0e0e0;border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#228B22,#ff8c00);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-qrcode" style="color:#fff;font-size:1.1rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:700;color:#222;font-size:0.95rem;">QR Code</div>
+                                <div style="font-size:0.8rem;color:#888;margin-top:2px;">Scan the QR code with your Swish app to complete the donation.</div>
+                            </div>
+                            <div class="dn-opt-check" style="margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;"></div>
+                        </div>
+                    </div>
+
+                    <div id="dn-step2-err" style="display:none;color:#c0392b;font-size:0.83rem;margin-bottom:12px;padding:9px 13px;background:#fef2f2;border-radius:8px;border:1px solid #fca5a5;"></div>
+
+                    <button onclick="dnStep2Pay()"
+                            style="width:100%;padding:14px;background:linear-gradient(135deg,#ff8c00,#e07800);color:#fff;border:none;border-radius:11px;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(255,140,0,0.28);transition:opacity 0.2s,transform 0.15s;margin-bottom:10px;"
+                            onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-2px)'"
+                            onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                        <i class="fas fa-heart" style="margin-right:7px;"></i> Donate Now
+                    </button>
+                    <button onclick="dnGoStep(1)"
+                            style="width:100%;padding:11px;background:transparent;color:#6b7280;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;margin-bottom:16px;"
+                            onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">
+                        <i class="fas fa-arrow-left" style="margin-right:5px;"></i> Back
+                    </button>
+                </div>
+
+                <!-- STEP 3: Processing / Waiting -->
+                <div id="dn-step-3" style="display:none;padding:36px 28px;text-align:center;">
+                    <div id="dn-waiting-panel">
+                        <div style="width:80px;height:80px;border:4px solid #eaf5ef;border-top-color:#228B22;border-radius:50%;margin:0 auto 24px;animation:dnSpin 0.9s linear infinite;"></div>
+                        <h3 id="dn-waiting-title" style="color:#228B22;margin:0 0 10px;font-size:1.2rem;"></h3>
+                        <p id="dn-waiting-msg" style="color:#555;font-size:0.92rem;line-height:1.7;margin:0 0 16px;"></p>
+                        <div style="background:#f8f9fa;border-radius:10px;padding:10px 14px;display:inline-block;font-size:0.82rem;color:#888;">
+                            <i class="fas fa-clock" style="margin-right:5px;color:#ff8c00;"></i>
+                            Waiting for confirmation &mdash; this may take up to 3 minutes
+                        </div>
+                        <div id="dn-poll-status" style="margin-top:14px;font-size:0.8rem;color:#aaa;"></div>
+                    </div>
+
+                    <div id="dn-qr-panel" style="display:none;">
+                        <div style="font-size:0.85rem;color:#555;margin-bottom:12px;">Scan this QR code with your <strong>Swish app</strong> to complete your donation</div>
+                        <div style="background:#fff;border:2px solid #e0e0e0;border-radius:14px;padding:16px;display:inline-block;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+                            <img id="dn-qr-img" src="" alt="Swish QR Code" style="width:200px;height:200px;display:block;">
+                        </div>
+                        <div style="background:#f8f9fa;border-radius:10px;padding:10px 14px;font-size:0.82rem;color:#888;margin-bottom:14px;">
+                            <i class="fas fa-clock" style="margin-right:5px;color:#ff8c00;"></i>
+                            QR code expires in 3 minutes &mdash; do not close this window
+                        </div>
+                        <div id="dn-qr-poll-status" style="font-size:0.8rem;color:#aaa;"></div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Result -->
+                <div id="dn-step-4" style="display:none;padding:36px 28px;text-align:center;">
+
+                    <!-- Success -->
+                    <div id="dn-result-success" style="display:none;">
+                        <div style="width:76px;height:76px;background:linear-gradient(135deg,#eaf5ef,#d4edda);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(34,139,34,0.18);">
+                            <i class="fas fa-heart" style="font-size:2.2rem;color:#228B22;"></i>
+                        </div>
+                        <h3 style="color:#155215;margin:0 0 8px;font-size:1.3rem;">Thank You for Donating!</h3>
+                        <p id="dn-success-detail" style="color:#444;font-size:0.92rem;line-height:1.7;margin:0 0 6px;"></p>
+                        <p style="color:#888;font-size:0.8rem;margin:0 0 26px;">Your generosity makes a real difference. A confirmation will be sent to your mobile number.</p>
+                        <button onclick="dnClose()"
+                                style="padding:13px 36px;background:linear-gradient(135deg,#228B22,#ff8c00);color:#fff;border:none;border-radius:11px;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.22);">
+                            <i class="fas fa-check-circle" style="margin-right:7px;"></i> Done
+                        </button>
+                    </div>
+
+                    <!-- Card redirect -->
+                    <div id="dn-result-card" style="display:none;">
+                        <div style="width:76px;height:76px;background:linear-gradient(135deg,#eaf5ef,#d4edda);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(34,139,34,0.18);">
+                            <i class="fas fa-external-link-alt" style="font-size:2rem;color:#228B22;"></i>
+                        </div>
+                        <h3 style="color:#155215;margin:0 0 8px;font-size:1.2rem;">Redirected to Secure Checkout</h3>
+                        <p style="color:#555;font-size:0.92rem;line-height:1.7;margin:0 0 6px;">A new tab has opened for you to complete your card donation via <strong>CyberSource</strong>.</p>
+                        <p style="color:#888;font-size:0.8rem;margin:0 0 22px;">If the tab did not open, <a id="dn-card-link" href="#" target="_blank" style="color:#228B22;font-weight:600;">click here</a>.</p>
+                        <button onclick="dnClose()"
+                                style="padding:13px 36px;background:linear-gradient(135deg,#228B22,#ff8c00);color:#fff;border:none;border-radius:11px;font-size:0.95rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(34,139,34,0.22);">
+                            Close
+                        </button>
+                    </div>
+
+                    <!-- Failed -->
+                    <div id="dn-result-failed" style="display:none;">
+                        <div style="width:76px;height:76px;background:#fef2f2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 16px rgba(192,57,43,0.12);">
+                            <i class="fas fa-times" style="font-size:2.2rem;color:#c0392b;"></i>
+                        </div>
+                        <h3 style="color:#c0392b;margin:0 0 8px;font-size:1.2rem;">Donation Failed</h3>
+                        <p id="dn-failed-msg" style="color:#555;font-size:0.92rem;line-height:1.7;margin:0 0 22px;"></p>
+                        <div style="display:flex;gap:10px;justify-content:center;">
+                            <button onclick="dnRetry()"
+                                    style="padding:12px 24px;background:linear-gradient(135deg,#228B22,#ff8c00);color:#fff;border:none;border-radius:10px;font-size:0.9rem;font-weight:700;cursor:pointer;">
+                                <i class="fas fa-redo" style="margin-right:6px;"></i> Try Again
+                            </button>
+                            <button onclick="dnClose()"
+                                    style="padding:12px 24px;background:transparent;color:#555;border:1.5px solid #ddd;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /#dn-modal-overlay -->
+
+        <script>
+        /* ── Donation page state ─────────────────────────────────── */
+        var _donationRef = '';
+        var _dn = {
+            method:'', subMethod:'', amount:'', phone:'',
+            internalRef:'', transLinkId:'', pollTimer:null, pollCount:0, maxPolls:12
+        };
+
+        /* ── Reference selector ──────────────────────────────────── */
         function selectDonationRef(btn, ref) {
             _donationRef = ref;
             document.querySelectorAll('.donation-ref-btn').forEach(function(b){ b.classList.remove('selected'); });
@@ -5445,30 +5687,257 @@
             }
         }
 
+        /* ── Open modal ──────────────────────────────────────────── */
         function openDonationModal(method) {
-            if (!_donationRef) {
-                // Default if nothing chosen
-                _donationRef = 'General Donation';
+            if (!_donationRef) _donationRef = 'General Donation';
+            _dn.method = method; _dn.subMethod = ''; _dn.internalRef = ''; _dn.transLinkId = '';
+            dnClearPoll();
+
+            ['dn-amount','dn-phone'].forEach(function(id){ var e=document.getElementById(id); if(e) e.value=''; });
+            ['dn-step1-err','dn-step2-err'].forEach(function(id){ var e=document.getElementById(id); if(e) e.style.display='none'; });
+
+            var isBank   = method.indexOf('Banking') !== -1;
+            var isMobile = method === 'Mobile Money';
+            var isCard   = method === 'Card Payment';
+
+            /* Header */
+            var grad = isMobile ? 'linear-gradient(135deg,#ff8c00,#e07800)' : 'linear-gradient(135deg,#228B22,#ff8c00)';
+            document.getElementById('dn-header').style.background = grad;
+            var icon = isCard ? 'fa-credit-card' : isMobile ? 'fa-mobile-alt' : 'fa-university';
+            document.getElementById('dn-header-icon').innerHTML = '<i class="fas '+icon+'"></i>';
+            document.getElementById('dn-header-title').textContent = method;
+
+            /* Reference badge */
+            document.getElementById('dn-ref-badge-text').textContent = _donationRef;
+
+            /* Phone / bank visibility */
+            document.getElementById('dn-phone-row').style.display  = isBank ? 'none' : 'block';
+            document.getElementById('dn-bank-panel').style.display  = isBank ? 'block' : 'none';
+
+            /* Phone hint */
+            document.getElementById('dn-phone-hint').textContent = isCard
+                ? 'Swish will send an SMS confirmation to this number.'
+                : 'The USSD prompt / push notification will be sent here.';
+
+            /* Step 1 button */
+            var btn1 = document.getElementById('dn-step1-btn');
+            if (isBank) {
+                btn1.innerHTML = '<i class="fas fa-check-circle" style="margin-right:8px;"></i> Got It';
+                btn1.onclick = function(){ dnClose(); };
+            } else {
+                btn1.innerHTML = 'Continue <i class="fas fa-arrow-right" style="margin-left:7px;"></i>';
+                btn1.onclick = dnStep1Next;
             }
-            // Pre-fill the payment modal's "Payment For" with the donation reference
-            // We open the shared modal and pre-populate
-            openPaymentModal(method);
-            // After modal opens, override the "pm-for" field
-            setTimeout(function(){
-                var forEl = document.getElementById('pm-for');
-                if (forEl) {
-                    forEl.value = 'Donation — ' + _donationRef;
-                    forEl.readOnly = true;
-                    forEl.style.background = '#f4fbf4';
-                    forEl.style.borderColor = '#aad4bd';
-                    forEl.style.color = '#155215';
-                    forEl.style.fontWeight = '600';
-                }
-                // Also update the header subtitle to say Donation
-                var titleEl = document.getElementById('pm-header-title');
-                if (titleEl) titleEl.textContent = 'Donation — ' + method;
-            }, 40);
+
+            /* Dots */
+            dnBuildDots(isBank ? 1 : isMobile ? 4 : 3);
+            dnGoStep(1);
+            document.getElementById('dn-modal-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
+
+        function dnClose() {
+            dnClearPoll();
+            document.getElementById('dn-modal-overlay').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function dnGoStep(n) {
+            [1,2,3,4].forEach(function(i){
+                var el = document.getElementById('dn-step-'+i);
+                if(el) el.style.display = (i===n) ? 'block' : 'none';
+            });
+            document.querySelectorAll('#dn-step-dots .dn-dot').forEach(function(d,idx){
+                d.classList.toggle('active', idx===n-1);
+            });
+            var box = document.getElementById('dn-modal-box');
+            if(box) box.scrollTop = 0;
+        }
+
+        function dnBuildDots(total) {
+            var c = document.getElementById('dn-step-dots'); c.innerHTML = '';
+            for(var i=0; i<total; i++){
+                var d = document.createElement('div'); d.className='dn-dot'+(i===0?' active':''); c.appendChild(d);
+            }
+        }
+
+        /* ── Step 1 ──────────────────────────────────────────────── */
+        function dnStep1Next() {
+            var amount = document.getElementById('dn-amount').value.trim();
+            var phone  = document.getElementById('dn-phone').value.trim();
+            document.getElementById('dn-step1-err').style.display = 'none';
+
+            if (!amount || isNaN(amount) || parseFloat(amount) <= 0)
+                return dnErr('dn-step1-err', 'Please enter a valid donation amount in ZMW.');
+            if (_dn.method !== 'Online Banking (Bank Transfer)' && !phone)
+                return dnErr('dn-step1-err', 'Please enter your mobile number (e.g. 260978905095).');
+
+            _dn.amount = amount; _dn.phone = phone;
+
+            if (_dn.method === 'Mobile Money') {
+                document.getElementById('dn-s2-ref').textContent = _donationRef;
+                document.getElementById('dn-s2-amt').textContent = 'ZMW ' + parseFloat(amount).toFixed(2);
+                dnGoStep(2);
+            } else {
+                dnInitiateCard();
+            }
+        }
+
+        /* ── Step 2 ──────────────────────────────────────────────── */
+        function dnSelectSub(sub) {
+            _dn.subMethod = sub;
+            document.querySelectorAll('.dn-method-opt').forEach(function(el){ el.classList.remove('selected'); });
+            var sel = document.getElementById('dn-opt-'+sub);
+            if(sel) sel.classList.add('selected');
+        }
+
+        function dnStep2Pay() {
+            if (!_dn.subMethod) return dnErr('dn-step2-err', 'Please select a payment method to continue.');
+            document.getElementById('dn-step2-err').style.display = 'none';
+            dnInitiateMobile(_dn.subMethod);
+        }
+
+        /* ── Create record helper ────────────────────────────────── */
+        function dnCreateRecord(onSuccess) {
+            var fd = new FormData();
+            fd.append('full_name',   'Donor');
+            fd.append('phone',       _dn.phone);
+            fd.append('amount',      _dn.amount);
+            fd.append('category',    'Donation');
+            fd.append('description', 'Donation — ' + _donationRef);
+            fetch('./api/create_payment_record.php', {method:'POST', body:fd})
+            .then(function(r){ return r.json(); })
+            .then(function(data){
+                if(!data.success) return dnShowFailed('Could not create donation record: '+(data.error||'Please try again.'));
+                _dn.internalRef = data.internal_ref;
+                onSuccess();
+            })
+            .catch(function(err){ dnShowFailed('Network error: '+err.message); });
+        }
+
+        /* ── Initiate mobile donation ─────────────────────────────── */
+        function dnInitiateMobile(sub) {
+            dnGoStep(3);
+            document.getElementById('dn-waiting-panel').style.display = 'block';
+            document.getElementById('dn-qr-panel').style.display = 'none';
+            var titles = {ussd:'USSD Prompt Sent', push:'Push Notification Sent', qr:'Generating QR Code...'};
+            var msgs   = {
+                ussd: 'A USSD prompt has been sent to <strong>'+_dn.phone+'</strong>.<br>Enter your <strong>Mobile Money PIN</strong> to authorise the donation.',
+                push: 'A push notification has been sent to <strong>'+_dn.phone+'</strong>.<br>Open the Swish app and <strong>tap to approve</strong> the donation.',
+                qr:   'Please wait while we generate your QR code...'
+            };
+            document.getElementById('dn-waiting-title').textContent = titles[sub];
+            document.getElementById('dn-waiting-msg').innerHTML = msgs[sub];
+            document.getElementById('dn-poll-status').textContent = '';
+
+            dnCreateRecord(function(){
+                var fd2 = new FormData();
+                fd2.append('method',       sub);
+                fd2.append('phone',        _dn.phone);
+                fd2.append('amount',       _dn.amount);
+                fd2.append('internal_ref', _dn.internalRef);
+                fd2.append('context',      'Donation — ' + _donationRef);
+                fetch('./api/swish_initiate.php', {method:'POST', body:fd2})
+                .then(function(r){ return r.json(); })
+                .then(function(res){
+                    if(!res.success) return dnShowFailed(res.error||'Donation initiation failed. Please try again.');
+                    _dn.transLinkId = res.transLinkID||'';
+                    if(sub==='qr' && res.qrImage){
+                        document.getElementById('dn-waiting-panel').style.display = 'none';
+                        document.getElementById('dn-qr-panel').style.display = 'block';
+                        document.getElementById('dn-qr-img').src = 'data:image/png;base64,'+res.qrImage;
+                    }
+                    dnStartPolling(sub==='qr' ? 'dn-qr-poll-status' : 'dn-poll-status');
+                })
+                .catch(function(err){ dnShowFailed('Network error: '+err.message); });
+            });
+        }
+
+        /* ── Initiate card donation ──────────────────────────────── */
+        function dnInitiateCard() {
+            dnGoStep(3);
+            document.getElementById('dn-waiting-panel').style.display = 'block';
+            document.getElementById('dn-qr-panel').style.display = 'none';
+            document.getElementById('dn-waiting-title').textContent = 'Preparing Secure Checkout...';
+            document.getElementById('dn-waiting-msg').innerHTML = 'Please wait while we generate your card donation session.';
+            document.getElementById('dn-poll-status').textContent = '';
+
+            dnCreateRecord(function(){
+                var fd2 = new FormData();
+                fd2.append('method',       'card');
+                fd2.append('phone',        _dn.phone);
+                fd2.append('amount',       _dn.amount);
+                fd2.append('internal_ref', _dn.internalRef);
+                fd2.append('context',      'Donation — ' + _donationRef);
+                fetch('./api/swish_initiate.php', {method:'POST', body:fd2})
+                .then(function(r){ return r.json(); })
+                .then(function(res){
+                    if(!res.success || !res.paymentUrl)
+                        return dnShowFailed(res.error||'Could not generate payment link. Please try again.');
+                    window.open(res.paymentUrl, '_blank');
+                    document.getElementById('dn-card-link').href = res.paymentUrl;
+                    dnGoStep(4); dnHideResults();
+                    document.getElementById('dn-result-card').style.display = 'block';
+                })
+                .catch(function(err){ dnShowFailed('Network error: '+err.message); });
+            });
+        }
+
+        /* ── Polling ─────────────────────────────────────────────── */
+        function dnStartPolling(statusElId) {
+            _dn.pollCount = 0; dnClearPoll();
+            _dn.pollTimer = setInterval(function(){
+                _dn.pollCount++;
+                var el = document.getElementById(statusElId||'dn-poll-status');
+                if(el) el.textContent = 'Checking status... (attempt '+_dn.pollCount+' of '+_dn.maxPolls+')';
+                if(_dn.pollCount > _dn.maxPolls){
+                    dnClearPoll();
+                    return dnShowFailed('Donation timed out. If you approved the payment please contact Finance with reference: '+_dn.internalRef);
+                }
+                fetch('./api/swish_status.php?internal_ref='+encodeURIComponent(_dn.internalRef)+'&phone='+encodeURIComponent(_dn.phone))
+                .then(function(r){ return r.json(); })
+                .then(function(data){
+                    if(!data.success) return;
+                    if(data.payment_status==='success'){ dnClearPoll(); dnShowSuccess(); }
+                    else if(data.payment_status==='failed'){ dnClearPoll(); dnShowFailed('The donation was declined or cancelled. Please try again.'); }
+                })
+                .catch(function(){});
+            }, 15000);
+        }
+
+        function dnClearPoll(){ if(_dn.pollTimer){ clearInterval(_dn.pollTimer); _dn.pollTimer=null; } }
+
+        /* ── Result screens ──────────────────────────────────────── */
+        function dnHideResults(){
+            ['dn-result-success','dn-result-card','dn-result-failed'].forEach(function(id){
+                document.getElementById(id).style.display='none';
+            });
+        }
+
+        function dnShowSuccess(){
+            dnGoStep(4); dnHideResults();
+            document.getElementById('dn-result-success').style.display='block';
+            document.getElementById('dn-success-detail').innerHTML =
+                'Your donation of <strong>ZMW '+parseFloat(_dn.amount).toFixed(2)+'</strong> for <strong>'+_donationRef+'</strong> has been confirmed. Thank you! &#10084;&#65039;';
+        }
+
+        function dnShowFailed(msg){
+            dnGoStep(4); dnHideResults();
+            document.getElementById('dn-result-failed').style.display='block';
+            document.getElementById('dn-failed-msg').textContent = msg;
+        }
+
+        function dnRetry(){ dnClearPoll(); openDonationModal(_dn.method); }
+
+        function dnErr(id, msg){
+            var el = document.getElementById(id);
+            if(!el) return;
+            el.textContent = msg; el.style.display = 'block';
+        }
+
+        /* ── Close on overlay click / Escape ─────────────────────── */
+        document.getElementById('dn-modal-overlay').addEventListener('click', function(e){ if(e.target===this) dnClose(); });
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape' && document.getElementById('dn-modal-overlay').style.display==='flex') dnClose(); });
         </script>
 
     </div><!-- /#donations -->

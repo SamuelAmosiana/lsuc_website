@@ -30,9 +30,11 @@ if (!defined('SWISH_MERCHANT_CODE')) {
 }
 
 // Callback / Return URL — registered in the Netone Swish Developer Console
-// Confirmed Call-Back URL from portal: https://srms.lsc.edu.zm/api/swish_callback.php
+// ROOT LEVEL (not /api/) to bypass SRMS application interception.
+// Go to your Swish portal and update the Call-Back URL to:
+//   https://srms.lsc.edu.zm/swish_callback.php
 if (!defined('SWISH_RETURN_URL')) {
-    define('SWISH_RETURN_URL', 'https://srms.lsc.edu.zm/api/swish_callback.php');
+    define('SWISH_RETURN_URL', 'https://srms.lsc.edu.zm/swish_callback.php');
 }
 
 // Swish Direct Payment Link (from portal)

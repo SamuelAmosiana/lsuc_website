@@ -1,16 +1,16 @@
 -- ============================================================
 --  LSUC Payment System — Database Setup
+--  Database name: website_db
 --  Run this in phpMyAdmin → SQL tab
---  Works on both localhost (XAMPP) and live server
 -- ============================================================
 
 -- Step 1: Create the database
-CREATE DATABASE IF NOT EXISTS `lsuc_payment_db`
+CREATE DATABASE IF NOT EXISTS `website_db`
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
 -- Step 2: Use it
-USE `lsuc_payment_db`;
+USE `website_db`;
 
 -- Step 3: Create payments table
 CREATE TABLE IF NOT EXISTS `payments` (

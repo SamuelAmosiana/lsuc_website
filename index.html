@@ -4844,7 +4844,31 @@
                         <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Amount (ZMW) *</label>
                         <input type="number" id="pm-amount" placeholder="e.g. 2500" min="1" step="0.01"
                                style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
-                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'"
+                               oninput="ccUpdate('pm')">
+                    </div>
+
+                    <!-- Currency Converter -->
+                    <div id="pm-cc-row" style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
+                        <span style="font-size:0.78rem;color:#888;white-space:nowrap;">View in:</span>
+                        <select id="pm-cc-select" onchange="ccUpdate('pm')"
+                                style="padding:7px 10px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:0.82rem;background:#fff;color:#333;cursor:pointer;outline:none;transition:border-color 0.2s;"
+                                onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                            <option value="">&#8212; select currency &#8212;</option>
+                            <option value="ZMW">&#127467;&#127486; ZMW &mdash; Zambian Kwacha</option>
+                            <option value="USD">&#127482;&#127480; USD &mdash; US Dollar</option>
+                            <option value="ZAR">&#127487;&#127462; ZAR &mdash; South African Rand</option>
+                            <option value="BWP">&#127463;&#127484; BWP &mdash; Botswana Pula</option>
+                            <option value="KES">&#127472;&#127466; KES &mdash; Kenyan Shilling</option>
+                            <option value="NAD">&#127475;&#127462; NAD &mdash; Namibian Dollar</option>
+                            <option value="ZWL">&#127487;&#127484; ZWL &mdash; Zimbabwean Dollar</option>
+                            <option value="GBP">&#127468;&#127463; GBP &mdash; British Pound</option>
+                        </select>
+                        <span id="pm-cc-spinner" style="display:none;font-size:0.75rem;color:#888;">
+                            <i class="fas fa-circle-notch fa-spin" style="margin-right:4px;color:#228B22;"></i>fetching rate&#8230;
+                        </span>
+                        <span id="pm-cc-badge" style="display:none;background:linear-gradient(135deg,#eaf5ef,#fff8ee);border:1.5px solid #aad4bd;border-radius:20px;padding:5px 13px;font-size:0.84rem;font-weight:700;color:#155215;white-space:nowrap;"></span>
+                        <span id="pm-cc-error" style="display:none;font-size:0.75rem;color:#c0392b;"></span>
                     </div>
 
                     <div id="pm-phone-row" style="margin-bottom:15px;">
@@ -5474,7 +5498,31 @@
                         <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Donation Amount (ZMW) *</label>
                         <input type="number" id="dn-amount" placeholder="e.g. 500" min="1" step="0.01"
                                style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
-                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                               onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'"
+                               oninput="ccUpdate('dn')">
+                    </div>
+
+                    <!-- Currency Converter -->
+                    <div id="dn-cc-row" style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
+                        <span style="font-size:0.78rem;color:#888;white-space:nowrap;">View in:</span>
+                        <select id="dn-cc-select" onchange="ccUpdate('dn')"
+                                style="padding:7px 10px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:0.82rem;background:#fff;color:#333;cursor:pointer;outline:none;transition:border-color 0.2s;"
+                                onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
+                            <option value="">&#8212; select currency &#8212;</option>
+                            <option value="ZMW">&#127467;&#127486; ZMW &mdash; Zambian Kwacha</option>
+                            <option value="USD">&#127482;&#127480; USD &mdash; US Dollar</option>
+                            <option value="ZAR">&#127487;&#127462; ZAR &mdash; South African Rand</option>
+                            <option value="BWP">&#127463;&#127484; BWP &mdash; Botswana Pula</option>
+                            <option value="KES">&#127472;&#127466; KES &mdash; Kenyan Shilling</option>
+                            <option value="NAD">&#127475;&#127462; NAD &mdash; Namibian Dollar</option>
+                            <option value="ZWL">&#127487;&#127484; ZWL &mdash; Zimbabwean Dollar</option>
+                            <option value="GBP">&#127468;&#127463; GBP &mdash; British Pound</option>
+                        </select>
+                        <span id="dn-cc-spinner" style="display:none;font-size:0.75rem;color:#888;">
+                            <i class="fas fa-circle-notch fa-spin" style="margin-right:4px;color:#228B22;"></i>fetching rate&#8230;
+                        </span>
+                        <span id="dn-cc-badge" style="display:none;background:linear-gradient(135deg,#eaf5ef,#fff8ee);border:1.5px solid #aad4bd;border-radius:20px;padding:5px 13px;font-size:0.84rem;font-weight:700;color:#155215;white-space:nowrap;"></span>
+                        <span id="dn-cc-error" style="display:none;font-size:0.75rem;color:#c0392b;"></span>
                     </div>
 
                     <!-- Phone row (hidden for bank transfer) -->
@@ -9838,8 +9886,130 @@ Participants: ${data.participants}`;
     })();
     // ===== End Hero Slideshow =====
 
+
+    // ===== Live Currency Converter =====
+    // Shared state — rates fetched once per session, cached here
+    var ccRates = null;          // {USD: 0.042, ZAR: 0.77, ...} relative to ZMW base
+    var ccFetching = false;      // guard against parallel fetch calls
+    var ccCallbacks = [];        // queued callbacks waiting for first fetch
+
+    // Currency symbol map
+    var ccSymbols = {
+        ZMW: 'K', USD: '$', ZAR: 'R', BWP: 'P',
+        KES: 'KSh', NAD: 'N$', ZWL: 'Z$', GBP: '£'
+    };
+
+    // Fetch rates from open.er-api.com (base ZMW, no API key needed)
+    function ccFetchRates(onDone) {
+        if (ccRates) { onDone(ccRates); return; }   // already cached
+        ccCallbacks.push(onDone);
+        if (ccFetching) return;                      // fetch already in progress
+        ccFetching = true;
+
+        fetch('https://open.er-api.com/v6/latest/ZMW')
+            .then(function(r){ return r.json(); })
+            .then(function(data){
+                if (data && data.rates) {
+                    ccRates = data.rates;
+                    ccFetching = false;
+                    ccCallbacks.forEach(function(cb){ cb(ccRates); });
+                    ccCallbacks = [];
+                } else {
+                    throw new Error('Bad response');
+                }
+            })
+            .catch(function(){
+                ccFetching = false;
+                ccCallbacks.forEach(function(cb){ cb(null); });
+                ccCallbacks = [];
+            });
+    }
+
+    // Main update function — called by oninput on amount and onchange on select
+    // prefix = 'pm' (payment modal) or 'dn' (donations modal)
+    function ccUpdate(prefix) {
+        var amtEl    = document.getElementById(prefix + '-amount');
+        var selEl    = document.getElementById(prefix + '-cc-select');
+        var spinner  = document.getElementById(prefix + '-cc-spinner');
+        var badge    = document.getElementById(prefix + '-cc-badge');
+        var errEl    = document.getElementById(prefix + '-cc-error');
+
+        if (!amtEl || !selEl) return;
+
+        var rawAmt  = parseFloat(amtEl.value);
+        var toCurr  = selEl.value;
+
+        // Hide all output elements if no valid amount or no currency selected
+        if (!toCurr || isNaN(rawAmt) || rawAmt <= 0) {
+            if (badge)   { badge.style.display   = 'none'; }
+            if (errEl)   { errEl.style.display    = 'none'; }
+            if (spinner) { spinner.style.display  = 'none'; }
+            return;
+        }
+
+        // ZMW → ZMW is trivial (just echo back)
+        if (toCurr === 'ZMW') {
+            if (spinner) spinner.style.display = 'none';
+            if (errEl)   errEl.style.display   = 'none';
+            if (badge) {
+                badge.textContent   = '\u2248 K ' + rawAmt.toFixed(2) + ' ZMW';
+                badge.style.display = 'inline-block';
+            }
+            return;
+        }
+
+        // Show spinner while fetching
+        if (badge)   badge.style.display   = 'none';
+        if (errEl)   errEl.style.display   = 'none';
+        if (spinner) spinner.style.display = 'inline-flex';
+
+        ccFetchRates(function(rates) {
+            if (spinner) spinner.style.display = 'none';
+
+            if (!rates) {
+                if (errEl) {
+                    errEl.textContent   = 'Could not fetch rate. Check connection.';
+                    errEl.style.display = 'inline';
+                }
+                return;
+            }
+
+            var rate = rates[toCurr];
+            if (!rate) {
+                if (errEl) {
+                    errEl.textContent   = toCurr + ' rate not available.';
+                    errEl.style.display = 'inline';
+                }
+                return;
+            }
+
+            var converted = rawAmt * rate;
+            var sym       = ccSymbols[toCurr] || toCurr + ' ';
+            var formatted;
+
+            // Format: large amounts with commas, small amounts with more decimals
+            if (converted >= 100) {
+                formatted = sym + converted.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+            } else if (converted >= 1) {
+                formatted = sym + converted.toFixed(2);
+            } else {
+                formatted = sym + converted.toFixed(4);
+            }
+
+            if (badge) {
+                badge.textContent   = '\u2248 ' + formatted + ' ' + toCurr;
+                badge.style.display = 'inline-block';
+                // Pop animation
+                badge.style.transform = 'scale(1.08)';
+                setTimeout(function(){ badge.style.transform = 'scale(1)'; }, 180);
+            }
+        });
+    }
+    // ===== End Currency Converter =====
+
     // Render all Lucide icons
     if (typeof lucide !== 'undefined') { lucide.createIcons(); }
     </script>
 </html>
+
 

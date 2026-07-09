@@ -4872,8 +4872,8 @@
                     </div>
 
                     <div id="pm-phone-row" style="margin-bottom:15px;">
-                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(26097xxxxxxx)</span></label>
-                        <input type="tel" id="pm-phone" placeholder="e.g. 260978905095" maxlength="15"
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(097xxxxxxx)</span></label>
+                        <input type="tel" id="pm-phone" placeholder="e.g. 0970000000" maxlength="15"
                                style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
                                onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
                         <div id="pm-phone-hint" style="font-size:0.78rem;color:#888;margin-top:4px;"></div>
@@ -5156,7 +5156,7 @@
             if (!amount || isNaN(amount) || parseFloat(amount)<=0)
                 return pmErr('pm-step1-error','Please enter a valid amount in ZMW.');
             if (_pm.method !== 'Online Banking (Bank Transfer)' && !phone)
-                return pmErr('pm-step1-error','Please enter your mobile number (e.g. 260978905095).');
+                return pmErr('pm-step1-error','Please enter your mobile number (e.g. 0970000000).');
 
             _pm.payFor = payFor; _pm.amount = amount; _pm.phone = phone;
 
@@ -5527,8 +5527,8 @@
 
                     <!-- Phone row (hidden for bank transfer) -->
                     <div id="dn-phone-row" style="margin-bottom:15px;">
-                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(26097xxxxxxx)</span></label>
-                        <input type="tel" id="dn-phone" placeholder="e.g. 260978905095" maxlength="15"
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(097xxxxxxx)</span></label>
+                        <input type="tel" id="dn-phone" placeholder="e.g. 0970000000" maxlength="15"
                                style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
                                onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
                         <div id="dn-phone-hint" style="font-size:0.78rem;color:#888;margin-top:4px;"></div>
@@ -5818,7 +5818,7 @@
             if (!amount || isNaN(amount) || parseFloat(amount) <= 0)
                 return dnErr('dn-step1-err', 'Please enter a valid donation amount in ZMW.');
             if (_dn.method !== 'Online Banking (Bank Transfer)' && !phone)
-                return dnErr('dn-step1-err', 'Please enter your mobile number (e.g. 260978905095).');
+                return dnErr('dn-step1-err', 'Please enter your mobile number (e.g. 0970000000).');
 
             _dn.amount = amount; _dn.phone = phone;
 

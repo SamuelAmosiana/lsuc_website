@@ -8,7 +8,7 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v6'; // bumped to v6: added aug-dec 2026 short course drive
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v7'; // bumped to v7: changed category to Latest News for home page
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
@@ -17,7 +17,7 @@ const SAMPLE_EVENTS = [
         id: "evt_013",
         title: "Aug–Dec 2026 Short Course Drive / Capacity Building Enhancement",
         date: "2026-08-01",
-        category: "Upcoming Event",
+        category: "Latest News",
         shortDescription: "Join our Aug–Dec 2026 Short Course Drive and Capacity Building Enhancement programmes.",
         fullDescription: "<p>We are pleased to notify you of the upcoming Short Courses/CPD programmes scheduled to run from August to December 2026.</p><h3>Capacity Building Enhancement</h3><p>The revised short courses delivery schedule is now active. Please check for more comprehensive information from the <strong>CPD &amp; Short Courses</strong> PDF in the downloads section of our website.</p>",
         image: "./img/images.jfif",

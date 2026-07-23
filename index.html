@@ -9040,7 +9040,7 @@ Participants: ${data.participants}`;
             <div class="update-date">${formattedDate}</div>
             <h3>${event.title}</h3>
             <p>${event.shortDescription}</p>
-            <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More Ã¢â€ â€™</a>
+            <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More &rarr;</a>
         </div>
             </div>
             `;
@@ -9085,24 +9085,24 @@ Participants: ${data.participants}`;
                 const countdownHTML = createCountdownTimer(countdown);
                 
                 return `
-            < div class="card" >
+            <div class="card">
                         <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
                         <h3>${event.title}</h3>
                         <p>${event.shortDescription}</p>
                         ${ countdownHTML }
-        <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn" style="margin-top: 15px;">Read More Ã¢â€ â€™</a>
-                    </div >
+        <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn" style="margin-top: 15px;">Read More &rarr;</a>
+                    </div>
             `;
             }).join('');
         }
 
         function createCountdownTimer(countdown) {
             if (countdown.today) {
-                return '<div class="countdown-timer today">Ã°Å¸Å½â€° Happening Today!</div>';
+                return '<div class="countdown-timer today">&#127881; Happening Today!</div>';
             } else if (countdown.passed) {
                 return '';
             } else {
-                return `< div class="countdown-timer" >Ã¢ÂÂ° ${ countdown.days } days to go</div > `;
+                return `<div class="countdown-timer">Ã¢ÂÂ° ${ countdown.days } days to go</div> `;
             }
         }
 

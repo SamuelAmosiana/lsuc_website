@@ -3657,6 +3657,18 @@
             </div>
         </section>
 
+        <!-- Upcoming Events Section (Home Page) -->
+        <section class="section" style="background: var(--white); padding-bottom: 20px;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Upcoming Events</h2>
+                </div>
+                <div class="cards-grid" id="home-upcoming-events-container">
+                    <!-- Dynamically loaded content -->
+                </div>
+            </div>
+        </section>
+
         <!-- School Scholarship Teaser -->
         <section class="home-schol-section">
             <div class="container">
@@ -9000,6 +9012,7 @@ Participants: ${data.participants}`;
         function initializeNewsAndEvents() {
             // Load homepage events
             loadHomePageEvents();
+            loadUpcomingEventsSection('home-upcoming-events-container', 3);
 
             // Load news page events
             loadNewsPageEvents();
@@ -9067,11 +9080,11 @@ Participants: ${data.participants}`;
             container.innerHTML = latestNews.map(event => createUpdateCard(event)).join('');
         }
 
-        function loadUpcomingEventsSection() {
-            const container = document.getElementById('upcoming-events-container');
+        function loadUpcomingEventsSection(containerId = 'upcoming-events-container', limit = 9) {
+            const container = document.getElementById(containerId);
             if (!container) return;
             
-            const upcomingEvents = LSUCEventsManager.getUpcomingEvents(9);
+            const upcomingEvents = LSUCEventsManager.getUpcomingEvents(limit);
             
             if (upcomingEvents.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#666;">No upcoming events scheduled.</p>';

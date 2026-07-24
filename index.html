@@ -4386,6 +4386,10 @@
                         <div id="detail-description" class="detail-full-description"></div>
                         <div class="detail-actions">
                             <a href="#news" onclick="showPage('news')" class="back-btn">&larr; Back to News</a>
+                            <a id="detail-apply-link" href="#" target="_blank" class="back-btn"
+                               style="display:none; text-decoration:none; background: linear-gradient(135deg,#27ae60,#2ecc71); color:#fff; border:none; margin-left:10px;">
+                                <i class="fas fa-paper-plane"></i> Apply Now
+                            </a>
                             <a id="detail-pdf-link" href="#" target="_blank" class="back-btn"
                                style="display:none; text-decoration:none; background: linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; border:none; margin-left:10px;">
                                 <i class="fas fa-file-pdf"></i> CPD &amp; Short Courses PDF
@@ -9198,6 +9202,14 @@ Participants: ${data.participants}`;
                 pdfLink.style.display = 'inline-block';
             } else {
                 pdfLink.style.display = 'none';
+            }
+            
+            const applyLinkBtn = document.getElementById('detail-apply-link');
+            if (event.applyLink) {
+                applyLinkBtn.href = event.applyLink;
+                applyLinkBtn.style.display = 'inline-block';
+            } else {
+                applyLinkBtn.style.display = 'none';
             }
             
             // Load related events

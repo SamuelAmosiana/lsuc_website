@@ -105,7 +105,10 @@ function editFaq(&$faqs) {
 }
 
 function saveFaqs(&$faqs) {
-    file_put_contents(__DIR__ . '/../data/faqs.json', json_encode($faqs, JSON_PRETTY_PRINT));
+    $result = file_put_contents(__DIR__ . '/../data/faqs.json', json_encode($faqs, JSON_PRETTY_PRINT));
+    if ($result === false) {
+        throw new Exception('Permission denied: Unable to write to faqs.json. Please check file permissions on your server.');
+    }
 }
 
 function sanitize($input) {

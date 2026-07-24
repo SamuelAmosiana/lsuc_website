@@ -24,9 +24,13 @@ $updated_faqs = array_filter($faqs, function($faq) use ($faq_id, &$faq_found) {
 });
 
 if ($faq_found) {
-    file_put_contents($faqs_file, json_encode(array_values($updated_faqs), JSON_PRETTY_PRINT));
-    logActivity('Deleted FAQ', 'FAQ ID: ' . $faq_id);
-    header('Location: ?page=faqs&success=FAQ+deleted+successfully');
+    $result = file_put_contents($faqs_file, json_encode(array_values($updated_faqs), JSON_PRETTY_PRINT));
+    if ($result === false) {
+        header('Location: ?page=faqs&error=Permission+denied:+Unable+to+write+to+faqs.json.+Check+server+permissions');
+    } else {
+        logActivity('Deleted FAQ', 'FAQ ID: ' . $faq_id);
+        header('Location: ?page=faqs&success=FAQ+deleted+successfully');
+    }
 } else {
     header('Location: ?page=faqs&error=FAQ+not+found');
 }

@@ -1,12 +1,74 @@
 [
     {
-        "id": "faq_1774861188_7b037e4d",
-        "question": "Who is the admin for the school systems?",
-        "answer": "Mr.Samuel Sianamate",
-        "category": "General",
+        "id": "faq_1",
+        "question": "How do I apply for admission?",
+        "answer": "Applications can be submitted online through our website (<a href=\"https://srms.lsc.edu.zm/applications/undergraduate_application\" target=\"_blank\">undergraduate programmes</a> or <a href=\"https://srms.lsc.edu.zm/applications/short_courses_application\" target=\"_blank\">short courses</a>) or in person at the admissions office at the main campus. Required documents include academic certificates, national ID, and passport photos. Application deadlines vary by program.",
+        "category": "Admissions",
         "featured": true,
-        "order": 0,
-        "created_at": "2026-03-30 10:59:48",
-        "updated_at": "2026-03-30 11:14:19"
+        "order": 1,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_2",
+        "question": "What are the admission requirements?",
+        "answer": "Requirements vary by program. Generally, diploma programs require Grade 12 certificate, while certificate programs may accept Grade 9. Specific grade requirements are listed for each program.",
+        "category": "Admissions",
+        "featured": false,
+        "order": 2,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_3",
+        "question": "Are scholarships available?",
+        "answer": "Yes, we offer merit-based scholarships, need-based financial aid, and partnerships with various organizations providing sponsorship opportunities for eligible students. <br><br><a href=\"#scholarships\" onclick=\"showPage('scholarships')\" class=\"btn\" style=\"background:#228B22;color:white;padding:5px 12px;border-radius:4px;text-decoration:none;font-size:0.9em;\">More Info</a>",
+        "category": "Financial Aid",
+        "featured": false,
+        "order": 3,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_4",
+        "question": "Is accommodation available?",
+        "answer": "We have on-campus hostels for both male and female students. Private accommodation options are also available nearby. Hostel applications should be submitted early due to limited spaces.",
+        "category": "Student Life",
+        "featured": false,
+        "order": 4,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_5",
+        "question": "What is the academic calendar?",
+        "answer": "The academic year runs from January to November with two semesters. There are mid-semester breaks and longer holidays in July and December.",
+        "category": "Academics",
+        "featured": false,
+        "order": 5,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_6",
+        "question": "How can I check my results?",
+        "answer": "Results are available through the student portal. You'll receive login credentials upon enrollment.",
+        "category": "Academics",
+        "featured": false,
+        "order": 6,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_7",
+        "question": "What career services do you offer?",
+        "answer": "Our career services include job placement assistance, career counseling, resume writing workshops, interview preparation, and maintaining connections with industry partners.",
+        "category": "Student Life",
+        "featured": false,
+        "order": 7,
+        "created_at": "2026-07-24 10:00:00"
+    },
+    {
+        "id": "faq_8",
+        "question": "How do I pay school fees?",
+        "answer": "We do not accept cash. Fees can be paid via our available online payment methods. Payment plans are available for students who need to pay in installments. <br><br><a href=\"#online-payments\" onclick=\"showPage('online-payments')\" class=\"btn\" style=\"background:#228B22;color:white;padding:5px 12px;border-radius:4px;text-decoration:none;font-size:0.9em;\">Pay</a>",
+        "category": "Finance",
+        "featured": true,
+        "order": 8,
+        "created_at": "2026-07-24 10:00:00"
     }
 ]

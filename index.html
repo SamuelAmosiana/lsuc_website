@@ -4360,7 +4360,7 @@
                         </div>
                         <div id="detail-description" class="detail-full-description"></div>
                         <div class="detail-actions">
-                            <a href="docs/cpd-short-courses.pdf" target="_blank" class="print-btn" style="text-decoration:none; background-color: var(--primary-color);"><i class="fas fa-file-pdf"></i>
+                            <a id="detail-pdf-link" href="#" target="_blank" class="print-btn" style="display: none; text-decoration:none; background-color: var(--primary-color);"><i class="fas fa-file-pdf"></i>
                                 View PDF Guide</a>
                             <a href="#news" onclick="showPage('news')" class="back-btn">&larr; Back to News</a>
                         </div>
@@ -9163,6 +9163,14 @@ Participants: ${data.participants}`;
             document.getElementById('detail-author').textContent = event.author || 'Admin';
             document.getElementById('detail-image').src = event.image || './img/school_logo.jpg';
             document.getElementById('detail-description').innerHTML = event.fullDescription;
+            
+            const pdfLink = document.getElementById('detail-pdf-link');
+            if (event.pdfLink) {
+                pdfLink.href = event.pdfLink;
+                pdfLink.style.display = 'inline-block';
+            } else {
+                pdfLink.style.display = 'none';
+            }
             
             // Load related events
             displayRelatedEvents(event);

@@ -3658,13 +3658,25 @@
         </section>
 
         <!-- Upcoming Events Section (Home Page) -->
-        <section class="section" style="background: var(--white); padding-bottom: 20px;">
+        <section class="section" style="background: var(--white); padding-bottom: 40px;">
             <div class="container">
                 <div class="section-title">
                     <h2>Upcoming Events</h2>
+                    <p>Don't miss our latest programmes and capacity building opportunities</p>
                 </div>
-                <div class="cards-grid" id="home-upcoming-events-container">
-                    <!-- Dynamically loaded content -->
+                <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                    <!-- Event Cards -->
+                    <div style="flex: 1; min-width: 280px;" id="home-upcoming-events-container">
+                        <!-- Dynamically loaded content -->
+                    </div>
+                    <!-- CPD Image -->
+                    <div style="flex: 0 0 380px; min-width: 260px;">
+                        <img src="img/cpd.jpg" alt="CPD & Short Courses 2026"
+                             style="width: 100%; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); object-fit: cover; max-height: 450px;">
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#news" onclick="showPage('news')" class="view-all-btn">View All Events &rarr;</a>
                 </div>
             </div>
         </section>

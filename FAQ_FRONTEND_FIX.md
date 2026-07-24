@@ -153,23 +153,23 @@ LSUCFAQs.searchFAQs('apply')    // Search FAQs
 ```json
 {
   "id": "faq_1774861188_7b037e4d",
-  "question": "Who is the admin for the school systems?",
-  "answer": "Mr.Samuel Sianamate",
-  "category": "General",
+  "question": "How do I apply for admission?",
+  "answer": "You can apply online...",
+  "category": "Admissions",
   "featured": false,
-  "order": 0
+  "order": 1
 }
 ```
 
 ### **Displays As:**
 ```
 ┌─────────────────────────────────────┐
-│ [1] General                         │
+│ [1] Admissions                      │
 │                                     │
-│ Who is the admin for the school     │
-│ systems?                            │
+│ How do I apply for admission?       │
 │                                     │
-│ Mr.Samuel Sianamate                 │
+│                                     │
+│ You can apply online...             │
 └─────────────────────────────────────┘
 ```
 

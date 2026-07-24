@@ -9070,7 +9070,7 @@ Participants: ${data.participants}`;
             <div class="update-date">${formattedDate}</div>
             <h3>${event.title}</h3>
             <p>${event.shortDescription}</p>
-            <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More &rarr;</a>
+            <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
         </div>
             </div>
             `;
@@ -9120,7 +9120,10 @@ Participants: ${data.participants}`;
                         <h3>${event.title}</h3>
                         <p>${event.shortDescription}</p>
                         ${ countdownHTML }
-        <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn" style="margin-top: 15px;">Read More &rarr;</a>
+        <div style="display: flex; gap: 10px; margin-top: 15px; align-items: center; flex-wrap: wrap;">
+            <a href="#event-detail?id=${event.id}" onclick="showEventDetail('${event.id}')" class="read-more-btn" style="margin-top: 0;">Read More <i class="fas fa-arrow-right"></i></a>
+            ${ event.applyLink ? `<a href="${event.applyLink}" target="_blank" class="read-more-btn" style="margin-top: 0; background: linear-gradient(135deg,#27ae60,#2ecc71); border-color: #27ae60; color: #fff; padding: 10px 20px;"><i class="fas fa-paper-plane"></i> Apply</a>` : '' }
+        </div>
                     </div>
             `;
             }).join('');

@@ -1456,7 +1456,7 @@
         }
 
         .schol-apply-btn {
-            background: var(--dark-green) !important;
+            background: var(--primary-orange, #e67e22) !important;
             color: var(--white) !important;
             text-decoration: none;
             display: inline-flex;
@@ -3716,9 +3716,14 @@
                             </div>
                         </div>
 
-                        <button class="home-schol-btn" onclick="showPage('scholarships')">
-                            Learn More &amp; Apply <i class="fas fa-arrow-right"></i>
-                        </button>
+                        <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
+                            <button class="home-schol-btn" onclick="showPage('scholarships')" style="margin-top: 0;">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a href="https://srms.lsc.edu.zm/apply_scholarship" target="_blank" class="cta-button schol-apply-btn" style="margin-top: 0; display: inline-flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-pen-alt"></i> Apply Now
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Right: Highlight Cards -->

@@ -1456,12 +1456,20 @@
         }
 
         .schol-apply-btn {
-            background: var(--primary-orange, #e67e22) !important;
-            color: var(--white) !important;
+            background: var(--white) !important;
+            color: var(--primary-green, #228b22) !important;
+            border: 2px solid var(--primary-green, #228b22) !important;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .schol-apply-btn:hover {
+            background: var(--primary-green, #228b22) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px);
         }
 
         /* ---- Responsive ---- */

@@ -1420,7 +1420,7 @@
 
         .schol-cta-inner {
             text-align: center;
-            max-width: 600px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -1429,6 +1429,7 @@
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             margin-bottom: 10px;
+            white-space: nowrap;
         }
 
         .schol-cta-inner p {
@@ -1450,8 +1451,14 @@
             font-weight: 700;
         }
 
+        .schol-cta-btns .cta-button {
+            background: var(--primary-orange, #e67e22) !important;
+            color: var(--white) !important;
+            border: none !important;
+        }
+
         .schol-cta-btns .cta-button:hover {
-            background: var(--dark-green) !important;
+            background: #d35400 !important;
             color: var(--white) !important;
         }
 
@@ -6768,7 +6775,7 @@
                     <h2>Ready to Apply for a Scholarship?</h2>
                     <p>Download the full scholarship summary or start your application today</p>
                     <div class="schol-cta-btns">
-                        <button class="cta-button" onclick="openPDFViewer('docs/scholarships.pdf', 'LSUC Scholarships Summary')" style="background: var(--primary-orange, #e67e22); border-color: var(--primary-orange, #e67e22); color: white;">
+                        <button class="cta-button" onclick="openPDFViewer('docs/scholarships.pdf', 'LSUC Scholarships Summary')">
                             <i class="fas fa-file-pdf"></i> View &amp; Download PDF
                         </button>
                         <a href="https://srms.lsc.edu.zm/apply_scholarship" target="_blank" class="cta-button schol-apply-btn">

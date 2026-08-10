@@ -83,7 +83,7 @@ if (empty($trans_link_id)) {
 }
 
 // Build the status-check URL
-$status_url = 'https://swishandroid.swish.co.zm/v3/test/api/web/transactionStatus'
+$status_url = 'https://swishandroid.swish.co.zm/v3/api/web/transactionStatus'  // production endpoint
     . '?transactionId=' . urlencode($trans_link_id)
     . '&merchantCode='  . urlencode(SWISH_MERCHANT_CODE)
     . '&accountNo='     . urlencode($phone);

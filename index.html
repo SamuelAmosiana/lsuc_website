@@ -4933,11 +4933,16 @@
                     </div>
 
                     <div id="pm-phone-row" style="margin-bottom:15px;">
-                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(097xxxxxxx)</span></label>
-                        <input type="tel" id="pm-phone" placeholder="e.g. 0970000000" maxlength="15"
+                        <label style="display:block;font-size:0.75rem;font-weight:700;color:#444;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Mobile Number * <span style="font-weight:400;color:#999;text-transform:none;">(Zambian: 097xxxxxxx or 260xxxxxxxxx)</span></label>
+                        <input type="tel" id="pm-phone" placeholder="e.g. 0970000000 or +260970000000" maxlength="20"
                                style="width:100%;padding:12px 14px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:0.93rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
                                onfocus="this.style.borderColor='#228B22'" onblur="this.style.borderColor='#e0e0e0'">
                         <div id="pm-phone-hint" style="font-size:0.78rem;color:#888;margin-top:4px;"></div>
+                        <!-- International student notice -->
+                        <div id="pm-intl-notice" style="display:none;margin-top:10px;background:#fffbeb;border:1.5px solid #fbbf24;border-radius:9px;padding:10px 13px;font-size:0.8rem;color:#92400e;line-height:1.6;">
+                            <i class="fas fa-globe" style="margin-right:5px;color:#d97706;"></i>
+                            <strong>International student?</strong> For <strong>Mobile Money</strong> (USSD/Push/QR) you need a <strong>Zambian mobile money number</strong> (MTN, Airtel or Zamtel). For <strong>Card payment</strong>, enter the mobile number linked to your bank card for OTP authentication.
+                        </div>
                     </div>
 
                     <!-- Bank Transfer details panel -->
@@ -5169,8 +5174,12 @@
             }
 
             document.getElementById('pm-phone-hint').textContent = isCard
-                ? 'Swish will send an SMS confirmation to this number.'
-                : 'The USSD prompt / push notification will be sent here.';
+                ? 'Enter the mobile number registered with your bank card (used to receive OTP for 3D Secure authentication).'
+                : 'Zambian mobile money number that will receive the USSD prompt / push notification.';
+
+            // Show international notice for non-bank methods
+            var noticeEl = document.getElementById('pm-intl-notice');
+            if (noticeEl) noticeEl.style.display = isMobile ? 'block' : (isCard ? 'block' : 'none');
 
             var totalSteps = isBank ? 1 : isMobile ? 4 : 3;
             pmBuildDots(totalSteps);
@@ -5207,17 +5216,48 @@
             }
         }
 
+        function normalizePhone(raw) {
+            // Mirror of server-side normalizeSwishPhone()
+            // For Zambian numbers: output 260xxxxxxxxx
+            // For non-Zambian: return cleaned string (+ preserved)
+            var cleaned = raw.replace(/[\s\-\.\(\)]/g, '');
+            var noPlus  = cleaned.replace(/^\+/, '');
+
+            // Already 260xxxxxxxxx (12 digits)
+            if (/^260\d{9}$/.test(noPlus)) return noPlus;
+
+            // 00260xxxxxxxxx
+            if (/^00260\d{9}$/.test(noPlus)) return noPlus.substring(2);
+
+            // Local 0xxxxxxxxx (10 digits)
+            if (/^0\d{9}$/.test(noPlus)) return '260' + noPlus.substring(1);
+
+            // Zambian 9-digit without leading 0 (97/96/95/76/77)
+            if (/^(97|96|95|76|77)\d{7}$/.test(noPlus)) return '260' + noPlus;
+
+            // Non-Zambian — keep as entered
+            return cleaned;
+        }
+
         function pmStep1Next() {
             var payFor = document.getElementById('pm-for').value.trim();
             var amount = document.getElementById('pm-amount').value.trim();
-            var phone  = document.getElementById('pm-phone').value.trim();
+            var rawPhone  = document.getElementById('pm-phone').value.trim();
+            var phone  = normalizePhone(rawPhone);
             document.getElementById('pm-step1-error').style.display = 'none';
 
             if (!payFor)  return pmErr('pm-step1-error','Please enter what this payment is for.');
             if (!amount || isNaN(amount) || parseFloat(amount)<=0)
                 return pmErr('pm-step1-error','Please enter a valid amount in ZMW.');
-            if (_pm.method !== 'Online Banking (Bank Transfer)' && !phone)
-                return pmErr('pm-step1-error','Please enter your mobile number (e.g. 0970000000).');
+            if (_pm.method !== 'Online Banking (Bank Transfer)' && !rawPhone)
+                return pmErr('pm-step1-error','Please enter your mobile number.');
+
+            // Warn if number looks non-Zambian for mobile money methods
+            if (_pm.method === 'Mobile Money' && phone && !/^260\d{9}$/.test(phone)) {
+                return pmErr('pm-step1-error',
+                    'Mobile Money (USSD/Push/QR) requires a Zambian number (MTN, Airtel or Zamtel). ' +
+                    'Please enter your Zambian number, or choose Card Payment instead.');
+            }
 
             _pm.payFor = payFor; _pm.amount = amount; _pm.phone = phone;
 
@@ -5377,7 +5417,6 @@
 
         document.getElementById('payment-modal-overlay').addEventListener('click',function(e){if(e.target===this)closePaymentModal();});
         document.addEventListener('keydown',function(e){if(e.key==='Escape')closePaymentModal();});
-        </script>
         </script>
 
     </div><!-- /#online-payments -->

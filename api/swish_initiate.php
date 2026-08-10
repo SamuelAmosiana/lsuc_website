@@ -20,10 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // ── Input ─────────────────────────────────────────────────────
 $method       = trim($_POST['method']       ?? '');   // ussd | push | qr | card
-$phone        = trim($_POST['phone']        ?? '');
+$phone_raw    = trim($_POST['phone']        ?? '');
 $amount       = trim($_POST['amount']       ?? '');
 $internal_ref = trim($_POST['internal_ref'] ?? '');
 $context      = trim($_POST['context']      ?? 'LSUC Payment');
+
+// Normalize the phone number for the Swish API.
+// Swish expects a Zambian subscriber number in the format 260xxxxxxxxx.
+// International students using card payment may enter their home number
+// (e.g. +267 for Botswana); we leave non-Zambian numbers as-is so the
+// card issuer can still route the 3DS OTP to the correct network.
+$phone = normalizeSwishPhone($phone_raw);
 
 $allowed = ['ussd', 'push', 'qr', 'card'];
 if (!in_array($method, $allowed)) {
@@ -80,7 +87,7 @@ $swish_error    = null;
 
 switch ($method) {
     case 'ussd':
-        $url     = 'https://swishandroid.swish.co.zm/test/v2/api/web/sendUSSDNotification';
+        $url     = 'https://swishandroid.swish.co.zm/v2/api/web/sendUSSDNotification';  // production endpoint
         $payload = [
             'subscriberNumber' => $phone,
             'tillCode'         => $till_code,
@@ -167,6 +174,54 @@ if ($method === 'card' && !empty($swish_response['paymentUrl'])) {
 echo json_encode($reply);
 
 // ─────────────────────────────────────────────────────────────
+
+/**
+ * Normalize a phone number to the format Swish expects: 260xxxxxxxxx.
+ *
+ * Handles common student inputs:
+ *   0971234567  → 260971234567  (local Zambian, leading zero)
+ *   +260971234567 → 260971234567 (international Zambian with +)
+ *   00260971234567 → 260971234567 (international Zambian with 00)
+ *   260971234567 → 260971234567  (already correct)
+ *   +2671234567 → +2671234567   (non-Zambian — kept as-is for card 3DS)
+ *   Strips spaces, dashes, dots.
+ */
+function normalizeSwishPhone(string $raw): string
+{
+    // Strip whitespace and common separators
+    $cleaned = preg_replace('/[\s\-\.\(\)]/', '', $raw);
+
+    // Remove leading + for processing
+    $no_plus = ltrim($cleaned, '+');
+
+    // Already in 260xxxxxxxxx format (12 digits starting with 260)
+    if (preg_match('/^260\d{9}$/', $no_plus)) {
+        return $no_plus;
+    }
+
+    // 00260xxxxxxxxx → strip leading 00
+    if (str_starts_with($no_plus, '00260')) {
+        $candidate = substr($no_plus, 2); // remove '00'
+        if (preg_match('/^260\d{9}$/', $candidate)) {
+            return $candidate;
+        }
+    }
+
+    // Local Zambian: 0xxxxxxxxx (10 digits, leading 0)
+    if (preg_match('/^0\d{9}$/', $no_plus)) {
+        return '260' . substr($no_plus, 1);
+    }
+
+    // Zambian with + stripped but missing leading 260: 9-digit local (e.g. 971234567)
+    if (preg_match('/^(97|96|95|76|77|95)\d{7}$/', $no_plus)) {
+        return '260' . $no_plus;
+    }
+
+    // Non-Zambian international number — return cleaned form (+ preserved)
+    // Card payments (CyberSource) will send the OTP to whatever number the
+    // issuing bank has on file; we just pass through what the user entered.
+    return $cleaned;
+}
 
 function swishPost(string $url, string $access_key, string $security_key, array $payload, &$error): ?array
 {

@@ -34,7 +34,7 @@ if (file_exists($hero_file)) {
                    placeholder="e.g., Welcome to Lusaka South University College">
         </div>
         
-        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="form-row">
             <div class="form-group">
                 <label for="motto">Motto/Slogan *</label>
                 <input type="text" id="motto" name="motto" class="form-control" required 
@@ -51,7 +51,7 @@ if (file_exists($hero_file)) {
             </div>
         </div>
         
-        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="form-row">
             <div class="form-group">
                 <label for="cta_text">CTA Button Text</label>
                 <input type="text" id="cta_text" name="cta_text" class="form-control" 

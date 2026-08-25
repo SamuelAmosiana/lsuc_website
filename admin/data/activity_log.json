@@ -57,5 +57,57 @@
         "details": "Event ID: evt_1778851367_96bc471c",
         "status": "success",
         "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 11:38:48",
+        "username": "LSC2025000033",
+        "action": "Login failed",
+        "status": "failed",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 11:39:00",
+        "username": "admin",
+        "action": "Login failed",
+        "status": "failed",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 11:39:13",
+        "username": "Admin",
+        "action": "Login failed",
+        "status": "failed",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 11:39:55",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 11:44:50",
+        "username": "admin",
+        "action": "Updated Hero Section",
+        "details": "Homepage hero section modified",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 12:12:20",
+        "username": "admin",
+        "action": "Updated Hero Section",
+        "details": "Homepage hero section modified",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 12:23:26",
+        "username": "admin",
+        "action": "Updated Hero Section",
+        "details": "Homepage hero section modified",
+        "status": "success",
+        "ip_address": "::1"
     }
 ]

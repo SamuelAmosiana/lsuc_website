@@ -98,6 +98,19 @@ $active_tab = $_GET['tab'] ?? 'hero';
     gap: 10px;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
 .value-item {
     background: white;
     border: 2px solid var(--gray-200);

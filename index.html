@@ -1669,7 +1669,6 @@
         .home-schol-card {
             background: var(--white);
             border: 1px solid var(--gray-200);
-            border-top: 4px solid var(--primary-orange);
             border-radius: 14px;
             padding: 24px 20px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07);
@@ -1679,7 +1678,6 @@
 
         .home-schol-card:hover {
             background: var(--white);
-            border-color: var(--primary-orange);
             transform: translateY(-4px);
             box-shadow: 0 8px 28px rgba(0,0,0,0.12);
         }
@@ -1720,9 +1718,7 @@
             margin-bottom: 10px;
         }
 
-        .home-schol-card.card-cdf {
-            border-top-color: var(--primary-green);
-        }
+
 
         .home-schol-card.card-cdf .card-pct {
             color: #4cdb8a;
@@ -3615,7 +3611,7 @@
                     <h2>Our Core Values</h2>
                     <p>The principles that guide our commitment to educational excellence and student success</p>
                 </div>
-                <div class="cards-grid">
+                <div class="cards-grid" id="home-core-values">
 
                     <!-- Excellence -->
                     <div class="card value-card">
@@ -3864,7 +3860,7 @@
                     </div>
                 </div>
 
-                <div class="gallery-grid">
+                <div class="gallery-grid" id="home-campus-gallery">
                     <div class="gallery-item" data-image="img/school2.jpeg" onclick="openImagePreview(this)">
                         <img src="img/school2.jpeg" alt="Main Building">
                         <div class="gallery-overlay">
@@ -8133,54 +8129,8 @@ Participants: ${data.participants}`;
         }
 
         // Campus Carousel Functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-image');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
-
-        // Shuffled order for interesting transitions (school3, school1, school4, school2)
-        const slideOrder = [0, 1, 2, 3]; // This matches our HTML order which is already shuffled
-
-        function showSlide(index) {
-            // Remove active class from all slides and indicators
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-
-            // Add active class to current slide and indicator
-            slides[index].classList.add('active');
-            indicators[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // Auto-advance carousel every 3 seconds
-        let carouselInterval = setInterval(nextSlide, 3000);
-
-        // Add click handlers for indicators
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-
-                // Reset the interval when user manually changes slide
-                clearInterval(carouselInterval);
-                carouselInterval = setInterval(nextSlide, 3000);
-            });
-        });
-
-        // Pause carousel on hover
-        const carousel = document.querySelector('.campus-carousel');
-        if (carousel) {
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(carouselInterval);
-            });
-
-            carousel.addEventListener('mouseleave', () => {
-                carouselInterval = setInterval(nextSlide, 3000);
-            });
+        if (typeof window.initCampusCarousel === 'function') {
+            window.initCampusCarousel();
         }
 
         // PDF Viewer Functions
@@ -9065,6 +9015,9 @@ Participants: ${data.participants}`;
 
     <!-- FAQs Display Manager Script -->
     <script src="./js/faq-display.js"></script>
+
+    <!-- Homepage Dynamic Editor Script -->
+    <script src="./js/home-display.js"></script>
 
     <!-- News & Events Display and Admin Functions -->
     <script>

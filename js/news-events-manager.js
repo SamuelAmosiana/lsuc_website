@@ -8,7 +8,7 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v12'; // bumped to v12: added gazetted news
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v13'; // bumped to v13: date change
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
@@ -16,7 +16,7 @@ const SAMPLE_EVENTS = [
     {
         id: "evt_014",
         title: "LUSAKA SOUTH UNIVERSITY COLLEGE OFFICIALLY GAZETTED BY GOVERNMENT, PAVING WAY FOR GLOBAL ACADEMIC EXCELLENCE",
-        date: "2026-08-28",
+        date: "2026-08-23",
         category: "Latest News",
         shortDescription: "Lusaka South University College (LSUC) is proud to announce that it has been officially featured in the Government Gazette of Zambia, marking a historic milestone.",
         fullDescription: "<p><strong>FOR IMMEDIATE RELEASE</strong></p><p><strong>LUSAKA, ZAMBIA</strong> – Lusaka South University College (LSUC) is proud to announce that it has been officially featured in the Government Gazette of Zambia, marking a historic milestone in the institution’s journey toward becoming a premier center for higher learning and innovation.</p><p>The Government Gazette is the official legal publication of the Republic of Zambia. Being gazetted, alongside accreditation by the Higher Education Authority (HEA), grants LSUC the legal mandate to award internationally recognized certificates and degrees, conduct high-level research, and provide expert consultancy and professional short-term training.</p><p>Speaking on behalf of the Board of Directors, Mr. Peter Chikubula noted that this recognition is a testament to the institution’s commitment to quality. \"Our official gazetting is more than just a legal formality; it is a seal of trust from the Government.\"</p>",

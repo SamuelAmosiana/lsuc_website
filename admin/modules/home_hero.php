@@ -1,7 +1,8 @@
 <?php
-// Load current hero section data
-$hero_file = __DIR__ . '/../data/home_hero.json';
-$hero_data = [
+$draft_file = __DIR__ . '/../data/home_hero_draft.json';
+$published_file = __DIR__ . '/../data/home_hero.json';
+
+$default_data = [
     'heading' => 'Welcome to Lusaka South University College',
     'motto' => 'Dream, Explore, Acquire',
     'description' => 'Providing quality education and training for over 20 years. Join us to build your future with industry-relevant programs.',
@@ -11,21 +12,67 @@ $hero_data = [
     'show_cta' => true
 ];
 
-if (file_exists($hero_file)) {
-    $saved_data = json_decode(file_get_contents($hero_file), true);
-    if ($saved_data) {
-        $hero_data = array_merge($hero_data, $saved_data);
+$hero_data = $default_data;
+$published_data = null;
+
+if (file_exists($published_file)) {
+    $published_data = json_decode(file_get_contents($published_file), true) ?: [];
+}
+
+// Load draft data if available, fallback to published, fallback to default
+if (file_exists($draft_file)) {
+    $draft_data = json_decode(file_get_contents($draft_file), true);
+    if ($draft_data) {
+        $hero_data = array_merge($default_data, $draft_data);
     }
+} elseif ($published_data) {
+    $hero_data = array_merge($default_data, $published_data);
+}
+
+// Check if draft has unpublished changes
+$has_unpublished_changes = false;
+if (file_exists($draft_file) && $published_data) {
+    $draft_clean = json_decode(file_get_contents($draft_file), true) ?: [];
+    // Unset updated_at for comparison
+    unset($draft_clean['updated_at'], $published_data['updated_at']);
+    if ($draft_clean !== $published_data) {
+        $has_unpublished_changes = true;
+    }
+} elseif (file_exists($draft_file) && !$published_data) {
+    $has_unpublished_changes = true;
+}
+
+// Function to convert root paths for preview in admin console
+function getAdminImagePath($path) {
+    if (empty($path)) return '';
+    if (strpos($path, 'http') === 0 || strpos($path, 'data:') === 0) {
+        return $path;
+    }
+    if (strpos($path, './') === 0) {
+        return '../' . substr($path, 2);
+    }
+    return '../' . $path;
 }
 ?>
 
 <div class="form-card">
+    <?php if ($has_unpublished_changes): ?>
+        <div class="alert warning-alert" style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #ffc107; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>You have unpublished changes!</strong> Click the "Publish Live" button to make them visible on the public website.
+            </div>
+        </div>
+    <?php endif; ?>
+
     <h2 style="margin-bottom: 25px; color: var(--primary-green);">
         <i class="fas fa-image"></i> Hero Section Editor
     </h2>
     
-    <form action="api/save_home_hero.php" method="POST" id="hero-form">
+    <form action="api/save_home_hero.php" method="POST" id="hero-form" enctype="multipart/form-data">
         <input type="hidden" name="action" value="save">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>">
+        <input type="hidden" name="publish_action" id="publish_action" value="draft">
         
         <div class="form-group">
             <label for="heading">Welcome Heading *</label>
@@ -74,20 +121,24 @@ if (file_exists($hero_file)) {
         </div>
         
         <div class="form-group">
-            <label for="background_image">Background Image URL</label>
-            <input type="text" id="background_image" name="background_image" class="form-control" 
-                   value="<?php echo htmlspecialchars($hero_data['background_image']); ?>" 
-                   placeholder="./img/your-image.jpg">
+            <label for="background_image">Background Image</label>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="background_image" name="background_image" class="form-control" style="flex: 2; min-width: 200px;" 
+                       value="<?php echo htmlspecialchars($hero_data['background_image']); ?>" 
+                       placeholder="./img/your-image.jpg">
+                <span style="color: var(--gray-600);">or upload file:</span>
+                <input type="file" id="hero_image_file" name="hero_image_file" accept="image/*" class="form-control" style="flex: 2; min-width: 200px;">
+            </div>
             <small style="display: block; margin-top: 8px; color: var(--gray-600);">
-                <i class="fas fa-info-circle"></i> Use relative path from website root, e.g., ./img/campus.jpg
+                <i class="fas fa-info-circle"></i> Use relative path from website root (e.g. <code>./img/campus.jpg</code>) or upload a new image.
             </small>
         </div>
         
         <div class="preview-section">
             <div class="preview-label">
-                <i class="fas fa-eye"></i> Live Preview
+                <i class="fas fa-eye"></i> Live Preview <span style="font-size: 0.8rem; font-weight: normal; color: var(--gray-600); margin-left: 5px;">(showing draft changes)</span>
             </div>
-            <div id="hero-preview" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<?php echo htmlspecialchars($hero_data['background_image']); ?>'); background-size: cover; background-position: center; padding: 100px 20px; text-align: center; color: white; border-radius: 10px;">
+            <div id="hero-preview" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<?php echo htmlspecialchars(getAdminImagePath($hero_data['background_image'])); ?>'); background-size: cover; background-position: center; padding: 100px 20px; text-align: center; color: white; border-radius: 10px;">
                 <h1 id="preview-heading" style="font-size: 48px; margin-bottom: 10px;"><?php echo htmlspecialchars($hero_data['heading']); ?></h1>
                 <p id="preview-motto" style="font-size: 24px; color: var(--primary-orange); margin-bottom: 20px;"><?php echo htmlspecialchars($hero_data['motto']); ?></p>
                 <p id="preview-description" style="font-size: 18px; max-width: 600px; margin: 0 auto;"><?php echo htmlspecialchars($hero_data['description']); ?></p>
@@ -99,11 +150,14 @@ if (file_exists($hero_file)) {
             </div>
         </div>
         
-        <div class="form-actions" style="display: flex; gap: 10px; justify-content: space-between; margin-top: 30px;">
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-save"></i> Save Hero Section
+        <div class="form-actions" style="display: flex; gap: 15px; justify-content: flex-start; margin-top: 30px; flex-wrap: wrap;">
+            <button type="submit" id="save-draft-btn" onclick="setPublishAction('draft')" class="btn btn-secondary" style="min-width: 150px;">
+                <i class="fas fa-save"></i> Save Draft
             </button>
-            <a href="?page=home" class="btn btn-secondary">
+            <button type="submit" id="publish-btn" onclick="setPublishAction('publish')" class="btn btn-primary" style="min-width: 150px; background: var(--primary-green); border-color: var(--primary-green);">
+                <i class="fas fa-paper-plane"></i> Publish Live
+            </button>
+            <a href="?page=home" class="btn btn-secondary" style="min-width: 100px;">
                 <i class="fas fa-undo"></i> Reset
             </a>
         </div>
@@ -111,13 +165,34 @@ if (file_exists($hero_file)) {
 </div>
 
 <script>
+function setPublishAction(action) {
+    document.getElementById('publish_action').value = action;
+}
+
 // Live preview functionality
 const form = document.getElementById('hero-form');
 const inputs = form.querySelectorAll('input, textarea, select');
 
 inputs.forEach(input => {
-    input.addEventListener('input', updatePreview);
+    if (input.type !== 'file') {
+        input.addEventListener('input', updatePreview);
+    }
 });
+
+// Setup image file preview
+const fileInput = document.getElementById('hero_image_file');
+if (fileInput) {
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById('hero-preview').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${e.target.result}')`;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
 
 function updatePreview() {
     const heading = document.getElementById('heading').value;
@@ -125,15 +200,22 @@ function updatePreview() {
     const description = document.getElementById('description').value;
     const bgImage = document.getElementById('background_image').value;
     const ctaText = document.getElementById('cta_text').value;
-    const ctaLink = document.getElementById('cta_link').value;
     const showCta = document.getElementById('show_cta').value === '1';
     
     document.getElementById('preview-heading').textContent = heading || 'Your Heading Here';
     document.getElementById('preview-motto').textContent = motto || 'Your Motto Here';
     document.getElementById('preview-description').textContent = description || 'Your description here...';
     
-    if (bgImage) {
-        document.getElementById('hero-preview').style.backgroundImage = `url('${bgImage}')`;
+    // Only update preview BG by text input if no file is selected
+    if (bgImage && (!fileInput || !fileInput.files.length)) {
+        // Convert to admin preview path
+        let adminBgPath = bgImage;
+        if (bgImage.startsWith('./')) {
+            adminBgPath = '../' + bgImage.substring(2);
+        } else if (!bgImage.startsWith('http') && !bgImage.startsWith('../')) {
+            adminBgPath = '../' + bgImage;
+        }
+        document.getElementById('hero-preview').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${adminBgPath}')`;
     }
     
     const ctaButton = document.getElementById('preview-cta');
@@ -147,25 +229,22 @@ function updatePreview() {
     }
 }
 
-// Auto-save every 30 seconds
-let autoSaveTimer;
-inputs.forEach(input => {
-    input.addEventListener('input', () => {
-        clearTimeout(autoSaveTimer);
-        autoSaveTimer = setTimeout(() => {
-            showToast('Draft saved automatically', 'success');
-        }, 30000);
-    });
-});
-
 // Form submission via AJAX
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-    submitBtn.disabled = true;
+    const saveDraftBtn = document.getElementById('save-draft-btn');
+    const publishBtn = document.getElementById('publish-btn');
+    const actionVal = document.getElementById('publish_action').value;
+    
+    const activeBtn = actionVal === 'publish' ? publishBtn : saveDraftBtn;
+    const originalText = activeBtn.innerHTML;
+    
+    // Disable both buttons
+    saveDraftBtn.disabled = true;
+    publishBtn.disabled = true;
+    
+    activeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
     
     const formData = new FormData(form);
     
@@ -173,7 +252,12 @@ form.addEventListener('submit', function(e) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Server error'); });
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             showToast(data.message, 'success');
@@ -182,15 +266,19 @@ form.addEventListener('submit', function(e) {
             }, 1000);
         } else {
             showToast('Error: ' + data.error, 'error');
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+            // Re-enable buttons
+            saveDraftBtn.disabled = false;
+            publishBtn.disabled = false;
+            activeBtn.innerHTML = originalText;
         }
     })
     .catch(error => {
-        showToast('Network error', 'error');
+        showToast('Error: ' + error.message, 'error');
         console.error('Error:', error);
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+        // Re-enable buttons
+        saveDraftBtn.disabled = false;
+        publishBtn.disabled = false;
+        activeBtn.innerHTML = originalText;
     });
 });
 </script>

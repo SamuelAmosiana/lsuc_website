@@ -1,20 +1,61 @@
 <?php
-// Load current core values
-$values_file = __DIR__ . '/../data/home_values.json';
-$values = [];
+$draft_file = __DIR__ . '/../data/home_values_draft.json';
+$published_file = __DIR__ . '/../data/home_values.json';
 
-if (file_exists($values_file)) {
-    $values = json_decode(file_get_contents($values_file), true) ?: [];
+$values = [];
+$published_values = [];
+
+if (file_exists($published_file)) {
+    $published_values = json_decode(file_get_contents($published_file), true) ?: [];
 }
 
-// Sort by order
+if (file_exists($draft_file)) {
+    $values = json_decode(file_get_contents($draft_file), true) ?: [];
+} else {
+    $values = $published_values;
+}
+
+// Sort values by order
 usort($values, function($a, $b) {
     return ($a['order'] ?? 999) - ($b['order'] ?? 999);
 });
+
+usort($published_values, function($a, $b) {
+    return ($a['order'] ?? 999) - ($b['order'] ?? 999);
+});
+
+// Check if draft has unpublished changes
+$has_unpublished_changes = false;
+$values_clean = $values;
+$published_clean = $published_values;
+
+// Unset dynamic timestamps for comparison
+foreach ($values_clean as &$val) {
+    unset($val['created_at'], $val['updated_at']);
+}
+foreach ($published_clean as &$val) {
+    unset($val['created_at'], $val['updated_at']);
+}
+
+if ($values_clean !== $published_clean) {
+    $has_unpublished_changes = true;
+}
 ?>
 
 <div class="form-card">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+    <?php if ($has_unpublished_changes): ?>
+        <div class="alert warning-alert" style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #ffc107; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span><strong>You have unpublished changes in Core Values!</strong> Click "Publish Live" to update the public website.</span>
+            </div>
+            <button onclick="publishCoreValues(this)" class="btn btn-primary" style="background: var(--primary-green); border-color: var(--primary-green); padding: 8px 20px; font-size: 0.9rem;">
+                <i class="fas fa-paper-plane"></i> Publish Live
+            </button>
+        </div>
+    <?php endif; ?>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
         <h2 style="color: var(--primary-green); margin: 0;">
             <i class="fas fa-star"></i> Core Values Editor
         </h2>
@@ -45,7 +86,7 @@ usort($values, function($a, $b) {
                             <button onclick="editValue('<?php echo htmlspecialchars($value['id']); ?>')" class="btn btn-primary btn-sm">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <button onclick="deleteValue('<?php echo htmlspecialchars($value['id']); ?>')" class="btn btn-danger btn-sm">
+                            <button onclick="deleteValue(this, '<?php echo htmlspecialchars($value['id']); ?>')" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i> Delete
                             </button>
                         </div>
@@ -63,6 +104,7 @@ usort($values, function($a, $b) {
         
         <form id="value-form" onsubmit="saveValue(event)">
             <input type="hidden" id="value-id" name="id">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>">
             
             <div class="form-group">
                 <label for="value-title">Title *</label>
@@ -94,7 +136,7 @@ usort($values, function($a, $b) {
             </div>
             
             <div style="display: flex; gap: 10px; margin-top: 30px;">
-                <button type="submit" class="btn btn-primary" style="flex: 1;">
+                <button type="submit" id="save-value-btn" class="btn btn-primary" style="flex: 1;">
                     <i class="fas fa-save"></i> Save Value
                 </button>
                 <button type="button" onclick="closeModal()" class="btn btn-secondary" style="flex: 1;">
@@ -121,7 +163,6 @@ function closeModal() {
 }
 
 function editValue(id) {
-    // Find the value data
     const valuesList = <?php echo json_encode($values); ?>;
     const value = valuesList.find(v => v.id === id);
     
@@ -136,8 +177,50 @@ function editValue(id) {
     isEditing = true;
 }
 
+function publishCoreValues(btn) {
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing...';
+    
+    const formData = new FormData();
+    formData.append('action', 'publish');
+    formData.append('csrf_token', '<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>');
+    
+    fetch('api/save_home_values.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Server error'); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            showToast(data.message, 'success');
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            showToast('Error: ' + data.error, 'error');
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+    })
+    .catch(error => {
+        showToast('Error: ' + error.message, 'error');
+        console.error('Error:', error);
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    });
+}
+
 function saveValue(event) {
     event.preventDefault();
+    
+    const submitBtn = document.getElementById('save-value-btn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
     
     const formData = new FormData(document.getElementById('value-form'));
     formData.append('action', isEditing ? 'update' : 'add');
@@ -146,7 +229,12 @@ function saveValue(event) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Server error'); });
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             showToast(data.message, 'success');
@@ -154,39 +242,57 @@ function saveValue(event) {
             setTimeout(() => location.reload(), 1000);
         } else {
             showToast('Error: ' + data.error, 'error');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
         }
     })
     .catch(error => {
-        showToast('Network error', 'error');
+        showToast('Error: ' + error.message, 'error');
         console.error('Error:', error);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
     });
 }
 
-function deleteValue(id) {
-    if (!confirm('Are you sure you want to delete this core value?')) {
+function deleteValue(btn, id) {
+    if (!confirm('Are you sure you want to delete this core value draft?')) {
         return;
     }
+    
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>...';
     
     const formData = new FormData();
     formData.append('action', 'delete');
     formData.append('id', id);
+    formData.append('csrf_token', '<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>');
     
     fetch('api/save_home_values.php', {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || 'Server error'); });
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             showToast(data.message, 'success');
             setTimeout(() => location.reload(), 1000);
         } else {
             showToast('Error: ' + data.error, 'error');
+            btn.disabled = false;
+            btn.innerHTML = originalText;
         }
     })
     .catch(error => {
-        showToast('Network error', 'error');
+        showToast('Error: ' + error.message, 'error');
         console.error('Error:', error);
+        btn.disabled = false;
+        btn.innerHTML = originalText;
     });
 }
 

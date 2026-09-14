@@ -109,5 +109,74 @@
         "details": "Homepage hero section modified",
         "status": "success",
         "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 14:31:09",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 15:56:54",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:14:42",
+        "username": "admin",
+        "action": "Updated Hero Section",
+        "details": "Homepage hero section modified",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:29:33",
+        "username": "admin",
+        "action": "Login successful",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:30:46",
+        "username": "admin",
+        "action": "Published Hero Section",
+        "details": "Homepage hero section published",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:34:09",
+        "username": "admin",
+        "action": "Published Hero Section",
+        "details": "Homepage hero section published",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:55:08",
+        "username": "admin",
+        "action": "Saved Core Value Draft",
+        "details": "Added Core Value: Mission",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:55:41",
+        "username": "admin",
+        "action": "Published Core Values",
+        "details": "Homepage core values published",
+        "status": "success",
+        "ip_address": "::1"
+    },
+    {
+        "timestamp": "2026-08-25 16:55:51",
+        "username": "admin",
+        "action": "Published Hero Section",
+        "details": "Homepage hero section published",
+        "status": "success",
+        "ip_address": "::1"
     }
 ]

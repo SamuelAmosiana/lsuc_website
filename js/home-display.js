@@ -80,7 +80,7 @@ const LSUCHomepage = {
     },
 
     loadHero: function() {
-        fetch('admin/data/home_hero.json')
+        fetch('admin/data/home_hero.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) throw new Error('Hero file not found');
                 return response.json();
@@ -161,7 +161,7 @@ const LSUCHomepage = {
     },
 
     loadCoreValues: function() {
-        fetch('admin/data/home_values.json')
+        fetch('admin/data/home_values.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) throw new Error('Values file not found');
                 return response.json();
@@ -210,7 +210,7 @@ const LSUCHomepage = {
     },
 
     loadGallery: function() {
-        fetch('admin/data/home_gallery.json')
+        fetch('admin/data/home_gallery.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) throw new Error('Gallery file not found');
                 return response.json();

@@ -18,6 +18,11 @@ if (time() - ($_SESSION['login_time'] ?? 0) > 1800) {
 // Update login time
 $_SESSION['login_time'] = time();
 
+// Generate CSRF token if it doesn't exist
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 $current_page = $_GET['page'] ?? 'dashboard';
 $admin_username = $_SESSION['admin_username'] ?? 'Admin';
 

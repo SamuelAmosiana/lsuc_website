@@ -1,10 +1,26 @@
 [
     {
-        "id": "val_1787669708_2db3f7c3",
-        "title": "Mission",
+        "id": "val_1787669708_2db3f7c1",
+        "title": "Excellence",
         "description": "We strive for the highest standards in everything we do, from teaching to student support services, ensuring quality education that prepares students for success.",
-        "icon": "fa-star",
+        "icon": "fa-bullseye",
         "order": 0,
+        "created_at": "2026-08-25 16:55:08"
+    },
+    {
+        "id": "val_1787669708_2db3f7c2",
+        "title": "Integrity",
+        "description": "We conduct ourselves with honesty, transparency, and ethical behavior, fostering trust and respect within our college community.",
+        "icon": "fa-handshake",
+        "order": 1,
+        "created_at": "2026-08-25 16:55:08"
+    },
+    {
+        "id": "val_1787669708_2db3f7c3",
+        "title": "Innovation",
+        "description": "We embrace new ideas, technologies, and teaching methods to enhance learning experiences and prepare students for the modern world.",
+        "icon": "fa-lightbulb",
+        "order": 2,
         "created_at": "2026-08-25 16:55:08"
     }
 ]

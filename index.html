@@ -8147,6 +8147,10 @@ Participants: ${data.participants}`;
         let currentPDFTitle = '';
 
         function openPDFViewer(pdfUrl, title = 'Document Viewer') {
+            // Append cache buster parameter to prevent browser & server static file caching issues
+            if (pdfUrl && !pdfUrl.includes('?v=')) {
+                pdfUrl = pdfUrl + (pdfUrl.includes('?') ? '&' : '?') + 'v=' + Date.now();
+            }
             currentPDFUrl = pdfUrl;
             currentPDFTitle = title;
 

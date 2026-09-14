@@ -107,7 +107,7 @@ try {
 }
 
 function sanitize($input) {
-    return htmlspecialchars(strip_tags(trim($input)));
+    return strip_tags(trim(htmlspecialchars_decode($input, ENT_QUOTES)));
 }
 
 function logActivity($action, $details = '') {

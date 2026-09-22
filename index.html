@@ -4409,7 +4409,7 @@
                             </a>
                             <a id="detail-pdf-link" href="#" target="_blank" class="back-btn"
                                style="display:none; text-decoration:none; background: linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; border:none; margin-left:10px;">
-                                <i class="fas fa-file-pdf"></i> CPD &amp; Short Courses PDF
+                                <i class="fas fa-file-pdf"></i> <span id="detail-pdf-link-text">View Document (PDF)</span>
                             </a>
                         </div>
                     </div>
@@ -6496,6 +6496,15 @@
                         <p>A planning tool that shows the scheduled times of lectures, tutorials, and other classes</p>
                         <button class="cta-button"
                             onclick="openPDFViewer('docs/time_table.pdf', 'Student Class Time Table')"
+                            style="margin-top: 15px; width: auto;">Download Document</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3>Job Vacancy Announcement (Oct 2026)</h3>
+                        <p>Official vacancy announcement for Full-Time &amp; Part-Time Lecturers (Business Administration, Accounting, ICT, Procurement &amp; Law) and Internship opportunities. Closing date: 30th September 2026.</p>
+                        <button class="cta-button"
+                            onclick="openPDFViewer('docs/LSUC_Job_Vacancies_Oct_2026.pdf', 'LSUC Vacancy Announcement - October 2026')"
                             style="margin-top: 15px; width: auto;">Download Document</button>
                     </div>
                 </div>
@@ -9024,7 +9033,7 @@ Participants: ${data.participants}`;
     <script src="./js/payment-handler.js"></script>
 
     <!-- News & Events Manager Script -->
-    <script src="./js/news-events-manager.js"></script>
+    <script src="./js/news-events-manager.js?v=20260922b"></script>
 
     <!-- FAQs Display Manager Script -->
     <script src="./js/faq-display.js"></script>
@@ -9079,7 +9088,10 @@ Participants: ${data.participants}`;
             const container = document.getElementById('home-latest-updates');
             if (!container) return;
 
-            const latestNews = LSUCEventsManager.getLatestNews(3);
+            const latestNews = LSUCEventsManager.getEvents()
+                .filter(event => event.category === 'Latest News' || event.category === 'Job Vacancy')
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 3);
 
             if (latestNews.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#666;">No updates available at this time.</p>';
@@ -9234,6 +9246,7 @@ Participants: ${data.participants}`;
             const pdfLink = document.getElementById('detail-pdf-link');
             if (event.pdfLink) {
                 pdfLink.href = event.pdfLink;
+                document.getElementById('detail-pdf-link-text').textContent = event.pdfLinkLabel || 'View Document (PDF)';
                 pdfLink.style.display = 'inline-block';
             } else {
                 pdfLink.style.display = 'none';

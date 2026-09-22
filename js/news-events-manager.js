@@ -8,11 +8,59 @@
 // DATA STRUCTURE & INITIALIZATION
 // ============================================
 
-const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v13'; // bumped to v13: date change
+const LSUC_EVENTS_STORAGE_KEY = 'lsuc_events_data_v15'; // bumped to v15: force reload so evt_015 vacancy shows
 const LSUC_ADMIN_AUTH_KEY = 'lsuc_admin_authenticated';
 
 // Sample minimal data (2-3 events per category)
 const SAMPLE_EVENTS = [
+    {
+        id: "evt_015",
+        title: "VACANCY ANNOUNCEMENT: Full-Time & Part-Time Lecturers and Internship Opportunities",
+        date: "2026-09-22",
+        category: "Job Vacancy",
+        shortDescription: "LSUC is expanding its team and invites applications for a Full-Time Lecturer (Business Administration & Accounting), Part-Time Lecturers (ICT, Procurement & Law), and Internships (Marketing & E-Learning). Closing date: 30th September 2026.",
+        fullDescription: `<p><strong>LUSAKA SOUTH UNIVERSITY COLLEGE (LSUC) VACANCY ANNOUNCEMENT</strong></p>
+<p>Lusaka South University College is an institution dedicated to providing quality and industry-relevant education. As we expand our team, we invite applications from suitably qualified individuals for the following positions:</p>
+
+<h3>1. Full-Time Lecturer &ndash; Business Administration &amp; Accounting</h3>
+<p><strong>Job Description:</strong> Prepare and deliver high-quality lectures, develop course modules, conduct student assessments, and provide academic mentorship. Participate in departmental research and administrative tasks.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Grade 12 School Certificate with 5 O-Levels (including English and Mathematics)</li>
+<li>Bachelor's Degree in Business Administration, Accounting, or Finance</li>
+<li>Master's Degree in Business Administration (MBA), Accounting, or Finance</li>
+<li>Teaching Methodology Qualification (Mandatory)</li>
+</ul>
+
+<h3>2. Part-Time Lecturers (ICT, Procurement, &amp; Law)</h3>
+<p><strong>Job Description:</strong> Facilitate learning for specific modules, prepare assessment tools, and ensure timely submission of grades for both full-time and distance learning students.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>Grade 12 School Certificate</li>
+<li><strong>ICT:</strong> Bachelor's &amp; Master's Degree in ICT or Computer Science</li>
+<li><strong>Procurement:</strong> Bachelor's &amp; Master's Degree in Procurement &amp; Supply Chain Management</li>
+<li><strong>Law:</strong> Bachelor of Laws (LLB) and Master of Laws (LLM)</li>
+<li>Teaching Methodology Qualification (Mandatory)</li>
+</ul>
+
+<h3>3. Internships (Marketing &amp; E-Learning)</h3>
+<p><strong>A. Marketing Intern:</strong> Assist in brand awareness, student recruitment, social media management, and field marketing.</p>
+<ul><li>Requirement: Grade 12 Certificate + Diploma in Business Admin or Marketing</li></ul>
+<p><strong>B. E-Learning Intern:</strong> Technical support for the e-Learning portal, uploading materials, and troubleshooting user issues.</p>
+<ul><li>Requirement: Grade 12 Certificate + Diploma in IT or Computer Science</li></ul>
+
+<h3>How to Apply</h3>
+<p>Submit your application letter, updated CV, Grade 12 certificate, and professional qualifications to the Registrar Administration at <a href="mailto:lusakasouthuniversity@gmail.com">lusakasouthuniversity@gmail.com</a> or deliver in person to our campus addressed to:</p>
+<p>Registrar<br>Lusaka South University College<br>Stand 3073 Foxdale, Corner of Zambezi and Mutumbi Roads<br>Lusaka, Zambia</p>
+<p><strong>Closing Date: 30th September 2026</strong></p>
+<p>For full details, download the official <a href="docs/LSUC_Job_Vacancies_Oct_2026.pdf" target="_blank">Vacancy Announcement PDF</a>.</p>`,
+        image: "./img/school4.jpeg",
+        author: "Registrar Administration",
+        pdfLink: "docs/LSUC_Job_Vacancies_Oct_2026.pdf",
+        pdfLinkLabel: "View Vacancy Announcement (PDF)",
+        applyLink: "mailto:lusakasouthuniversity@gmail.com?subject=Job%20Application%20-%20LSUC%20Vacancy%20(Oct%202026)",
+        featured: true
+    },
     {
         id: "evt_014",
         title: "LUSAKA SOUTH UNIVERSITY COLLEGE OFFICIALLY GAZETTED BY GOVERNMENT, PAVING WAY FOR GLOBAL ACADEMIC EXCELLENCE",
@@ -34,6 +82,7 @@ const SAMPLE_EVENTS = [
         image: "./img/cpd.jpg",
         author: "Director",
         pdfLink: "docs/cpd-short-courses.pdf",
+        pdfLinkLabel: "CPD & Short Courses PDF",
         applyLink: "https://forms.gle/ptheSuNM8HKwmbXM7",
         featured: true
     },
@@ -284,10 +333,10 @@ function getFeaturedEvents() {
                  .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
-// Get latest news (sorted by date, newest first)
+// Get latest news (sorted by date, newest first) — includes Job Vacancy posts
 function getLatestNews(limit = 6) {
     const events = getEvents();
-    return events.filter(event => event.category === 'Latest News')
+    return events.filter(event => event.category === 'Latest News' || event.category === 'Job Vacancy')
                  .sort((a, b) => new Date(b.date) - new Date(a.date))
                  .slice(0, limit);
 }

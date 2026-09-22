@@ -294,7 +294,7 @@ const SAMPLE_EVENTS = [
 // Initialize storage with sample data if empty
 function initializeEventsData() {
     const existingRaw = localStorage.getItem(LSUC_EVENTS_STORAGE_KEY);
-    
+
     if (!existingRaw || existingRaw === '[]') {
         // First load — seed with all sample data
         localStorage.setItem(LSUC_EVENTS_STORAGE_KEY, JSON.stringify(SAMPLE_EVENTS));
@@ -302,20 +302,28 @@ function initializeEventsData() {
         return SAMPLE_EVENTS;
     }
 
-    // Merge: ensure every SAMPLE_EVENT exists (upsert by id)
-    // This guarantees newly added sample events always appear
+    // Always sync SAMPLE_EVENTS into stored data:
+    //  - New events in SAMPLE_EVENTS get added at the top
+    //  - Existing events get OVERWRITTEN with latest SAMPLE_EVENTS data
+    //    (so image/title/content changes always take effect immediately)
     let stored = JSON.parse(existingRaw);
     let changed = false;
+
     SAMPLE_EVENTS.forEach(sample => {
-        const exists = stored.find(e => e.id === sample.id);
-        if (!exists) {
-            stored.unshift(sample); // add new ones at the top
+        const idx = stored.findIndex(e => e.id === sample.id);
+        if (idx === -1) {
+            stored.unshift(sample); // new event — add at top
+            changed = true;
+        } else {
+            // Overwrite with latest sample data so updates (e.g. image) apply
+            stored[idx] = sample;
             changed = true;
         }
     });
+
     if (changed) {
         localStorage.setItem(LSUC_EVENTS_STORAGE_KEY, JSON.stringify(stored));
-        console.log('LSUC Events: Merged new sample events into existing data');
+        console.log('LSUC Events: Synced sample events into stored data');
     }
     return stored;
 }

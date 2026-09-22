@@ -293,15 +293,31 @@ const SAMPLE_EVENTS = [
 
 // Initialize storage with sample data if empty
 function initializeEventsData() {
-    const existingData = localStorage.getItem(LSUC_EVENTS_STORAGE_KEY);
+    const existingRaw = localStorage.getItem(LSUC_EVENTS_STORAGE_KEY);
     
-    if (!existingData || existingData === '[]') {
+    if (!existingRaw || existingRaw === '[]') {
+        // First load — seed with all sample data
         localStorage.setItem(LSUC_EVENTS_STORAGE_KEY, JSON.stringify(SAMPLE_EVENTS));
         console.log('LSUC Events: Initialized with sample data');
         return SAMPLE_EVENTS;
     }
-    
-    return JSON.parse(existingData);
+
+    // Merge: ensure every SAMPLE_EVENT exists (upsert by id)
+    // This guarantees newly added sample events always appear
+    let stored = JSON.parse(existingRaw);
+    let changed = false;
+    SAMPLE_EVENTS.forEach(sample => {
+        const exists = stored.find(e => e.id === sample.id);
+        if (!exists) {
+            stored.unshift(sample); // add new ones at the top
+            changed = true;
+        }
+    });
+    if (changed) {
+        localStorage.setItem(LSUC_EVENTS_STORAGE_KEY, JSON.stringify(stored));
+        console.log('LSUC Events: Merged new sample events into existing data');
+    }
+    return stored;
 }
 
 // ============================================

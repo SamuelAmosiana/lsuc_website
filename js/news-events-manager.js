@@ -54,7 +54,7 @@ const SAMPLE_EVENTS = [
 <p>Registrar<br>Lusaka South University College<br>Stand 3073 Foxdale, Corner of Zambezi and Mutumbi Roads<br>Lusaka, Zambia</p>
 <p><strong>Closing Date: 30th September 2026</strong></p>
 <p>For full details, download the official <a href="docs/LSUC_Job_Vacancies_Oct_2026.pdf" target="_blank">Vacancy Announcement PDF</a>.</p>`,
-        image: "./img/school4.jpeg",
+        image: "./img/Lsuc_Job_vacancy_advert.png",
         author: "Registrar Administration",
         pdfLink: "docs/LSUC_Job_Vacancies_Oct_2026.pdf",
         pdfLinkLabel: "View Vacancy Announcement (PDF)",

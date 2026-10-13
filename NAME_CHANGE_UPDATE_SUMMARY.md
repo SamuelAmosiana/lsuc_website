@@ -102,13 +102,12 @@ The following PDF files still contain "Lusaka South College" in their content an
 1. 📄 `docs/student-handbook.pdf`
 2. 📄 `docs/admissions-letters.pdf`
 3. 📄 `docs/program-catalog.pdf`
-4. 📄 `img/docs/fees-structure.pdf`
-5. 📄 `img/docs/admissions-letters.pdf`
+4. 📄 `docs/fees-structure.pdf`
 
 **Note:** These are PDF binary files that cannot be updated via text replacement. They need to be:
 - Recreated in their original applications (Word, etc.)
 - Exported as new PDFs with the updated name
-- Replaced in the docs/img/docs directories
+- Replaced in the `docs/` directory
 
 ---
 
@@ -197,7 +196,7 @@ Before deploying to production, verify:
 2. 🔄 Recreate `admissions-letters.pdf` with new name
 3. 🔄 Recreate `program-catalog.pdf` with new name
 4. 🔄 Recreate `fees-structure.pdf` with new name
-5. 🔄 Replace all PDFs in both `docs/` and `img/docs/` directories
+5. 🔄 Replace all PDFs in the `docs/` directory
 
 ### Marketing Materials
 1. Consider updating any printed materials
